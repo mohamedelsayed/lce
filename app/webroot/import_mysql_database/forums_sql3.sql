@@ -1,0 +1,1 @@
+ALTER TABLE `members` ADD `confirm_code` VARCHAR( 255 ) NULL DEFAULT NULL;

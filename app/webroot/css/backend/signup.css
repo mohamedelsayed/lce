@@ -1,0 +1,83 @@
+/**
+ * @author Author "Mohamed Elsayed"  
+ * @author Author Email "me@mohamedelsayed.net"
+ * @copyright Copyright (c) 2011 Programming by "mohamedelsayed.net"
+ */
+#result{
+	position: absolute;
+	margin-left:0px;
+	float: left;
+	margin-top: -25px;
+}
+
+#registerform .short{
+	color:#FF0000;
+}
+
+#registerform .weak{
+	color:#E66C2C;
+}
+
+#registerform .good{
+	color:#2D98F3;
+}
+
+#registerform .strong{
+	color:#006400;
+}
+#resultmeter{
+	position: absolute;
+	margin:0px;
+	float: left;		
+	height:5px;
+	background-color:#FFFFFF;
+}
+#registerform .shortmeter{
+	background-color:#FF0000;
+	width:50px;
+}
+#registerform .weakmeter{
+	background-color:#E66C2C;
+	width:100px;
+}
+#registerform .goodmeter{
+	background-color:#2D98F3;
+	width:150px;
+}
+#registerform .strongmeter{
+	background-color:#006400;
+	width:200px;
+}
+#passwordmatch{
+	position: absolute;
+	margin-left:0px;
+	float: left;
+	margin-top: -25px;
+}
+.truematch{
+	color:#006400;
+}
+.falsematch{
+	color:#FF0000;
+}
+#usernamevalidate{
+	position: absolute;
+	margin-left:0px;
+	float: left;
+	margin-top: -25px;
+}
+#emailvalidate{
+	position: absolute;
+	margin-left:0px;
+	float: left;
+	margin-top: -25px;
+}
+.recaptchadiv{
+	float: left;
+	width: 627px;
+	margin-top: 25px;
+	margin-left: 30px;
+}
+.recaptchadivinner{
+	float: right;
+}

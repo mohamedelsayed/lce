@@ -1,0 +1,1 @@
+<?php echo $this->Form->input($modelName.'.'.$field, array('div'=>false,'options'=>$cats, 'empty'=>($empty=='false')?false:$empty));?>

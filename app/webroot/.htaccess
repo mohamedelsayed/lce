@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+AddType application/x-javascript .js
+AddType text/css .css
+
+# This to make the redirect from the NON-WWW to the WWW
+# it was added by "Mohamed Elsayed" - Email "me@mohamedelsayed.net"
+# RewriteEngine On
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+

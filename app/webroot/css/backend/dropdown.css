@@ -1,0 +1,119 @@
+/*********************************************************
+I TRIED TO MAKE THIS EASY TO STYLE! SEE NOTES BELOW
+**********************************************************/
+#dropdown-holder {
+float:left;
+	/*
+		This is just the holder and how you want what is behind the
+		main menu links too look like
+	*/
+}
+.dropdown {
+	/*
+		OVER ALL LINE HEIGHT
+	*/
+	line-height:24px;
+}
+.dropdown a {
+	font-family: Arial;
+	font-size: 10px;
+	display:block;
+	padding:0px 10px 0px 10px;
+	color:#000000;
+	text-decoration:none;
+	font-weight: bold;
+}
+.dropdown a:hover{
+
+}
+.dropdown ul {
+	top:24px;
+}
+.dropdown li ul a{
+
+}
+.dropdown li ul {
+	/* time for some math  {a}:width + {a}:padding + {a}:border */
+	width:172px;
+}
+.dropdown li ul li{
+	/* time for some math  {a}:width + {a}:padding + {a}:border */
+	width:172px;
+	background-image: url(../../img/backend/menu-bg.png);
+	background-repeat: repeat;
+}
+.dropdown li ul li a{
+	color: #666666;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #C3C3C3;
+	width: 152px;
+}
+.dropdown a.popout {
+	/* totally optional popout indicator */
+	background-image: url(../../img/backend/popout.gif);
+	background-position:center right;
+	background-repeat:no-repeat;
+}
+
+/************************************************************
+ONLY EDIT BELOW IF YOU REALLY KNOW WHAT YOUR DOING!
+************************************************************/
+.dropdown {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+.dropdown ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+.dropdown a {
+	display:block;
+}
+.dropdown li{
+	float:left;
+	position:relative;
+	display: block;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #C3C3C3;
+}
+.dropdown li.heading a{
+}
+.dropdown li.heading a:hover{
+	background-color:#CCCCCC;
+}
+.dropdown ul {
+	position:absolute;
+	display:none;
+}
+.dropdown li ul a{
+	float:left;
+}
+.dropdown li ul {
+	float:left;
+}
+.dropdown li ul li{
+	float:left;
+	position:relative;
+}
+.dropdown ul ul{
+	top:0;
+	left:100%;
+}
+.dropdown li ul ul {
+	width:auto;
+	margin: -1px 0px 0px 0px;
+	float:left;
+}
+.dropdown li:hover ul ul, .dropdown li:hover ul ul ul, .dropdown li:hover ul ul ul ul{
+	display:none;
+}
+.dropdown li:hover ul, .dropdown li li:hover ul, .dropdown li li li:hover ul, .dropdown li li li li:hover ul{
+	display:block;
+}
+.sub{
+background:none;
+}

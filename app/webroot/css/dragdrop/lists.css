@@ -1,0 +1,32 @@
+ul.sortable li {
+	position: relative;
+}
+
+ul.boxy {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+ul.boxy li {
+	cursor:move;
+}
+.clickable a {
+	display: block;
+	text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+}
+.clickable li:hover {
+	background-color: #f6f6f6;
+}
+
+ul.boxy li { margin: 0px; }
+
+#phonetics td {
+	margin: 0px;
+	padding: 0px 1em;
+	vertical-align: top;
+	width: 100px;
+}
+
+#phonetic1 li{ margin: 0px; }
