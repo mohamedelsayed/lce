@@ -8,7 +8,6 @@ class HomeController  extends AppController {
 	var $name = 'Home';
 	var $uses = null;
 	var $components = array('Email');
-
 	function index(){
 		//$this->layout = 'ajax';
 		//$this->render('under_construction');		
