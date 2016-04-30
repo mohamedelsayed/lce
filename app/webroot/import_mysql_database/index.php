@@ -2,13 +2,13 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.mohamedelsayed.net
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 $mysql_host ='mysql2.ic-demos.com';
 $mysql_database ='lifecoa_chingwebsite';
 $mysql_username ='lifecoa_chidbusr';
 $mysql_password ='L0gmeuIn0W3';
-$filename ='forums_sql4.sql';
+$filename ='specializations_sql.sql';
 // Connect to MySQL server
 mysql_connect($mysql_host, $mysql_username, $mysql_password) or die('Error connecting to MySQL server: ' . mysql_error());
 // Select database
