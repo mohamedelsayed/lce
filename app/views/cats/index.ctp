@@ -39,7 +39,8 @@
 			<?php echo $this->Html->link($cat['ParentCat']['title'], array('controller' => 'cats', 'action' => 'view', $cat['ParentCat']['id'])); ?>
 		</td>
 		<td><?php echo $cat['Cat']['weight']; ?>&nbsp;</td>
-		<td><?php echo $cat['Cat']['approved']; ?>&nbsp;</td>
+		<td><?php if($cat['Cat']['approved'] == 1) echo 'Yes';
+		elseif($cat['Cat']['approved'] == 0) echo 'No';?>&nbsp;</td>
 		<td><?php echo $cat['Cat']['created']; ?>&nbsp;</td>
 		<td><?php echo $cat['Cat']['updated']; ?>&nbsp;</td>
 		<td class="actions">

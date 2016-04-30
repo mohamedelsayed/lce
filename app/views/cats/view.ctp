@@ -48,8 +48,8 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Approved'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $cat['Cat']['approved']; ?>
-			&nbsp;
+		<?php if($cat['Cat']['approved'] == 1) echo 'Yes';
+		elseif($cat['Cat']['approved'] == 0) echo 'No';?>&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
