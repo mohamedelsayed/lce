@@ -75,10 +75,10 @@ class DATABASE_CONFIG {
 	var $default = array(
 		'driver' => 'mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'root',
-		'database' => 'lce',
+		'host' => DB_HOST,
+		'login' => DB_USERNAME,
+		'password' => DB_PASSWORD,
+		'database' => DB_NAME,
 		'prefix' => '',
 		'encoding' => 'utf8'
 	);	

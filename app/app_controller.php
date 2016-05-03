@@ -2,8 +2,9 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.lce.com/
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
+require_once 'elsayed_db.php';
 class AppController extends Controller {
 	public $helpers = array('Html', 'Form', 'Javascript', 'Ajax', 'Session', 'Lang');
 	public $components = array('Session', 'Cookie');
