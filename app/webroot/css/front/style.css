@@ -1,4 +1,4 @@
-body {
+@import url(https://fonts.googleapis.com/css?family=Montserrat);body {
     margin: 0px;
 	padding: 0px;
 	font-family:  Montserrat;
@@ -65,9 +65,9 @@ body {
 .inpu_lce{
 	width: 345px;
 	height: 45px;
-	padding-left: 13px;
-	border-radius: 7px;
+	padding-left: 13px;	
 	border: 1px solid #ffffff;
+	border-radius: 7px;
 }
 .inp_s_2_f{
 	width: 280px;
