@@ -130,9 +130,10 @@
 }
 .top_wrie a{
 	text-decoration: none;
+	color:#404041;
 }
 .top_wrie a:hover{
-	color:#404041;
+	color:#f58521;
 	/*text-decoration: underline;*/
 }  
 .top_img_article{
