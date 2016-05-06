@@ -6,13 +6,13 @@
 #wowslider-container1 { 
 	zoom: 1; 
 	position: relative; 
-	max-width:960px;
+	max-width:1200px;
 	margin:auto;
 	z-index:90;
 	border:none;
 	text-align:left; /* reset align=center */
 }
-* html #wowslider-container1{ width:930px }
+* html #wowslider-container1{ width:1200px }
 #wowslider-container1 .ws_images ul{
 	position:relative;
 	width: 10000%; 
