@@ -1,46 +1,7 @@
-@font-face{
-font-family: OpenSans-Bold;
-src: url(../font/OpenSans-Bold.ttf);
-}
-@font-face{
-font-family: OpenSans-BoldItalic;
-src: url(../font/OpenSans-BoldItalic.ttf);
-}
-@font-face{
-font-family: OpenSans-ExtraBold;
-src: url(../font/OpenSans-ExtraBold.ttf);
-}
-@font-face{
-font-family: OpenSans-ExtraBoldItalic;
-src: url(../font/OpenSans-ExtraBoldItalic.ttf);
-}
-@font-face{
-font-family: OpenSans-Italic;
-src: url(../font/OpenSans-Italic.ttf);
-}
-@font-face{
-font-family: OpenSans-Light;
-src: url(../font/OpenSans-Light.ttf);
-}
-@font-face{
-font-family: OpenSans-LightItalic;
-src: url(../font/OpenSans-LightItalic.ttf);
-}
-@font-face{
-font-family: OpenSans-Regular;
-src: url(../font/OpenSans-Regular.ttf);
-}
-@font-face{
-font-family: OpenSans-Semibold;
-src: url(../font/OpenSans-Semibold.ttf);
-}
-@font-face{
-font-family: OpenSans-SemiboldItalic;
-src: url(../font/OpenSans-SemiboldItalic.ttf);
-}
 body {
     margin: 0px;
 	padding: 0px;
+	font-family:  Montserrat;
 }
 .container{
 	width:1200px;
@@ -73,8 +34,8 @@ body {
 	background-color: #000000;
 }
 .top_menu a{
-	font-family: Myriad Pro, Helvetica, sans-serif;
-	font-size: 13px;
+	font-family: Montserrat;
+	font-size: 16px;
 	text-decoration:none;
 	padding-left: 12px;
 	padding-right: 20px;
@@ -135,7 +96,6 @@ body {
 	padding-right: 5px;
 }
 .face{
-	font-family: Arial;
 	font-size: 8.77px;
 	text-decoration:none;
 	padding-right: 5px;
@@ -155,7 +115,6 @@ body {
 	margin-left: auto;
 }
 .menu a{
-	font-family: OpenSans-Light;
 	font-size: 21px;
 	text-decoration:none;
 	padding-left: 22px;
@@ -176,14 +135,12 @@ body {
 .men_e{
 	float: right;
 	margin-top: 35px;
-	font-family: OpenSans-Light;
 	font-size: 21.72px;
 	text-decoration:none;
 	color: #404041;
 	/*width: 340px;*/
 }
 .men_a{
-	font-family: OpenSans-LightItalic;
 	font-size: 16.53px;
 	text-decoration:none;
 	padding-left: 4px;
@@ -247,15 +204,14 @@ body {
 }
 .top_wrie{
 	float:left;
-	font-family: OpenSans-Semibold;
-	font-size: 19.65px;
+	font-size: 18px;
 	text-decoration:none;
 	padding-top: 5px;
-	color: #000000;
+	font-weight:bold;
+	color: #404041;
 }
 .t_right{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 20px;
 	color: #ed4640;
 	text-decoration:none;
@@ -264,7 +220,6 @@ body {
 }
 .t_right_2{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color:#404041;
@@ -272,7 +227,6 @@ body {
 }
 .top_wrie_2{
 	float:left;
-	font-family: OpenSans-Light;
 	font-size: 18px;
 	text-decoration:none;
 	padding-left: 10px;
@@ -281,7 +235,6 @@ body {
 }
 .top_wrie_b{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 19.5px;
 	text-decoration:none;
 	padding-left: 10px;
@@ -291,7 +244,6 @@ body {
 }
 .top__b{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 23px;
 	text-decoration:none;
 	padding-left: 10px;
@@ -312,7 +264,6 @@ body {
 .img_top{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
 	font-size: 25px;
 	text-decoration:none;
 	color: #484848;
@@ -335,7 +286,6 @@ body {
 	float:left;
 	margin-bottom: 15px;
 	margin-top: 20px;
-	font-family:OpenSans-Regular;
 	font-size: 22px;
 	text-decoration:none;
 	color: #ffffff;
@@ -346,7 +296,6 @@ body {
 .leftmenuparent{
 	float:left;
 	margin-bottom: 5px;
-	font-family:OpenSans-Bold;
 	font-size: 21px;
 	text-decoration:none;
 	color: #f58622;
@@ -361,7 +310,6 @@ body {
 .leftmenuchild ul{
 	list-style: none;
 	margin-bottom: 10px;
-	font-family:OpenSans-Regular;
 	font-size: 21px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -373,7 +321,6 @@ body {
 }
 .leftmenuchild ul li {
 	list-style: none;
-	font-family:OpenSans-Regular;
 	font-size: 17px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -397,7 +344,6 @@ body {
 .ri_3{
 	float:left;
 	margin-bottom: 10px;
-	font-family:OpenSans-Regular;
 	font-size: 13px;
 	text-decoration:none;
 	color: #6a6a6a;
@@ -406,7 +352,6 @@ body {
 .img_top_2{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
 	font-size: 25px;
 	text-decoration:none;
 	color: #484848;
@@ -417,7 +362,6 @@ body {
 .left_bot_2{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
 	font-size: 17.65px;
 	text-decoration:none;
 	color: #535353;
@@ -427,8 +371,8 @@ body {
 .top{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Semibold;
-	font-size: 24px;
+	font-size: 19px;
+	font-weight:bold;
 	text-decoration:none;
 	color: #2b2b2b;
 	width: 86%;
@@ -451,7 +395,6 @@ body {
 	float:left;
 	margin-bottom: 10px;
 	padding-bottom: 4px;
-	font-family:OpenSans-Regular;
 	font-size: 23.45px;
 	text-decoration:none;
 	color: #484848;
@@ -462,7 +405,6 @@ body {
 	float:left;
 	margin-bottom: 5px;
 	padding-bottom: 5px;
-	font-family:OpenSans-Regular;
 	font-size: 24px;
 	text-decoration:none;
 	color: #c00003;
@@ -472,7 +414,6 @@ body {
 .mm_tt{
 	float:left;
 	margin-bottom: 5px;
-	font-family:OpenSans-Regular;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #7e7e7e;
@@ -480,7 +421,6 @@ body {
 	padding-left:3px;
 }
 .right_nology:hover{
-	font-family:OpenSans-Regular;
 	font-size: 13.13px;
 	text-decoration:none;
 	color: #ee4640;
@@ -488,7 +428,6 @@ body {
 }
 .right_nology{
 	float:left;
-	font-family:OpenSans-Regular;
 	font-size: 13.13px;
 	text-decoration:none;
 	color: #4e4e4e;
@@ -500,7 +439,6 @@ body {
 }
 .n_right{
 	float:left;
-	font-family:OpenSans-Regular;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #9e9e9e;
@@ -516,7 +454,6 @@ body {
 }
 .nology{
 	float:left;
-	font-family:OpenSans-Regular;
 	font-size: 9.38px;
 	text-decoration:none;
 	color: #7e7e7e;
@@ -528,7 +465,6 @@ body {
 }
 .ri_gy{
 	float:left;
-	font-family:OpenSans-Regular;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #707070;
@@ -541,7 +477,6 @@ body {
 .no_See{
 	float:left;
 	margin-bottom: 15px;
-	font-family:OpenSans-Regular;
 	font-size: 14.39px;
 	padding: 7px 20px;
 	margin-left: 5px;
@@ -554,7 +489,6 @@ body {
 .no_See_2{
 	float:right;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
 	font-weight:bold;
 	font-size: 18px;
 	padding: 7px 20px;
@@ -569,7 +503,6 @@ body {
 .bot_mm{
 	float:left;
 	margin-bottom: 15px;
-	font-family:OpenSans-Regular;
 	font-size: 22px;
 	text-decoration:none;
 	color: #ed4640;
@@ -579,7 +512,6 @@ body {
 .top_see{
 	float:right;
 	margin-bottom: 30px;
-	font-family: OpenSans-Light;
 	font-size: 22px;
 	text-decoration:none;
 	color: #ff5953;
@@ -621,7 +553,6 @@ body {
 		
 }
 .new_g{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	text-decoration:none;
 	padding-left: 25px;
@@ -645,7 +576,6 @@ body {
 	margin-bottom: 10px;
 }
 .adder{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 18px;
 	text-decoration:none;
 	margin-left: 15px;
@@ -660,7 +590,6 @@ body {
 	border-bottom: 1px solid #e7e7e7;
 }
 .adder_left{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 20px;
 	text-decoration:none;
 	margin-left: 15px;
@@ -672,7 +601,6 @@ body {
 	float:left;
 }
 .write{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	padding-left: 15px;
@@ -684,7 +612,6 @@ body {
 	float:left;
 }
 .write_t{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	text-decoration:none;
 	padding-left: 15px;
@@ -720,7 +647,6 @@ body {
 	margin-left: 15px;
 }
 .write_bot{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	padding-left: 5px;
@@ -731,7 +657,6 @@ body {
 	float:left;
 }
 .write_b{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 16px;
 	text-decoration:none;
 	padding-left: 5px;
@@ -742,7 +667,6 @@ body {
 	width: 60px;
 }
 .write_bott{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	padding-left: 5px;
@@ -766,7 +690,6 @@ body {
 	margin-top: 2px;
 }
 .adders_grop_2{
-	font-family: Arial;
 	font-size: 15px;
 	text-decoration:none;
 	color: #000000;
@@ -784,7 +707,6 @@ body {
 	text-align:center;
 }
 .menu_grop a{
-	font-family: OpenSans-Regular;
 	font-size: 16.63px;
 	text-decoration:none;
 	line-height: 30px;
@@ -811,7 +733,6 @@ ul.tabs li{
 	cursor: pointer;
 	float:left;
 	font-weight:bold;
-	font-family: OpenSans-Regular;
 	font-size: 22px;
 	margin-right: 10px;
 }
@@ -820,7 +741,6 @@ ul.tabs li.current{
 	background: #404041;
 	color: #ffffff;
 	font-weight:bold;
-	font-family: OpenSans-Regular;
 	font-size: 22px;
 	text-decoration:none;
 }
@@ -860,7 +780,6 @@ ul.tabs li.current{
 }
 .top_con_2{
 	float:left;
-	font-family: OpenSans-Light;
 	font-size: 35px;
 	text-decoration:none;
 	color: #000000;
@@ -869,7 +788,6 @@ ul.tabs li.current{
 }
 .top_a_con{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 18.46px;
 	text-decoration:none;
 	color: #000000;
@@ -883,14 +801,12 @@ ul.tabs li.current{
 }
 .top_a_con_2{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 16px;
 	text-decoration:none;
 	color: #000000;
 }
 .top_a_con_3{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 16px;
 	text-decoration:none;
 	color: #000000;
@@ -898,7 +814,6 @@ ul.tabs li.current{
 }
 .bot_tom{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 16.89px;
 	text-decoration:none;
 	color: #535353;
@@ -907,7 +822,6 @@ ul.tabs li.current{
 }
 .Arab{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 23.63px;
 	text-decoration:none;
 	color: #ee4640;
@@ -917,7 +831,6 @@ ul.tabs li.current{
 }
 .Arab_2{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 23.63px;
 	text-decoration:none;
 	color: 7d7d7d;
@@ -927,7 +840,6 @@ ul.tabs li.current{
 }
 .s_right_f{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 18px;
 	text-decoration:none;
 	color: #ffffff;
@@ -940,7 +852,6 @@ ul.tabs li.current{
 }
 .s_right_t{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 18px;
 	text-decoration:none;
 	color: #ffffff;
@@ -956,7 +867,6 @@ ul.tabs li.current{
 }
 .s_right_fo{
 	float:left;
-	font-family: OpenSans-Bold;
 	font-size: 18px;
 	text-decoration:none;
 	min-height: 63px;
@@ -969,7 +879,6 @@ ul.tabs li.current{
 }
 .s_right_s{
 	float:left;
-	font-family: OpenSans-Bold;
 	font-size: 18px;
 	text-align:center;
 	line-height: 60px;
@@ -982,7 +891,6 @@ ul.tabs li.current{
 }
 .s_right_1{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 18px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -991,7 +899,6 @@ ul.tabs li.current{
 }
 .s_right_2{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -1000,7 +907,6 @@ ul.tabs li.current{
 }
 .s_right{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 35px;
 	text-decoration:none;
 	color: #000000;
@@ -1010,7 +916,6 @@ ul.tabs li.current{
 }
 .top_con_3{
 	float:left;
-	font-family: OpenSans-Semibold;
 	font-size: 35px;
 	text-decoration:none;
 	color: #000000;
@@ -1020,7 +925,6 @@ ul.tabs li.current{
 }
 .top_con_4{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #000000;
@@ -1048,7 +952,6 @@ ul.tabs li.current{
 }
 .top_con_5{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1063,7 +966,6 @@ ul.tabs li.current{
 }
 .top_con5{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1073,7 +975,6 @@ ul.tabs li.current{
 }
 .top_co8{
 	float:left;
-	font-family: OpenSans-Regular;
 	font-size: 16px;
 	text-decoration:none;
 	color: #535353;
@@ -1084,7 +985,6 @@ ul.tabs li.current{
 .top_con_6{
 	float:left;
 	text-align:justify;
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1122,8 +1022,6 @@ ul.tabs li.current{
 	float:left;
 	width:100%;
 	padding-bottom: 25px;
-	font-family: OpenSans-Regular;
-	/*font-size: 23.63px;*/
 	text-decoration:none;
 	color: #4e4e4e;
 	font-size: 20px;
@@ -1138,8 +1036,6 @@ ul.tabs li.current{
 	background:url(../../img/front/img_f2.jpg) no-repeat scroll left top;
 	padding-left: 30px;
 	padding-bottom: 20px;
-	font-family: OpenSans-Regular;
-	/*font-size: 23.63px;*/
 	text-decoration:none;
 	color: #7d7d7d;
 	background-position:0% 2px; 
@@ -1149,21 +1045,18 @@ ul.tabs li.current{
 	float: left;		
 }
 .faqquestioncurrent{
-	font-family: OpenSans-Regular;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f.jpg) no-repeat scroll left top;
 	background-position:0% 2px;
 }
 .faqquestion:hover{
-	font-family: OpenSans-Regular;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f3.jpg) no-repeat scroll left top;
 	background-position:0% 2px;
 }
 .faqquestioncurrent:hover{
-	font-family: OpenSans-Regular;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f.jpg) no-repeat scroll left top;
@@ -1213,7 +1106,6 @@ ul.tabs li.current{
 	
 }
 .menu_grop_2{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 13px;
 	text-decoration:none;
 	color: #000000;
@@ -1223,7 +1115,6 @@ ul.tabs li.current{
 	padding-left:45px;
 }
 .menu_grop_2 a{
-	font-family: Arial;
 	font-size: 13px;
 	text-decoration:none;
 	color: #000000;
@@ -1233,7 +1124,6 @@ ul.tabs li.current{
 	float:left;	
 }
 .left_bot{
-	font-family: OpenSans-Regular;
 	font-size: 16.63px;
 	text-decoration:none;
 	color: #ffffff;
@@ -1244,7 +1134,6 @@ ul.tabs li.current{
 	margin-bottom: 10px;
 }
 .center_bot{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	color: #9a9a9a;
@@ -1255,7 +1144,6 @@ ul.tabs li.current{
 	text-align:center;
 }
 .center_bot a{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	color: #9a9a9a;
@@ -1272,7 +1160,6 @@ ul.tabs li.current{
 	background-color: #a60300;
 }
 .menu_top a{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	text-decoration:none;
 	color: #ffffff;
@@ -1286,7 +1173,6 @@ ul.tabs li.current{
 	
 }
 .group_b{
-	font-family: Arial;
 	font-size: 18px;
 	text-decoration: underline;
 	color: #A60300;
@@ -1296,7 +1182,6 @@ ul.tabs li.current{
 	width: 100%;
 }
 .grou_big{
-	font-family: Arial;
 	font-size: 18px;
 	text-decoration: none;
 	color: #A60300;
@@ -1307,7 +1192,6 @@ ul.tabs li.current{
 	width: 700px;
 }
 .grou_big_top{
-	font-family: Arial;
 	font-size: 18px;
 	text-decoration: none;
 	color: #A60300;
@@ -1318,7 +1202,6 @@ ul.tabs li.current{
 	width: 100%;
 }
 .grou_big_2{
-	font-family: Arial;
 	font-size: 18px;
 	text-decoration: underline;
 	color: #A60300;
@@ -1329,7 +1212,6 @@ ul.tabs li.current{
 	width: 900px;
 }
 .group_smo{
-	font-family: Arial;
 	font-weight: bold;
 	font-size: 14px;
 	text-decoration:none;
@@ -1341,7 +1223,6 @@ ul.tabs li.current{
 }
 .w_t{
 	width: 800px;
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	text-decoration:none;
 	color: #000000;
@@ -1354,7 +1235,6 @@ ul.tabs li.current{
 }
 .w_top_w{
 	width: 100%;
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	color: #000000;
@@ -1366,14 +1246,12 @@ ul.tabs li.current{
 	float:left;
 }
 .w_top_w a{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 12px;
 	text-decoration:none;
 	color: #000000;
 	text-align: justify;
 }
 .w_top{
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	text-decoration:none;
 	color: #000000;
@@ -1383,7 +1261,6 @@ ul.tabs li.current{
 	float:left; 
 }
 .w_s_g{
-	font-family: Arial;
 	font-size: 12px;
 	text-decoration:none;
 	color: #000000;
@@ -1394,7 +1271,6 @@ ul.tabs li.current{
 	width: 100%;
 }
 .w_g_m{
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -1403,7 +1279,6 @@ ul.tabs li.current{
 	width: 95px;
 }
 .wrtei{
-	font-family: Arial;
 	font-size: 14px;
 	text-decoration:none;
 	color: #000000;
@@ -1413,7 +1288,6 @@ ul.tabs li.current{
 	width: 600px;
 }
 .w_rit{
-	font-family: Arial;
 	font-size: 14px;
 	text-decoration:none;
 	color: #000000;
@@ -1424,7 +1298,6 @@ ul.tabs li.current{
 	width: 100%;
 }
 .w_s_s{
-	font-family: Arial;
 	font-size: 14px;
 	text-decoration:none;
 	color: #000000;
@@ -1434,7 +1307,6 @@ ul.tabs li.current{
 	width: 100%;
 }
 .s_s_g{
-	font-family: Arial;
 	font-size: 14px;
 	font-weight: bold;
 	text-decoration:none;
@@ -1494,7 +1366,6 @@ ul.tabs li.current{
 	padding-bottom: 8px;
 	padding-top: 10px;
 	padding-left: 20px;
-	font-family: OpenSans-Regular;
 }
 .g__sm_22{
 	float: left;
@@ -1528,7 +1399,6 @@ ul.tabs li.current{
 	margin-bottom: 15px;
 }
 .Suche_a{
-	font-family: Arial;
 	color: #ffffff;
 	font-size: 20px;
 	text-decoration:none;
@@ -1541,7 +1411,6 @@ ul.tabs li.current{
 	padding-bottom: 4px;
 }
 .Suche_a_2{
-	font-family: Arial;
 	color: #ffffff;
 	font-size: 12px;
 	text-decoration:none;
@@ -1625,7 +1494,6 @@ input.file{
 .View a{
 	font-weight: bold;
 	text-decoration: underline;
-	font-family: Myriad Pro, Helvetica, sans-serif;
 	font-size: 14px;
 	padding-left: 7px;
 	text-decoration:none;
