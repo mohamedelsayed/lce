@@ -1002,3 +1002,6 @@ body{
 .tabdiv{
 	display: none;
 }
+#datamiddle img{
+	max-width: 100%;
+}
