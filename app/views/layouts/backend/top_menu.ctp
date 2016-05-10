@@ -51,7 +51,7 @@
 	border-bottom:1px solid #C3C3C3;
 }
 .new_items_li{
-	background-color: #ff0000;	
+	background-color: #2BBBB6;	
 }
 .new_items_li a{
 	color: #FFFFFF;
