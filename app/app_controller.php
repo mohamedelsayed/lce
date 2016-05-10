@@ -37,8 +37,12 @@ class AppController extends Controller {
 		$this->setAllArticlesTags();
 		$this->setRecentArticles();
 		$this->setParentCat();
-		if($this->layout != 'ajax')
+		if($this->layout != 'ajax'){
 			$this->layout = 'front/main';
+		}
+		$this->loadModel('Setting');
+        $setting = $this->Setting->read(null, 1);
+        $this->set('base_url', $setting['Setting']['url']);
 	}	
 	function afterFilter(){
 		//$this->Session->write('dontPopup', true);

@@ -80,7 +80,11 @@ class AuthController extends AppController{
 	
 	function beforeRender(){
 		// To view the content in another layout instead of the default layout :
-		if($this->layout != 'ajax')
+		if($this->layout != 'ajax'){
 			$this->layout = 'backend/main';
+		}
+		$this->loadModel('Setting');
+        $setting = $this->Setting->read(null, 1);
+        $this->set('base_url', $setting['Setting']['url']);
 	}
 }

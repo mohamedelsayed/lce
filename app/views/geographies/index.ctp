@@ -1,6 +1,6 @@
 <div class="geographys index">
 	<?php echo $this->element('backend/search_view',array('currentModel' => 'Geography', 'currentField' => 'title'));?>
-	<h2><?php __('Geographys');?></h2>
+	<h2><?php __('Geographies');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
