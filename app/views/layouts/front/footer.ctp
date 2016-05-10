@@ -1,4 +1,23 @@
-<div class="bottom_grop">
+<div class="bottom_big">
+<div class="bottom_big_container">
+<div class="footer_main">
+<div class="logo">
+			<a href="<?php echo $this->Session->read('Setting.url');?>">
+				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo.png" />
+			</a>
+		</div>
+<div class="col-md-3 footet-left fl1">
+					<h3>INFORMATION</h3>
+					<ul>
+						<li><a class="scroll" href="#home">HOME</a></li>
+						<li><a class="scroll" href="#product">PRODUCTS</a></li>
+						<li><a class="scroll" href="#about">ABOUT</a></li>
+						<li><a class="scroll" href="#testimonials">TESTMONIALS</a></li>
+						<li><a class="scroll" href="#gallery">GALLERY</a></li>	
+						<li><a class="scroll" href="#services">SERVICES</a></li>	
+						<li><a class="scroll" href="#contact">CONTACT</a></li>
+					</ul>
+				</div>
 	<div class="top_grop">
         <?php echo $this->Javascript->link('front/ajax/newsletter'); ?>
 		<script type="text/javascript">
@@ -71,6 +90,7 @@
 	<div id="Developer">
 		Developed by <a href="http://www.mohamedelsayed.net" target="_blank">Mohamed Elsayed</a>
 	</div>
+</div>
 </div>
 <style type="text/css">	
 #newsletter_ajaxLoading{

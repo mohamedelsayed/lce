@@ -35,11 +35,11 @@
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
-		echo $this->Html->css(array('front/style','front/jMenu.jquery','front/style_slider','front/skin', 'front/new_style'));
+		echo $this->Html->css(array('front/style','front/jMenu.jquery','front/style_slider','front/skin', 'front/new_style','front/styles_1.css'));
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$this->Session->read('Setting.url')."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
-		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel'));		
+		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel','front/script_menu' ));		
 		echo $scripts_for_layout;
 		?>
 		<script type="text/javascript">		
@@ -88,8 +88,8 @@
 			<div class="container">
 				<?php //echo $this->Session->flash ();?>
 				<?php echo $content_for_layout; ?>
+                </div>
 				<?php include_once('footer.ctp');?>  
-			</div>
 		</div>
         <?php //echo '<div style="float:left; width:100%;"><div style="margin-left: auto;margin-right: auto;width:945px;">'.$this->element('sql_dump').'</div></div>';?>		
 	</body>
