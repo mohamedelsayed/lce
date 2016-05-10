@@ -12,10 +12,6 @@ class Nevent extends AppModel {
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Title cannot be left blank',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),'duration' => array(
 			'notempty' => array(
