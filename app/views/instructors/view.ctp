@@ -41,6 +41,11 @@
 			<?php echo $instructor['Instructor']['linkedin']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Approved'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+		<?php if($instructor['Instructor']['approved'] == 1) echo 'Yes';
+		elseif($instructor['Instructor']['approved'] == 0) echo 'No';?>&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $instructor['Instructor']['created']; ?>

@@ -30,6 +30,18 @@
 						<li class=""><a href="<?php echo $this->Session->read('Setting.url').'/queues';?>">Sending Queue</a></li>
 					</ul>
 				</li>
+				<li class="heading new_items_li" ><a>Events</a>
+    				<ul>
+    					<li class=""><a href="<?php echo $this->Session->read('Setting.url').'/instructors';?>">Instructors</a></li>
+		    			<li class=""><a href="<?php echo $this->Session->read('Setting.url').'/nevents';?>">Eevents</a></li>						
+					</ul>
+				</li>
+				<li class="heading new_items_li"><a>Coaches</a>
+    				<ul>
+    					<li class=""><a href="<?php echo $this->Session->read('Setting.url').'/specializations';?>">Specializations</a></li>
+		    			<li class=""><a href="<?php echo $this->Session->read('Setting.url').'/geographies';?>">Geographies</a></li>						
+					</ul>
+				</li>
 		    </ul>
 	    </div>
 	<?php }?>
@@ -37,5 +49,11 @@
 <style type="text/css">
 .dropdown li{
 	border-bottom:1px solid #C3C3C3;
+}
+.new_items_li{
+	background-color: #ff0000;	
+}
+.new_items_li a{
+	color: #FFFFFF;
 }
 </style>
