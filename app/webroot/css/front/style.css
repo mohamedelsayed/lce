@@ -21,8 +21,7 @@ body {
 }
 .logo{
 	float: left;
-	margin-top:15px;
-	margin-bottom: 25px;
+	width: 19%;
 }
 .top_menu{
 	width: 280px;
@@ -197,10 +196,17 @@ body {
 	float:left;
 	margin-bottom: 17px;
 }
-.bottom_grop{
+.bottom_big_container{
+	width:1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.bottom_big{
 	width: 100%;
-	float:left;
 	background-color:#3e3e3f;
+}
+.footer_main{
+	float:left;
 }
 .top_wrie{
 	float:left;
