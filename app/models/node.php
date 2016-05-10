@@ -25,7 +25,6 @@ class Node extends AppModel {
 		),*/
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 	var $belongsTo = array(
 		'Cat' => array(
 			'className' => 'Cat',
@@ -42,7 +41,6 @@ class Node extends AppModel {
 			'order' => ''
 		)*/
 	);
-
 	var $hasMany = array(
 		'Attachment' => array(
 			'className' => 'Attachment',
@@ -85,4 +83,3 @@ class Node extends AppModel {
 		)
 	);
 }
-?>

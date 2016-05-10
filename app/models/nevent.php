@@ -4,18 +4,28 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-class Instructor extends AppModel {
-	var $name = 'Instructor';
-	var $displayField = 'name';
+class Nevent extends AppModel {
+	var $name = 'Nevent';
+	var $displayField = 'title';
 	var $validate = array(
-		'name' => array(
+		'title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Name cannot be left blank',
+				'message' => 'Title cannot be left blank',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),'duration' => array(
+			'notempty' => array(
+				'rule' => 'numeric',
+				'message' => 'Duration must be Number',
+			),
+		),'ticket_price' => array(
+			'notempty' => array(
+				'rule' => 'numeric',
+				'message' => 'Ticket Price must be Number',
 			),
 		)/*,
 		'artist_id' => array(
@@ -51,27 +61,27 @@ class Instructor extends AppModel {
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
-		/*'Artist' => array(
-			'className' => 'Artist',
-			'foreignKey' => 'artist_id',
+		'Instructor' => array(
+			'className' => 'Instructor',
+			'foreignKey' => 'instructor_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),*/
+		)
 	);
 	var $hasMany = array(
-		'Nevent' => array(
-			'className' => 'Nevent',
-			'foreignKey' => 'instructor_id',
+		/*'Node' => array(
+			'className' => 'Node',
+			'foreignKey' => 'cat_id',
 			'dependent' => false,
-			'conditions' => '',
+			'conditions' => array('Node.approved' => 1),
 			'fields' => '',
-			'order' => array('Nevent.weight' => 'ASC', 'Nevent.id' => 'DESC'),
+			'order' => array('Node.weight' => 'ASC', 'Node.id' => 'DESC'),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
+		)*/
 	);
 }
