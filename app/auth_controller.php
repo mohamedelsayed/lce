@@ -2,14 +2,12 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @link http://www.karimfrancis.com/
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @link http://www.mohamedelsayed.net/
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-class AuthController extends AppController{
-	
+class AuthController extends AppController{	
 	//var $uses = null;	
 	var $helpers = array('Html', 'Form', 'Javascript', 'Fck', 'Ajax', 'Session', 'XmlExcel','Farbtastic');
-	
 	//Check Authentication.
 	protected function isAuthentic(){
 		if($this->Session->check('userInfo')){
@@ -25,8 +23,7 @@ class AuthController extends AppController{
 			}
 		}else
 			return false;
-	}
-		
+	}		
 	//Check that session user in database.
 	protected function inDataBase (){
 		$this->loadModel('User');
@@ -35,8 +32,7 @@ class AuthController extends AppController{
 							  	  array('conditions' =>
 								   	   array('username' => $this->Session->read('userInfo.User.username'),
 								   	 	     'password' => $this->Session->read('userInfo.User.password'))));
-	}
-		
+	}		
 	//Add routes to routes.php file
 	protected function addRoutes($newRoutes=null){
     	if(!$newRoutes)
@@ -47,8 +43,7 @@ class AuthController extends AppController{
     	file_put_contents($backupFile, $currentRoutes);//Save backup
     	file_put_contents($file, $newRoutes.$currentRoutes);//Add new routes (in front)
 		return;
-    }
-    
+    }    
 	//Export xml file for selectd model.
     function export($modelName = null, $conditions = array()) {
         $this->$modelName->recursive = -1;
@@ -58,8 +53,7 @@ class AuthController extends AppController{
         $xmlExcel->generate($data, $modelName);
         $this->autoRender = false;
         $this->layout = 'ajax';
-	}
-	 
+	}	 
 	function beforeFilter(){
 		// Check Authentication 
 		if(!$this->isAuthentic() && ($this->action != 'login') && ($this->action != 'forgot')){
@@ -76,8 +70,7 @@ class AuthController extends AppController{
 		$this->set("maxYearValue",$settings['Setting']['maximum_year']);
 		$this->set('settings', $settings['Setting']);
 		$this->setAllArticlesTags();
-	}
-	
+	}	
 	function beforeRender(){
 		// To view the content in another layout instead of the default layout :
 		if($this->layout != 'ajax'){
@@ -86,5 +79,7 @@ class AuthController extends AppController{
 		$this->loadModel('Setting');
         $setting = $this->Setting->read(null, 1);
         $this->set('base_url', $setting['Setting']['url']);
+		$gender_options = array('0' => 'Male', '1' => 'Female');
+		$this->set('gender_options', $gender_options);
 	}
 }
