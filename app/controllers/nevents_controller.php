@@ -23,7 +23,7 @@ class NeventsController extends AuthController {
 	function add() {
 		if (!empty($this->data)) {
 			//upload image
-			//$this->data['Nevent']['image']=$this->Upload->uploadImage($this->data['Nevent']['image']);
+			$this->data['Nevent']['image']=$this->Upload->uploadImage($this->data['Nevent']['image']);
 			$this->Nevent->create();
 			if ($this->Nevent->save($this->data)) {
 				$this->Session->setFlash(__('The Event has been saved', true));
@@ -43,11 +43,11 @@ class NeventsController extends AuthController {
 		if (!empty($this->data)) {
 			//upload image
 			$this->Nevent->id = $id;
-			/*if($this->data['Nevent']['image']['name']){
+			if($this->data['Nevent']['image']['name']){
 				$this->Upload->filesToDelete = array($this->Nevent->field('image'));
 				$this->data['Nevent']['image']=$this->Upload->uploadImage($this->data['Nevent']['image']);
 			}else
-				unset($this->data['Nevent']['image']);*/
+				unset($this->data['Nevent']['image']);
 			if ($this->Nevent->save($this->data)) {
 				$this->Session->setFlash(__('The Event has been saved', true));
 				$this->redirect(array('action' => 'index'));

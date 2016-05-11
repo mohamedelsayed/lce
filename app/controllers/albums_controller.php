@@ -87,12 +87,10 @@ class AlbumsController extends AuthController {
 		$holdErrors = $this->Album->validationErrors;
 		$this->data = $this->Album->read(null, $id);
 		$this->Album->validationErrors = $holdErrors;
-		
 		//$sections = $this->Album->Section->find('list');
 		//$issues = $this->Album->Issue->find('list',array('order'  => array('Issue.date'=>'DESC','Issue.status' => 'ASC')));
 		//$this->set(compact('sections', 'issues'));
 	}
-	
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Album', true));
@@ -115,4 +113,3 @@ class AlbumsController extends AuthController {
 	}	
 	
 }
-?>
