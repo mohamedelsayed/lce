@@ -40,6 +40,7 @@
     				<ul>
     					<li class=""><a href="<?php echo $base_url.'/specializations';?>">Specializations</a></li>
 		    			<li class=""><a href="<?php echo $base_url.'/geographies';?>">Geographies</a></li>						
+		    			<li class=""><a href="<?php echo $base_url.'/coaches';?>">Coaches</a></li>						
 					</ul>
 				</li>
 		    </ul>

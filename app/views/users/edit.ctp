@@ -5,17 +5,16 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		$options=array('1'=>'Male','0'=>'Female');
-		$attributes=array('value'=>$this->data['User']['gender'], 'legend'=>'Gender');
-		echo $form->radio('gender',$options,$attributes);
+		$options = $gender_options;
+		$attributes = array('value' => $this->data['User']['gender'], 'legend'=>'Gender');
+		echo $form->radio('gender', $options, $attributes);
 		echo $this->Form->input('email');
-		echo $this->element('backend/image_view', array('controller'=>'users', 'image'=>array('id'=>$this->data['User']['id'], 'image'=>$this->data['User']['image'])));
+		echo $this->element('backend/image_view', array('controller'=>'users', 'image'=>array('id'=>$this->data['User']['id'], 'image'=>$this->data['User']['image']), 'size'=>'master'));
 		echo $this->Form->input('image', array('type'=>'file'));
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
 		/*if ($this->data['User']['group_id'] != 0)
-			echo $this->Form->input('group_id');*/
-	?>
+			echo $this->Form->input('group_id');*/?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>

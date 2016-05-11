@@ -6,6 +6,8 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('title');
 		echo $this->Form->input('Nevent.description', array('class'=>'ckeditor'));
+		echo $this->element('backend/image_view', array('image'=>array('id'=>$this->data['Nevent']['id'], 'image'=>$this->data['Nevent']['image']), 'size'=>'master'));
+		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
 		echo $this->Form->input('location');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('duration');

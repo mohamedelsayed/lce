@@ -13,10 +13,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gender'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php 
-				if($user['User']['gender'] == 1) echo __('Male', true);
-				else echo __('Female', true);
-			?>
+			<?php echo $gender_options[$user['User']['gender']];?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Email'); ?></dt>
@@ -26,7 +23,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Image'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->element('backend/image_view', array('controller'=>'users', 'image'=>array('id'=>$user['User']['id'], 'image'=>$user['User']['image'])));?>
+			<?php echo $this->element('backend/image_view', array('controller'=>'users', 'image'=>array('id'=>$user['User']['id'], 'image'=>$user['User']['image']), 'size'=>'master'));?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Username'); ?></dt>

@@ -16,6 +16,11 @@
 			<?php echo $nevent['Nevent']['description']; ?>
 			&nbsp;
 		</dd>		
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Image'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $this->element('backend/image_view', array('image'=>array('id'=>$nevent['Nevent']['id'], 'image'=>$nevent['Nevent']['image']), 'size'=>'master'));?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __(ucfirst('location')); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $nevent['Nevent']['location']; ?>

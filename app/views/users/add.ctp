@@ -4,15 +4,14 @@
  		<legend><?php __('Add User'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		$options=array('1'=>'Male','0'=>'Female');
-		$attributes=array('value'=>1, 'legend'=>'Gender');
-		echo $form->radio('gender',$options,$attributes);
+		$options = $gender_options;
+		$attributes = array('value' => 0, 'legend'=>'Gender');
+		echo $form->radio('gender', $options, $attributes);
 		echo $this->Form->input('email');
 		echo $form->input('image', array('type'=>'file'));
 		echo $this->Form->input('username');
 		echo $this->Form->input('password');
-		//echo $this->Form->input('group_id');
-	?>
+		//echo $this->Form->input('group_id');?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>

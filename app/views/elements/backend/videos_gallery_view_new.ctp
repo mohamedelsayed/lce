@@ -56,7 +56,7 @@
             foreach($gallery as $record){?>			
                 <div style="float: none; position: absolute; left: <?php echo $i;?>px;width:<?php echo $thumbWidth;?>px;" class="panel">
                 	<li>
-						<a onclick="updateVideoHits('<?php echo $record['id'];?>','<?php echo $this->Session->read('Setting.url');?>')", href="<?php echo $record['url'];?>"></a>
+						<a onclick="updateVideoHits('<?php echo $record['id'];?>','<?php echo $base_url;?>')", href="<?php echo $record['url'];?>"></a>
 					</li>
                 	<?php /*$imagePath = ($record['image']!='')?'upload/'.$record['image']:'backend/no_image.jpeg'; ?>
                 	
@@ -64,9 +64,9 @@
                 		class="playsmall"
                 		style="margin-top: <?php echo $styelMarginTop;?>px; margin-left: <?php echo $styelMarginLeft;?>px;" 
                 		<?php if($record['file']!=''){ ?>
-                		onclick="playVideo('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['file'];?>', '<?php echo $record['image'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $this->Session->read('Setting.url');?>', '<?php echo $delete;?>');"
+                		onclick="playVideo('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['file'];?>', '<?php echo $record['image'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $base_url;?>', '<?php echo $delete;?>');"
                 		<?php }elseif($record['url']!=''){?>
-                		onclick="playTube('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['url'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $this->Session->read('Setting.url');?>', '<?php echo $delete;?>');"
+                		onclick="playTube('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['url'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $base_url;?>', '<?php echo $delete;?>');"
                 		<?php }?>
                 	>
                 	</div>

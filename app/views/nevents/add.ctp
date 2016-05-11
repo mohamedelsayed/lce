@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('title');
 		echo $this->Form->input('Nevent.description', array('class'=>'ckeditor'));
+		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
 		echo $this->Form->input('location');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('duration');
