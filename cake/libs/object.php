@@ -1,4 +1,4 @@
-<?php error_reporting (E_ALL & ~E_DEPRECATED);
+<?php 
 /**
  * Object class, allowing __construct and __destruct in PHP4.
  *
