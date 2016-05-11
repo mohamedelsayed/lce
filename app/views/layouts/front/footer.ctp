@@ -1,4 +1,4 @@
-<div class="bottom_big">
+<div class="bottom_big" style="float: left;">
 <div class="bottom_big_container">
 <div class="footer_main">
 <div class="logo">
@@ -90,6 +90,7 @@
 	<div id="Developer">
 		Developed by <a href="http://www.mohamedelsayed.net" target="_blank">Mohamed Elsayed</a>
 	</div>
+</div>
 </div>
 </div>
 <style type="text/css">	

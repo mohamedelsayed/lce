@@ -23,7 +23,8 @@
    </li>
 </ul>
 </div>
-        <?php /*
+</div>
+</div><?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];
 			$quote_body = strip_tags(trim($quote['Quote']['body']));?>

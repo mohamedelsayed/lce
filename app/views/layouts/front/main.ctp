@@ -86,10 +86,10 @@
 		<div class="container_big">
 			<?php include_once('header.ctp');?>
 			<div class="container">
-				<?php //echo $this->Session->flash ();?>
-				<?php echo $content_for_layout; ?>
-                </div>
-				<?php include_once('footer.ctp');?>  
+			<?php //echo $this->Session->flash ();?>
+			<?php echo $content_for_layout; ?>
+            </div>
+			<?php include_once('footer.ctp');?>  
 		</div>
         <?php //echo '<div style="float:left; width:100%;"><div style="margin-left: auto;margin-right: auto;width:945px;">'.$this->element('sql_dump').'</div></div>';?>		
 	</body>
