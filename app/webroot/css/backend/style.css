@@ -1005,3 +1005,7 @@ body{
 #datamiddle img{
 	max-width: 100%;
 }
+.characters_remain{
+	color: #ff0000;
+	font-size: 14px;
+}
