@@ -16,8 +16,26 @@ $(document).ready(function () {
 	$('ul.tabs li').click(function(){
 		var tab_id = $(this).attr('data-tab');
 		$('ul.tabs li').removeClass('current');
-		$('.tabdiv').hide()
+		$('.tabdiv').hide();
 		$(this).addClass('current');
 		$("#"+tab_id).show();
 	});
 });
+$(document).ready(function () {
+	$("#CoachStatement").on("change paste keyup", function(e) {
+		elsayed_coach_limit_textarea_characters($(this), 'statement_remain');
+	});
+	$("#CoachBiography").on("change paste keyup", function(e) {
+		elsayed_coach_limit_textarea_characters($(this), 'biography_remain');
+	});
+});
+function elsayed_coach_limit_textarea_characters (obj, remain_id) {
+	var limit = obj.attr('maxLength');
+	var tval = obj.val();
+    var tlength = tval.length;
+    var remain = parseInt(limit - tlength);
+    if (remain <= 0){
+    	obj.val((tval).substring(0, limit));
+	}
+	$('#'+remain_id).text('Characters remaining: '+ parseInt(limit - obj.val().length));
+}
