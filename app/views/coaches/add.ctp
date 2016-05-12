@@ -18,6 +18,8 @@
 		echo $form->input('video_file', array('type'=>'file', 'label'=>'Video File'));
 		echo $this->Form->input('mobile');
 		echo $this->Form->input('remote_coaching');
+		echo $this->Form->input('specialization_id', array('multiple' => true));
+		echo $this->Form->input('geography_id');
 		echo $this->Form->input('approved');
 		echo $this->Form->input('weight', array('value'=> 0));?>
 	</fieldset>
