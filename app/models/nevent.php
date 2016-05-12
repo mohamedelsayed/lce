@@ -14,12 +14,12 @@ class Nevent extends AppModel {
 				'message' => 'Title cannot be left blank',
 			),
 		),'duration' => array(
-			'notempty' => array(
+			'numeric' => array(
 				'rule' => 'numeric',
 				'message' => 'Duration must be Number',
 			),
 		),'ticket_price' => array(
-			'notempty' => array(
+			'numeric' => array(
 				'rule' => 'numeric',
 				'message' => 'Ticket Price must be Number',
 			),

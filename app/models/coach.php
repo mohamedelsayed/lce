@@ -17,7 +17,19 @@ class Coach extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		)/*,
+		),'email' => array(
+			'rule' => array('email'),
+			'message' => 'Please supply a valid email address.',
+			'allowEmpty' => true,
+		),'facebook' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),'linkedin' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),/*,
 		'artist_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
