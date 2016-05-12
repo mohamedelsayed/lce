@@ -86,4 +86,37 @@ class Coach extends AppModel {
 			'counterQuery' => ''
 		),*/
 	);
+	//public $hasAndBelongsToMany = array('Specialization', 'Geography');
+	var $hasAndBelongsToMany = array(
+		'Specialization' => array(
+			'className' => 'Specialization',
+			'joinTable' => 'coaches_specializations',
+			'foreignKey' => 'coach_id',
+			'associationForeignKey' => 'specialization_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Geography' => array(
+			'className' => 'Geography',
+			'joinTable' => 'coaches_geographys',
+			'foreignKey' => 'coach_id',
+			'associationForeignKey' => 'geography_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);
 }

@@ -74,4 +74,21 @@ class Specialization extends AppModel {
 			'counterQuery' => ''
 		)*/
 	);
+	var $hasAndBelongsToMany = array(
+		'Coach' => array(
+			'className' => 'Coach',
+			'joinTable' => 'coaches_specializations',
+			'foreignKey' => 'specialization_id',
+			'associationForeignKey' => 'coach_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+	);
 }

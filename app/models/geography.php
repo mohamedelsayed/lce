@@ -75,4 +75,21 @@ class Geography extends AppModel {
 			'counterQuery' => ''
 		)*/
 	);
+	var $hasAndBelongsToMany = array(
+		'Coach' => array(
+			'className' => 'Coach',
+			'joinTable' => 'coaches_specializations',
+			'foreignKey' => 'geography_id',
+			'associationForeignKey' => 'coach_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+	);
 }
