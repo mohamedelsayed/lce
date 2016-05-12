@@ -72,19 +72,19 @@ class Coach extends AppModel {
 		),*/
 	);
 	var $hasMany = array(
-		/*'Nevent' => array(
-			'className' => 'Nevent',
-			'foreignKey' => 'instructor_id',
+		'CoachSpecialization' => array(
+			'className' => 'CoachSpecialization',
+			'foreignKey' => 'coach_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
-			'order' => array('Nevent.weight' => 'ASC', 'Nevent.id' => 'DESC'),
+			'order' => array(),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),*/
+		),
 	);
 	//public $hasAndBelongsToMany = array('Specialization', 'Geography');
 	var $hasAndBelongsToMany = array(
