@@ -29,7 +29,7 @@ class CoachesController extends AuthController {
 			$this->Upload->fileTypes = 'flv';//set file types.
 			$this->data['Coach']['video_file']=$this->Upload->uploadFile($this->data['Coach']['video_file']);
 			$this->Coach->create();
-			if ($this->Coach->save($this->data)) {
+			if ($this->Coach->saveAll($this->data)) {
 				$this->Session->setFlash(__('The Coach has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -38,6 +38,9 @@ class CoachesController extends AuthController {
 		}
 		$this->set('statement_limit',$this->statement_limit);
 		$this->set('biography_limit',$this->biography_limit);
+		$specializations = $this->Coach->Specialization->find('list');
+		$geographies = $this->Coach->Geography->find('list');
+		$this->set(compact('specializations', 'geographies'));
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -60,7 +63,14 @@ class CoachesController extends AuthController {
 			}else{
 				unset($this->data['Coach']['video_file']);
 			}
-			if ($this->Coach->save($this->data)) {
+			if ($this->Coach->saveAll($this->data)) {
+				$coach_id = $this->data['Coach']['id'];
+				$specializations =  array();
+				foreach ($this->data['Coach']['specialization_id'] as $key => $value) {
+					$specializations['CoachSpecialization'][] = array('coach_id' => $coach_id, 'specialization_id' => $value);
+				}
+				//pr($specializations);exit;
+				$this->Coach->CoachSpecialization->save($specializations);
 				$this->Session->setFlash(__('The Coach has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -72,6 +82,9 @@ class CoachesController extends AuthController {
 		}
 		$this->set('statement_limit',$this->statement_limit);
 		$this->set('biography_limit',$this->biography_limit);
+		$specializations = $this->Coach->Specialization->find('list');
+		$geographies = $this->Coach->Geography->find('list');
+		$this->set(compact('specializations', 'geographies'));
 	}
 	function delete($id = null) {
 		if (!$id) {
