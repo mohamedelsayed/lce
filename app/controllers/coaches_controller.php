@@ -9,6 +9,8 @@ class CoachesController extends AuthController {
 	var $name = 'Coaches';
 	//use upload component.
 	var $components = array('Upload');
+	var $statement_limit = 200;
+	var $biography_limit = 800;
 	function index() {
 		$this->Coach->recursive = 0;
 		$this->set('coaches', $this->paginate());
@@ -34,6 +36,8 @@ class CoachesController extends AuthController {
 				$this->Session->setFlash(__('The Coach could not be saved. Please, try again.', true));
 			}
 		}
+		$this->set('statement_limit',$this->statement_limit);
+		$this->set('biography_limit',$this->biography_limit);
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -66,6 +70,8 @@ class CoachesController extends AuthController {
 		if (empty($this->data)) {
 			$this->data = $this->Coach->read(null, $id);
 		}
+		$this->set('statement_limit',$this->statement_limit);
+		$this->set('biography_limit',$this->biography_limit);
 	}
 	function delete($id = null) {
 		if (!$id) {
