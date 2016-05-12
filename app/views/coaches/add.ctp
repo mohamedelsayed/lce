@@ -4,9 +4,11 @@
  		<legend><?php __('Add Coach'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
-		echo $this->Form->input('statement');
-		echo $this->Form->input('biography');
-		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
+		echo $this->Form->input('statement', array('maxLength' => $statement_limit));?>
+		<div id="statement_remain" class="characters_remain"></div>
+		<?php echo $this->Form->input('biography', array('maxLength' => $biography_limit));?>
+		<div id="biography_remain" class="characters_remain"></div>
+		<?php echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
 		$options = $gender_options;
 		$attributes = array('value' => 0, 'legend'=>'Gender');
 		echo $form->radio('gender', $options, $attributes);
