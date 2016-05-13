@@ -1,7 +1,7 @@
 <div class="bottom_big" style="float: left;">
 <div class="bottom_big_container">
 <div class="footer_main">
-<div class="logo">
+<div class="logo_footer">
 			<a href="#">
 				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo_footer.png" />
 			</a>

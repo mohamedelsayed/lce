@@ -534,8 +534,7 @@ p{
 	overflow: hidden;
 }
 .logo img{
-	height: 77px;
-	width: 180px;
+	
 }
 .men_e{
 	margin-top: 20px;
@@ -544,7 +543,7 @@ p{
 	margin-bottom: 15px;
 }
 .slider{
-	margin-top: 15px;
+	margin-top: 1px;
 }
 .testimonial_image_home{
 	margin-top: 10px;

@@ -2,29 +2,30 @@
 	<div class="header">
 		<div class="logo">
 			<a href="<?php echo $this->Session->read('Setting.url');?>">
-				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo.png" />
+				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo_header.png" />
 			</a>
 		</div>
-        <div id='cssmenu'>
+        <div class="menu_">
+<ul id="jMenu" class="menu">
+<li><a href="#" class="fNiv">Home</a></li>
+<li><a href="#" class="fNiv">About us</a></li>
+<li><a href="#" class="fNiv">Our Services</a>
 <ul>
-   <li><a href='#'><span>Home</span></a></li>
-   <li><a href='#'><span>About us</span></a></li>
-   <li class='active has-sub'><a href='#'><span>Our Services</span></a></li>
-  <ul>
-         <li><a href='#'><span>Workshops/Trainings</span></a></li>
-         <li><a href='#'><span>Programs</span></a></li>
-         <li><a href='#'><span>Executive/business coaching</span></a></li>
-         <li><a href='#'><span>coaching certification programs</span></a></li>
-      </ul>
-   <li><a href='#'><span>Our Clients/Partners</span></a></li>
-   <li><a href='#'><span>Find a coach</span></a></li>
-   <li><a href='#'><span>upcoming events</span></a>
-   <li><a href='#'><span>Contact Us</span></a></li>
-   </li>
+<li class="submenu"><a href="#">Workshops/Trainings</a></li>
+<li class="submenu"><a href="#">Programs</a></li>
+<li class="submenu"><a href="#">Executive/business coaching</a></li>
+<li class="submenu"><a href="#">coaching certification programs</a></li>
+</ul></li>
+<li> <a href="#" class="fNiv">Our Clients/Partners</a></li>
+<li> <a href="#" class="fNiv">Find a coach</a></li>
+<li> <a href="#" class="fNiv">upcoming events</a></li>
+<li> <a href="#" class="fNiv"> Contact Us </a> </li>
 </ul>
 </div>
 </div>
-</div><?php /*
+</div>
+
+<?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];
 			$quote_body = strip_tags(trim($quote['Quote']['body']));?>
