@@ -17,6 +17,7 @@
 		echo $this->Html->css('backend/dropdown');
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$settings['url']."';");//Define global var siteUrl
+		echo $this->Html->scriptBlock("var base_url ='".$settings['url']."';");//Define global var siteUrl
 		if($this->name =='Images'){
 			echo $this->Javascript->link('libs/jquery');
 		}else{
@@ -25,7 +26,9 @@
 		echo $this->Javascript->link('backend/jquery-ui.js');
 		echo $scripts_for_layout;
 		echo $this->Javascript->link('backend/all');
-		echo $this->Javascript->link('/ckeditor/ckeditor');?>		
+		echo $this->Javascript->link('/ckeditor/ckeditor');?>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>		
 	</head>	
 	<body>
 		<div id="container">

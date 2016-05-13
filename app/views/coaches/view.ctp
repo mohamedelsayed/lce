@@ -58,6 +58,26 @@
 			<?php echo $coach['Coach']['mobile']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Specializations'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<ul id="specializations_result" class="autocomplete_ul_result specializations_result">
+				<?php foreach ($specializations as $key => $value) {
+					if(in_array($key, $saved_specializations)){?>
+						<li class="itemli" id="sitemli<?php echo $key;?>"><h5><?php echo $value;?></h5>
+					<?php }?>
+				<?php }?>
+			</ul>
+		</dd>	
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Geographies'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<ul id="geographys_result" class="autocomplete_ul_result geographys_result">
+				<?php foreach ($geographys as $key => $value) {
+					if(in_array($key, $saved_geographys)){?>
+						<li class="itemli" id="sitemli<?php echo $key;?>"><h5><?php echo $value;?></h5>
+					<?php }?>
+				<?php }?>
+			</ul>
+		</dd>		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Remote Coaching'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 		<?php if($coach['Coach']['remote_coaching'] == 1) echo 'Yes';
