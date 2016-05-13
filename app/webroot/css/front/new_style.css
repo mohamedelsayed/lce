@@ -1,8 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);body {
+    margin: 0px;
+	padding: 0px;
+	font-family:  Montserrat;
+}
 .no_data_found{
 	text-align:center;
 	margin:20px 0px;
 	width:100%;
-	font-family: OpenSans-Regular;
 	font-size: 16px;
 	line-height:25px;
 	color:#D67D21;
@@ -43,7 +47,6 @@
 	border-top-color: #5D5D5D;
 	border-right-color: #5D5D5D;
 	border-bottom-color: #5D5D5D;
-	font-family: Tahoma, sans-serif;
 	font-size: 12px;
 	line-height: 20px;
 	font-weight: bold;
@@ -71,7 +74,6 @@
 	float: left;
 	border: 1px solid #5D5D5D;
 	border-left:none;
-	font-family: Tahoma, sans-serif;
 	font-size: 12px;
 	line-height: 19px;
 	font-weight: bold;
@@ -160,7 +162,6 @@
 	height: 30px;
 	width: 100%;
 	text-align: center;
-	font-family: "Comic Sans MS", cursive, sans-serif;		
 	background-color: #CECECE;
 	color: #FFFFFF;
 }
@@ -182,7 +183,6 @@
 	float: left;
 	text-align: center;
 	width: 100%;
-	font-family:OpenSans-Regular;
 	font-size: 18px;
 	padding-top: 20px;	
 	padding-bottom: 20px;	
@@ -239,7 +239,6 @@
 }
 /*comments*/
 #comments_div{
-	font-family:  OpenSans-Regular;
 	float:left;
 	margin:20px 0px;
 	width: 620px;
@@ -358,7 +357,6 @@ form .required label:after {
 	font-size: 16px;
 	color: #333;
 	text-align: justify;
-	font-family: Arial, Helvetica, sans-serif;
 }
 .tabs li:hover{
 	background-color: #cecece;	
@@ -509,7 +507,6 @@ p{
 .nodeitemviewbody{
 	float: left;
 	color: #3A3A3A;
-    font-family: OpenSans-Regular;
     font-size: 18px;
     text-decoration: none;
     width: 100%;
@@ -529,7 +526,6 @@ p{
 	text-align:center;
 }
 .maintenancetext{
-	font-family: OpenSans-Regular;
 	font-size: 18px;
 	text-decoration:none;
 	color:#404041;	
@@ -561,12 +557,13 @@ p{
 	margin-bottom: 40px;
 }
 .facebook_fotter{
-	width:240px;
+	float: right;
 	margin: 0 auto;
+	width: 16%;
 }
 .fase{
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 6%;
+	padding-right: 6%;
 }
 .fase_frist{
 	padding-left: 10px;
@@ -647,7 +644,6 @@ p{
 .article_header{	
     color: #404041;
     float: left;
-    font-family: OpenSans-Light;
     font-size: 18px;
     padding-left: 10px;
     text-decoration: none;
@@ -656,7 +652,7 @@ p{
 .article_home_image{
 }
 .article_home_title{
-	width: 290px;;	
+	width: 60%;;	
 }
 .article_home{
 	float: left;
@@ -680,24 +676,6 @@ p{
 }
 .testimonial_title_home{
 	margin-left: 10px;
-}
-.article_home_image_creator_date{
-	float: left;
-	width:290px;
-	margin-left: 10px;
-}
-.article_home_creator{
-	margin-left: 10px;
-	float: left;
-	width:205px;
-	padding: 0px;
-	padding-top: 10px;
-}
-.article_home_date{
-	margin-left: 10px;
-	float: left;	
-	width:205px;
-	padding: 0px;
 }
 .article_right_inner{
 	margin-top:60px;
@@ -729,13 +707,13 @@ p{
 .article_home_image_new{
 	overflow: hidden;
 	padding:15px 0;
-	height:100px;
+	height:140px;
 	width:170px;
 }
 .article_home_image_new img{
 	float: left;
-    max-height: 100px;
-    width: 200px;	
+   height: 140px;
+    width: 170px;	
 }
 .top{
 	padding-left: 73px;
@@ -804,7 +782,6 @@ p{
 	-webkit-border-radius: 3px 3px 0 0;
 	-moz-border-radius: 3px 3px 0 0;
 	border-radius: 3px 3px 0 0;
-	font-family: 'Maven Pro',sans-serif;
     font-size: 15px;
     font-weight: 500;
     line-height: 18px;
@@ -813,7 +790,6 @@ p{
 #mesagecontent > div, #mesagecontent > form {
 	margin:10px;
   border-top: 1px solid #ecf0f1;
-    font-family: 'Maven Pro',sans-serif;
     font-size: 17px;
     font-weight: 500;
     line-height: 24px;
@@ -832,12 +808,10 @@ p{
 	width: 100%;
 	margin-top: 100px;
 	margin-bottom: 100px;
-	font-family: OpenSans-Semibold;
 }
 h2.coaches_instructors{
 	color: #ff5953;
     float: left;
-    font-family: OpenSans-Semibold;
     font-size: 24px;
     margin-bottom: 20px;
     text-decoration: none;
@@ -882,7 +856,6 @@ footer {
   width: 82%;
   color: #fff;
   outline: none;
-  font-family: 'Open Sans', sans-serif;
   background: none;
   font-size: 12px;
   font-weight: 500;

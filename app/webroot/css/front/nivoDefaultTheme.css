@@ -8,13 +8,15 @@ Author: Gilbert Pellegrom
 Author URI: http://dev7studios.com
 Supports Thumbs: true
 */
-
+@import url(https://fonts.googleapis.com/css?family=Montserrat);body {
+    margin: 0px;
+	padding: 0px;
+	font-family:  Montserrat;
+}
 .theme-default .nivoSlider {
 	position:relative;
 	background:#fff url(../../img/front/loading.gif) no-repeat 50% 50%;
     margin-bottom:10px;
-    /*border-radius:5px;
-    border:gray 2px solid;*/
 }
 .theme-default .nivoSlider img {
 	position:absolute;
@@ -29,8 +31,6 @@ Supports Thumbs: true
 
 .theme-default .nivo-controlNav {
 	position:absolute;
-	/*top:0;
-	left:5px;*/
 	z-index:10;
 	right: 15px;
 	bottom: 5px;	
@@ -73,7 +73,6 @@ Supports Thumbs: true
 }
 
 .theme-default .nivo-caption {
-    font-family: Arial, Helvetica, sans-serif;
 }
 .theme-default .nivo-caption a {
     color:#fff;

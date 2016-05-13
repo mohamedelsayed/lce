@@ -82,13 +82,27 @@
 			</a>
 		</div>
 	</div>
-<?php }?>
+    <div class="bottom_grop_2">
+		<div class="title_top_find">FIND A COACH</div>
+            <div class="articles_home_left">
+            <div class="top_right article_home">
+            <div class="article_home_image_creator_date">
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            </div>
+				</div>
+			<a href="#">
+				<div class="top_see_now">Submit coaching form</div>
+			</a>
+		</div>
+	</div>
+    
+<?php /* }?>
+<div class="bottom_grop_2">
+		<div class="title_top_find">FIND A COACH</div>
+            <div class="articles_home_left">
 <?php if(!empty($articles)){
 	$articles_link_all = $this->Session->read('Setting.url').'/article/all';
 	$article_cut_string = $this->Session->read('Setting.article_cut_string');?>
-	<div class="bottom_grop_2">
-		<div class="title_top_find">FIND A COACH</div>
-            <div class="articles_home_left">
 			<?php foreach ($articles as $key => $article) {
 				$image = '';
 				if(isset($article['Gal'])){
@@ -113,7 +127,7 @@
 						<a href="<?php echo $article_link;?>">
 							<?php  echo $title;?>
 						</a>
-					</div>*/?>
+					</div>?>
 					<div class="article_home_image_creator_date">
 						<?php /*<div class="top_img_article article_home_image">
 							<a href="<?php echo $article_link;?>">
@@ -130,7 +144,7 @@
 						</div>
 						<div class="mm_tt article_home_date">
 							<?php echo $this->element('front/english_date_view', array('date' => $article['Article']['date']));?>				
-						</div>*/?>
+						</div>?>
 					</div>
 					<div class="article_header">
 						<?php echo $this->element('front'.DS.'string_format_view',array('str'=> $body,'type'=> 'wordsCut', 'val' => $article_cut_string));?>
@@ -144,71 +158,41 @@
 			</a>
 		</div>
 	</div>
-<?php }?>
+<?php */ }?>
 
-<?php if(!empty($articles)){
-	$articles_link_all = $this->Session->read('Setting.url').'/article/all';
-	$article_cut_string = $this->Session->read('Setting.article_cut_string');?>
 	<div class="bottom_grop_2">
 		<div class="title_top_events">UPCOMING EVENTS</div>
-		<div class="articles_home_left">
-			<?php foreach ($articles as $key => $article) {
-				$image = '';
-				if(isset($article['Gal'])){
-					//$image = $this->Session->read('Setting.url').'/img/upload/thumb_'.$article['Gal'][0]['image'];
-					$image = $this->Session->read('Setting.url').'/img/upload/'.$article['Gal'][0]['image'];
-				}
-				$title = '';
-				if($article['Article']['title'] != ''){
-					$title = $article['Article']['title'];
-				}
-				$header = '';
-				if($article['Article']['header'] != ''){
-					$header = $article['Article']['header'];
-				}
-				$body = '';
-				if($article['Article']['body'] != ''){
-					$body = $article['Article']['body'];
-				}
-				$article_link = $this->Session->read('Setting.url').'/article/item/'.$article['Article']['id'];?>
+		<div class="articles_home_left">		
 				<div class="top_right article_home">
                 <div class="top_img_article article_home_image article_home_image_new">
-							<a href="<?php echo $article_link;?>">
+							<a href="#">
 								<img src="<?php echo $image;?>" />
 							</a>
 						</div>	
 					<div class="top_wrie_b article_home_title">
-						<a href="<?php echo $article_link;?>">
-							<?php  echo $title;?>
-						</a>
+						ICF accredited Coach training
 					</div>
-					<div class="article_home_image_creator_date">
-						<?php /*<div class="top_img_article article_home_image">
-							<a href="<?php echo $article_link;?>">
-								<img src="<?php echo $image;?>"/>
-							</a>
-						</div>*/?>	
-						
-						<div class="mm_tt article_home_creator">
-							<?php echo $article['Article']['creator'];?>
+					<div class="mm_tt article_home_creator">
+							Location Details 
 						</div>
-						<div class="mm_tt article_home_date">
-							<?php echo $this->element('front/english_date_view', array('date' => $article['Article']['date']));?>				
+						<div class="mm_tt article_home_data">
+                        Date
+                        </div>
+                        <div class="mm_tt article_home_name">
+							Instructor Name
 						</div>
-					</div>
+						<div class="article_home_image_creator_date">
+           It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+            </div>				
 					<div class="article_header">
-						<?php echo $this->element('front'.DS.'string_format_view',array('str'=> $body,'type'=> 'wordsCut', 'val' => $article_cut_string));?>
-						<?php //echo $this->element('front'.DS.'string_format_view',array('str'=> $header,'type'=> 'wordsCut', 'val' => $article_cut_string));?>
-						<?php //echo $header;?>
 					</div>
 				</div>
-			<?php }?>
-			<a href="<?php echo $articles_link_all;?>">
+			<a href="#">
 				<div class="top_see_now">Register Now</div>
 			</a>
 		</div>
 	</div>
-<?php }?>
+
 <?php /*if(!empty($partners)){?>
 	<?php if(isset($partners['Gal'][0])){?>
 		<div class="bot_logo" style="margin-bottom: 35px;">
