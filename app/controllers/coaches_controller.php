@@ -35,7 +35,7 @@ class CoachesController extends AuthController {
 			$this->data['Coach']['video_file']=$this->Upload->uploadFile($this->data['Coach']['video_file']);
 			$this->Coach->create();
 			if ($this->Coach->saveAll($this->data)) {
-				$coach_id = $this->data['Coach']['id'];
+				$coach_id = $this->Coach->id;
 				$this->save_many_items_ids($coach_id, $_POST['specializations_ids'], 'CoachSpecialization');
 				$this->save_many_items_ids($coach_id, $_POST['geographys_ids'], 'CoachGeography');
 				$this->Session->setFlash(__('The Coach has been saved', true));
