@@ -21,6 +21,11 @@ class CoachesController extends AuthController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('coach', $this->Coach->read(null, $id));
+		$specializations = $this->Coach->Specialization->find('list');
+		$geographys = $this->Coach->Geography->find('list');
+		$saved_specializations = $this->get_saved_many_items($id, 'CoachSpecialization');
+		$saved_geographys = $this->get_saved_many_items($id, 'CoachGeography');
+		$this->set(compact('specializations', 'geographys', 'saved_specializations', 'saved_geographys'));		
 	}
 	function add() {
 		if (!empty($this->data)) {
@@ -30,6 +35,9 @@ class CoachesController extends AuthController {
 			$this->data['Coach']['video_file']=$this->Upload->uploadFile($this->data['Coach']['video_file']);
 			$this->Coach->create();
 			if ($this->Coach->saveAll($this->data)) {
+				$coach_id = $this->data['Coach']['id'];
+				$this->save_many_items_ids($coach_id, $_POST['specializations_ids'], 'CoachSpecialization');
+				$this->save_many_items_ids($coach_id, $_POST['geographys_ids'], 'CoachGeography');
 				$this->Session->setFlash(__('The Coach has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -39,8 +47,10 @@ class CoachesController extends AuthController {
 		$this->set('statement_limit',$this->statement_limit);
 		$this->set('biography_limit',$this->biography_limit);
 		$specializations = $this->Coach->Specialization->find('list');
-		$geographies = $this->Coach->Geography->find('list');
-		$this->set(compact('specializations', 'geographies'));
+		$geographys = $this->Coach->Geography->find('list');
+		$saved_specializations = array();
+		$saved_geographys = array();
+		$this->set(compact('specializations', 'geographys', 'saved_specializations', 'saved_geographys'));
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -65,12 +75,8 @@ class CoachesController extends AuthController {
 			}
 			if ($this->Coach->saveAll($this->data)) {
 				$coach_id = $this->data['Coach']['id'];
-				$specializations =  array();
-				foreach ($this->data['Coach']['specialization_id'] as $key => $value) {
-					$specializations['CoachSpecialization'][] = array('coach_id' => $coach_id, 'specialization_id' => $value);
-				}
-				//pr($specializations);exit;
-				$this->Coach->CoachSpecialization->save($specializations);
+				$this->save_many_items_ids($coach_id, $_POST['specializations_ids'], 'CoachSpecialization');
+				$this->save_many_items_ids($coach_id, $_POST['geographys_ids'], 'CoachGeography');
 				$this->Session->setFlash(__('The Coach has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -83,8 +89,10 @@ class CoachesController extends AuthController {
 		$this->set('statement_limit',$this->statement_limit);
 		$this->set('biography_limit',$this->biography_limit);
 		$specializations = $this->Coach->Specialization->find('list');
-		$geographies = $this->Coach->Geography->find('list');
-		$this->set(compact('specializations', 'geographies'));
+		$geographys = $this->Coach->Geography->find('list');
+		$saved_specializations = $this->get_saved_many_items($id, 'CoachSpecialization');
+		$saved_geographys = $this->get_saved_many_items($id, 'CoachGeography');
+		$this->set(compact('specializations', 'geographys', 'saved_specializations', 'saved_geographys'));		
 	}
 	function delete($id = null) {
 		if (!$id) {
@@ -97,5 +105,55 @@ class CoachesController extends AuthController {
 		}
 		$this->Session->setFlash(__('Coach was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	function save_many_items_ids($coach_id = 0, $items_ids, $model = ''){
+		if($model != ''){
+			if($model == 'CoachSpecialization'){
+				$field = 'specialization_id';
+			}elseif($model == 'CoachGeography'){
+				$field = 'geography_id';				
+			}
+			$items_ids =  trim(trim($items_ids, ','));
+			$new_items_array = explode(',', $items_ids);
+			$this->loadModel($model);
+			$old_items_array = $this->get_saved_many_items($coach_id, $model);
+			$data_intersect = array_intersect($new_items_array, $old_items_array);
+	        $data_to_add = array_diff($new_items_array, $data_intersect);
+	        $data_to_delete = array_diff($old_items_array, $data_intersect);
+			foreach ($data_to_add as $key => $value) {
+				$data = array(
+				    $model => array(
+				        'coach_id' => $coach_id,
+				        $field => $value
+				    )
+				);
+				$this->$model->create();
+				$this->$model->save($data);			
+			}		
+			foreach ($data_to_delete as $key => $value) {
+				$this->$model->deleteAll(array($model.'.coach_id' => $coach_id,
+															$model.'.specialization_id' => $value,));
+			}
+		}
+	}
+	function get_saved_many_items($coach_id = 0, $model = ''){
+		if($model == 'CoachSpecialization'){
+			$field = 'specialization_id';
+		}elseif($model == 'CoachGeography'){
+			$field = 'geography_id';				
+		}
+		$this->loadModel($model);
+		$old_items = $this->$model->find(
+			'all', array(
+				'conditions' => array($model.'.coach_id' => $coach_id),
+			)	  	 	
+		);
+		$old_items_array = array();
+		if(!empty($old_items)){
+			foreach ($old_items as $key => $value) {
+				$old_items_array[] = $value[$model][$field];		
+			}
+		}	
+		return $old_items_array;
 	}
 }
