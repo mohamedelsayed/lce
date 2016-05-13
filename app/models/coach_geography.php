@@ -4,9 +4,9 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-class CoachSpecialization extends AppModel {
-	var $useTable = 'coaches_specializations';
-	var $name = 'CoachSpecialization';
+class CoachGeography extends AppModel {
+	var $useTable = 'coaches_geographys';
+	var $name = 'CoachGeography';
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 	var $belongsTo = array(
 		'Coach' => array(
@@ -16,9 +16,9 @@ class CoachSpecialization extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Specialization' => array(
-			'className' => 'Specialization',
-			'foreignKey' => 'specialization_id',
+		'Geography' => array(
+			'className' => 'Geography',
+			'foreignKey' => 'geography_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

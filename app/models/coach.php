@@ -85,8 +85,20 @@ class Coach extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
+		'CoachGeography' => array(
+			'className' => 'CoachGeography',
+			'foreignKey' => 'coach_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => array(),
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
-	//public $hasAndBelongsToMany = array('Specialization', 'Geography');
 	var $hasAndBelongsToMany = array(
 		'Specialization' => array(
 			'className' => 'Specialization',
