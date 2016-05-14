@@ -1772,7 +1772,7 @@ http://vladimirkudinov.com
 /* Links */
 .menu li a {
 	display: block;
-	padding: 0 8%;
+	padding: 0 7%;
 }
 .menu li:first-child a { border-left: none; }
 .menu li:last-child a{ border-right: none; }
