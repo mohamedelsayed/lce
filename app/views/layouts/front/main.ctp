@@ -4,11 +4,13 @@
 		<!--
 		 * @author Author "Mohamed Elsayed"  
 		 * @author Author Email "me@mohamedelsayed.net"
-		 * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+		 * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
 		-->
 		<?php echo $this->Html->charset();?>
 		<title>
-			<?php if($this->name!='Home') echo $title_for_layout.' | '; 
+			<?php if($title_for_layout != 'Home'){
+				echo $title_for_layout.' | '; 
+			}
 			echo $this->Session->read('Setting.title'); ?>
 		</title>
 		<!--Share default image and description-->
