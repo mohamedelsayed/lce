@@ -101,4 +101,7 @@ class HomeController  extends AppController {
 		$maintenance_mode_text = $settings['Setting']['maintenance_mode_text'];		
 		$this->set('maintenance_mode_text', $maintenance_mode_text);
 	}
+	function events(){
+		$this->set('title_for_layout' , 'All Events');		
+	}
 }
