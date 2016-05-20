@@ -1,5 +1,5 @@
 <?php Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
-Router::connect('/all-events', array('controller' => 'home', 'action' => 'events'));
+Router::connect('/all-events', array('controller' => 'frontevents', 'action' => 'events'));
 Router::connect('/', array('controller' => 'home', 'action' => 'index'));
 Router::connect('/maintenance', array('controller' => 'home', 'action' => 'maintenancemode'));
 //Router::connect('/', array('controller' => 'admin', 'action' => 'index'));
