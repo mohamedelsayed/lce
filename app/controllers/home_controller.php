@@ -2,7 +2,7 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 class HomeController  extends AppController {
 	var $name = 'Home';
