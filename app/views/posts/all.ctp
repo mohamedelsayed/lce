@@ -2,10 +2,10 @@
 	<div class="add_action_button"><?php echo $this->Html->link(__('Add Post', true), array('action' => 'add')); ?></div>
 	<?php if(!empty($posts)){?>
 		<?php foreach ($posts as $key => $post) {
-			$post_link = $this->Session->read('Setting.url').'/posts/view/'.$post['Post']['id'];
+			$post_link = $base_url.'/posts/view/'.$post['Post']['id'];
 			$image = '';
 			if($post['Post']['image'] != ''){
-				$image = $this->Session->read('Setting.url').'/img/upload/'.$post['Post']['image'];
+				$image = $base_url.'/img/upload/'.$post['Post']['image'];
 			}
 			$title = '';
 			if($post['Post']['title'] != ''){

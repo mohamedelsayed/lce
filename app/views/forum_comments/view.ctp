@@ -41,7 +41,7 @@
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php if($comment['ForumComment']['image'] != ''){?>
 				<div class="comment_image_new">
-					<img src="<?php echo $this->Session->read('Setting.url').DS.'img'.DS.'upload'.DS.$comment['ForumComment']['image'];?>" alt=""/>
+					<img src="<?php echo $base_url.DS.'img'.DS.'upload'.DS.$comment['ForumComment']['image'];?>" alt=""/>
 				</div>
 			<?php }?>
 			&nbsp;
@@ -58,7 +58,7 @@
 			<?php if($comment['ForumComment']['attachement'] != ''){
 				$file_name_exploded = explode('.', $comment['ForumComment']['attachement']);
 		        $file_ext = $file_name_exploded[count($file_name_exploded) - 1];
-		        $file_link = $this->Session->read('Setting.url').DS.'files'.DS.'upload'.DS.$comment['ForumComment']['attachement'];?>
+		        $file_link = $base_url.DS.'files'.DS.'upload'.DS.$comment['ForumComment']['attachement'];?>
 				<div class="<?php echo $file_ext . '-file'; ?>">
 					<a target="_blank" href="<?php echo $file_link;?>"><?php echo $comment['ForumComment']['attachement'];?></a>
 				</div>

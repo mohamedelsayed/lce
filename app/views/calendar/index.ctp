@@ -72,7 +72,7 @@ if($url == $this->params['controller'] || $url == $this->params['controller'].'/
 				<?php /*if(isset($events[0]['Gal'][0]['image'])) {?>								
 					<div class="event_img">
 						<a class="various<?php echo $j;?>" href="#inline<?php echo $j;?>">
-							<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
+							<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
 						</a>																
 					</div>
 				<?php }?>
@@ -86,7 +86,7 @@ if($url == $this->params['controller'] || $url == $this->params['controller'].'/
 					<div id="inline<?php echo $j++;?>" style="width:500px;height:auto;overflow:auto;">
 						<?php if(isset($events[0]['Gal'][0]['image'])) {?>
 							<div class="fancybox_img">
-								<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
+								<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
 							</div>
 						<?php }?>
 						<div class="fancybox_title_data">
@@ -114,13 +114,13 @@ if($url == $this->params['controller'] || $url == $this->params['controller'].'/
 							});										
 							</script>*/?>
 							<div class="event_title">
-								<a href="<?php echo $this->Session->read('Setting.url').'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
+								<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
 							</div>
 							<?php /*<div style="display: none;">
 								<div id="inline<?php echo $j++;?>" style="width:500px;height:auto;overflow:auto;">
 									<?php if(isset($event['Gal'][0]['image'])) {?>														
 										<div class="fancybox_img">
-											<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
+											<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
 										</div>
 									<?php }?>
 									<div class="fancybox_title_data">
@@ -198,18 +198,18 @@ if($url == $this->params['controller'] || $url == $this->params['controller'].'/
 					<?php if(isset($events[0]['Gal'][0]['image'])) {?>
 						<div class="event_img2">											
 							<a class="various<?php echo $i.$j;?>" href="#inline<?php echo $i.$j;?>">
-								<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
+								<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
 							</a>																											
 						</div>
 					<?php }?>
 					<div class="event_title">
-						<a href="<?php echo $this->Session->read('Setting.url').'/events/view/'.$event['Event']['id'];?>"><?php echo $events[0]['Event']['title'];?></a>
+						<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $events[0]['Event']['title'];?></a>
 					</div>
 					<div style="display: none;">
 						<div id="inline<?php echo $i.$j++;?>" style="width:500px;height:auto;overflow:auto;">
 							<?php if(isset($events[0]['Gal'][0]['image'])) {?>
 								<div class="fancybox_img">
-									<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
+									<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
 								</div>
 							<?php }?>
 							<div class="fancybox_title_data">
@@ -235,13 +235,13 @@ if($url == $this->params['controller'] || $url == $this->params['controller'].'/
 							});										
 							</script>*/?>
 							<div class="event_title">
-								<a href="<?php echo $this->Session->read('Setting.url').'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
+								<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
 							</div>
 							<?php /*<div style="display: none;">
 								<div id="inline<?php echo $i.$j++;?>" style="width:500px;height:auto;overflow:auto;">
 									<?php if(isset($event['Gal'][0]['image'])) {?>														
 										<div class="fancybox_img">
-											<img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
+											<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
 										</div>
 									<?php }?>
 									<div class="fancybox_title_data">

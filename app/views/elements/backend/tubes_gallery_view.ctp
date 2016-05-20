@@ -22,8 +22,8 @@ if(!empty($gallery)){
     ?>
     <tr<?php echo $class;?>>
         <td><?php echo $record['id']; ?>&nbsp;</td>
-        <td><b style="cursor:pointer" onclick="$('iframe').attr('src', '<?=$record['url'];?>')"><?php echo $record['title']; ?>&nbsp;</b></td>
-        <td><b style="cursor:pointer" onclick="$('iframe').attr('src', '<?=$record['url'];?>')"><?php echo $record['url']; ?>&nbsp;</b></td>
+        <td><b style="cursor:pointer" onclick="$('iframe').attr('src', '<?php echo $record['url'];?>')"><?php echo $record['title']; ?>&nbsp;</b></td>
+        <td><b style="cursor:pointer" onclick="$('iframe').attr('src', '<?php echo $record['url'];?>')"><?php echo $record['url']; ?>&nbsp;</b></td>
         <td class="actions">
             <?php
             if($delete)

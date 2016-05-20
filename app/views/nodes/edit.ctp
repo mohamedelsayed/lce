@@ -29,7 +29,7 @@ $(document).ready(function(){
 		<?php if(isset($ourservices_cat_id)){?>
 			<div class="input text">
 				<label for="NodeLink">Our Services inner page links:</label>
-				<input readonly="readonly" id="NodeLink" type="text" value="<?php echo $this->Session->read('Setting.url').'/page/show/'.$ourservices_cat_id.'?nodeid='.$this->data['Node']['id'];?>" name="link">
+				<input readonly="readonly" id="NodeLink" type="text" value="<?php echo $base_url.'/page/show/'.$ourservices_cat_id.'?nodeid='.$this->data['Node']['id'];?>" name="link">
 			</div>
 		<?php }?>
 	</div>

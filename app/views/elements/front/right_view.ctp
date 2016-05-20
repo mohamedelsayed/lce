@@ -2,11 +2,11 @@
 	<?php if(!empty($recent_articles)){?>
 		<div class="ri_top">Recent Blog Entries</div>
 		<?php foreach ($recent_articles as $key => $recent_article) {
-			$article_link = $this->Session->read('Setting.url').'/article/item/'.$recent_article['Article']['id'];
+			$article_link = $base_url.'/article/item/'.$recent_article['Article']['id'];
 			$image = '';
 			if(isset($recent_article['Gal'])){
-				//$image = $this->Session->read('Setting.url').'/img/upload/thumb_'.$recent_article['Gal'][0]['image'];
-				$image = $this->Session->read('Setting.url').'/img/upload/'.$recent_article['Gal'][0]['image'];
+				//$image = $base_url.'/img/upload/thumb_'.$recent_article['Gal'][0]['image'];
+				$image = $base_url.'/img/upload/'.$recent_article['Gal'][0]['image'];
 			}
 			$title = '';
 			if($recent_article['Article']['title'] != ''){
@@ -31,10 +31,10 @@
 	<?php if(!empty($all_tags)){?>
 		<div class="ri_top">Blog Tags</div>
 		<?php foreach ($all_tags as $key => $all_tag) {
-			$tag_link = $this->Session->read('Setting.url').'/article/all/'.trim($all_tag);?>
+			$tag_link = $base_url.'/article/all/'.trim($all_tag);?>
 			<div class="n_right">
 				<a href="<?php echo $tag_link;?>">
-					<img class="usic" src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>m_o_6.jpg"/>
+					<img class="usic" src="<?php echo $base_url.'/img/front/';?>m_o_6.jpg"/>
 					<?php echo $all_tag;?>
 				</a>
 			</div>

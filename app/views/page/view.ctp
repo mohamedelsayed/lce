@@ -31,7 +31,7 @@
 			 		<?php if($node['Node']['top_image'] == 1){?>
 				 		<?php if(isset($node['Gal'][0])){?>
 				 			<div class="img_about top_page_image">
-					 			<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$node['Gal'][0]['image'];?>"/>
+					 			<img src="<?php echo $base_url.'/img/upload/'.$node['Gal'][0]['image'];?>"/>
 				 			</div>
 				 			<?php unset($node['Gal'][0]);?>
 			 			<?php }?>
@@ -45,7 +45,7 @@
 				 		<?php foreach ($node['Gal'] as $key => $value) {
 				 			echo $divopencode;?>
 				 			<div class="bot_logo bottom_page_image <?php echo $divimgclass;?>">
-					 			<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$value['image'];?>"/>
+					 			<img src="<?php echo $base_url.'/img/upload/'.$value['image'];?>"/>
 				 			</div>
 			 			<?php echo $divclosecode;
 						}?>
@@ -53,7 +53,7 @@
 		 			<?php if($node['Node']['id'] == 2){
 		 				if(!empty($teamMembers2)){
 			        		foreach ($teamMembers2 as $key => $teamMember) {
-			        			$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
+			        			$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
 			        			<div class="board_members_div" id="member<?php echo $teamMember['TeamMember']['id'];?>">
 			        				<div class="board_members_left">
 			        					<div class="img_cly_2 team_member_image">
@@ -81,7 +81,7 @@
 									if($i%5 == 0){
 										$class = 'team_member_div_two_special';
 									}
-        							$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
+        							$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
         							<div class="team_member_div_two <?php echo $class;?>" id="teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>">
 	        							<div class="img_about_2 team_member_image_div_two">
 				        					<a class="teamMemberanchor teammember<?php echo $teamMember['TeamMember']['id'];?>">
@@ -126,7 +126,7 @@
 									if($i%5 == 0){
 										$class = 'team_member_div_two_special';
 									}
-        							$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
+        							$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
         							<div class="team_member_div_two <?php echo $class;?>" id="teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>">
 	        							<div class="img_about_2 team_member_image_div_two">
 				        					<a class="teamMemberanchor teammember<?php echo $teamMember['TeamMember']['id'];?>">
@@ -170,7 +170,7 @@
 								if($i == 1){
 									$class = 'team_member_current';
 								}
-    							$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
+    							$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
 								$linkedin = '';
     							if($teamMember['TeamMember']['linkedin'] != ''){
     								$linkedin = $teamMember['TeamMember']['linkedin']; 
@@ -201,7 +201,7 @@
 											<div class="img_about team_member_mail_div_three">
 												<div class="tertr team_member_mail_image_div_three">
 													<a href="mailto:<?php echo $mail;?>">
-														<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>icon_mail_red.png"/>
+														<img src="<?php echo $base_url.'/img/front/';?>icon_mail_red.png"/>
 													</a>
 												</div>
 												<div class="top_co8 team_member_mail_inner_div_three">
@@ -213,7 +213,7 @@
 											<div class="img_about team_member_twitter_div_three">
 												<div class="tertr team_member_twitter_image_div_three">
 													<a target="_blank" href="<?php echo $teamMember['TeamMember']['linkedin'];?>" >
-														<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>linkedin_team.png"/>
+														<img src="<?php echo $base_url.'/img/front/';?>linkedin_team.png"/>
 													</a>
 												</div>
 												<div class="top_co8 team_member_twitter_inner_div_three">
@@ -234,7 +234,7 @@
 								if($i == 1){
 									$class = 'team_member_current';
 								}
-    							$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
+    							$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
 								$linkedin = '';
     							if($teamMember['TeamMember']['linkedin'] != ''){
     								$linkedin = $teamMember['TeamMember']['linkedin']; 
@@ -265,7 +265,7 @@
 											<div class="img_about team_member_mail_div_three">
 												<div class="tertr team_member_mail_image_div_three">
 													<a href="mailto:<?php echo $mail;?>">
-														<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>icon_mail_red.png"/>
+														<img src="<?php echo $base_url.'/img/front/';?>icon_mail_red.png"/>
 													</a>
 												</div>
 												<div class="top_co8 team_member_mail_inner_div_three">
@@ -277,7 +277,7 @@
 											<div class="img_about team_member_twitter_div_three">
 												<div class="tertr team_member_twitter_image_div_three">
 													<a target="_blank" href="<?php echo $teamMember['TeamMember']['linkedin'];?>" >
-														<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>linkedin_team.png"/>
+														<img src="<?php echo $base_url.'/img/front/';?>linkedin_team.png"/>
 													</a>
 												</div>
 												<div class="top_co8 team_member_twitter_inner_div_three">
@@ -305,7 +305,7 @@
 			        			<div class="out_t" id="testimonial<?php echo $testimonial['Testimonial']['id'];?>">
 			        				<div class="pic_t imagetestimonialinner">
 			        					<a>
-			        						<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$testimonial['Testimonial']['image'];?>"/>
+			        						<img src="<?php echo $base_url.'/img/upload/'.$testimonial['Testimonial']['image'];?>"/>
 		        						</a>
 			    					</div>
 			    					<div class="wrie_go">

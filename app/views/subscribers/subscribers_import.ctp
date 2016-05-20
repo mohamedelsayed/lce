@@ -5,7 +5,7 @@
 		<p>Welcome to Subscriber Import! You can import subscribers from a list of email addresses or from a CSV file containing subscriber email. CSV files should have one subscriber(email) per line.<br/>
 			Popular programs such as Microsoft Excel and Open Office support saving files in CSV (Comma-Seperated-Value) format.<br/>
 			Duplicate subscribers or invalid email addresses will be ignored.<br />
-			You can download sample file to make like it <a style="color: #0000FF" target="_blank" href="<?php echo $this->Session->read('Setting.url').'/subscribers.csv';?>">From Here</a> (Right click on the link and choose "Save As..." to download this file.).
+			You can download sample file to make like it <a style="color: #0000FF" target="_blank" href="<?php echo $base_url.'/subscribers.csv';?>">From Here</a> (Right click on the link and choose "Save As..." to download this file.).
 		</p>
 		<?php
 		$options=array('0'=>'List of Email Addresses','1'=>'.CSV file');

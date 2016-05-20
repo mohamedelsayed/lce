@@ -4,7 +4,7 @@
 	$target = '_self';
 	if($node['Cat']['cat_type'] != 0){
 		if(isset($node['Attachment'][0])){
-			$node_link = $this->Session->read('Setting.url').'/files/upload/'.$node['Attachment'][0]['file'];	
+			$node_link = $base_url.'/files/upload/'.$node['Attachment'][0]['file'];	
 			$noderevealid = '#';			
 			$target = '_blank';
 		}
@@ -12,7 +12,7 @@
 	<a <?php if($noderevealid != '#') echo 'data-reveal-id="'.$noderevealid.'"';?> href="<?php echo $node_link;?>" <?php if($noderevealid == '#') echo 'target="'.$target.'"';?>>
 		<div class="work-item-in">
 			<div class="work-item-pic-in">
-				<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$node['Gal'][0]['image'];?>" />
+				<img src="<?php echo $base_url.'/img/upload/'.$node['Gal'][0]['image'];?>" />
 			</div>
 			<div class="work-item-tit-in">
 				<?php echo $node['Node']['title'];?>
@@ -22,11 +22,11 @@
 	<div id="<?php echo $node['Node']['id']?>" class="reveal-modal">
 		<div style="float:left; width:100%; text-align:center;">
 			<?php if($node['Cat']['cat_type'] == 0){?>
-	    		<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$node['Gal'][0]['image'];?>" style="max-height:540px;max-width:600px;" border="0" />
+	    		<img src="<?php echo $base_url.'/img/upload/'.$node['Gal'][0]['image'];?>" style="max-height:540px;max-width:600px;" border="0" />
 			<?php }else{?>
 				<div class="pdf_div">
 	    			<?php if(isset($node['Attachment'][0])){?>
-	    				<a target="_blank" href="<?php echo $this->Session->read('Setting.url').'/files/upload/'.$node['Attachment'][0]['file'];?>">Download</a>
+	    				<a target="_blank" href="<?php echo $base_url.'/files/upload/'.$node['Attachment'][0]['file'];?>">Download</a>
 					<?php }?>
 				</div>
 				<div class="video_div">					
@@ -41,7 +41,7 @@
 				</div>
 				<div class="image_div">
 	    			<?php if(isset($node['Gal'][0]) && !isset($node['Attachment'][0]) && !isset($node['Video'][0]) && $node['Node']['body'] == ''){?>
-	    				<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$node['Gal'][0]['image'];?>" style="max-height:540px;max-width:600px;" border="0" />
+	    				<img src="<?php echo $base_url.'/img/upload/'.$node['Gal'][0]['image'];?>" style="max-height:540px;max-width:600px;" border="0" />
 					<?php }?>
 				</div>
 			<?php }?>

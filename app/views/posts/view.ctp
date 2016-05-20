@@ -6,9 +6,9 @@
 	</div>
 	<div class="postauthor">
 		<?php /*<div class="postauthortext">Author:</div>*/?>
-		<?php $img_src = $this->Session->read('Setting.url').DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
+		<?php $img_src = $base_url.DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
 		if($post['Member']['image'] != ''){
-			$img_src = $this->Session->read('Setting.url').DS.'img'.DS.'upload'.DS.$post['Member']['image'];
+			$img_src = $base_url.DS.'img'.DS.'upload'.DS.$post['Member']['image'];
 		}?>
 		<div class="post_author_image">
 			<img src="<?php echo $img_src;?>" alt="<?php echo $post['Member']['fullname'];?>"/>
@@ -29,7 +29,7 @@
 	</div>
 	<?php if($post['Post']['image'] != ''){?>
 		<div class="post_image_new">
-			<img src="<?php echo $this->Session->read('Setting.url').DS.'img'.DS.'upload'.DS.$post['Post']['image'];?>" alt="<?php echo $post['Post']['title'];?>"/>
+			<img src="<?php echo $base_url.DS.'img'.DS.'upload'.DS.$post['Post']['image'];?>" alt="<?php echo $post['Post']['title'];?>"/>
 		</div>
 	<?php }?>
 	<?php if($post['Post']['video'] != ''){?>
@@ -41,7 +41,7 @@
 		<div class="post_attachement_new">
 			<?php $file_name_exploded = explode('.', $post['Post']['attachement']);
 	        $file_ext = $file_name_exploded[count($file_name_exploded) - 1];
-	        $file_link = $this->Session->read('Setting.url').DS.'files'.DS.'upload'.DS.$post['Post']['attachement'];?>
+	        $file_link = $base_url.DS.'files'.DS.'upload'.DS.$post['Post']['attachement'];?>
 			<div class="<?php echo $file_ext . '-file'; ?>">
 				<a target="_blank" href="<?php echo $file_link;?>"><?php echo $post['Post']['attachement'];?></a>
 			</div>

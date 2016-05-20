@@ -24,10 +24,10 @@
 		    });
 		    $('#previousreveal<?php echo $nodeId?>').mouseover(function(){
 		     	div = $('#previousreveal<?php echo $nodeId?>');
-		     	div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-prev.png';?>')");												     	
+		     	div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-prev.png';?>')");												     	
      		}).mouseout(function(){
-	     		<?php /*div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-blank.gif';?>')");*/?>
-	     		div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-prev.png';?>')");
+	     		<?php /*div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-blank.gif';?>')");*/?>
+	     		div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-prev.png';?>')");
      		});
 		});
 		</script>	
@@ -37,14 +37,14 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$('#previousreveal<?php echo $nodeId?>').click(function(e) {
-				window.location= '<?php echo $this->Session->read('Setting.url').'/'.$currenturlwithoutpage.'/page:'.($page-1).'/previous:1';?>';
+				window.location= '<?php echo $base_url.'/'.$currenturlwithoutpage.'/page:'.($page-1).'/previous:1';?>';
 		    });
 		     $('#previousreveal<?php echo $nodeId?>').mouseover(function(){
 		     	div = $('#previousreveal<?php echo $nodeId?>');
-		     	div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-prev.png';?>')");												     	
+		     	div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-prev.png';?>')");												     	
      		}).mouseout(function(){
-     			<?php /*div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-blank.gif';?>')");*/?>
-	     		div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-prev.png';?>')");
+     			<?php /*div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-blank.gif';?>')");*/?>
+	     		div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-prev.png';?>')");
      		});								     		
 		});
 		</script>
@@ -62,10 +62,10 @@
 		    });
 		    $('#nextreveal<?php echo $nodeId?>').mouseover(function(){
 		     	div = $('#nextreveal<?php echo $nodeId?>');
-		     	div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-next.png';?>')");
+		     	div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-next.png';?>')");
      		}).mouseout(function(){
-     			<?php /*div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-blank.gif';?>')");*/?>
-	     		div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-next.png';?>')");
+     			<?php /*div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-blank.gif';?>')");*/?>
+	     		div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-next.png';?>')");
      		});									     		
 		});
 		</script>
@@ -76,14 +76,14 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$('#nextreveal<?php echo $nodeId?>').click(function(e) {
-				window.location= '<?php echo $this->Session->read('Setting.url').'/'.$currenturlwithoutpage.'/page:'.($page+1).'/next:1';?>';
+				window.location= '<?php echo $base_url.'/'.$currenturlwithoutpage.'/page:'.($page+1).'/next:1';?>';
 		    });
 		    $('#nextreveal<?php echo $nodeId?>').mouseover(function(){
 		     	div = $('#nextreveal<?php echo $nodeId?>');
-		     	div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-next.png';?>')");
+		     	div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-next.png';?>')");
      		}).mouseout(function(){
-     			<?php /*div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-blank.gif';?>')");*/?>
-	     		div.css('background-image',"url('<?php echo $this->Session->read('Setting.url').'/img/lightbox/lightbox-btn-next.png';?>')");
+     			<?php /*div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-blank.gif';?>')");*/?>
+	     		div.css('background-image',"url('<?php echo $base_url.'/img/lightbox/lightbox-btn-next.png';?>')");
      		});									     		
 		});
 		</script>

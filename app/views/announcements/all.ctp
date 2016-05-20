@@ -1,7 +1,7 @@
 <div class="t_p_con index">
 	<?php if(!empty($announcements)){?>
 		<?php foreach ($announcements as $key => $announcement) {
-			$announcement_link = $this->Session->read('Setting.url').'/announcements/view/'.$announcement['Announcement']['id'];
+			$announcement_link = $base_url.'/announcements/view/'.$announcement['Announcement']['id'];
 			$title = '';
 			if($announcement['Announcement']['title'] != ''){
 				$title = $announcement['Announcement']['title'];

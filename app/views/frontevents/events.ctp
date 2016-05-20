@@ -1,5 +1,5 @@
 <ul class="tabs_event">
-            <li data-tab="#"><a href="#"><img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>icon_home.png"/></a></li>
+            <li data-tab="#"><a href="#"><img src="<?php echo $base_url.'/img/front/';?>icon_home.png"/></a></li>
             <li class="current" data-tab="tab-2">/  Upcoming Events</li> 
         </ul>
 		<div class="title_event_page">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="post_event">
 		<div class="post_event_left">
-		<a href="#"><img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>img_event.png"/></a>
+		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
 		<div class="post_event_details">Location Details</div>
 		<div class="post_event_date">Date</div>
 		<div class="post_event_name">Instructor Name</div>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="post_event">
 		<div class="post_event_left">
-		<a href="#"><img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>img_event.png"/></a>
+		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
 		<div class="post_event_details">Location Details</div>
 		<div class="post_event_date">Date</div>
 		<div class="post_event_name">Instructor Name</div>
@@ -46,7 +46,7 @@
 		</div>
 		<div class="post_event">
 		<div class="post_event_left">
-		<a href="#"><img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>img_event.png"/></a>
+		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
 		<div class="post_event_details">Location Details</div>
 		<div class="post_event_date">Date</div>
 		<div class="post_event_name">Instructor Name</div>

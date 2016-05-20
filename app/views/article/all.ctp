@@ -3,10 +3,10 @@
 	<div class="top_con_3">Latest Posts</div>
 	<?php if(!empty($articles)){?>
 		<?php foreach ($articles as $key => $article) {
-			$article_link = $this->Session->read('Setting.url').'/article/item/'.$article['Article']['id'];
+			$article_link = $base_url.'/article/item/'.$article['Article']['id'];
 			$image = '';
 			if(isset($article['Gal'])){
-				$image = $this->Session->read('Setting.url').'/img/upload/'.$article['Gal'][0]['image'];
+				$image = $base_url.'/img/upload/'.$article['Gal'][0]['image'];
 			}
 			$title = '';
 			if($article['Article']['title'] != ''){
@@ -29,17 +29,17 @@
 		    </div>
 		    <div class="con_con article_date_div">
 		    	<div class="mm_out">
-		    		<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>m_o.jpg"/>		    			
+		    		<img src="<?php echo $base_url.'/img/front/';?>m_o.jpg"/>		    			
 	    		</div>
 	    		<div class="mm_tt">
 	    			<?php echo $this->element('front/english_date_view', array('date' => $article['Article']['date']));?>
     			</div>
     			<div class="mm_out">
-    				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>m_o_2.jpg"/>
+    				<img src="<?php echo $base_url.'/img/front/';?>m_o_2.jpg"/>
 				</div>
 				<div class="mm_tt"><?php echo $article['Article']['creator'];?></div>
 				<div class="mm_out">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>m_o_3.jpg"/>
+					<img src="<?php echo $base_url.'/img/front/';?>m_o_3.jpg"/>
 				</div>
 				<div class="mm_tt"><?php echo $comments_count;?> Comments</div>
 			</div>			
@@ -47,11 +47,11 @@
 				<?php if($article['Article']['tags'] != ''){
 					$tags = explode(",", $article['Article']['tags']);?>
 					<div class="mm_out">
-						<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>m_o_4.jpg"/>
+						<img src="<?php echo $base_url.'/img/front/';?>m_o_4.jpg"/>
 					</div>
 					<?php foreach ($tags as $key => $tag) {?>			
 						<div class="nology">
-							<a href="<?php echo $this->Session->read('Setting.url').'/article/all/'.trim($tag);?>"><?php echo $tag;?></a>
+							<a href="<?php echo $base_url.'/article/all/'.trim($tag);?>"><?php echo $tag;?></a>
 						</div>
 					<?php }?>
 				<?php }?>

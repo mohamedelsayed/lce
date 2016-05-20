@@ -1,6 +1,6 @@
 <?php echo $this->Html->css('backend/login');?>
 <div class="users form" id="login">
-<?php echo $form->create('User', array('url'=>$this->Session->read('Setting.url').'/'.$this->params['url']['url']));?>
+<?php echo $form->create('User', array('url'=>$base_url.'/'.$this->params['url']['url']));?>
     <fieldset>
         <legend><?php __('Change password');?></legend>
     	<?php echo $form->input('password', array('label'=>'Write Your New Password'));

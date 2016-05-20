@@ -2,7 +2,7 @@
 	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('action' => 'add')); ?></div>
 	<?php if(!empty($events)){?>
 		<?php foreach ($events as $key => $event) {
-			$event_link = $this->Session->read('Setting.url').'/events/view/'.$event['Event']['id'];
+			$event_link = $base_url.'/events/view/'.$event['Event']['id'];
 			$title = '';
 			if($event['Event']['title'] != ''){
 				$title = $event['Event']['title'];

@@ -23,7 +23,7 @@
 							$href .= ' target="_blank"';
 						}?>
 						<a <?php echo $href;?>>
-							<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$slideshow['Slideshow']['image'];?>" data-thumb="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$slideshow['Slideshow']['image'];?>" alt="" title="" />					
+							<img src="<?php echo $base_url.'/img/upload/'.$slideshow['Slideshow']['image'];?>" data-thumb="<?php echo $base_url.'/img/upload/'.$slideshow['Slideshow']['image'];?>" alt="" title="" />					
 						</a>
 					<?php }?>				
 				</div>
@@ -32,7 +32,7 @@
 	</div>
 <?php }?>
 <?php if(!empty($testimonials)){
-	$testimonial_link_all = $this->Session->read('Setting.url').'/page/view/3?nodeid=6';
+	$testimonial_link_all = $base_url.'/page/view/3?nodeid=6';
 	$testimonial_cut_string = $this->Session->read('Setting.testimonial_cut_string'); ?>
 	<div class="bottom_grop_top">
 		<div class="top">Testimonials</div>
@@ -40,8 +40,8 @@
 			<?php foreach ($testimonials as $key => $testimonial) {
 				$image = '';
 				if($testimonial['Testimonial']['image'] != ''){
-					//$image = $this->Session->read('Setting.url').'/img/upload/thumb_'.$testimonial['Testimonial']['image'];
-					$image = $this->Session->read('Setting.url').'/img/upload/'.$testimonial['Testimonial']['image'];
+					//$image = $base_url.'/img/upload/thumb_'.$testimonial['Testimonial']['image'];
+					$image = $base_url.'/img/upload/'.$testimonial['Testimonial']['image'];
 				}
 				$name = '';
 				if($testimonial['Testimonial']['name'] != ''){
@@ -101,13 +101,13 @@
 		<div class="title_top_find">FIND A COACH</div>
             <div class="articles_home_left">
 <?php if(!empty($articles)){
-	$articles_link_all = $this->Session->read('Setting.url').'/article/all';
+	$articles_link_all = $base_url.'/article/all';
 	$article_cut_string = $this->Session->read('Setting.article_cut_string');?>
 			<?php foreach ($articles as $key => $article) {
 				$image = '';
 				if(isset($article['Gal'])){
-					//$image = $this->Session->read('Setting.url').'/img/upload/thumb_'.$article['Gal'][0]['image'];
-					$image = $this->Session->read('Setting.url').'/img/upload/'.$article['Gal'][0]['image'];
+					//$image = $base_url.'/img/upload/thumb_'.$article['Gal'][0]['image'];
+					$image = $base_url.'/img/upload/'.$article['Gal'][0]['image'];
 				}
 				$title = '';
 				if($article['Article']['title'] != ''){
@@ -121,7 +121,7 @@
 				if($article['Article']['body'] != ''){
 					$body = $article['Article']['body'];
 				}
-				$article_link = $this->Session->read('Setting.url').'/article/item/'.$article['Article']['id'];?>
+				$article_link = $base_url.'/article/item/'.$article['Article']['id'];?>
 				<div class="top_right article_home">
 				<?php /*	<div class="top_wrie_b article_home_title">
 						<a href="<?php echo $article_link;?>">
@@ -196,8 +196,8 @@
 <?php /*if(!empty($partners)){?>
 	<?php if(isset($partners['Gal'][0])){?>
 		<div class="bot_logo" style="margin-bottom: 35px;">
-			<a href="<?php echo $this->Session->read('Setting.url').'/page/view/3?nodeid='.$partners['Node']['id'];?>">
-				<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$partners['Gal'][0]['image'];?>"/>
+			<a href="<?php echo $base_url.'/page/view/3?nodeid='.$partners['Node']['id'];?>">
+				<img src="<?php echo $base_url.'/img/upload/'.$partners['Gal'][0]['image'];?>"/>
 			</a>
 		</div>
 	<?php }?>

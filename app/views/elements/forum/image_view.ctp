@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".lightbox").lightBox('<?php echo $this->Session->read('Setting.url'); ?>');
+		$(".lightbox").lightBox('<?php echo $base_url; ?>');
 	});
 </script>
 <?php
@@ -17,7 +17,7 @@
 		$imgStyle = "max-width: ".$this->Session->read('Setting.thumb_width').";max-height: ". $this->Session->read('Setting.thumb_height').";";
 		if($image['image']!=''){	
 			$size = (isset($size))?$size.'_':'thumb_';
-			$imagePath = $this->Session->read('Setting.url').'/app/webroot/img/upload/'.$image['image'];
+			$imagePath = $base_url.'/app/webroot/img/upload/'.$image['image'];
 			if($size == "master_"){
 				$thumbPath = $imagePath;
 			}else{	

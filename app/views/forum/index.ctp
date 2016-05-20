@@ -2,7 +2,7 @@
 	<?php if(!empty($announcement)){?>
 		<div class="home_announcements">
 			<h2>Announcement</h2>
-			<a href="<?php echo $this->Session->read('Setting.url').'/announcements/view/'.$announcement['Announcement']['id'];?>">
+			<a href="<?php echo $base_url.'/announcements/view/'.$announcement['Announcement']['id'];?>">
 				<div class="home_announcements_title"><?php echo $announcement['Announcement']['title'];?></div>				
 			</a>
 			<div class="home_announcements_date">Created on: <?php echo date('M d, Y, g:i a', strtotime($announcement['Announcement']['created']));?></div>			

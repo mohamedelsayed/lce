@@ -21,8 +21,8 @@ if (!empty($gallery)){
     	echo $this->element($element,  array('video'=>$gallery[0], 'controller'=>'videos', 'width'=>$width, 'height'=>$height));
     ?>
 	</div>
-	<div style="height: <?=$this->Session->read('Setting.thumb_height');?>px;">
-        <div class="clear" align="left" style="width:6%; float:left; margin-top: <?=$styelMarginTop;?>px;">
+	<div style="height: <?php echo $this->Session->read('Setting.thumb_height');?>px;">
+        <div class="clear" align="left" style="width:6%; float:left; margin-top: <?php echo $styelMarginTop;?>px;">
             <a href="javascript:stepcarousel.stepBy('gallery2',%20-1)">
             	<?php 
 				echo $this->Html->Image(
@@ -32,21 +32,21 @@ if (!empty($gallery)){
 				?>
             </a>
         </div>
-        <div id="gallery2" class="stepcarousel clear" style="width:89%; height:<?=$styelHeight;?>px; float:left; text-align:center;" >
+        <div id="gallery2" class="stepcarousel clear" style="width:89%; height:<?php echo $styelHeight;?>px; float:left; text-align:center;" >
             <div style="width: 1300px; left: 0px;" class="belt">
             <?php
             $i = 0; 
             foreach($gallery as $record){?>
-                <div style="float: none; position: absolute; left: <?=$i;?>px;" class="panel">
+                <div style="float: none; position: absolute; left: <?php echo $i;?>px;" class="panel">
                 	<?php $imagePath = ($record['image']!='')?'upload/'.$record['image']:'backend/no_image.jpeg'; ?>
                 	
                 	<div 
                 		class="playsmall"
-                		style="margin-top: <?=$styelMarginTop;?>px; margin-left: <?=$styelMarginLeft;?>px;" 
+                		style="margin-top: <?php echo $styelMarginTop;?>px; margin-left: <?php echo $styelMarginLeft;?>px;" 
                 		<?php if($record['file']!=''){ ?>
-                		onclick="playVideo('<?=$record['id'];?>', '<?=$record['title'];?>', '<?=$record['file'];?>', '<?=$record['image'];?>', <?=$width;?>, <?=$height;?>, '<?=$this->Session->read('Setting.url');?>', '<?=$delete;?>');"
+                		onclick="playVideo('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['file'];?>', '<?php echo $record['image'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $base_url;?>', '<?php echo $delete;?>');"
                 		<?php }elseif($record['url']!=''){?>
-                		onclick="playTube('<?=$record['id'];?>', '<?=$record['title'];?>', '<?=$record['url'];?>', <?=$width;?>, <?=$height;?>, '<?=$this->Session->read('Setting.url');?>', '<?=$delete;?>');"
+                		onclick="playTube('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['url'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $base_url;?>', '<?php echo $delete;?>');"
                 		<?php }?>
                 	>
                 	</div>
@@ -74,7 +74,7 @@ if (!empty($gallery)){
             <?php $i+=260;}?>
             </div>
         </div>
-        <div class="clear" align="right" style="width:5%; float:left;  margin-top: <?=$styelMarginTop;?>px;">
+        <div class="clear" align="right" style="width:5%; float:left;  margin-top: <?php echo $styelMarginTop;?>px;">
             <a href="javascript:stepcarousel.stepBy('gallery2',%201)">
             	<?php 
 				echo $this->Html->Image(

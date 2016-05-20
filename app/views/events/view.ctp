@@ -66,9 +66,9 @@
 	</dt>
 	<dd>
 		<?php if($attendEventFlag == -1){?>
-			<a href="<?php echo $this->Session->read('Setting.url').'/events/willcome/'.$event['Event']['id'].'/1';?>"><?php echo $willyoucome_options[1];?></a> | 
-			<a href="<?php echo $this->Session->read('Setting.url').'/events/willcome/'.$event['Event']['id'].'/2';?>"><?php echo $willyoucome_options[2];?></a> | 
-			<a href="<?php echo $this->Session->read('Setting.url').'/events/willcome/'.$event['Event']['id'].'/0';?>"><?php echo $willyoucome_options[0];?></a>	
+			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/1';?>"><?php echo $willyoucome_options[1];?></a> | 
+			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/2';?>"><?php echo $willyoucome_options[2];?></a> | 
+			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/0';?>"><?php echo $willyoucome_options[0];?></a>	
 		<?php }else{
 			echo $willyoucome_options[$attendEventFlag];			
 		}?>

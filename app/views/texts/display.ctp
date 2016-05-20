@@ -66,7 +66,7 @@
 	        		//$('#contactus_Result2').html(error);
 	        		//$('#contactus_Result2').show();
 	        	}else{	
-					sendFormContact('<?php echo $this->Session->read('Setting.url');?>');		          
+					sendFormContact('<?php echo $base_url;?>');		          
 				}
 	        });             
 	    });
@@ -75,7 +75,7 @@
 		    return pattern.test(emailAddress);
 		};
 	</script>
-	<?php echo $this->Form->create('Contactus', array('type' =>'file','id'=>'ContactusForm',  'class'=>'','url'=>$this->Session->read('Setting.url').'/texts/contactusForm/notajax'));?>
+	<?php echo $this->Form->create('Contactus', array('type' =>'file','id'=>'ContactusForm',  'class'=>'','url'=>$base_url.'/texts/contactusForm/notajax'));?>
 	<div class="g__sm">
 		<div class="w_g_m">Name:<span class="requiredspan">*</span></div>
 		<div class="input_2">
@@ -107,7 +107,7 @@
 		display:none;	
 		width: 80px;
 		height:15px;
-		background-image: url(<?php echo $this->Session->read('Setting.url').'/img/front/tloading.gif'?>);
+		background-image: url(<?php echo $base_url.'/img/front/tloading.gif'?>);
 		background-repeat: no-repeat;
 	}
 	#contactus_Result2{
@@ -137,7 +137,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a>
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>home.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>home.png"/>
 				</a>
 			</div><?php echo $content['Content']['address'];?>
 		</div>
@@ -146,7 +146,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a>
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>tele.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>tele.png"/>
 				</a>
 			</div><?php echo $content['Content']['phone'];?>
 		</div>
@@ -155,7 +155,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a href="mailto:<?php echo $content['Content']['mail'];?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>mail.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>mail.png"/>
 				</a>
 			</div>
 			<a href="mailto:<?php echo $content['Content']['mail'];?>"><?php echo $content['Content']['mail'];?></a>		
@@ -165,7 +165,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a href="<?php echo $content['Content']['facebook_link'];?>">
-					<img width="22" src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>face.png"/>
+					<img width="22" src="<?php echo $base_url.'/img/front/';?>face.png"/>
 				</a>
 			</div>
 			<a target="_blank" href="<?php echo $content['Content']['facebook_link'];?>">
@@ -186,7 +186,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a href="<?php echo $content['Content']['linkedin_link'];?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/linkedin_contact.png';?>" width="31" />
+					<img src="<?php echo $base_url.'/img/front/linkedin_contact.png';?>" width="31" />
 				</a>
 			</div>
 			<a target="_blank" href="<?php echo $content['Content']['linkedin_link'];?>">

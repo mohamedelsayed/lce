@@ -15,11 +15,11 @@
 					<?php $current_page = 1;
 					if(isset($this->params['named']['page'])) $current_page = $this->params['named']['page'];
 					if($current_page == 1){
-						$link = $this->Session->read('Setting.url').'/artist/category/'.$artist['Artist']['id'].'/all';?>
+						$link = $base_url.'/artist/category/'.$artist['Artist']['id'].'/all';?>
 						<a href="<?php echo $link;?>">
 							<div class="work-item">
 								<div class="work-item-pic">
-									<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$artist['Artist']['image'];?>" />
+									<img src="<?php echo $base_url.'/img/upload/'.$artist['Artist']['image'];?>" />
 								</div>
 								<div class="work-item-tit">All</div>
 							</div>
@@ -30,11 +30,11 @@
 					echo $cat['Cat']['body'];            
 				}elseif(!empty($cats)){
 					foreach ($cats as $cat) {
-						$link = $this->Session->read('Setting.url').'/exhibition/index/'.$cat['Cat']['id'];?>
+						$link = $base_url.'/exhibition/index/'.$cat['Cat']['id'];?>
 						<a href="<?php echo $link;?>">
 							<div class="work-item">
 								<div class="work-item-pic">
-									<img src="<?php echo $this->Session->read('Setting.url').'/img/upload/'.$cat['Cat']['image'];?>" />
+									<img src="<?php echo $base_url.'/img/upload/'.$cat['Cat']['image'];?>" />
 								</div>
 								<div class="work-item-tit">
 									<?php echo $cat['Cat']['title'];?>

@@ -7,7 +7,7 @@ if($size == 'large')
 	$class = 'addthis_32x32_style';
 if(isset($articleId)){
 	echo $this->Javascript->link('front/ajax/sharing', false); 
-	$onClick = "updateShared('".$articleId."', '".$this->Session->read('Setting.url')."')";
+	$onClick = "updateShared('".$articleId."', '".$base_url."')";
 }
 ?>
 <div id="sharingDiv" onclick="<?php echo $onClick;?>">
@@ -27,29 +27,29 @@ if(isset($articleId)){
        <!-- <a class="addthis_counter addthis_pill_style"></a>--> 
     <?php }elseif($type == 'header'){?>
         <a class="addthis_button_facebook">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/Bloom-Website-Home_13.jpg';?>" width="28" height="28" title="Facebook"/>
+        	<img src="<?php echo $base_url.'/img/front/Bloom-Website-Home_13.jpg';?>" width="28" height="28" title="Facebook"/>
     	</a>
         <a class="addthis_button_twitter">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/Bloom-Website-Home_15.jpg';?>" width="28" height="28" title="twitter"/>
+        	<img src="<?php echo $base_url.'/img/front/Bloom-Website-Home_15.jpg';?>" width="28" height="28" title="twitter"/>
         </a>
         <a class="addthis_button_google">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/Bloom-Website-Home_17.jpg';?>" width="28" height="28" title="google+"/>
+        	<img src="<?php echo $base_url.'/img/front/Bloom-Website-Home_17.jpg';?>" width="28" height="28" title="google+"/>
         </a>
         <a class="addthis_button_linkedin">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/Bloom-Website-Home_19.jpg';?>" width="28" height="28" title="linkedin"/>
+        	<img src="<?php echo $base_url.'/img/front/Bloom-Website-Home_19.jpg';?>" width="28" height="28" title="linkedin"/>
         </a>
     <?php }elseif($type == 'product'){?>
         <a class="addthis_button_facebook">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/ProductF.jpg';?>" width="22" height="22" title="Facebook"/>
+        	<img src="<?php echo $base_url.'/img/front/ProductF.jpg';?>" width="22" height="22" title="Facebook"/>
     	</a>
         <a class="addthis_button_twitter">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/ProductT.jpg';?>" width="22" height="22" title="twitter"/>
+        	<img src="<?php echo $base_url.'/img/front/ProductT.jpg';?>" width="22" height="22" title="twitter"/>
         </a>
         <a class="addthis_button_google">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/ProductG.jpg';?>" width="22" height="22" title="google+"/>
+        	<img src="<?php echo $base_url.'/img/front/ProductG.jpg';?>" width="22" height="22" title="google+"/>
         </a>
         <a class="addthis_button_email">
-        	<img src="<?php echo $this->Session->read('Setting.url').'/img/front/ProductM.jpg';?>" width="22" height="22" title="Mail"/>
+        	<img src="<?php echo $base_url.'/img/front/ProductM.jpg';?>" width="22" height="22" title="Mail"/>
         </a>
     <?php }?>    
     </div>

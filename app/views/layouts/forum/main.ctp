@@ -12,7 +12,7 @@
 			echo $this->Session->read('Setting.title'); ?>
 		</title>
 		<!--Share default image and description-->
-		<meta property="og:image" content="<?php echo (isset($shareImage))?$this->Session->read('Setting.url').'/img/upload/'.$shareImage:$this->Session->read('Setting.url').'/img/front/logo.png';?>"/>
+		<meta property="og:image" content="<?php echo (isset($shareImage))?$base_url.'/img/upload/'.$shareImage:$base_url.'/img/front/logo.png';?>"/>
 		<meta property="og:description" content="<?php echo (isset($metaDescription))?$metaDescription:$this->Session->read('Setting.meta_description');?>"/>
 		<!--Meta sent by web admin -->
 		<meta name="abstract" content="<?php echo (isset($metaKeywords))?$metaKeywords:$this->Session->read('Setting.meta_keywords');?>" />
@@ -31,13 +31,13 @@
 		<meta http-equiv="Pragma" content="No-Cache" />
 		<?php
 		//META
-		echo $this->Html->meta('icon', $this->Session->read('Setting.url').'/app/webroot/img/front/favicon.png' );
+		echo $this->Html->meta('icon', $base_url.'/app/webroot/img/front/favicon.png' );
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
 		echo $this->Html->css(array('front/style','front/jMenu.jquery','front/style_slider','front/skin', 'front/new_style', 'forum/style'));
 		//SCRIPTS
-		echo $this->Html->scriptBlock("var siteUrl ='".$this->Session->read('Setting.url')."';");//Define global var siteUrl
+		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
 		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel'));		
 		echo $this->Javascript->link('/ckeditor/ckeditor');
@@ -69,7 +69,7 @@
 			$member_id = $userInfoFront['id'];
 		}?>
 		<script type="text/javascript">
-			var siteUrl ='<?php echo $this->Session->read('Setting.url');?>';
+			var siteUrl ='<?php echo $base_url;?>';
 			var imgPath = '<?php echo 'img'.DS.'upload'.DS;?>';
 			var filesPath = '<?php echo 'files'.DS.'upload'.DS;?>';
 			var flv_player_src = siteUrl+'/app/webroot/files/flv_player/player.swf';

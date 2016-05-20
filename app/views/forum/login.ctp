@@ -10,7 +10,7 @@
 				<?php echo $form->checkbox('remember', array('class' => 'remember_checkbox'));?>
 				<label for="MemberRemember">Remember me</label>
 				<div class="login-box-terms">
-					<a class="lostpassword" title="Forgot password?" href="<?php echo $this->Session->read('Setting.url').'/forum/forget';?>">Forgot password?</a>
+					<a class="lostpassword" title="Forgot password?" href="<?php echo $base_url.'/forum/forget';?>">Forgot password?</a>
 				</div>
 			</div>
 			<?php echo $form->end(__('Login', true));?>			

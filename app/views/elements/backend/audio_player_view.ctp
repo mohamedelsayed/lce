@@ -2,7 +2,7 @@
 	if(!empty($audio)){?>
     	<script type="text/javascript">
         	$(document).ready(function(){
-				updateAudioHits('<?php echo $audio['id'];?>', '<?php echo $this->Session->read('Setting.url');?>');
+				updateAudioHits('<?php echo $audio['id'];?>', '<?php echo $base_url;?>');
 			});
 			function updateAudioHits(audioId, siteUrl){
 				$.ajax({	
@@ -16,10 +16,10 @@
         </script>
 		<?php    
 		if($this->action == 'edit')$delete = true; else $delete = false;
-		//$imagePath = ($audio['image']!='')?$this->Session->read('Setting.url').'/app/webroot/img/upload/'.$audio['image']:$this->Session->read('Setting.url').'/app/webroot/img/backend/no_image.jpeg';
-		//$imagePath = $this->Session->read('Setting.url').'/app/webroot/img/upload/'.$audio['image'];
-		$audioPath = $this->Session->read('Setting.url').'/app/webroot/files/upload/'.$audio['file'];
-		$src = $this->Session->read('Setting.url').'/app/webroot/files/mp3_player/player.swf';
+		//$imagePath = ($audio['image']!='')?$base_url.'/app/webroot/img/upload/'.$audio['image']:$base_url.'/app/webroot/img/backend/no_image.jpeg';
+		//$imagePath = $base_url.'/app/webroot/img/upload/'.$audio['image'];
+		$audioPath = $base_url.'/app/webroot/files/upload/'.$audio['file'];
+		$src = $base_url.'/app/webroot/files/mp3_player/player.swf';
 		echo '<div>'.$audio['title'].'</div>';
 		echo '<object 
 			type="application/x-shockwave-flash" 

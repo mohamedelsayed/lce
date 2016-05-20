@@ -1,10 +1,10 @@
 <div class="t_p_con index">
 	<?php if(!empty($members)){?>
 		<?php foreach ($members as $key => $member) {
-			$member_link = $this->Session->read('Setting.url').'/members/view/'.$member['Member']['id'];
+			$member_link = $base_url.'/members/view/'.$member['Member']['id'];
 			$image = '';
 			if($member['Member']['image'] != ''){
-				$image = $this->Session->read('Setting.url').'/img/upload/'.$member['Member']['image'];
+				$image = $base_url.'/img/upload/'.$member['Member']['image'];
 			}
 			$fullname = '';
 			if($member['Member']['fullname'] != ''){
@@ -22,9 +22,9 @@
 			if($member['Member']['job_title'] != ''){
 				$job_title = $member['Member']['job_title'];
 			}
-			$img_src = $this->Session->read('Setting.url').DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
+			$img_src = $base_url.DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
 			if($member['Member']['image'] != ''){
-				$img_src = $this->Session->read('Setting.url').DS.'img'.DS.'upload'.DS.$member['Member']['image'];
+				$img_src = $base_url.DS.'img'.DS.'upload'.DS.$member['Member']['image'];
 			}?>
 			<div class="userdata">				
 				<div class="contacts_member_image">

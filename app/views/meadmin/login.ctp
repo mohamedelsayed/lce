@@ -8,7 +8,7 @@
 		echo $form->input('password');
 		echo $form->end(__('Login', true));?>
 		<div class="forget">
-			<a href="<?php echo $this->Session->read('Setting.url').'/forget-password';?>">Forgot Password?</a>
+			<a href="<?php echo $base_url.'/forget-password';?>">Forgot Password?</a>
 		</div>
 	</fieldset>
 </div>

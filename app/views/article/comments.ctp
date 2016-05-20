@@ -3,7 +3,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $("#add_comment").click(function(){
-                addComment('<?php echo $this->Session->read('Setting.url');?>');
+                addComment('<?php echo $base_url;?>');
             });
         });
     </script>
@@ -31,13 +31,13 @@
 	    </div>
 		<?php foreach($comments as $comment){?>
 	    <div class="comment">
-	        <div class="com_logo"><img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>comment_icon.png" width="50" /></div>
+	        <div class="com_logo"><img src="<?php echo $base_url.'/img/front/';?>comment_icon.png" width="50" /></div>
 	        <?php /*<div class="com_title"><?php echo strip_tags($comment['Comment']['title']);?></div>*/?>
 	        <div class="com_name"><?php echo 'By: '.strip_tags($comment['Comment']['name']);?></div>
 	        <div class="com_date"><?php echo date('F d, Y, g:i a', strtotime($comment['Comment']['created']));?></div>
 	        <div class="com_body"><?php echo strip_tags($comment['Comment']['body']);?></div>
 	    </div>
-	    <div id="space"><img src="<?php echo $this->Session->read('Setting.url').'/app/webroot/img/front/';?>line.png" width="407" height="1" /></div>                    
+	    <div id="space"><img src="<?php echo $base_url.'/app/webroot/img/front/';?>line.png" width="407" height="1" /></div>                    
 	    <?php }?>
 	    <?php echo $this->element('front/paging_view');?>
 	<?php }?>

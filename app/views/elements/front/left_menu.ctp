@@ -13,20 +13,20 @@
 			}			
 			elseif($left_selected == 'artwork')
 			$class = 'selected';?>		
-			<a <?php echo 'class="'.$class.'"';?> href="<?php echo $this->Session->read('Setting.url').'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name']));?>">Artworks</a>
+			<a <?php echo 'class="'.$class.'"';?> href="<?php echo $base_url.'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name']));?>">Artworks</a>
 			<?php if(isset($left_cats_children) && !empty($left_cats_children)){
 				$inner_class = 'sub';
         		if($inner_cat_id == 'all'){
         			$inner_class = 'subcurrent';
     			}?>
-				<a class="<?php echo $inner_class;?>" href="<?php echo $this->Session->read('Setting.url').'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category'.'/all';?>">- All</a>
+				<a class="<?php echo $inner_class;?>" href="<?php echo $base_url.'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category'.'/all';?>">- All</a>
 	            <?php if(!empty($left_cats_children)){
 	            	foreach ($left_cats_children as $left_cats_children_item) {
 	            		$inner_class = 'sub';
 	            		if($left_cats_children_item['Cat']['id'] == $inner_cat_id){
 	            			$inner_class = 'subcurrent';
             			}?>
-	            		<a class="<?php echo $inner_class;?>" href="<?php echo $this->Session->read('Setting.url').'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category/'.$left_cats_children_item['Cat']['id'];?>">
+	            		<a class="<?php echo $inner_class;?>" href="<?php echo $base_url.'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category/'.$left_cats_children_item['Cat']['id'];?>">
 	            			- <?php echo $left_cats_children_item['Cat']['title'];?>
 	        			</a>
 	    			<?php }?>
@@ -40,15 +40,15 @@
 					});
 				</script>*/?>
 	        <?php }?>
-			<a <?php if($left_selected == 'biography') echo 'class="selected"';?> href="<?php echo $this->Session->read('Setting.url').'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/biography';?>">Biography</a>
+			<a <?php if($left_selected == 'biography') echo 'class="selected"';?> href="<?php echo $base_url.'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/biography';?>">Biography</a>
 		<?php }?>
 		<?php if(!empty($left_cats)){
 			$first = 0;
 			foreach ($left_cats as $left_cat) {				
 				if($type == 'exhibition'){
-					$left_cat_link = $this->Session->read('Setting.url').'/exhibition/index/'.$left_cat['Cat']['id'];
+					$left_cat_link = $base_url.'/exhibition/index/'.$left_cat['Cat']['id'];
 				}elseif($type == 'artist'){
-					$left_cat_link = $this->Session->read('Setting.url').'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category/'.$left_cat['Cat']['id'];
+					$left_cat_link = $base_url.'/'.$this->element('front/clean_title',array('artistName' => $artist['Artist']['name'])).'/category/'.$left_cat['Cat']['id'];
 				}?>
 				<?php $class = '';
 				if($left_selected == $left_cat['Cat']['id']){
@@ -77,9 +77,9 @@
 			            			$inner_class = 'subcurrent';
 		            			}
 			            		if($type == 'exhibition'){
-									$left_sub_cat_link = $this->Session->read('Setting.url').'/exhibition/index/'.$left_cats_children_ex_item['Cat']['id'];
+									$left_sub_cat_link = $base_url.'/exhibition/index/'.$left_cats_children_ex_item['Cat']['id'];
 								}elseif($type == 'artist'){
-									$left_sub_cat_link = $this->Session->read('Setting.url').'/artist/category/'.$artist_id.'/'.$left_cats_children_ex_item['Cat']['id'];
+									$left_sub_cat_link = $base_url.'/artist/category/'.$artist_id.'/'.$left_cats_children_ex_item['Cat']['id'];
 								}?>
 			            		<a class="<?php echo $inner_class;?>" href="<?php echo $left_sub_cat_link;?>">
 			            			- <?php echo $left_cats_children_ex_item['Cat']['title'];?>
@@ -99,7 +99,7 @@
 			<?php }?>
 		<?php }?>
 		<?php if($type == 'exhibition'){?>	
-			<a <?php if($left_selected == 'events') echo 'class="selected"';?> href="<?php echo $this->Session->read('Setting.url').'/exhibition/events';?>" >
+			<a <?php if($left_selected == 'events') echo 'class="selected"';?> href="<?php echo $base_url.'/exhibition/events';?>" >
 				<?php echo $left_event_title;?>
 			</a>
 		<?php }?>

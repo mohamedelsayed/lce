@@ -2,14 +2,14 @@
 if(!empty($video)){?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			updateVideoHits('<?=$video['id'];?>', '<?php $this->Session->read('Setting.url');?>');
+			updateVideoHits('<?php echo $video['id'];?>', '<?php echo $base_url;?>');
 		});
 	</script>
 	<?php 
 	if($this->action == 'edit')$delete = true; else $delete = false;
 	echo '<div>'.$video['title'].'</div>';
 ?>
-	<iframe title="YouTube video player" width="<?=$width;?>" height="<?=$height;?>" src="<?=$video['url'];?>" frameborder="0" allowfullscreen></iframe>
+	<iframe title="YouTube video player" width="<?php echo $width;?>" height="<?php echo $height;?>" src="<?php echo $video['url'];?>" frameborder="0" allowfullscreen></iframe>
 <?php
 	if($delete){			
 		echo '<div class = "delete">';	

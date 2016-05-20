@@ -4,14 +4,14 @@
 		<title>
 			<?php echo $this->Session->read('Setting.title'). ' - Maintenance Mode';?>
 		</title>
-		<?php echo $this->Html->meta('icon', $this->Session->read('Setting.url').'/app/webroot/img/front/favicon.png');?>
+		<?php echo $this->Html->meta('icon', $base_url.'/app/webroot/img/front/favicon.png');?>
 		<?php echo $this->Html->css(array('front/style', 'front/new_style'));?>
 	</head>
 	<body>
 		<div class="container">
 			<div class="maintenancelogo">
-				<a href="<?php echo $this->Session->read('Setting.url');?>">
-					<img alt="<?php echo $this->Session->read('Setting.title');?>" src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo.png" />
+				<a href="<?php echo $base_url;?>">
+					<img alt="<?php echo $this->Session->read('Setting.title');?>" src="<?php echo $base_url.'/img/front/';?>logo.png" />
 				</a>
 			</div>
 			<div class="maintenancetext">

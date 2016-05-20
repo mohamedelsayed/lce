@@ -7,7 +7,7 @@ if(!empty($teamMembersCommunity)){?>
 			if($i%5 == 0){
 				$class = 'team_member_div_two_special';
 			}
-			$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
+			$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
 			<div class="team_member_div_two <?php echo $class;?>" id="teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>">
 				<div class="img_about_2 team_member_image_div_two">
 					<a class="teamMemberanchor teammember<?php echo $teamMember['TeamMember']['id'];?>">
@@ -51,7 +51,7 @@ if(!empty($teamMembersCommunity)){?>
 		if($i == 1){
 			$class = 'team_member_current';
 		}
-		$image_team_member = $this->Session->read('Setting.url').'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
+		$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
 		$linkedin = '';
 		if($teamMember['TeamMember']['linkedin'] != ''){
 			$linkedin = $teamMember['TeamMember']['linkedin']; 
@@ -82,7 +82,7 @@ if(!empty($teamMembersCommunity)){?>
 					<div class="img_about team_member_mail_div_three">
 						<div class="tertr team_member_mail_image_div_three">
 							<a href="mailto:<?php echo $mail;?>">
-								<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>icon_mail_red.png"/>
+								<img src="<?php echo $base_url.'/img/front/';?>icon_mail_red.png"/>
 							</a>
 						</div>
 						<div class="top_co8 team_member_mail_inner_div_three">
@@ -94,7 +94,7 @@ if(!empty($teamMembersCommunity)){?>
 					<div class="img_about team_member_twitter_div_three">
 						<div class="tertr team_member_twitter_image_div_three">
 							<a target="_blank" href="<?php echo $teamMember['TeamMember']['linkedin'];?>" >
-								<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>linkedin_team.png"/>
+								<img src="<?php echo $base_url.'/img/front/';?>linkedin_team.png"/>
 							</a>
 						</div>
 						<div class="top_co8 team_member_twitter_inner_div_three">

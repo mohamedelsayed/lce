@@ -3,7 +3,7 @@
 <div class="footer_main">
 <div class="logo_footer">
 			<a href="#">
-				<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>logo_footer.png" />
+				<img src="<?php echo $base_url.'/img/front/';?>logo_footer.png" />
 			</a>
 		</div>
 <div class="col-md-3 footer-grid">
@@ -46,13 +46,13 @@
 		<script type="text/javascript">
 		    $(document).ready(function(){
 		        $("#send_form").click(function(){			
-					sendForm('<?php echo $this->Session->read('Setting.url');?>');		          
+					sendForm('<?php echo $base_url;?>');		          
 		        });             
 		    });
 		</script>
 		<?php echo $this->Form->create('newsletter', array('id' => 'newsletterForm'));?>
     	<div class="adders_grop">
-    		<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>bg_g.jpg" />
+    		<img src="<?php echo $base_url.'/img/front/';?>bg_g.jpg" />
 		</div>		
         <div class="input_2">
         	<input name="data[newsletter][email]" class="inpu_lce" type="text" id="email" name="email" placeholder="Your Email Address.." />
@@ -70,45 +70,45 @@
     <?php if($this->Session->read('Setting.facbook_link') != ''){?>
 			<div class="fase">
 				<a target="_blank" href="<?php echo $this->Session->read('Setting.facbook_link');?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>face_home.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>face_home.png"/>
 				</a>
 			</div>
 		<?php }?>
 		<?php if($this->Session->read('Setting.linkedin_link') != ''){?>
 			<div class="fase">
 				<a target="_blank" href="<?php echo $this->Session->read('Setting.linkedin_link');?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>icon_in.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>icon_in.png"/>
 				</a>
 			</div>
 		<?php  }?>		
         <?php if($this->Session->read('Setting.twitter_link') != ''){?>
 			<div class="fase">
 				<a target="_blank" href="<?php echo $this->Session->read('Setting.twitter_link');?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>twitter_home.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>twitter_home.png"/>
 				</a>
 			</div>
 		<?php }?>	
 		<?php if($this->Session->read('Setting.youtube_link') != ''){?>
 			<div class="fase">
 				<a target="_blank" href="<?php echo $this->Session->read('Setting.youtube_link');?>">
-					<img src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>twitter_home.png"/>
+					<img src="<?php echo $base_url.'/img/front/';?>twitter_home.png"/>
 				</a>
 			</div>
 		<?php }?>
 	</div>
 	<?php /*
 	<div class="menu_grop">
-		<a href="<?php echo $this->Session->read('Setting.url');?>"><?php echo $this->Session->read('Setting.home_string');?></a>
+		<a href="<?php echo $base_url;?>"><?php echo $this->Session->read('Setting.home_string');?></a>
 		<?php if(!empty($header_cats)){
         	foreach ($header_cats as $key => $header_cat) {?>
-        		<a href="<?php echo $this->Session->read('Setting.url').'/page/view/'.$header_cat['Cat']['id'];?>">
+        		<a href="<?php echo $base_url.'/page/view/'.$header_cat['Cat']['id'];?>">
         			<?php echo $header_cat['Cat']['title'];?>
     			</a>
     		<?php }?>
 		<?php }?>
-		<a href="<?php echo $this->Session->read('Setting.url').'/article/all';?>"><?php echo $this->Session->read('Setting.blog_string');?></a>
-		<a href="<?php echo $this->Session->read('Setting.url').'/faq';?>"><?php echo $this->Session->read('Setting.faq_fotter_string');?></a>
-		<a href="<?php echo $this->Session->read('Setting.url').'/contact-us';?>"><?php echo $header_contact_us_title;?></a>
+		<a href="<?php echo $base_url.'/article/all';?>"><?php echo $this->Session->read('Setting.blog_string');?></a>
+		<a href="<?php echo $base_url.'/faq';?>"><?php echo $this->Session->read('Setting.faq_fotter_string');?></a>
+		<a href="<?php echo $base_url.'/contact-us';?>"><?php echo $header_contact_us_title;?></a>
 	</div>*/?>
 	<div class="left_bot"><?php echo $this->Session->read('Setting.footer');?></div>
 	<div id="Developer">
@@ -122,7 +122,7 @@
 	display:none;	
 	width: 80px;
 	height:15px;
-	background-image: url(<?php echo $this->Session->read('Setting.url').'/img/front/tloading.gif'?>);
+	background-image: url(<?php echo $base_url.'/img/front/tloading.gif'?>);
 	background-repeat: no-repeat;
 }
 #newsletter_Result{

@@ -7,9 +7,9 @@
 				if($treeLink[$key] != ''){					
 					$flag = true;
 				}
-			}if($flag == true){?><a href="<?php echo $this->Session->read('Setting.url').'/'.$treeLink[$key];?>"><?php }echo $value;if($flag == true){?></a><?php }
+			}if($flag == true){?><a href="<?php echo $base_url.'/'.$treeLink[$key];?>"><?php }echo $value;if($flag == true){?></a><?php }
 			if($k++ < count($tree)){?>
-				<img class="arrow_image" src="<?php echo $this->Session->read('Setting.url').'/img/front/';?>arrw.jpg" />
+				<img class="arrow_image" src="<?php echo $base_url.'/img/front/';?>arrw.jpg" />
 			<?php }?>
 		<?php }?>
 	<?php }?>

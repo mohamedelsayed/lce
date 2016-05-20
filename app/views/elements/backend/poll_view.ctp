@@ -9,10 +9,10 @@ if(!empty($poll)){
 		$("#pollAjaxLoader").hide(); //hide the ajax loader
 		$("#pollMessage").hide(); //hide the ajax loader
 		$("#pollSubmit").click(function() {
-			return pollControl('<?=$this->Session->read('Setting.url');?>', false);
+			return pollControl('<?php echo $base_url;?>', false);
 		});
 		$("#votesResults").click(function() {
-			return pollControl('<?=$this->Session->read('Setting.url');?>', true);
+			return pollControl('<?php echo $base_url;?>', true);
 		});
 	}); 
 </script>

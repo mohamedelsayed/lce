@@ -43,7 +43,7 @@ if (!empty($gallery)){
                 	<div 
                 		class="playsmall"
                 		style="margin-top: <?php echo $styelMarginTop;?>px; margin-left: <?php echo $styelMarginLeft;?>px;"                 		
-                		onclick="playAudio('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['file'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $this->Session->read('Setting.url');?>', '<?php echo $delete;?>');">
+                		onclick="playAudio('<?php echo $record['id'];?>', '<?php echo $record['title'];?>', '<?php echo $record['file'];?>', <?php echo $width;?>, <?php echo $height;?>, '<?php echo $base_url;?>', '<?php echo $delete;?>');">
                 	</div>
                     <?php
 						//echo '<div style="margin-bottom:0px">'.substr($record['title'],0,10).'</div>';
