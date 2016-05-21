@@ -1016,3 +1016,6 @@ footer {
     height: 30px;
     float: left;
 }
+.instructorpopoupheadimg img{
+	max-width:100px; 
+}
