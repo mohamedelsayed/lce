@@ -35,7 +35,9 @@
 	$testimonial_link_all = $base_url.'/page/view/3?nodeid=6';
 	$testimonial_cut_string = $this->Session->read('Setting.testimonial_cut_string'); ?>
 	<div class="bottom_grop_top">
-		<div class="top uppercase_text">Testimonials</div>
+		<a href="<?php echo $testimonial_link_all;?>">
+			<div class="testimonials_home top uppercase_text">Testimonials</div>
+		</a>
 		<div class="testimonials_home_left">
 			<?php foreach ($testimonials as $key => $testimonial) {
 				$image = '';
@@ -83,7 +85,9 @@
 		</div>
 	</div>
     <div class="bottom_grop_2">
-		<div class="title_top_find">FIND A COACH</div>
+    	<a href="<?php echo $base_url.'/all-coaches';?>">
+			<div class="title_top_find">FIND A COACH</div>
+		</a>
             <div class="articles_home_left">
             <div class="top_right article_home">
             <div class="article_home_image_creator_date">
@@ -95,7 +99,6 @@
 			</a>
 		</div>
 	</div>
-    
 <?php /* }?>
 <div class="bottom_grop_2">
 		<div class="title_top_find">FIND A COACH</div>
@@ -159,9 +162,10 @@
 		</div>
 	</div>
 <?php */ }?>
-
 	<div class="bottom_grop_2">
-		<div class="title_top_events">UPCOMING EVENTS</div>
+		<a href="<?php echo $base_url.'/all-events';?>">
+			<div class="title_top_events">UPCOMING EVENTS</div>
+		</a>
 		<div class="articles_home_left">		
 				<div class="top_right article_home">
                 <div class="top_img_article article_home_image article_home_image_new">
@@ -192,7 +196,6 @@
 			</a>
 		</div>
 	</div>
-
 <?php /*if(!empty($partners)){?>
 	<?php if(isset($partners['Gal'][0])){?>
 		<div class="bot_logo" style="margin-bottom: 35px;">
