@@ -58,15 +58,19 @@ class FronteventsController  extends AppController {
 	                    }
 	                }
 				}
-                $data .= '<h4 style="">'.$instructor['Instructor']['name'].'<div id="closeinstructorpopoup" class="closeinstructorpopoup">X</div></h4>';
+                $data .= '<h4 style="">'.$instructor['Instructor']['name'].
+                	     '<div id="closeinstructorpopoup" class="closeinstructorpopoup">X</div></h4>';
 				$data .= '<div class="instructorpopoupbody">';
 				if($image != ''){
                     $data .= '<div class="instructorpopouphead instructorpopoupheadimg">
                     	<img style="'.$style.'" src="'.$image.'"/>
                     </div>';
                 }				
-				$data .= '<div class="instructorpopouphead instructorpopoupposition">Position: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['position'].'</div>
-                            <div class="instructorpopouphead instructorpopoupbiography">Biography: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['biography'].'</div>';                
+				$data .= '<div class="instructorpopouphead instructorpopoupposition">Position: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['position'].'</div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupmail"><i class="icon-mail"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['mail'].'</div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupposition"><i class="icon-facebook"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['facebook'].'</div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupposition"><i class="icon-linkedin"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['linkedin'].'</div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupbiography">Biography: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['biography'].'</div>';                
                 $data .= '</div>';
             }
         }
