@@ -1,6 +1,6 @@
 DESCRIPTION
 -----------
-This is code is writen by Mohamed Elsayed
+This is code is written by Mohamed Elsayed
 
 REQUIREMENTS
 ------------
