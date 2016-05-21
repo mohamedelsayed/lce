@@ -170,10 +170,10 @@ body {
 .selected{
 	background-color: #dcdcdc;
 }
-.slider{
+/*.slider{
 	float:left;
 	width: 1200px;
-}
+}*/
 .bottom_grop_top{
 	width: 58%;
 	float:left;
