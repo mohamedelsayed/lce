@@ -16,7 +16,9 @@ Router::connect('/me-admin/logout/', array('controller' => 'meadmin', 'action' =
 Router::connect('/forum', array('controller' => 'forum', 'action' => 'index'));	
 //Router::connect('/forum/index', array('controller' => 'posts', 'action' => 'all'));	
 Router::connect('/all-events', array('controller' => 'frontevents', 'action' => 'events'));
+Router::connect('/return-transaction', array('controller' => 'frontevents', 'action' => 'return_transaction'));
 Router::connect('/all-coaches', array('controller' => 'frontcoaches', 'action' => 'coaches'));
+Router::connect('/coach/*', array('controller' => 'frontcoaches', 'action' => 'coach'));
 //Sitemap Routing
 Router::connect('/sitemap', array('controller' => 'sitemaps', 'action' => 'index'));
 //Router::connect('/sitemap/:action/*', array('controller' => 'sitemaps'));
