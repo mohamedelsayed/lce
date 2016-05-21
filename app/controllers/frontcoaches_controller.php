@@ -9,5 +9,6 @@ class FrontcoachesController  extends AppController {
 	var $uses = null;	
 	function coaches(){
 		$this->set('title_for_layout' , 'All Coaches');		
+		$this->set('selected','frontcoaches');	
 	}
 }

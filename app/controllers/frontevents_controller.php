@@ -8,6 +8,7 @@ class FronteventsController  extends AppController {
 	var $name = 'Frontevents';
 	var $uses = null;	
 	function events(){
-		$this->set('title_for_layout' , 'All Events');		
+		$this->set('title_for_layout' , 'All Events');	
+		$this->set('selected','frontevents');	
 	}
 }
