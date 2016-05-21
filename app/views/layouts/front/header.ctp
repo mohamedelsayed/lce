@@ -17,7 +17,7 @@
 			            		<?php echo $header_cat['Cat']['title'];?>
 		            		</a>
 		            		<?php if(!empty($header_cat['Node'])){?>
-					            <ul>
+					            <ul style="width: auto;overflow: hidden;">
 					            	<?php foreach ($header_cat['Node'] as $key => $header_cat_node) { ?>
 						            	<li class="submenu">
 						            		<a href="<?php echo $base_url.'/page/view/'.$header_cat['Cat']['id'].'?nodeid='.$header_cat_node['id'];?>"><?php echo $header_cat_node['title'];?></a>
@@ -25,7 +25,7 @@
 					        		<?php }?>
 								</ul>
 							<?php }elseif(!empty($header_cat['ChildCat'])){?>
-								<ul>
+								<ul style="width: auto;overflow: hidden;">
 					            	<?php foreach ($header_cat['ChildCat'] as $key => $header_cat_child) {?>
 						            	<li class="submenu">
 						            		<a href="<?php echo $base_url.'/page/show/'.$header_cat['Cat']['id'].'?childid='.$header_cat_child['id'];?>"><?php echo $header_cat_child['title'];?></a>
@@ -37,13 +37,13 @@
 					<?php }?>
 				<?php }?>
 				<li>
-					<a href="<?php echo $base_url.'/all-coaches';?>" class="fNiv">Find a coach</a>
+					<a id="frontcoaches" href="<?php echo $base_url.'/all-coaches';?>" class="fNiv">Find a coach</a>
 				</li>
 				<li>
-					<a href="<?php echo $base_url.'/all-events';?>" class="fNiv">upcoming events</a>
+					<a id="frontevents" href="<?php echo $base_url.'/all-events';?>" class="fNiv">upcoming events</a>
 				</li>
 				<li>
-					<a href="<?php echo $base_url.'/contact-us';?>" class="fNiv"><?php echo $header_contact_us_title;?></a>
+					<a id="content" href="<?php echo $base_url.'/contact-us';?>" class="fNiv"><?php echo $header_contact_us_title;?></a>
 				</li>
 			</ul>
 		</div>

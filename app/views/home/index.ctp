@@ -35,7 +35,7 @@
 	$testimonial_link_all = $base_url.'/page/view/3?nodeid=6';
 	$testimonial_cut_string = $this->Session->read('Setting.testimonial_cut_string'); ?>
 	<div class="bottom_grop_top">
-		<div class="top">Testimonials</div>
+		<div class="top uppercase_text">Testimonials</div>
 		<div class="testimonials_home_left">
 			<?php foreach ($testimonials as $key => $testimonial) {
 				$image = '';
