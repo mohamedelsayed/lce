@@ -950,3 +950,9 @@ footer {
 .uppercase_text{
 	text-transform: uppercase;	
 }
+.title_top_find, .testimonials_home, .title_top_events{
+	padding-bottom: 10px;
+	padding-top: 5px;
+	height: 45px;
+	line-height: 45px;
+}
