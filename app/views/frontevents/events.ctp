@@ -34,7 +34,9 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 				<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
 				<div class="post_event_details"><?php echo $location;?></div>
 				<div class="post_event_date">Date</div>
-				<div class="post_event_name"><?php echo $instructor_name;?></div>
+				<div class="post_event_name"  onclick="open_instructor('<?php echo $instructor_id;?>');">
+					<?php echo $instructor_name;?>
+				</div>
 				<div class="post_event_price"><?php echo $ticket_price.' '.$currency;?></div>
 			</div>
 			<div class="post_event_right">

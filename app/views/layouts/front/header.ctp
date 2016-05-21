@@ -56,6 +56,7 @@
 	});
 	</script>
 <?php }?>
+<?php include_once 'instructor.php'; ?>
 <?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];
