@@ -88,9 +88,28 @@
 		<!-- end of facebook comment-->
 		<div class="container_big">
 			<?php include_once('header.ctp');?>
+			<?php if(isset($slideshows) && !empty($slideshows)){
+				$slideshow = $slideshows[array_rand($slideshows)];
+				if(!empty($slideshow)){
+					$href = '';
+					if($slideshow['Slideshow']['link'] != ''){
+						$href = 'href="'.$slideshow['Slideshow']['link'].'"';
+					}
+					if($slideshow['Slideshow']['target'] == 1){
+						$href .= ' target="_blank"';
+					}?>  
+	                <div class="slider_main_div">              
+	                    <div class="slider">
+	                    	<a <?php echo $href;?>>
+								<img style="width:100%;" src="<?php echo $base_url.'/img/upload/'.$slideshow['Slideshow']['image'];?>" alt="" title="" />					
+							</a>
+	                    </div>
+	                </div>
+				<?php }?>
+            <?php }?>
 			<div class="container">
-			<?php //echo $this->Session->flash ();?>
-			<?php echo $content_for_layout; ?>
+				<?php //echo $this->Session->flash ();?>
+				<?php echo $content_for_layout; ?>
             </div>
 			<?php include_once('footer.ctp');?>  
 		</div>

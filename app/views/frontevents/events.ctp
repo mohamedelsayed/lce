@@ -18,57 +18,37 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
         echo $this->Form->input('year', array('type' => 'select', 'options' => $years_options, 'div' => array('class' => 'years_select events_select'), 'label' => false, 'id' => 'year_select_id', 'default' => $year));?>
     </div>
 </div>
-<div class="post_event">
-	<div class="post_event_left">
-		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
-		<div class="post_event_details">Location Details</div>
-		<div class="post_event_date">Date</div>
-		<div class="post_event_name">Instructor Name</div>
-		<div class="post_event_price">Ticket Price</div>
-	</div>
-	<div class="post_event_right">
-		<h1>ICF accredited Coach training</h1>
-		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-		<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-		<a href="#">
-			<div class="input_event">Register Now</div>
-		</a>
-	</div>
-</div>
+<?php if(isset($events) && !empty($events)){
+	foreach ($events as $key => $event) {
+		//pr($event);		
+		$model = 'Nevent';
+		$model2 = 'Instructor';
+		$title = $event[$model]['title'];
+		$description = $event[$model]['description'];
+		$location = $event[$model]['location'];
+		$ticket_price = $event[$model]['ticket_price'];
+		$instructor_id = $event[$model]['instructor_id'];
+		$instructor_name = $event[$model2]['name'];?>
 		<div class="post_event">
-		<div class="post_event_left">
-		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
-		<div class="post_event_details">Location Details</div>
-		<div class="post_event_date">Date</div>
-		<div class="post_event_name">Instructor Name</div>
-		<div class="post_event_price">Ticket Price</div>
+			<div class="post_event_left">
+				<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
+				<div class="post_event_details"><?php echo $location;?></div>
+				<div class="post_event_date">Date</div>
+				<div class="post_event_name"><?php echo $instructor_name;?></div>
+				<div class="post_event_price"><?php echo $ticket_price.' '.$currency;?></div>
+			</div>
+			<div class="post_event_right">
+				<h1><?php echo $title;?></h1>
+				<p><?php echo $description;?></p>
+				<a href="#">
+					<div class="input_event">Register Now</div>
+				</a>
+			</div>
 		</div>
-		<div class="post_event_right">
-		<h1>ICF accredited Coach training</h1>
-		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-		<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-		<a href="#">
-				<div class="input_event">Register Now</div>
-			</a>
-		</div>
-		</div>
-		<div class="post_event">
-		<div class="post_event_left">
-		<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
-		<div class="post_event_details">Location Details</div>
-		<div class="post_event_date">Date</div>
-		<div class="post_event_name">Instructor Name</div>
-		<div class="post_event_price">Ticket Price</div>
-		</div>
-		<div class="post_event_right">
-		<h1>ICF accredited Coach training</h1>
-		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-		<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.<br/>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
-		<a href="#">
-				<div class="input_event">Register Now</div>
-			</a>
-		</div>
-	</div>
+	<?php }?>
+<?php }else{ ?>
+	<div class="no-data-found">No data found.</div>
+<?php }?>
 <?php /*<div class="pagination_event">
 	<ul>
 		<li><a href="#"><</a></li>

@@ -1,4 +1,4 @@
-<?php if(!empty($slideshows)){?>
+<?php /*if(!empty($slideshows)){?>
 	<?php echo $this->Html->css(array('front/nivo', 'front/nivoDefaultTheme'));
 	echo $this->Javascript->link(array('front/jquery.nivo.slider'));?>
 	<script type="text/javascript">
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-<?php }?>
+<?php }*/?>
 <?php if(!empty($testimonials)){
 	$testimonial_link_all = $base_url.'/page/view/3?nodeid=6';
 	$testimonial_cut_string = $this->Session->read('Setting.testimonial_cut_string'); ?>
@@ -205,3 +205,8 @@
 		</div>
 	<?php }?>
 <?php }*/?>
+<style type="text/css">	
+.header_big {
+	border-bottom: 0px solid #ebebeb !important;
+}
+</style>
