@@ -23,7 +23,7 @@ function open_instructor(id){
         	open_instructor_popup('<h4>Loading<div id="closeinstructorpopoup" class="closeinstructorpopoup">X</div></h4><div class="instructor_loading"></div>');            
         },
         success: function(result) {
-        	//open_instructor_popup(result);            
+        	open_instructor_popup(result);            
         }
     }); 
 }

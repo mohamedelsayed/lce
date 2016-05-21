@@ -20,7 +20,6 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 </div>
 <?php if(isset($events) && !empty($events)){
 	foreach ($events as $key => $event) {
-		//pr($event);		
 		$model = 'Nevent';
 		$model2 = 'Instructor';
 		$title = $event[$model]['title'];
@@ -28,12 +27,21 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
 		$instructor_id = $event[$model]['instructor_id'];
-		$instructor_name = $event[$model2]['name'];?>
+		$instructor_name = $event[$model2]['name'];
+		$date = date('F d, Y', strtotime($event[$model]['start_date']));
+		$time_from = date('g:i a', strtotime($event['Instructor']['time_from']));
+		$time_to = date('g:i a', strtotime($event['Instructor']['time_to']));
+		$duration = $event[$model]['duration'];		
+		$all_date = $date;
+		if($duration > 1){
+			$all_date .= ' '.$duration.' Days';
+		}
+		$all_date .= ' <br />'.$time_from.' to '.$time_to;?>
 		<div class="post_event">
 			<div class="post_event_left">
 				<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
 				<div class="post_event_details"><?php echo $location;?></div>
-				<div class="post_event_date">Date</div>
+				<div class="post_event_date" style="height: auto;"><i class="icon-date"></i><?php echo $all_date;?></div>
 				<div class="post_event_name"  onclick="open_instructor('<?php echo $instructor_id;?>');">
 					<?php echo $instructor_name;?>
 				</div>
@@ -41,7 +49,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
-				<p><?php echo $description;?></p>
+				<div class="event_description"><?php echo $description;?></div>
 				<a href="#">
 					<div class="input_event">Register Now</div>
 				</a>
