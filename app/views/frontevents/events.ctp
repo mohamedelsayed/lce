@@ -36,10 +36,34 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		if($duration > 1){
 			$all_date .= ' '.$duration.' Days';
 		}
-		$all_date .= ' <br />'.$time_from.' to '.$time_to;?>
+		$all_date .= ' <br />'.$time_from.' to '.$time_to;
+		$image = '';
+		$style = '';
+    	if(trim($event[$model]['image']) != ''){
+    		$div_ratio = 327/218;
+    		$img = $event[$model]['image'];
+        	$image = BASE_URL.'/img/upload/'.$img;            
+            $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+            $image_size = getimagesize($image_path);          
+            $max_height = 'max-height:100%;';
+            $max_width  = 'max-width:100%;';
+            $style = $max_width;
+            if(!empty($image_size)){
+                $width = $image_size[0];
+                $height = $image_size[1];   
+                $image_ratio = $width/$height;
+                if($image_ratio > $div_ratio){                  
+                    $style = $max_height;
+                }
+            }
+		}?>
 		<div class="post_event">
 			<div class="post_event_left">
-				<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
+				<?php if($image != ''){?>
+					<a>					
+						<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
+					</a>
+				<?php }?>
 				<div class="post_event_details"><?php echo $location;?></div>
 				<div class="post_event_date" style="height: auto;"><i class="icon-date"></i><?php echo $all_date;?></div>
 				<div class="post_event_name"  onclick="open_instructor('<?php echo $instructor_id;?>');">
@@ -50,7 +74,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
 				<div class="event_description"><?php echo $description;?></div>
-				<a href="#">
+				<a>
 					<div class="input_event">Register Now</div>
 				</a>
 			</div>
