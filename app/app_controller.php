@@ -10,6 +10,7 @@ class AppController extends Controller {
 	public $components = array('Session', 'Cookie');
 	public $settings;	
 	public $clearProSession = true;
+	public $currency = 'L.E';
 	//Define facebook AppId & AppSecret
 	//const AppId = '548083845231266';
 	//const AppSecret = 'fb8c98a3a6f182a9c8dfe030f3ad7acb';	
@@ -26,6 +27,12 @@ class AppController extends Controller {
 		//$this->setAllArticlesTags();
 		//$this->setRecentArticles();
 		//$this->setParentCat();
+		$this->loadModel('Setting');
+		$settings = $this->Setting->read(null, 1);
+		$this->set("minYearValue", $settings['Setting']['minimum_year']);
+		$this->set("maxYearValue", $settings['Setting']['maximum_year']);
+		$this->set('settings', $settings['Setting']);
+		$this->set('currency', $this->currency);
 	}	
 	function beforeRender(){
 		if($this->name == 'CakeError'){
