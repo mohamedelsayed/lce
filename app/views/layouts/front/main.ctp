@@ -31,8 +31,10 @@
 		<meta name="Author" content="" />
 		<meta http-equiv="Cache-Control" content="Public" />
 		<meta http-equiv="Pragma" content="No-Cache" />
-		<?php
-		//META
+		<script type="text/javascript">
+			var base_url = '<?php echo $base_url;?>';
+		</script>
+		<?php //META
 		echo $this->Html->meta('icon', $base_url.'/app/webroot/img/front/favicon.png' );
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
@@ -41,9 +43,8 @@
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
-		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel','front/script_menu' ));		
-		echo $scripts_for_layout;
-		?>
+		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel','front/script_menu', 'front/dev'));		
+		echo $scripts_for_layout;?>
 		<script type="text/javascript">		
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', '<?php echo $this->Session->read('Setting.google_analytics_propertyid');?>']);
