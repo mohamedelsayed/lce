@@ -1,3 +1,6 @@
+<?php $all_testimonial_link = $base_url.'/page/view/3?nodeid=6';
+$all_coaches_link = $base_url.'/all-coaches';
+$all_events_link = $base_url.'/all-events';?>
 <?php /*if(!empty($slideshows)){?>
 	<?php echo $this->Html->css(array('front/nivo', 'front/nivoDefaultTheme'));
 	echo $this->Javascript->link(array('front/jquery.nivo.slider'));?>
@@ -32,10 +35,9 @@
 	</div>
 <?php }*/?>
 <?php if(!empty($testimonials)){
-	$testimonial_link_all = $base_url.'/page/view/3?nodeid=6';
 	$testimonial_cut_string = $this->Session->read('Setting.testimonial_cut_string'); ?>
 	<div class="bottom_grop_top">
-		<a href="<?php echo $testimonial_link_all;?>">
+		<a href="<?php echo $all_testimonial_link;?>">
 			<div class="testimonials_home top uppercase_text">Testimonials</div>
 		</a>
 		<div class="testimonials_home_left">
@@ -57,7 +59,7 @@
 				if($testimonial['Testimonial']['body'] != ''){
 					$body = strip_tags($testimonial['Testimonial']['body']);
 				}
-				$testimonial_link = $testimonial_link_all.'#testimonial'.$testimonial['Testimonial']['id'];?>
+				$testimonial_link = $all_testimonial_link.'#testimonial'.$testimonial['Testimonial']['id'];?>
 				<div class="top_pic">				
 					<div class="top_img testimonial_image_home">
 						<a href="<?php echo $testimonial_link;?>">
@@ -75,30 +77,69 @@
 					</div>*/?>
 					<div class="top_wrie_2">
 						"<?php echo $this->element('front'.DS.'string_format_view',array('str'=> $body,'type'=> 'wordsCut', 'val' => $testimonial_cut_string));?>
-						<?php //echo $body;?>"
 					</div>
 				</div>
 			<?php }?>
-			<a href="<?php echo $testimonial_link_all;?>">
+			<a href="<?php echo $all_testimonial_link;?>">
 				<div class="top_see">More Tesimonials ></div>
 			</a>
 		</div>
 	</div>
-    <div class="bottom_grop_2">
-    	<a href="<?php echo $base_url.'/all-coaches';?>">
-			<div class="title_top_find">FIND A COACH</div>
+<?php }?>
+<div class="bottom_grop_2">
+	<a href="<?php echo $all_coaches_link;?>">
+		<div class="title_top_find">FIND A COACH</div>
+	</a>
+        <div class="articles_home_left">
+        <div class="top_right article_home">
+        <div class="article_home_image_creator_date">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        </div>
+			</div>
+		<a href="<?php echo $all_coaches_link;?>">
+			<div class="top_see_now">Submit coaching form</div>
 		</a>
-            <div class="articles_home_left">
-            <div class="top_right article_home">
-            <div class="article_home_image_creator_date">
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-            </div>
-				</div>
-			<a href="#">
-				<div class="top_see_now">Submit coaching form</div>
-			</a>
-		</div>
 	</div>
+</div>
+<div class="bottom_grop_2">
+	<a href="<?php echo $all_events_link;?>">
+		<div class="title_top_events">UPCOMING EVENTS</div>
+	</a>
+	<div class="articles_home_left">		
+			<div class="top_right article_home">
+            <div class="top_img_article article_home_image article_home_image_new">
+						<a href="#">
+							<img src="<?php echo $image;?>" />
+						</a>
+					</div>	
+				<div class="top_wrie_b article_home_title">
+					ICF accredited Coach training
+				</div>
+				<div class="mm_tt article_home_creator">
+						Location Details 
+					</div>
+					<div class="mm_tt article_home_data">
+                    Date
+                    </div>
+                    <div class="mm_tt article_home_name">
+						Instructor Name
+					</div>
+					<div class="article_home_image_creator_date">
+       It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+        </div>				
+				<div class="article_header">
+				</div>
+			</div>
+		<a href="#">
+			<div class="top_see_now">Register Now</div>
+		</a>
+	</div>
+</div>
+<style type="text/css">	
+.header_big {
+	border-bottom: 0px solid #ebebeb !important;
+}
+</style>
 <?php /* }?>
 <div class="bottom_grop_2">
 		<div class="title_top_find">FIND A COACH</div>
@@ -161,41 +202,7 @@
 			</a>
 		</div>
 	</div>
-<?php */ }?>
-	<div class="bottom_grop_2">
-		<a href="<?php echo $base_url.'/all-events';?>">
-			<div class="title_top_events">UPCOMING EVENTS</div>
-		</a>
-		<div class="articles_home_left">		
-				<div class="top_right article_home">
-                <div class="top_img_article article_home_image article_home_image_new">
-							<a href="#">
-								<img src="<?php echo $image;?>" />
-							</a>
-						</div>	
-					<div class="top_wrie_b article_home_title">
-						ICF accredited Coach training
-					</div>
-					<div class="mm_tt article_home_creator">
-							Location Details 
-						</div>
-						<div class="mm_tt article_home_data">
-                        Date
-                        </div>
-                        <div class="mm_tt article_home_name">
-							Instructor Name
-						</div>
-						<div class="article_home_image_creator_date">
-           It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-            </div>				
-					<div class="article_header">
-					</div>
-				</div>
-			<a href="#">
-				<div class="top_see_now">Register Now</div>
-			</a>
-		</div>
-	</div>
+<?php }?>	
 <?php /*if(!empty($partners)){?>
 	<?php if(isset($partners['Gal'][0])){?>
 		<div class="bot_logo" style="margin-bottom: 35px;">
@@ -205,8 +212,3 @@
 		</div>
 	<?php }?>
 <?php }*/?>
-<style type="text/css">	
-.header_big {
-	border-bottom: 0px solid #ebebeb !important;
-}
-</style>

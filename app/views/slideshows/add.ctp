@@ -3,7 +3,7 @@
 	<fieldset>
  		<legend><?php __('Add Slideshow'); ?></legend>
 	<?php
-		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
+		echo $form->input('image', array('type'=>'file', 'label'=>'Image <span style="color: red">(width must be at least 1500px)</span>'));
 		echo $this->Form->input('link');
 		$target_attributes = array('value' => 0, 'legend'=>'Target');
 		echo $form->radio('target', $target_options, $target_attributes);

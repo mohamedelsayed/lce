@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->element('backend/image_view', array('image'=>array('id'=>$this->data['Slideshow']['id'], 'image'=>$this->data['Slideshow']['image']), 'size'=>'master'));
-		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
+		echo $form->input('image', array('type'=>'file', 'label'=>'Image <span style="color: red">(width must be at least 1500px)</span>'));
 		echo $this->Form->input('link');
 		$target_attributes = array('value' => $this->data['Slideshow']['target'], 'legend'=>'Target');
 		echo $form->radio('target',$target_options, $target_attributes);

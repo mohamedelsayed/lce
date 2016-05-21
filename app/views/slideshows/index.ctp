@@ -4,7 +4,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('image');?></th>
-			<?php/*	<th><?php echo $this->Paginator->sort('link');?></th>*/?>
+			<?php /*<th><?php echo $this->Paginator->sort('link');?></th>*/?>
 			<?php /*<th><?php echo $this->Paginator->sort('target');?></th>*/?>
 			<th><?php echo $this->Paginator->sort('approved');?></th>
 			<th><?php echo $this->Paginator->sort('weight');?></th>
