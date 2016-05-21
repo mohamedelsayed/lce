@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);body {
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body {
     margin: 0px;
 	padding: 0px;
 	font-family:  Montserrat;
@@ -945,4 +946,7 @@ footer {
 }
 .copyright-right ul li a.twitter:hover {
   opacity: 0.5;
+}
+.uppercase_text{
+	text-transform: uppercase;	
 }

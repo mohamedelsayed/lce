@@ -139,7 +139,7 @@ body {
 	line-height: 45px;
 	float:left;
 }
-.menu a:hover{
+.menu li:hover{
 	background-color: #dcdcdc;
 }
 .men_etop{
@@ -1785,7 +1785,7 @@ http://vladimirkudinov.com
 	top: 45px;
 	left: 0;
 	opacity: 0;	
-	background: #ddd5d1;
+	background: #dcdcdc;
 	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;
@@ -1802,7 +1802,7 @@ http://vladimirkudinov.com
 	height: 0;
 	overflow: hidden;
 	padding: 0;
-	width: 350px;
+	/*width: 350px;*/
 	-webkit-transition: height .25s ease .1s;
 	-moz-transition: height .25s ease .1s;
 	-o-transition: height .25s ease .1s;
@@ -1817,11 +1817,12 @@ http://vladimirkudinov.com
 .menu ul li a {
 	padding: 0 10px;
 	margin: 0;
-	width: 350px;
+	/*width: 250px;*/
 	border: none;
 	line-height: 40px;
 	text-align: left;
 	/*border-bottom: 1px solid #353539;*/	
+	width: auto;white-space: nowrap; min-width: 220px;
 }
 .menu ul li:last-child a { border: none; }
 /* Icons */
@@ -2013,4 +2014,7 @@ select {
 .pagination_event ul li a:last-child:hover{
 	background: none;
 	color: #3c3d41;
+}
+.submenu{
+	width: 100%;
 }
