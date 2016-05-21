@@ -1839,7 +1839,7 @@ ul.tabs_event{
 	margin-top: 2.5%;
 	padding: 0 0 0 1%;
 }
-ul.tabs_event li{
+ul.tabs_event li a{
 	background: none;
 	color: #9d9d9d;
 	height: 37px;
@@ -1848,11 +1848,11 @@ ul.tabs_event li{
 	float:left;
 	font-size: 25px;
 }
-ul.tabs_event li:hover{
+ul.tabs_event li a:hover{
 	color: #F58521;
 }
 ul.tabs_event li img{
-	margin-top: 3px;
+	margin-top: 1px;
 }
 ul.tabs_event li img:hover{
 	background: url(../../img/front/icon_home_hover.png) no-repeat scroll;

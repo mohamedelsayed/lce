@@ -956,3 +956,52 @@ footer {
 	height: 45px;
 	line-height: 45px;
 }
+.months_select{
+	float: left;	
+	width: 25%;
+}
+.years_select{
+	float: left;
+	width: 15%;
+}
+.events_div{
+	float: left;
+	width: 100%;
+	margin-bottom: 23px;
+}
+.events_select:before{
+	background: rgba(0, 0, 0, 0) url("../../img/front/select_box_4.png") no-repeat scroll right 0;
+    content: "";
+    display: block;
+    height: 38px;
+    pointer-events: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 100%;
+    border-radius: 12px;
+}
+.events_select select{
+	-moz-appearance: none;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #abadb3;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    outline: medium none;
+    padding: 4px;
+    width: 100%;    
+    border-radius: 12px;
+    font-size: 18px;
+}
+.events_select{
+	position: relative;
+	margin-right: 23px;
+}
+.events_filter_div{
+	float: left;
+	width: 60%;
+	padding: 1% 0.5% 2%;
+}
