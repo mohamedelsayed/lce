@@ -1017,5 +1017,10 @@ footer {
     float: left;
 }
 .instructorpopoupheadimg img{
-	max-width:100px; 
+	width: 150px; 
+	height:150px; 
+}
+.post_event_left img{
+	width: 327px;
+	height: 218px;
 }
