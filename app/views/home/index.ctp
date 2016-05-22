@@ -90,12 +90,12 @@ $all_events_link = $base_url.'/all-events';?>
 	<a href="<?php echo $all_coaches_link;?>">
 		<div class="title_top_find">FIND A COACH</div>
 	</a>
-        <div class="articles_home_left">
-        <div class="top_right article_home">
-        <div class="article_home_image_creator_date">
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-        </div>
+	<div class="articles_home_left">
+		<div class="top_right article_home">
+			<div class="article_home_image_creator_date">
+				It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
 			</div>
+		</div>
 		<a href="<?php echo $all_coaches_link;?>">
 			<div class="top_see_now">Submit coaching form</div>
 		</a>
@@ -105,35 +105,64 @@ $all_events_link = $base_url.'/all-events';?>
 	<a href="<?php echo $all_events_link;?>">
 		<div class="title_top_events">UPCOMING EVENTS</div>
 	</a>
-	<div class="articles_home_left">		
+	<?php if(isset($event) && !empty($event)){
+		$model = 'Nevent';
+		$model2 = 'Instructor';
+		$image = '';
+		$style = '';
+    	if(trim($event[$model]['image']) != ''){
+    		$div_ratio = 183/122;
+    		$img = $event[$model]['image'];
+        	$image = BASE_URL.'/img/upload/'.$img;            
+            $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+            $image_size = getimagesize($image_path);          
+            $max_height = 'max-height:100%;';
+            $max_width  = 'max-width:100%;';
+            $style = $max_width;
+            if(!empty($image_size)){
+                $width = $image_size[0];
+                $height = $image_size[1];   
+                $image_ratio = $width/$height;
+                if($image_ratio > $div_ratio){                  
+                    $style = $max_height;
+                }
+            }
+		}
+		$title = $event[$model]['title'];
+		$description = $event[$model]['description'];
+		$location = $event[$model]['location'];
+		$ticket_price = $event[$model]['ticket_price'];
+		$instructor_id = $event[$model]['instructor_id'];
+		$instructor_name = $event[$model2]['name'];
+		$date = date('F d, Y', strtotime($event[$model]['start_date']));
+		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
+		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
+		$duration = $event[$model]['duration'];		
+		$all_date = $date;
+		if($duration > 1){
+			$all_date .= ' '.$duration.' Days';
+		}
+		//$all_date .= ' <br />'.$time_from.' to '.$time_to;?>
+		<div class="articles_home_left">		
 			<div class="top_right article_home">
-            <div class="top_img_article article_home_image article_home_image_new">
-						<a href="#">
-							<img src="<?php echo $image;?>" />
-						</a>
-					</div>	
-				<div class="top_wrie_b article_home_title">
-					ICF accredited Coach training
+				<div class="top_img_article article_home_image article_home_image_new">
+					<a>
+						<img class="home_event_img" src="<?php echo $image;?>" />
+					</a>
 				</div>
-				<div class="mm_tt article_home_creator">
-						Location Details 
-					</div>
-					<div class="mm_tt article_home_data">
-                    Date
-                    </div>
-                    <div class="mm_tt article_home_name">
-						Instructor Name
-					</div>
-					<div class="article_home_image_creator_date">
-       It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-        </div>				
-				<div class="article_header">
+				<div class="top_wrie_b article_home_title"><?php echo $title;?></div>
+				<div class="mm_tt article_home_creator"><?php echo $location;?></div>
+				<div class="mm_tt article_home_data"><?php echo $all_date;?></div>
+				<div class="mm_tt article_home_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');"><?php echo $instructor_name;?></div>
+				<div class="article_home_image_creator_date">
+					<?php echo $description;?>
 				</div>
 			</div>
-		<a href="#">
-			<div class="top_see_now">Register Now</div>
-		</a>
-	</div>
+			<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+				<div class="top_see_now">Register Now</div>
+			</a>
+		</div>
+	<?php }?>
 </div>
 <style type="text/css">	
 .header_big {

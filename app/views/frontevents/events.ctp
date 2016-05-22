@@ -29,8 +29,8 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		$instructor_id = $event[$model]['instructor_id'];
 		$instructor_name = $event[$model2]['name'];
 		$date = date('F d, Y', strtotime($event[$model]['start_date']));
-		$time_from = date('g:i a', strtotime($event['Instructor']['time_from']));
-		$time_to = date('g:i a', strtotime($event['Instructor']['time_to']));
+		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
+		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
 		$duration = $event[$model]['duration'];		
 		$all_date = $date;
 		if($duration > 1){
@@ -66,7 +66,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 				<?php }?>
 				<div class="post_event_details"><?php echo $location;?></div>
 				<div class="post_event_date" style="height: auto;"><i class="icon-date"></i><?php echo $all_date;?></div>
-				<div class="post_event_name"  onclick="open_instructor('<?php echo $instructor_id;?>');">
+				<div class="post_event_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');">
 					<?php echo $instructor_name;?>
 				</div>
 				<div class="post_event_price"><?php echo $ticket_price.' '.$currency;?></div>
@@ -74,8 +74,8 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
 				<div class="event_description"><?php echo $description;?></div>
-				<a>
-					<div class="input_event">Register Now</div>
+				<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+					<div class="input_event open_event">Register Now</div>
 				</a>
 			</div>
 		</div>
