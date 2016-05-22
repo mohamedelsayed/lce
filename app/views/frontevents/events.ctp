@@ -20,7 +20,6 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 </div>
 <?php if(isset($events) && !empty($events)){
 	foreach ($events as $key => $event) {
-		//pr($event);		
 		$model = 'Nevent';
 		$model2 = 'Instructor';
 		$title = $event[$model]['title'];
@@ -28,22 +27,55 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
 		$instructor_id = $event[$model]['instructor_id'];
-		$instructor_name = $event[$model2]['name'];?>
+		$instructor_name = $event[$model2]['name'];
+		$date = date('F d, Y', strtotime($event[$model]['start_date']));
+		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
+		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
+		$duration = $event[$model]['duration'];		
+		$all_date = $date;
+		if($duration > 1){
+			$all_date .= ' '.$duration.' Days';
+		}
+		$all_date .= ' <br />'.$time_from.' to '.$time_to;
+		$image = '';
+		$style = '';
+    	if(trim($event[$model]['image']) != ''){
+    		$div_ratio = 327/218;
+    		$img = $event[$model]['image'];
+        	$image = BASE_URL.'/img/upload/'.$img;            
+            $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+            $image_size = getimagesize($image_path);          
+            $max_height = 'max-height:100%;';
+            $max_width  = 'max-width:100%;';
+            $style = $max_width;
+            if(!empty($image_size)){
+                $width = $image_size[0];
+                $height = $image_size[1];   
+                $image_ratio = $width/$height;
+                if($image_ratio > $div_ratio){                  
+                    $style = $max_height;
+                }
+            }
+		}?>
 		<div class="post_event">
 			<div class="post_event_left">
-				<a href="#"><img src="<?php echo $base_url.'/img/front/';?>img_event.png"/></a>
+				<?php if($image != ''){?>
+					<a>					
+						<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
+					</a>
+				<?php }?>
 				<div class="post_event_details"><?php echo $location;?></div>
-				<div class="post_event_date">Date</div>
-				<div class="post_event_name"  onclick="open_instructor('<?php echo $instructor_id;?>');">
+				<div class="post_event_date" style="height: auto;"><i class="icon-date"></i><?php echo $all_date;?></div>
+				<div class="post_event_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');">
 					<?php echo $instructor_name;?>
 				</div>
 				<div class="post_event_price"><?php echo $ticket_price.' '.$currency;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
-				<p><?php echo $description;?></p>
-				<a href="#">
-					<div class="input_event">Register Now</div>
+				<div class="event_description"><?php echo $description;?></div>
+				<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+					<div class="input_event open_event">Register Now</div>
 				</a>
 			</div>
 		</div>

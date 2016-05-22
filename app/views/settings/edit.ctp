@@ -4,7 +4,7 @@
  		<legend><?php __('Edit Setting'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('url');
+		//echo $this->Form->input('url');
 		echo $this->Form->input('email');
 		//echo $this->Form->input('contact_us_email');		
 		echo $this->Form->input('title');

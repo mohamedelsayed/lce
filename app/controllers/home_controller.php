@@ -47,6 +47,16 @@ class HomeController  extends AppController {
 			)	  	 	
 		);
 		$this->set('partners' , $partners);
+		$today = date("Y-m-d"); 
+		$this->loadModel('Nevent');
+		$event = $this->Nevent->find(
+			'first', array(
+				'conditions' => array('Nevent.approved' => 1, 'Nevent.start_date >=' => $today,),
+				'order' => array('Nevent.id'=>'DESC'),
+				'limit' => 1
+			)	  	 	
+		);
+		$this->set('event' , $event);
 	}
 	function newsletter(){	
 		$error = '';

@@ -56,7 +56,7 @@
 	});
 	</script>
 <?php }?>
-<?php include_once 'instructor.php'; ?>
+<?php include_once 'events_instructors.php'; ?>
 <?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];

@@ -78,7 +78,7 @@ class AuthController extends AppController{
 		}
 		$this->loadModel('Setting');
         $setting = $this->Setting->read(null, 1);
-        $this->set('base_url', $setting['Setting']['url']);
+        $this->set('base_url', BASE_URL);
 		$gender_options = array('0' => 'Male', '1' => 'Female');
 		$this->set('gender_options', $gender_options);
 	}

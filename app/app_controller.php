@@ -49,7 +49,7 @@ class AppController extends Controller {
 		}
 		$this->loadModel('Setting');
         $setting = $this->Setting->read(null, 1);
-        $this->set('base_url', $setting['Setting']['url']);
+        $this->set('base_url', BASE_URL);
 	}	
 	function afterFilter(){
 		//$this->Session->write('dontPopup', true);
@@ -58,7 +58,6 @@ class AppController extends Controller {
 		$this->loadModel('Setting');
 		$this->Session->write($this->Setting->read(null, 1));
 	}
-	
 	function getPagingLimit(){
 		$this->loadModel('Setting');
 		$settings = $this->Setting->read(null, 1);
