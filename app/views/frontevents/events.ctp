@@ -64,12 +64,12 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 						<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
 					</a>
 				<?php }?>
-				<div class="post_event_details"><?php echo $location;?></div>
-				<div class="post_event_date" style="height: auto;"><i class="icon-date"></i><?php echo $all_date;?></div>
+				<div class="post_event_details"><i class="icon_details"></i><?php echo $location;?></div>
+				<div class="post_event_date" style="height: auto;"><i class="icon_date"></i><?php echo $all_date;?></div>
 				<div class="post_event_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');">
-					<?php echo $instructor_name;?>
+					<i class="icon_name"></i><?php echo $instructor_name;?>
 				</div>
-				<div class="post_event_price"><?php echo $ticket_price.' '.$currency;?></div>
+				<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
