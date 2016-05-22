@@ -1,4 +1,4 @@
-<div id="requestpopup" class="mesage-pop" style="display:none;" >
+<div id="requestpopup" class="mesage-pop">
 	<h4>Contact Us<div id="closealert" class="closealert">X</div></h4>
 	<div id="contactus_Resultdiv"></div>
 </div>
@@ -32,7 +32,7 @@
 </script>
 <div class="img_about" style="margin-top: 10px;">
 	<?php echo $content['Content']['map_iframe'];?>
-	<?php /*<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d27513.56686643945!2d31.1884216!3d30.4588901!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1397339395281" width="960" height="345" frameborder="0" style="border:0"></iframe>*/?>
+	<?php /*<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d27513.56686643945!2d31.1884216!3d30.4588901!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1397339395281" width="1200" height="400" frameborder="0" style="border:0"></iframe>*/?>
 </div>
 <div class="bottom_grop_top">
 	<div class="img_top"><?php echo $content['Content']['inner_title'];?></div>
@@ -186,7 +186,7 @@
 		<div class="ri_3">
 			<div class="ri_2">
 				<a href="<?php echo $content['Content']['linkedin_link'];?>">
-					<img src="<?php echo $base_url.'/img/front/linkedin_contact.png';?>" width="31" />
+					<img src="<?php echo $base_url.'/img/front/linkedin_contact.png';?>" width="22" />
 				</a>
 			</div>
 			<a target="_blank" href="<?php echo $content['Content']['linkedin_link'];?>">
@@ -203,17 +203,17 @@
 			</a>
 		</div>
 	<?php }?>
-	<?php if($content['Content']['working_hours'] != ''){?>
+	<?php /* if($content['Content']['working_hours'] != ''){?>
 		<div class="img_top_2" style="margin-bottom: 15px;">Working Hours</div>
 		<div class="ri_3">
 			<?php echo $content['Content']['working_hours'];?>
 		</div>
-	<?php }?>
+	<?php } */?>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".img_about iframe").css('width','960');
-	$(".img_about iframe").css('height','325');
+	$(".img_about iframe").css('width','1200');
+	$(".img_about iframe").css('height','400');
 	$(".img_about iframe").css('border','0');
 });
 </script>
