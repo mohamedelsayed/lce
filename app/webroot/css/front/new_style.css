@@ -795,7 +795,7 @@ p{
     margin-bottom: 5px;
     padding-top: 10px;
 }
-.closealert, .closeinstructorpopoup {
+.closealert, .closepopoup {
     cursor: pointer;
     position: absolute;
     right: 10px;
@@ -1010,7 +1010,7 @@ footer {
 	float: left;
 	width: 100%;
 }
-.instructor_loading{
+.ajax_loading{
 	width: 100%;
 	background: url("../../img/front/loading.gif") no-repeat scroll center center rgba(0, 0, 0, 0);	
     height: 30px;
@@ -1023,4 +1023,17 @@ footer {
 .post_event_left img{
 	width: 327px;
 	height: 218px;
+}
+.home_event_img{
+	width: 183px !important;
+	height: 122px !important;	
+}
+.open_instructor{
+	cursor: pointer;
+}
+.open_event{
+	cursor: pointer;	
+}
+.checkout_button{
+	text-transform: uppercase;
 }
