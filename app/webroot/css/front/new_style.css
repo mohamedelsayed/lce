@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 body {
     margin: 0px;
 	padding: 0px;
@@ -359,7 +359,7 @@ form .required label:after {
 	text-align: justify;
 }
 .tabs li:hover{
-	background-color: #cecece;	
+	background-color: #e3e3e3;	
 }
 p{
 	margin: 0px;
@@ -459,7 +459,7 @@ p{
 	cursor: pointer;
 }
 .team_member_current{
-	display: block;
+	display: none;
 }
 .team_member_twitter_image_div_three img{
 	width: 24px;
@@ -480,7 +480,7 @@ p{
 }
 .s_ri{
 	border-bottom: 32.5px solid rgba(0, 0, 0, 0);
-    border-left: 10px solid #EE4640;
+    border-left: 10px solid #f58521;
     border-top: 32.5px solid rgba(0, 0, 0, 0);
     float: left;
     height: 0;
@@ -488,7 +488,7 @@ p{
     width: 0;
 }
 .leftmenuchild ul li{
-	width: 265px;
+	width: 100%;
 }
 .leftmenuchild{
 	width: 100%;
@@ -496,7 +496,8 @@ p{
 .nodeitem{
 }
 .currentnodeitem{
-	background-color: #dfdfdf;
+	background-color: #f58521;
+	color: #ffffff !important;
 }
 .nodeitemview{
 	display: none;
@@ -510,7 +511,6 @@ p{
     font-size: 18px;
     text-decoration: none;
     width: 100%;
-    margin-bottom: 20px;
 }
 .leftmenuchildcurent{
 	display: block;	
@@ -558,11 +558,11 @@ p{
 .facebook_fotter{
 	float: right;
 	margin: 0 auto;
-	width: 16%;
+	width: 20%;
 }
 .fase{
-	padding-left: 6%;
-	padding-right: 6%;
+	padding-left: 8%;
+	padding-right: 8%;
 }
 .fase_frist{
 	padding-left: 10px;
@@ -609,12 +609,13 @@ p{
 }
 .requiredspan{
 	color: #EE4640;
+	display: none;
 }
 .w_g_m{
 	width: 110px;
 }
 .in_ut_s_2{
-	width: 485px;
+	width: 100%;
 }
 .bottom_page_image_client{
 	width: 150px;
