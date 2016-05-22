@@ -12,6 +12,7 @@ class NeventsController extends AuthController {
 	function index() {
 		$this->Nevent->recursive = 0;
 		$this->set('nevents', $this->paginate());
+		$this->set('title_for_layout' , 'Events');
 	}
 	function view($id = null) {
 		if (!$id) {
@@ -19,6 +20,7 @@ class NeventsController extends AuthController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('nevent', $this->Nevent->read(null, $id));
+		$this->set('title_for_layout' , 'Events');
 	}
 	function add() {
 		if (!empty($this->data)) {
@@ -34,6 +36,7 @@ class NeventsController extends AuthController {
 		}
 		$instructors = $this->Nevent->Instructor->find('list');
 		$this->set(compact('instructors'));
+		$this->set('title_for_layout' , 'Events');
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -60,6 +63,7 @@ class NeventsController extends AuthController {
 		}
 		$instructors = $this->Nevent->Instructor->find('list');
 		$this->set(compact('instructors'));
+		$this->set('title_for_layout' , 'Events');
 	}
 	function delete($id = null) {
 		if (!$id) {
