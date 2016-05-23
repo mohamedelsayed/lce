@@ -635,11 +635,9 @@ p{
 }
 .testimonials_home_left{
 	float: left;
-	border: 2px solid #ffffff;
 }
 .articles_home_left{
 	float: left;
-	border: 2px solid #ffffff;
 }
 .article_header{	
     color: #404041;
@@ -652,7 +650,7 @@ p{
 .article_home_image{
 }
 .article_home_title{
-	width: 60%;;	
+	width: 40%;;	
 }
 .article_home{
 	float: left;
