@@ -56,15 +56,9 @@ function open_event(id){
     }); 
 }
 jQuery(document).ready(function() {
-	jQuery("#mesagepopboxinstructorpopoup").on("click",".closeinstructorpopoup", function(){
-        close_instructor_popup();            
-    });
-    jQuery("#mesagepopboxeventpopoup").on("click",".closeeventpopoup", function(){
-        close_event_popup();            
-    });
-    jQuery('.mesage-pop-bg').click(function(){
-    	close_instructor_popup();
-        close_event_popup();
+    jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){
+    	close_instructor_popup(); 
+    	close_event_popup();            
     });
 });
 </script>
