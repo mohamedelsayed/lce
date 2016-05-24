@@ -38,7 +38,7 @@
                 <a href="<?php echo $base_url.'/all-coaches';?>" class="footer_grid_title">FIND A COACH</a>
                 <a href="<?php echo $base_url.'/contact-us';?>" class="footer_grid_title">CONTACT US</a>
 			</div>
-            <div class="col-md-12"></div>				
+            <div class="col-md-12"></div>
 			<div class="facebook_fotter">
 		    	<?php if($this->Session->read('Setting.facbook_link') != ''){?>
 					<div class="fase">
@@ -70,6 +70,20 @@
 				<?php }?>
 			</div>
 			<div class="left_bot"><?php echo $this->Session->read('Setting.footer');?></div>
+            <div class="payment">
+            <a href="#" class="payment_logo">
+            <img src="<?php echo $base_url.'/img/front/';?>secured.png"/>
+            </a>
+            <a href="#" class="payment_logo">
+            <img src="<?php echo $base_url.'/img/front/';?>visa.jpg"/>
+            </a>
+            <a href="#" class="payment_logo">
+            <img src="<?php echo $base_url.'/img/front/';?>mastercard.png"/>
+            </a>
+            <a href="#" class="payment_logo">
+            <img src="<?php echo $base_url.'/img/front/';?>choose.png"/>
+            </a>
+            </div>
 			<div id="Developer">
 				Developed by <a href="http://www.mohamedelsayed.net" target="_blank">Mohamed Elsayed</a>
 			</div>
