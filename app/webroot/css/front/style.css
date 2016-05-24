@@ -1969,6 +1969,7 @@ select {
     font-size: 16px;
     margin-bottom: 30px;
     margin-top: 55px;
+	cursor: pointer;
     padding: 6px 0;
     text-align: center;
     text-decoration: none;
@@ -2529,12 +2530,134 @@ select {
 }
 .payment{
 	float: left;
-	width: 45%;
+    margin-left: 11%;
+    width: 40%;
 }
 .payment a{
 	float: left;
 	padding: 0 2%;
 }
-.payment_logo{
-	
+.header_menu_arrow{
+	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu.png") no-repeat scroll;
+	float: right;
+}
+.instructorpopouptitle{
+	color: #2b2b2b;
+    float: left;
+    font-size: 28px;
+	text-align: left;
+	margin: 2% 1.2%;
+	width: 100%;
+}
+.event_popup_location{
+    color: #5e5e5e;
+    float: left;
+    font-size: 20.9px;
+    height: 36px;
+	text-align: left;
+	margin: 2% 0;
+    width: 50%;
+}
+.event_popup_all_date{
+    color: #5e5e5e;
+    float: left;
+    font-size: 20.9px;
+    height: 36px;
+	margin: 2% 0 7%;
+	text-align: left;
+    width: 48%;
+}
+.event_popup_instructor_name{
+    color: #5e5e5e;
+    float: left;
+    font-size: 20.9px;
+    height: 36px;
+	margin: 2% 0;
+	text-align: left;
+    width: 50%;
+}
+.event_popup_ticket_price{
+    color: #5e5e5e;
+    float: left;
+    font-size: 20.9px;
+    height: 36px;
+	margin: 2% 0;
+	text-align: left;
+    width: 48%;
+}
+.icon-location{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_events.png") no-repeat scroll 0px -4px;
+    float: left;
+    height: 36px;
+    width: 50px;
+}
+.icon-all_date_popup{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_events.png") no-repeat scroll 0px -62px;
+    float: left;
+    height: 30px;
+    width: 50px;
+}
+.icon-instructor_name{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_events.png") no-repeat scroll 0px -115px;
+    color: #5e5e5e;
+    float: left;
+    height: 30px;
+    width: 50px;
+}
+.icon-ticket_price{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_events.png") no-repeat scroll 0px -169px;
+    float: left;
+    height: 30px;
+    width: 50px;
+}
+.event_popup_ticket_price_all{
+	border-top: 3px solid #dadada;
+    color: #2b2b2b;
+    float: left;
+    font-size: 55px;
+    margin-left: 2%;
+    padding-top: 5%;
+    text-align: left;
+    width: 40%;
+}
+.event_popup_ticket_price_all_in{
+	color: #5e5e5e;
+    float: left;
+    font-size: 20.9px;
+    margin-bottom: 7%;
+    width: 100%;
+}
+.event_popup_arab_african{
+	float: left;
+	border-top: 3px solid #dadada;
+    width: 57%;
+	padding-top: 5%;
+}
+.event_popup_arab_african img{
+	float: left;
+}
+.checkout_button{
+	border: 2px solid #f58521;
+    border-radius: 5px;
+    color: #f58521;
+    float: left;
+    font-size: 16px;
+    margin-bottom: 35px;
+    margin-top: 35px;
+	cursor: pointer;
+    padding: 6px 0;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+}
+.checkout_button:hover{
+	border: 2px solid #f58521;
+	text-decoration:none;
+	color: #ffffff;
+	background-color: #f58521;
+	transition: .5s all;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
+	-o-transition: 0.5s all ease;
+	-ms-transition: 0.5s all ease;
 }

@@ -751,29 +751,27 @@ p{
 	opacity: 0.6;
 }
 #mesagecontent {
-	position:fixed;
-	width:460px;
-	top:20%;
-	left:50%;
-	margin:0px 0 0 -230px;
-	padding-bottom:10px;
-	z-index:102;
-	background:#fff;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-box-shadow: #33465F 0px 0px 10px;
-	-moz-box-shadow: #33465F 0px 0px 10px;
-	box-shadow: #33465F 0px 0px 10px;
+	background: #fff none repeat scroll 0 0;
+    border-radius: 3px;
+    bottom: 20%;
+    box-shadow: 0 0 10px #33465f;
+    height: 490px;
+    left: 40%;
+    margin: 0 0 20% -230px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 20%;
+    width: 740px;
+    z-index: 102;
 }
 .mesage-pop {
 	display:none;
 }
 #mesagecontent h4 {
-	 border-bottom: 2px solid #bdc3c7;
-    border-radius: 3px 3px 0 0;
+	border-bottom: 2px solid #bdc3c7;
+    border-radius: 0;
     color: #000000;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 18px;
     margin: 0;
     padding: 11px 10px;
@@ -783,11 +781,10 @@ p{
 #mesagecontent > div, #mesagecontent > form {
 	margin:10px;
     font-size: 17px;
-    font-weight: 500;
     line-height: 24px;
 	text-align: center;
     margin-bottom: 5px;
-    padding-top: 10px;
+    padding: 2%;
 }
 .closealert, .closepopoup {
     cursor: pointer;
@@ -978,7 +975,7 @@ footer {
 .events_select select{
 	-moz-appearance: none;
     background: #fff none repeat scroll 0 0;
-    border: 1px solid #abadb3;
+    border: 2px solid #abadb3;
     color: #000000;
     cursor: pointer;
     display: inline-block;
@@ -987,12 +984,13 @@ footer {
     outline: medium none;
     padding: 4px;
     width: 100%;    
-    border-radius: 12px;
+    border-radius: 5px;
     font-size: 18px;
 }
 .events_select{
 	position: relative;
 	margin-right: 23px;
+	margin-left: 10px;
 }
 .events_filter_div{
 	float: left;
