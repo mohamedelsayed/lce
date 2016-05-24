@@ -1,5 +1,6 @@
 <?php $tree = array(array('url' => '/all-events', 'str' => 'UPCOMING EVENTS'));
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));
+global $base_url;
 $months_options = array();
 for($m = 1;$m <= 12; $m++){
     $month =  date("F", mktime(0, 0, 0, $m));

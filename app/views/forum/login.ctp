@@ -1,3 +1,4 @@
+<?php global $base_url;?>
 <div class="container_out">
 	<div class="users form" id="login">
 	<?php echo $form->create('Member', array('url'=>'login'));?>

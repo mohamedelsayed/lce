@@ -1,9 +1,9 @@
 <?php
 if(!empty($video)){?>
 	<script type="text/javascript">
-		$(document).ready(function(){
+		<?php /*$(document).ready(function(){
 			updateVideoHits('<?php echo $video['id'];?>', '<?php echo $base_url;?>');
-		});
+		});*/?>
 	</script>
 	<?php 
 	if($this->action == 'edit')$delete = true; else $delete = false;

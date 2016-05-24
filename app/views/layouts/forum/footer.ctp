@@ -1,3 +1,4 @@
+<?php $base_url;?>
 <div class="bottom_grop">
 	<div class="top_grop">
         <?php echo $this->Javascript->link('front/ajax/newsletter'); ?>

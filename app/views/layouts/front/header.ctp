@@ -16,6 +16,7 @@
 			            	<a href="<?php echo $base_url.'/page/view/'.$header_cat['Cat']['id'];?>" class="fNiv" id="page<?php echo $header_cat['Cat']['id'];?>">
 			            		<?php echo $header_cat['Cat']['title'];?>
 		            		</a>
+		            		<i class="header_menu_arrow"></i>
 		            		<?php if(!empty($header_cat['Node'])){?>
 					            <ul style="width: auto;overflow: hidden;">
 					            	<?php foreach ($header_cat['Node'] as $key => $header_cat_node) { ?>

@@ -56,7 +56,7 @@
             foreach($gallery as $record){?>			
                 <div style="float: none; position: absolute; left: <?php echo $i;?>px;width:<?php echo $thumbWidth;?>px;" class="panel">
                 	<li>
-						<a onclick="updateVideoHits('<?php echo $record['id'];?>','<?php echo $base_url;?>')", href="<?php echo $record['url'];?>"></a>
+						<a href="<?php echo $record['url'];?>"></a>
 					</li>
                 	<?php /*$imagePath = ($record['image']!='')?'upload/'.$record['image']:'backend/no_image.jpeg'; ?>
                 	

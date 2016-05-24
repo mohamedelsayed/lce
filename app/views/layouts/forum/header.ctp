@@ -1,3 +1,4 @@
+<?php global $base_url;?>
 <div class="header_big">
 	<div class="header">
 		<div class="logo">
