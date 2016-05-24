@@ -621,8 +621,8 @@ p{
 	margin: 0px;	
 }
 .bottom_page_image_client img{
-	max-width:150px;
-	max-height: 150px;
+	/*max-width:150px;
+	max-height: 150px;*/
 }
 .bottom_page_image_client_div{
 	float: left;

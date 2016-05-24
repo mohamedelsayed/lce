@@ -1204,7 +1204,7 @@ ul.tabs li.current{
 	font-size: 14px;
 	text-decoration:none;
 	color: #a5a5a5;
-	width:50%;
+	width:20%;
 	text-align:left;
 	float:left;
 	margin-top: 10px;
@@ -2481,7 +2481,7 @@ select {
     float: left;
     font-size: 16px;
 	width: 48%;
-	padding: 0 1%;
+	padding: 0 1% 0 0;
 }
 .post_profile_text_about samp{
 	color: #404041;
@@ -2526,4 +2526,15 @@ select {
     font-size: 26px;
 	width: 100%;
 	padding: 3% 0;
+}
+.payment{
+	float: left;
+	width: 45%;
+}
+.payment a{
+	float: left;
+	padding: 0 2%;
+}
+.payment_logo{
+	
 }
