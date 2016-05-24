@@ -1034,3 +1034,21 @@ footer {
 .checkout_button{
 	text-transform: uppercase;
 }
+.coach_search{
+	padding-right: 5%;
+}
+.load-more {
+    background: url("../../img/front/load-more-icon.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: left;
+    height: 20px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.ajaxloading{
+	background: url("../../img/front/loading.gif") no-repeat scroll center center rgba(0, 0, 0, 0);	
+    height: 30px;
+    float: left;
+}
