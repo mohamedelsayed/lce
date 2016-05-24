@@ -1,1 +1,10 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<div class="profile_posts_group">
+<div class="post_profile_left">
+<a href="#"><img alt="<?php echo $this->Session->read('Setting.title');?>" src="<?php echo $base_url.'/img/front/';?>pic_coach.png" /></a>
+<div class="post_profile_title">Mona Adel<samp>BS Psychology </samp></div>
+<div class="post_profile_phone">Zamalek, Heliopolis and Maadi<samp>Remote Coaching</samp></div>
+<div class="post_profile_prograf">“Lorem Ipsum is simply dummy text of the printing and typesetting industry.” </div>
+<div class="post_profile"><a href="#">View Profile</a><samp><a href="#">Recommend this caoch</a></samp></div>
+<div class="post_profile_sumit"><a href="#">Contact me</a></div>
+</div>
+</div>
