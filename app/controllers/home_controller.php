@@ -8,11 +8,9 @@ class HomeController  extends AppController {
 	var $name = 'Home';
 	var $uses = null;
 	var $components = array('Email');
-	function index(){
-		//$this->layout = 'ajax';
-		//$this->render('under_construction');		
+	function index(){	
 		$this->set('selected','home');
-		$this->set('title_for_layout' , 'Home');
+		$this->set('title_for_layout', 'Home');
 		$this->loadModel('Slideshow');
 		$slideshows = $this->Slideshow->find(
 			'all', array(

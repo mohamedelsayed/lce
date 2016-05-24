@@ -121,14 +121,16 @@ class CoachesController extends AuthController {
 	        $data_to_add = array_diff($new_items_array, $data_intersect);
 	        $data_to_delete = array_diff($old_items_array, $data_intersect);
 			foreach ($data_to_add as $key => $value) {
-				$data = array(
-				    $model => array(
-				        'coach_id' => $coach_id,
-				        $field => $value
-				    )
-				);
-				$this->$model->create();
-				$this->$model->save($data);			
+				if(is_numeric($value) && $value > 0){
+					$data = array(
+					    $model => array(
+					        'coach_id' => $coach_id,
+					        $field => $value
+					    )
+					);
+					$this->$model->create();
+					$this->$model->save($data);			
+				}
 			}		
 			foreach ($data_to_delete as $key => $value) {
 				$this->$model->deleteAll(array($model.'.coach_id' => $coach_id,
