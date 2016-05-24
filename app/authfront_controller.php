@@ -66,8 +66,10 @@ class AuthfrontController extends AppController{
 	}
 	function beforeRender(){
 		$this->setHeaderQuotes();
-		if($this->layout != 'ajax')
+		if($this->layout != 'ajax'){
 			$this->layout = 'forum/main';
+		}
+		$this->set('base_url', BASE_URL);
 	}
 	function isSuperAdmin(){
 		$flag = 0;
