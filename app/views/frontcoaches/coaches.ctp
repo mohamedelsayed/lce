@@ -92,3 +92,6 @@ global $base_url;?>
 <div class="post_coach_conter"></div>*/?>
 </div>
 <div id="list_coaches_loadmore_button" class="load-more" ></div>
+<script type="text/javascript">
+	ajax_list_coaches(0);
+</script>
