@@ -16,7 +16,7 @@ class FrontcoachesController  extends AppController {
 		$this->set('selected','frontcoaches');	
 	}
 	function ajax_list_coaches(){
-		global $base_url;
+		$base_url = BASE_URL;
 		$data = array();
         $html = '';
 		$name = '';
