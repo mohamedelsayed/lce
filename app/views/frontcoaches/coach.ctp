@@ -16,7 +16,5 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 <a href="#">Contact me</a>
 </div>
 <div class="post_profile_text_video"><samp>Video</samp>
-<iframe width="580" height="320"
-src="http://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1">
-</iframe> 
+<iframe width="580" height="320" src="https://www.youtube.com/embed/PiQXfTemo1o" frameborder="0" allowfullscreen></iframe> 
 </div>
