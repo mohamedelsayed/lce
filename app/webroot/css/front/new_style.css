@@ -14,9 +14,7 @@ body {
 }
 #paging_menu {
 	float: left;
-	/*width: 500px;*/
 	margin-top: 15px;
-	/*margin-left: 20px;*/
 	border-left:solid 1px #5D5D5D;
 	width: 100%;
 }

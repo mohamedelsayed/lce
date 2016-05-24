@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 body {
     margin: 0px;
 	padding: 0px;
@@ -2354,12 +2355,13 @@ select {
 }
 .post_profile_left{
 	float: left;
-	width: 48%;
-	padding: 2% 1%;
+	width: 55%;
+	padding: 2% 0%;
 }
 .post_profile_left img{
 	float: left;
 	margin-right: 1%;
+	width: 25%;
 }
 .post_profile_title{
 	float: left;
@@ -2383,7 +2385,7 @@ select {
     font-size: 14px;
     margin-left: 2%;
     padding: 0.6% 0 1% 2%;
-    width: 72%;
+    width: 70%;
 }
 .post_profile_phone samp{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach_phone.png") no-repeat scroll left center;
@@ -2407,7 +2409,7 @@ select {
     font-size: 16px;
     margin-left: 2%;
     padding: 2% 0 2% 2%;
-    width: 75%;
+    width: 70%;
 }
 .post_profile a{
     color: #f58521;
@@ -2433,9 +2435,9 @@ select {
 }
 .post_profile_sumit{
 	float: left;
-    margin-left: 23%;
-    margin-top: 1%;
-    width: 77%;
+    margin-left: 28%;
+    margin-top: 0%;
+    width: 70%;
 }
 .post_profile_sumit a{
 	color: #f58521;
@@ -2453,4 +2455,75 @@ select {
 	text-align: center;
 	border-radius: 5px;
 	text-transform:uppercase;
+}
+.post_profile_text{
+	background-color: #ebebeb;
+    color: #404041;
+    float: left;
+    font-family: Montserrat;
+    font-size: 16px;
+    margin-top: 6%;
+    padding: 2%;
+    width: 39%;
+}
+.text_border{
+	border-bottom: 28.5px solid rgba(0, 0, 0, 0);
+    border-right: 20px solid #ebebeb;
+    border-top: 28.5px solid rgba(0, 0, 0, 0);
+    float: left;
+	margin-top: 10%;
+    height: 0;
+    line-height: 0;
+    width: 0;
+}
+.post_profile_text_about{
+	color: #404041;
+    float: left;
+    font-size: 16px;
+	width: 48%;
+	padding: 0 1%;
+}
+.post_profile_text_about samp{
+	color: #404041;
+    float: left;
+    font-size: 26px;
+	width: 100%;
+	padding: 3% 0;
+}
+.post_profile_sumit_bottom{
+	 float: left;
+     margin-top: 1%;
+     width: 50%;
+}
+.post_profile_text_about a{
+	color: #f58521;
+    float: right;
+    font-size: 16px;
+	padding: 1% 5%;
+	border: 2px solid #f58521;
+	text-align: center;
+	margin-top: 7%;
+	border-radius: 5px;
+	text-transform:uppercase;
+}
+.post_profile_text_about a:hover{
+	color: #ffffff;
+	background-color: #f58521;
+	text-align: center;
+	border-radius: 5px;
+	text-transform:uppercase;
+}
+.post_profile_text_video{
+	color: #404041;
+    float: left;
+    font-size: 16px;
+	width: 48%;
+	padding: 0 1%;
+}
+.post_profile_text_video samp{
+	color: #404041;
+    float: left;
+    font-size: 26px;
+	width: 100%;
+	padding: 3% 0;
 }
