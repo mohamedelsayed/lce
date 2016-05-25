@@ -180,6 +180,11 @@ body {
     margin-top: 20px;
     width: 70%;
 }
+.grop_contact{
+	 float: left;
+    margin-top: 20px;
+    width: 67%;
+}
 .bottom_grop_2{
 	width: 30%;
 	float:right;
@@ -377,7 +382,7 @@ body {
     margin-bottom: 30px;
     padding: 0 0 0 80px;
     text-decoration: none;
-	width: 74%;
+	width: 79%;
 }
 .left_bot_2{
 	float:left;
@@ -1587,7 +1592,7 @@ input.file{
     height: 20px;
     margin-left: 10px;
     padding: 15px 0 0 9%;
-    width: 40%;
+    width: 41%;
 }
 .article_home_data{
 	background-image: url("../../img/front/icon_data.jpg");
@@ -1598,7 +1603,7 @@ input.file{
     height: 23px;
     margin-left: 10px;
     padding: 15px 0 0 9%;
-    width: 40%;
+    width: 41%;
 }
 .article_home_name{
 	background-image: url("../../img/front/icon_name.jpg");
@@ -1608,7 +1613,7 @@ input.file{
     font-family: montserrat;
     margin-left: 10px;
     padding: 15px 0 0 9%;
-    width: 40%;
+    width: 41%;
 }
 .col-md-3{
 float:left;
@@ -2110,6 +2115,7 @@ select {
     float: left;
     font-size: 55px;
 	font-weight:bold;
+	font-family:  Montserrat;
 	text-align:center;
 }
 .icon_true{
