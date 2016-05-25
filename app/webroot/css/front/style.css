@@ -2679,3 +2679,21 @@ select {
 	font-size: 16px;
     width: 100%;
 }
+.icon-mail{
+	background: rgba(0, 0, 0, 0) url("../../img/front/mail.png") no-repeat scroll;
+    float: left;
+    height: 18px;
+    width: 25px;
+}
+.icon-facebook{
+	background: rgba(0, 0, 0, 0) url("../../img/front/face.png") no-repeat scroll;
+    float: left;
+    height: 30px;
+    width: 50px;
+}
+.icon-linkedin{
+	background: rgba(0, 0, 0, 0) url("../../img/front/linkedin_contact.png") no-repeat scroll;
+    float: left;
+    height: 30px;
+    width: 50px;
+}
