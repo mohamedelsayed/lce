@@ -755,8 +755,8 @@ p{
     border-radius: 3px;
     bottom: 20%;
     box-shadow: 0 0 10px #33465f;
-    height: 490px;
-    left: 40%;
+    height: 540px;
+    left: 45%;
     margin: 0 0 20% -230px;
     padding-bottom: 10px;
     position: fixed;
@@ -774,12 +774,11 @@ p{
     font-size: 18px;
     line-height: 18px;
     margin: 0;
-    padding: 11px 10px;
+    padding: 15px 10px;
     text-align: center;
     text-transform: capitalize;
 }
 #mesagecontent > div, #mesagecontent > form {
-	margin:10px;
     font-size: 17px;
     line-height: 24px;
 	text-align: center;
@@ -790,7 +789,7 @@ p{
     cursor: pointer;
     position: absolute;
 	color: #a2a2a2;
-    right: 10px;
+    right: 20px;
     top: 10px;
 }
 .inner404{
