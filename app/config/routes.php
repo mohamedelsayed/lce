@@ -17,6 +17,7 @@ Router::connect('/forum', array('controller' => 'forum', 'action' => 'index'));
 //Router::connect('/forum/index', array('controller' => 'posts', 'action' => 'all'));	
 Router::connect('/all-events', array('controller' => 'frontevents', 'action' => 'events'));
 Router::connect('/return-transaction', array('controller' => 'frontevents', 'action' => 'return_transaction'));
+Router::connect('/vpc_php_serverhost_do', array('controller' => 'frontevents', 'action' => 'vpc_php_serverhost_do'));
 Router::connect('/all-coaches', array('controller' => 'frontcoaches', 'action' => 'coaches'));
 Router::connect('/coach/*', array('controller' => 'frontcoaches', 'action' => 'coach'));
 //Sitemap Routing
