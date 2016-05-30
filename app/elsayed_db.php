@@ -2,7 +2,7 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @link http://www.mohamedelsayed.net
+ * @link http://www.lifecoachingegypt.net
  * @copyright Copyright (c) 2015 Programming by "http://www.mohamedelsayed.net"
  */
 $http_host = $_SERVER['HTTP_HOST'];
