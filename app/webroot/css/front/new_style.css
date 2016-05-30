@@ -602,7 +602,7 @@ p{
 	left: 0px;
 	width: 36px;
 }
-.required{
+.required, .error{
 	border: 1px solid #EE4640;
 }
 .requiredspan{
@@ -750,7 +750,7 @@ p{
 	background:#33465F;
 	opacity: 0.6;
 }
-#mesagecontent {
+.mesagecontent {
 	background: #fff none repeat scroll 0 0;
     border-radius: 3px;
     bottom: 20%;
@@ -767,7 +767,7 @@ p{
 .mesage-pop {
 	display:none;
 }
-#mesagecontent h4 {
+.mesagecontent h4 {
 	border-bottom: 2px solid #bdc3c7;
     border-radius: 0;
     color: #000000;
@@ -778,7 +778,7 @@ p{
     text-align: center;
     text-transform: capitalize;
 }
-#mesagecontent > div, #mesagecontent > form {
+#mesagecontent > div, .mesagecontent > form {
     font-size: 17px;
     line-height: 24px;
 	text-align: center;
