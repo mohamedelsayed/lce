@@ -1,7 +1,7 @@
 <?php /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @link http://www.lce.com/
+ * @link http://www.lifecoachingegypt.com
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once 'elsayed_db.php';
@@ -11,9 +11,9 @@ class AppController extends Controller {
 	public $settings;	
 	public $clearProSession = true;
 	public $currency = 'L.E';
-	//Define facebook AppId & AppSecret
-	//const AppId = '548083845231266';
-	//const AppSecret = 'fb8c98a3a6f182a9c8dfe030f3ad7acb';	
+	public $payment_merchant_id = 'Test290510EGP';
+	public $payment_access_code = 'B972DDBB';
+	public $payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
 	function beforeFilter() {
 		//write settings in session
 		if(!$this->Session->check('Setting')){
@@ -33,6 +33,9 @@ class AppController extends Controller {
 		$this->set("maxYearValue", $settings['Setting']['maximum_year']);
 		$this->set('settings', $settings['Setting']);
 		$this->set('currency', $this->currency);
+		$this->set('payment_merchant_id', $this->payment_merchant_id);
+		$this->set('payment_access_code', $this->payment_access_code);
+		$this->set('payment_hash_secret', $this->payment_hash_secret);
 	}	
 	function beforeRender(){
 		if($this->name == 'CakeError'){
