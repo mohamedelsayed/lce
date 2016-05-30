@@ -76,11 +76,7 @@ class FronteventsController  extends AppController {
         }
         echo $data;     
         $this->autoRender = false;          
-    }
-	function return_transaction(){
-		$this->set('title_for_layout' , 'Successful Transaction');	
-		$this->set('selected', 'frontevents');		
-	}
+    }	
 	function get_event($id = 0){
         $data = '';
         if($id != 0){
@@ -119,11 +115,83 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="event_popup_all_date"><i class="icon-all_date_popup"></i>'.$all_date.'</div>';
 				$data .= '<div class="event_popup_ticket_price_all"><div class="event_popup_ticket_price_all_in">Total Price: </div>'.$ticket_price.' '.$this->currency.'</div>';              
 				$data .= '<div class="event_popup_arab_african"><img src="'.$arab_african_image.'" /></div>';  
-				$data .= '<div class="checkout_button">checkout</div>';
+				$data .= '<div class="checkout_button checkout_event" onclick="checkout_event('.$event[$model]['id'].');">checkout</div>';
                 $data .= '</div>';
             }
         }
         echo $data;     
         $this->autoRender = false;          
     }
+	function vpc_php_serverhost_do(){
+		$SECURE_SECRET = $this->payment_hash_secret;
+		$event_id = 0;
+		if(isset($_POST['event_id'])){
+			$event_id = $_POST['event_id'];			
+		}
+		if($event_id > 0 && is_numeric($event_id)){
+			$event_amount = 0;
+			$event = $this->Nevent->find(
+                'first', array(
+                    'conditions' => array('Nevent.approved' => 1, 'Nevent.id' => $event_id),
+                )           
+            );
+            $model = 'Nevent';
+			$model2 = 'Instructor'; 
+			if(isset($event[$model]['ticket_price'])){
+				$event_amount = $event[$model]['ticket_price'];
+			}
+			if($event_amount > 0 && is_numeric($event_amount)){
+				$_POST["Title"] = 'LCE Event Order';
+				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
+				$_POST["vpc_Version"] = '1';
+				$_POST["vpc_Command"] = 'pay';
+				$_POST["vpc_OrderInfo"] = 'LCE Event Order';					
+				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
+				unset($_POST["virtualPaymentClientURL"]); 
+				unset($_POST["SubButL"]);
+				$md5HashData = $SECURE_SECRET;
+				$_POST["vpc_Locale"] = 'en';
+				$_POST["vpc_Merchant"] = $this->payment_merchant_id;
+				$_POST["vpc_AccessCode"] = $this->payment_access_code;
+				$_POST["vpc_MerchTxnRef"] = $event_id;
+				$_POST["vpc_Amount"] = $event_amount * 100;
+				$_POST["vpc_ReturnURL"] = BASE_URL.'/return-transaction?event_id='.$event_id;	 
+				ksort ($_POST);		
+				// set a parameter to show the first pair in the URL
+				$appendAmp = 0;		
+				foreach($_POST as $key => $value) {		
+				    // create the md5 input and URL leaving out any fields that have no value
+				    if (strlen($value) > 0) {		        
+				        // this ensures the first paramter of the URL is preceded by the '?' char
+				        if ($appendAmp == 0) {
+				            $vpcURL .= urlencode($key) . '=' . urlencode($value);
+				            $appendAmp = 1;
+				        } else {
+				            $vpcURL .= '&' . urlencode($key) . "=" . urlencode($value);
+				        }
+				        $md5HashData .= $value;
+				    }
+				}		
+				// Create the secure hash and append it to the Virtual Payment Client Data if
+				// the merchant secret has been provided.
+				if (strlen($SECURE_SECRET) > 0) {
+				    $vpcURL .= "&vpc_SecureHash=" . strtoupper(md5($md5HashData));
+				}		
+				// FINISH TRANSACTION - Redirect the customers using the Digital Order
+				// ===================================================================
+				header("Location: ".$vpcURL);		
+			}else{
+				$this->layout = 'error';
+				//header("Location: ".BASE_URL);				
+			}
+		}else{
+			$this->layout = 'error';
+			//header("Location: ".BASE_URL);				
+		}
+	}
+	function return_transaction(){
+		$this->set('title_for_layout' , 'Successful Transaction');	
+		$this->set('selected', 'frontevents');
+		$SECURE_SECRET = $this->payment_hash_secret;				
+	}
 }
