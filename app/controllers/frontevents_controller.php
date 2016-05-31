@@ -69,11 +69,11 @@ class FronteventsController  extends AppController {
                     	<img style="'.$style.'" src="'.$image.'"/>
                     </div>';
                 }				
-				$data .= '<div class="instructorpopouphead instructorpopoupposition">Position: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['position'].'</div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupmail"><i class="icon-mail"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['mail'].'</div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupposition"><i class="icon-facebook"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['facebook'].'</div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupposition"><i class="icon-linkedin"></i></div><div class="instructorpopoupcontent">'.$instructor['Instructor']['linkedin'].'</div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupbiography">Biography: </div><div class="instructorpopoupcontent">'.$instructor['Instructor']['biography'].'</div>';                
+				$data .= '<div class="instructorpopouphead instructorpopoupposition"><div class="instructorpopouppositionin">Position:</div> <div class="instructorpopoupcontent">'.$instructor['Instructor']['position'].'</div></div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupmail"><i class="icon-mail"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['mail'].'</div></div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupfacebook"><i class="icon-facebook"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['facebook'].'</div></div>';
+				$data .= '<div class="instructorpopouphead instructorpopouplinkedin"><i class="icon-linkedin"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['linkedin'].'</div></div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupbiography">Biography: <div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                
                 $data .= '</div>';
             }
         }
@@ -118,7 +118,7 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="event_popup_all_date"><i class="icon-all_date_popup"></i>'.$all_date.'</div>';
 				$data .= '<div class="event_popup_ticket_price_all"><div class="event_popup_ticket_price_all_in">Total Price: </div>'.$ticket_price.' '.$this->currency.'</div>';              
 				$data .= '<div class="event_popup_arab_african"><img src="'.$arab_african_image.'" /></div>';  
-				$data .= '<div class="checkout_button checkout_event" onclick="checkout_event('.$event[$model]['id'].');">checkout</div>';
+				$data .= '<div class="checkout_button_out"><div class="checkout_button checkout_event" onclick="checkout_event('.$event[$model]['id'].');">checkout</div></div>';
                 $data .= '</div>';
             }
         }
