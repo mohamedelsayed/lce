@@ -2645,12 +2645,11 @@ select {
 }
 .event_popup_arab_african img{
 	float: left;
+	width: 100%;
 }
 .checkout_button_out{
 	float: left;
     width: 100%;
-	margin-left: 30%;
-	text-align: center;
 }
 .checkout_button{
 	border: 2px solid #f58521;
@@ -2658,6 +2657,8 @@ select {
     color: #f58521;
     font-size: 16px;
     margin-top: 20px;
+    margin-left:auto;
+    margin-right:auto;
 	cursor: pointer;
     padding: 6px 0;
     text-align: center;
