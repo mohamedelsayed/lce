@@ -32,7 +32,7 @@ body {
 }
 .logo{
 	float: left;
-	width: 17%;
+	width: 16%;
 }
 .logo_footer{
 	float: left;
@@ -1764,7 +1764,7 @@ http://vladimirkudinov.com
 }
 .menu {	
 	float: left;
-	width: 83%;
+	width: 80%;
 	margin-top: 1%;
 }
 .menu li {
@@ -1776,7 +1776,7 @@ http://vladimirkudinov.com
 /* Links */
 .menu li a {
 	display: block;
-	padding: 0 7%;
+	padding: 0 4.6%;
 }
 .menu li:first-child a { border-left: none; }
 .menu li:last-child a{ border-right: none; }
@@ -2537,7 +2537,7 @@ select {
 .payment{
 	float: left;
     margin-left: 11%;
-    width: 40%;
+    width: 42%;
 }
 .payment a{
 	float: left;
@@ -2546,6 +2546,10 @@ select {
 .header_menu_arrow{
 	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu.png") no-repeat scroll;
 	float: right;
+	width: 6px;
+	margin-top: 22px;
+	margin-left: 5px;
+	height: 6px;
 }
 .instructorpopouptitle{
 	color: #2b2b2b;
@@ -2631,7 +2635,6 @@ select {
 	color: #5e5e5e;
     float: left;
     font-size: 20.9px;
-    margin-bottom: 7%;
     width: 100%;
 }
 .event_popup_arab_african{
@@ -2643,18 +2646,23 @@ select {
 .event_popup_arab_african img{
 	float: left;
 }
+.checkout_button_out{
+	float: left;
+    width: 100%;
+	margin-left: 30%;
+	text-align: center;
+}
 .checkout_button{
 	border: 2px solid #f58521;
     border-radius: 5px;
     color: #f58521;
-    float: left;
     font-size: 16px;
-    margin-top: 35px;
+    margin-top: 20px;
 	cursor: pointer;
     padding: 6px 0;
     text-align: center;
     text-decoration: none;
-    width: 100%;
+    width: 45%;
 }
 .checkout_button:hover{
 	border: 2px solid #f58521;
@@ -2683,19 +2691,22 @@ select {
 	background: rgba(0, 0, 0, 0) url("../../img/front/mail.png") no-repeat scroll;
     float: left;
     height: 18px;
-    width: 25px;
+    width: 40px;
+	margin-top: 1%;
 }
 .icon-facebook{
 	background: rgba(0, 0, 0, 0) url("../../img/front/face.png") no-repeat scroll;
     float: left;
     height: 30px;
-    width: 50px;
+	margin-top: 1%;
+    width: 40px;
 }
 .icon-linkedin{
-	background: rgba(0, 0, 0, 0) url("../../img/front/linkedin_contact.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/linked_contact.png") no-repeat scroll;
     float: left;
     height: 30px;
-    width: 50px;
+	margin-top: 1%;
+    width: 40px;
 }
 #cssmenu,
 #cssmenu ul,
@@ -3162,4 +3173,128 @@ ul.primary li:hover > a{
     color: #ccc;
     background: none;
   }
+}
+.instructorpopoupbody{
+	float: left;
+	margin: 2% 5%;
+}
+.checkout_popuppopoupbody{
+	float: left;
+	margin: 2% 4%;
+}
+.form_item{
+	float: left;
+	width: 100%;
+	margin: 1% 0;
+	font-size: 16px;
+}
+#popup_form_name{
+	float: left;
+	width: 98%;
+	font-size: 16px;
+	border: 2px dashed #f58521;
+	padding: 2% 0 2% 2%;
+	color: #000000;
+}
+#popup_form_email{
+	float: left;
+	width: 98%;
+	font-size: 16px;
+	padding:2% 0 2% 2%;
+	border: 2px dashed #f58521;
+	color: #000000;
+}
+#popup_form_mobile_number{
+	float: left;
+	width: 98%;
+	font-size: 16px;
+	padding: 2% 0 2% 2%;
+	border: 2px dashed #f58521;
+	color: #000000;
+}
+.form_checkout_submit{
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 2px dashed #f58521;
+    color: #f58521;
+	cursor: pointer;
+    float: left;
+    font-size: 16px;
+    margin-left: 30%;
+    margin-top: 1%;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    width: 45%;
+}
+.form_checkout_submit:hover{
+	float: left;
+	border: 2px dashed #f58521;
+	text-decoration:none;
+	color: #ffffff;
+	background-color: #f58521;
+	transition: .5s all;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
+	-o-transition: 0.5s all ease;
+	-ms-transition: 0.5s all ease;
+}
+#popup_form_terms_and_conditions{
+	float: left;
+	margin-right: 1.6%;
+    margin-top: 0.8%;
+	border: 2px solid #f58521;
+}
+.mesage-pop{
+	float: left;
+	top: 20%;
+}
+.instructorpopoupheadimg{
+ width: 200px;
+ margin: 0 auto 2%;
+}
+.instructorpopoupposition{
+ width: 100%;
+ margin-left: 30%;
+ float: left;
+ color: #5e5e5e;
+}
+.instructorpopoupmail{
+ width: 100%;
+ margin-left: 20%;
+ padding: 1% 0;
+ font-size: 16px;
+ color: #5e5e5e;
+ float: left;
+}
+.instructorpopoupfacebook{
+ width: 100%;
+ margin-left: 20%;
+ padding: 1% 0;
+ font-size: 16px;
+ color: #5e5e5e;
+ float: left;
+}
+.instructorpopouplinkedin{
+ width: 100%;
+ margin-left: 20%;
+ float: left;
+ color: #5e5e5e;
+ font-size: 16px;
+}
+.instructorpopouppositionin{
+ width: 15%;
+ float: left;
+}
+.instructorpopoupcontent{
+ width: 80%;
+ float: left; 
+}
+.instructorpopoupbiography{
+}
+.instructorpopoupbiographybody{
+	display:block;
+	color: #5e5e5e;
+ font-size: 16px;
+ width: 100%;
+  float: left;
 }
