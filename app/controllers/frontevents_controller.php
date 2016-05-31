@@ -363,6 +363,29 @@ class FronteventsController  extends AppController {
 				if ($this->Email->send()){
 	                //echo __('Email has been sent.', true);
     	        }
+				$subject = $title.' Checkout';
+	            $this->Email->to = $settings['Setting']['email'];
+				$this->Email->subject = $subject;           
+            	$this->Email->replyTo = $settings['Setting']['email'];
+	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
+	            $this->Email->sendAs = 'html';
+				$data2 = array(
+			        'Name' => $name,
+			        'Email' => $email,
+			        'Mobile Number' => $mobile_number,
+			        'Receipt Number' => $receiptNo,
+			        'Transaction Number' => $transactionNo,
+			        'Event' => $event_id,
+			        'Amount' => $amount.' '.$this->currency,			        
+				);
+				$html = $this->draw_array_as_table($data2);
+				$mail_body = 'This is checkout in  '.$title.' Event,<br />
+							  User information:'.$html;
+				$this->Email->template = 'event_site_admin';
+				$this->set('mail_body', $mail_body);
+				if ($this->Email->send()){
+	                //echo __('Email has been sent.', true);
+    	        }
 			}
 		}
 		$this->set('custom_message' , $custom_message);
@@ -434,4 +457,25 @@ class FronteventsController  extends AppController {
 	    }
 	    return $result;
 	}	
+	function draw_array_as_table($items = array()) {
+	    $return = '';
+	    if (!empty($items)) {
+	        $return .= '<table border="1">';
+	        $i = 0;
+	        foreach ($items as $row) {
+	            $class = 'odd';
+	            if (($i % 2) == 0) {
+	                $class = 'even';
+	            }
+	            $i++;
+	            $return .= '<tr class ="' . $class . '">';
+	            foreach ($row as $cell) {
+	                $return .= '<td>' . $cell . '</td>';
+	            }
+	            $return .= '</tr>';
+	        }
+	        $return .= '</table>';
+	    }
+	    return $return;
+	}
 }
