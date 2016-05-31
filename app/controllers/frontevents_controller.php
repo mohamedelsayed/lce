@@ -346,6 +346,22 @@ class FronteventsController  extends AppController {
 				);
 				$this->$model->create();
 				$this->$model->save($data);		
+				$this->loadModel('Setting');            
+            	$settings = $this->Setting->read(null, 1);              
+            	$subject = $title.' Checkout';
+	            $this->Email->to = $email;
+				$this->Email->subject = $subject;           
+            	$this->Email->replyTo = $settings['Setting']['email'];
+	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
+	            $this->Email->sendAs = 'html';
+				$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
+							  Your transaction number: '.$transactionNo.',<br />
+							  Total paid amount: '.$amount.' '.$this->currency.'.';
+				$this->Email->template = 'event_customer';
+				$this->set('mail_body', $mail_body);
+				if ($this->Email->send()){
+	                //echo __('Email has been sent.', true);
+    	        }
 			}
 		}
 		$this->set('custom_message' , $custom_message);
