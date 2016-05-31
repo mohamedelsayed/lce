@@ -33,12 +33,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Amount'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $nevent_order['NeventOrder']['amount']; ?>
-			&nbsp;
-		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $nevent_order['NeventOrder']['created']; ?>
+			<?php echo $nevent_order['NeventOrder']['amount'].' '.$currency; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Event'); ?></dt>
@@ -46,6 +41,11 @@
 			<?php echo $nevent_order['Nevent']['title']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $nevent_order['NeventOrder']['created']; ?>
+			&nbsp;
+		</dd>		
 	</dl>
 </div>
 <div class="actions">

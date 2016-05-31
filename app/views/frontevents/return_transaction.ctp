@@ -12,7 +12,7 @@
 		<div class="post_return_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
 	</div>
 	<div class="return_group_right" >
-	<div class="post_return_right"><i class="icon_true"></i>Total paid amount :
+	<div class="post_return_right"><i class="icon_true"></i>Total paid amount:
 		<samp><?php echo $amount.' '.$currency;?></samp></div>
 	</div>
 <?php }?>
