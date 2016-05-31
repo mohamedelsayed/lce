@@ -43,20 +43,22 @@ class FronteventsController  extends AppController {
             	if(trim($instructor['Instructor']['image']) != ''){
             		$div_ratio = 200/200;
             		$img = $instructor['Instructor']['image'];
-	            	$image = BASE_URL.'/img/upload/'.$img;            
+	            	$image = BASE_URL.'/img/upload/'.$img;     					     
 	                $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
-	                $image_size = getimagesize($image_path);          
-	                $max_height = 'max-height:100%;';
+					$max_height = 'max-height:100%;';
 	                $max_width  = 'max-width:100%;';
 	                $style = $max_width;
-	                if(!empty($image_size)){
-	                    $width = $image_size[0];
-	                    $height = $image_size[1];   
-	                    $image_ratio = $width/$height;
-	                    if($image_ratio > $div_ratio){                  
-	                        $style = $max_height;
-	                    }
-	                }
+					if (file_exists($image_path)) { 
+		                $image_size = getimagesize($image_path);          		                
+		                if(!empty($image_size)){
+		                    $width = $image_size[0];
+		                    $height = $image_size[1];   
+		                    $image_ratio = $width/$height;
+		                    if($image_ratio > $div_ratio){                  
+		                        $style = $max_height;
+		                    }
+		                }
+					}
 				}
                 $data .= '<h4 style="">'.$instructor['Instructor']['name'].
                 	     '<div id="closeinstructorpopoup" class="closeinstructorpopoup closepopoup">X</div></h4>';
@@ -145,7 +147,7 @@ class FronteventsController  extends AppController {
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
-				$_POST["vpc_OrderInfo"] = 'LCE Event Order - '.$title;					
+				$_POST["vpc_OrderInfo"] = $event_id.'-'.$title.time();					
 				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
 				unset($_POST["virtualPaymentClientURL"]); 
 				unset($_POST["SubButL"]);
@@ -153,7 +155,7 @@ class FronteventsController  extends AppController {
 				$_POST["vpc_Locale"] = 'en';
 				$_POST["vpc_Merchant"] = $this->payment_merchant_id;
 				$_POST["vpc_AccessCode"] = $this->payment_access_code;
-				$_POST["vpc_MerchTxnRef"] = $event_id;
+				$_POST["vpc_MerchTxnRef"] = $event_id.time();
 				$_POST["vpc_Amount"] = $event_amount * 100;
 				$_POST["vpc_ReturnURL"] = BASE_URL.'/return-transaction?event_id='.$event_id;	 
 				ksort ($_POST);		
@@ -262,13 +264,11 @@ class FronteventsController  extends AppController {
 		$authStatus      = array_key_exists("vpc_3DSstatus", $_GET)        ? $_GET["vpc_3DSstatus"]        : "No Value Returned";		
 		// *******************
 		// END OF MAIN PROGRAM
-		// *******************
-		
+		// *******************		
 		// FINISH TRANSACTION - Process the VPC Response Data
 		// =====================================================
 		// For the purposes of demonstration, we simply display the Result fields on a
-		// web page.
-		
+		// web page.		
 		// Show 'Error' in title if an error condition
 		$errorTxt = "";		
 		// Show this page as an error page if vpc_TxnResponseCode equals '7'
@@ -323,10 +323,30 @@ class FronteventsController  extends AppController {
 			$mobile_number = '';
 			if(isset($_GET['mobile_number'])){
 				$mobile_number = $_GET['mobile_number'];
+			}			
+			$amount = $amount / 100;
+			$model = 'NeventOrder';
+			$this->loadModel($model);
+			$order = $this->$model->find(
+                'first', array(
+                    'conditions' => array($model.'.transaction_number' => $transactionNo),
+                )           
+            );
+			if(empty($order)){
+				$data = array(
+				    $model => array(
+				        'name' => $name,
+				        'email' => $email,
+				        'mobile_number' => $mobile_number,
+				        'receipt_number' => $receiptNo,
+				        'transaction_number' => $transactionNo,
+				        'event_id' => $event_id,
+				        'amount' => $amount,			        
+				    )
+				);
+				$this->$model->create();
+				$this->$model->save($data);		
 			}
-			$transactionNo;
-			$receiptNo;
-			$amount;
 		}
 		$this->set('custom_message' , $custom_message);
 		$this->set('custom_error_flag' , $custom_error_flag);
@@ -337,7 +357,7 @@ class FronteventsController  extends AppController {
 		$this->set('instructor_id' , $instructor_id);
 		$this->set('instructor_name' , $instructor_name);
 		$this->set('all_date' , $all_date);		
-		$this->set('title_for_layout' , $custom_message);		
+		$this->set('title_for_layout' , strtoupper($custom_message));		
 	}
 	function null2unknown($data) {
 	    if ($data == "") {
