@@ -1047,3 +1047,6 @@ footer {
     height: 30px;
     float: left;
 }
+input[type=radio].error, input[type=checkbox].error{
+	outline: 1px solid red;
+}
