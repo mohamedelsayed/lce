@@ -23,9 +23,14 @@
 	            <div class="form_item">
 	                <input id="popup_form_mobile_number" class="form_text" type="text" name="mobile_number" placeholder="Mobile Number" />    
 	            </div>
-	            <div>
+	            <div class="form_item">
+	            	<input type="checkbox" name="terms_and_conditions" id="popup_form_terms_and_conditions" /> 
+	            	I agree to the Terms and Conditions.
+	            </div>
+	            <div class="form_item">
 	            	<input type="submit" class="form_checkout_submit" value="Checkout" />
 	            </div>
+	            
 	            <input type="hidden" id="checkout_event_id" name="event_id" value="0">
 	        </form>
 	    </div>	    	
@@ -90,7 +95,8 @@ function validate_checkout_form(obj) {
 	validate_required_input(jQuery('#popup_form_name'));
 	validate_email_input(jQuery('#popup_form_email'));	
 	validate_numeric_input(jQuery('#popup_form_mobile_number'));
-    var checkout_form_flag = 0;
+	validate_required_input_checkbox('popup_form_terms_and_conditions');
+	var checkout_form_flag = 0;
 	var focused = 0;
 	jQuery('#'+form_id+' input').each(function(){
 		if(jQuery(this).hasClass('error')){ 
@@ -149,6 +155,18 @@ function isValidEmailAddress(emailAddress) {
 };
 function isNumeric(n) {
 	return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function validate_required_input_checkbox(obj){	
+	var obj_in = jQuery('#'+obj);
+	if(jQuery('#'+obj+':checked').length > 0){
+		if(obj_in.hasClass('error')){
+			obj_in.removeClass('error');			
+		}
+	}else{
+		if(!(obj_in.hasClass('error'))){
+			obj_in.addClass('error');			
+		}			
+	}  
 }
 jQuery(document).ready(function() {
     jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){

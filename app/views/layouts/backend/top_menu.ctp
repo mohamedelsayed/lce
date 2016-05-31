@@ -33,7 +33,8 @@
 				<li class="heading new_items_li" ><a>Events</a>
     				<ul>
     					<li class=""><a href="<?php echo $base_url.'/instructors';?>">Instructors</a></li>
-		    			<li class=""><a href="<?php echo $base_url.'/nevents';?>">Eevents</a></li>						
+		    			<li class=""><a href="<?php echo $base_url.'/nevents';?>">Eevents</a></li>
+		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders';?>">Events Checkouts</a></li>							    				
 					</ul>
 				</li>
 				<li class="heading new_items_li"><a>Coaches</a>

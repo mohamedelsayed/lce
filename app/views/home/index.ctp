@@ -115,18 +115,20 @@ $all_events_link = $base_url.'/all-events';?>
     		$img = $event[$model]['image'];
         	$image = BASE_URL.'/img/upload/'.$img;            
             $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
-            $image_size = getimagesize($image_path);          
-            $max_height = 'max-height:100%;';
+			$max_height = 'max-height:100%;';
             $max_width  = 'max-width:100%;';
             $style = $max_width;
-            if(!empty($image_size)){
-                $width = $image_size[0];
-                $height = $image_size[1];   
-                $image_ratio = $width/$height;
-                if($image_ratio > $div_ratio){                  
-                    $style = $max_height;
-                }
-            }
+			if (file_exists($image_path)) { 
+            $image_size = getimagesize($image_path);                      
+		        if(!empty($image_size)){
+		            $width = $image_size[0];
+		            $height = $image_size[1];   
+		            $image_ratio = $width/$height;
+		            if($image_ratio > $div_ratio){                  
+		                $style = $max_height;
+		            }
+		        }
+			}
 		}
 		$title = $event[$model]['title'];
 		$description = $event[$model]['description'];
