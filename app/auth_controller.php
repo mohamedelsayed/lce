@@ -69,6 +69,7 @@ class AuthController extends AppController{
 		$this->set("minYearValue",$settings['Setting']['minimum_year']);
 		$this->set("maxYearValue",$settings['Setting']['maximum_year']);
 		$this->set('settings', $settings['Setting']);
+		$this->set('currency', $this->currency);
 		$this->setAllArticlesTags();
 	}	
 	function beforeRender(){
