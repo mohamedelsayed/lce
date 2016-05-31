@@ -10,7 +10,7 @@ class AppController extends Controller {
 	public $components = array('Session', 'Cookie');
 	public $settings;	
 	public $clearProSession = true;
-	public $currency = 'L.E';
+	public $currency = 'EGP';
 	public $payment_merchant_id = 'Test290510EGP';
 	public $payment_access_code = 'B972DDBB';
 	public $payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
