@@ -370,13 +370,13 @@ class FronteventsController  extends AppController {
 	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
 	            $this->Email->sendAs = 'html';
 				$data2 = array(
-			        'Name' => $name,
-			        'Email' => $email,
-			        'Mobile Number' => $mobile_number,
-			        'Receipt Number' => $receiptNo,
-			        'Transaction Number' => $transactionNo,
-			        'Event' => $event_id,
-			        'Amount' => $amount.' '.$this->currency,			        
+					array('Name' , $name),
+			        array('Email' , $email),
+			        array('Mobile Number' , $mobile_number),
+			        array('Receipt Number' , $receiptNo),
+			        array('Transaction Number' , $transactionNo),
+			        array('Event' , $event_id),
+			        array('Amount' , $amount.' '.$this->currency),			        
 				);
 				$html = $this->draw_array_as_table($data2);
 				$mail_body = 'This is checkout in  '.$title.' Event,<br />
