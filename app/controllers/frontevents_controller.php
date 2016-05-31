@@ -7,6 +7,7 @@
 class FronteventsController  extends AppController {
 	var $name = 'Frontevents';
 	var $uses = 'Nevent';
+	var $components = array('Email');
 	function events(){
 		$this->set('title_for_layout' , 'All Events');	
 		$this->set('selected', 'frontevents');
