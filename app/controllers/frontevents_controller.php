@@ -73,7 +73,7 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="instructorpopouphead instructorpopoupmail"><i class="icon-mail"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['mail'].'</div></div>';
 				$data .= '<div class="instructorpopouphead instructorpopoupfacebook"><i class="icon-facebook"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['facebook'].'</div></div>';
 				$data .= '<div class="instructorpopouphead instructorpopouplinkedin"><i class="icon-linkedin"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['linkedin'].'</div></div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupbiography">Biography: <div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                
+				$data .= '<div class="instructorpopouphead instructorpopoupbiography"><div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                
                 $data .= '</div>';
             }
         }
