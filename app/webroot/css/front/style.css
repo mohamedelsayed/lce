@@ -1776,7 +1776,10 @@ http://vladimirkudinov.com
 /* Links */
 .menu li a {
 	display: block;
-	padding: 0 4.6%;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0 10px;
 }
 .menu li:first-child a { border-left: none; }
 .menu li:last-child a{ border-right: none; }
@@ -2591,7 +2594,7 @@ select {
     float: left;
     font-size: 20.9px;
     height: 36px;
-	margin: 2% 0 0 0;
+	margin: 1% 0 0 0;
 	text-align: left;
     width: 48%;
 }
@@ -2676,37 +2679,31 @@ select {
 	-o-transition: 0.5s all ease;
 	-ms-transition: 0.5s all ease;
 }
-.instructorpopoupposition{
-	float: left;
-    font-size: 22px;
-    margin: 0;
-    width: 100%;
-}
 .instructorpopoupcontent{
-	float: left;
+/*	float: left;
     padding: 1% 0 0;
 	font-size: 16px;
-    width: 100%;
+    width: 100%; */
 }
 .icon-mail{
-	background: rgba(0, 0, 0, 0) url("../../img/front/mail.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_email.png") no-repeat scroll;
     float: left;
-    height: 18px;
+    height: 35px;
     width: 40px;
-	margin-top: 1%;
+	margin: auto;
 }
 .icon-facebook{
-	background: rgba(0, 0, 0, 0) url("../../img/front/face.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_facebook.png") no-repeat scroll;
     float: left;
-    height: 30px;
-	margin-top: 1%;
+    height: 35px;
+	margin: auto;
     width: 40px;
 }
 .icon-linkedin{
-	background: rgba(0, 0, 0, 0) url("../../img/front/linked_contact.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_linkedin.png") no-repeat scroll;
     float: left;
-    height: 30px;
-	margin-top: 1%;
+    height: 35px;
+	margin: auto;
     width: 40px;
 }
 #cssmenu,
@@ -3178,6 +3175,7 @@ ul.primary li:hover > a{
 .instructorpopoupbody{
 	float: left;
 	margin: 2% 5%;
+	text-align: center;
 }
 .checkout_popuppopoupbody{
 	float: left;
@@ -3255,40 +3253,42 @@ ul.primary li:hover > a{
 }
 .instructorpopoupposition{
  width: 100%;
- margin-left: 30%;
  float: left;
+ text-align: center;
  color: #5e5e5e;
 }
 .instructorpopoupmail{
- width: 100%;
- margin-left: 20%;
- padding: 1% 0;
- font-size: 16px;
- color: #5e5e5e;
- float: left;
+    color: #5e5e5e;
+    float: left;
+    font-size: 18px;
+    margin: auto;
+    padding: 2% 0 0 0;
+    text-align: center;
+    width: 100%;
 }
 .instructorpopoupfacebook{
- width: 100%;
- margin-left: 20%;
- padding: 1% 0;
- font-size: 16px;
- color: #5e5e5e;
- float: left;
+    color: #5e5e5e;
+    float: left;
+    font-size: 18px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }
 .instructorpopouplinkedin{
- width: 100%;
- margin-left: 20%;
- float: left;
- color: #5e5e5e;
- font-size: 16px;
+    color: #5e5e5e;
+    float: left;
+    font-size: 18px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
 }
 .instructorpopouppositionin{
  width: 15%;
  float: left;
 }
 .instructorpopoupcontent{
- width: 80%;
- float: left; 
+/* width: 80%;
+ float: left; */
 }
 .instructorpopoupbiography{
 }
@@ -3296,6 +3296,8 @@ ul.primary li:hover > a{
 	display:block;
 	color: #5e5e5e;
  font-size: 16px;
+ padding-top: 1%;
  width: 100%;
+ text-align: left;
   float: left;
 }
