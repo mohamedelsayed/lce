@@ -51,29 +51,84 @@ class FrontcoachesController  extends AppController {
 		$coaches = array_slice($coaches_all, $start, $limit);
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
-			$name = $coach['Coach']['name'];
-			$specializations = $coach['Specialization'];
-			$specializations_title = '';
-			if(isset($specializations[0])){
-				$specializations_title = $specializations[0]['title'];				
+			$default_image = BASE_URL.'/img/front/coache_default_image.png';
+			$image = $default_image;
+			$style = '';
+        	if(trim($coach['Coach']['image']) != ''){
+        		$div_ratio = 118/118;
+        		$img = $coach['Coach']['image'];
+            	$image = BASE_URL.'/img/upload/'.$img;     					     
+                $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+				$max_height = 'max-height:100%;';
+                $max_width  = 'max-width:100%;';
+                $style = $max_width;
+				if (file_exists($image_path)) { 
+	                $image_size = getimagesize($image_path);          		                
+	                if(!empty($image_size)){
+	                    $width = $image_size[0];
+	                    $height = $image_size[1];   
+	                    $image_ratio = $width/$height;
+	                    if($image_ratio > $div_ratio){                  
+	                        $style = $max_height;
+	                    }
+	                }
+				}else{
+					$image = $default_image;
+				}
 			}
+			$name = $coach['Coach']['name'];
+			$specializations_title = '';
+			$specializations = $coach['Specialization'];			
+			if(!empty($specializations)){
+				foreach ($specializations as $key => $specialization) {
+					if(isset($specialization['title'])){
+						$specializations_title .= $specialization['title'].', ';
+					}
+				}
+			}
+			$specializations_title = trim(trim($specializations_title), ',');
+			$geographys_title = '';
+			$geographys = $coach['Geography'];			
+			if(!empty($geographys)){
+				foreach ($geographys as $key => $geography) {
+					if(isset($geography['title'])){
+						$geographys_title .= $geography['title'].', ';
+					}
+				}
+			}
+			$geographys_title = trim(trim($geographys_title), ',');
 			$class = 'post_coach_right';
 			$line_div = '<div class="post_coach_conter"></div>';
 			if($i % 2 == 0){
 				$class = 'post_coach_left';
 				$line_div = '';				
 			}
+			$remote_coaching = $coach['Coach']['remote_coaching'];
+			$statement = $coach['Coach']['statement'];
 			$i++;
 			$html .= '<div class="'.$class.'">
+				<div class="post_coach_left_in">
 				<a href="#">
-				<img alt="" src="'.$base_url.'/img/front/pic_coach.png" />
+				<img style="'.$style.'" alt="'.$name.'" src="'.$image.'" />
 				</a>
-				<div class="post_coach_title">'.$name.'<samp>'.$specializations_title.'</samp></div>
-				<div class="post_coach_phone">Zamalek, Heliopolis and Maadi<samp>Remote Coaching</samp></div>
-				<div class="post_coach_prograf">“Lorem Ipsum is simply dummy text of the printing and typesetting industry.” </div>
-				<div class="post_coach_profile"><a href="#">View Profile</a><samp><a href="#">Recommend this caoch</a></samp></div>
+				</div>
+				<div class="post_coach_right_in">
+				<div class="post_coach_title">'.$name.'<samp>'.$specializations_title.'</samp></div>';
+			if($geographys_title != ''){
+				$html .= '<div class="post_coach_phone">'.$geographys_title.'</div>';
+			}			
+			if($remote_coaching == 1){
+				$html .= '<div class="post_coach_phone remote_coaching_div"><samp>Remote Coaching</samp></div>';
+			}
+			if($statement != ''){
+				$html .= '<div class="post_coach_prograf">“'.$statement.'”</div>';
+			}
+			$html .= '<div class="post_coach_profile">
+				<a href="#">View Profile</a>
+				<samp><a href="#">Recommend this caoch</a></samp>
+				</div>
 				<div class="post_coach_sumit"><a href="#">Contact me</a></div>
-			</div>'.$line_div;			
+			</div></div>'.$line_div;			
 		}
 		$data['html'] = $html;
 		$data['page_count'] = $page_count;

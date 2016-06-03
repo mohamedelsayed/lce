@@ -61,6 +61,9 @@ class FronteventsController  extends AppController {
 		                }
 					}
 				}
+				$mail = $instructor['Instructor']['mail'];
+				$facebook = $instructor['Instructor']['facebook'];
+				$linkedin = $instructor['Instructor']['linkedin'];
                 $data .= '<h4 style="">'.$instructor['Instructor']['name'].
                 	     '<div id="closeinstructorpopoup" class="closeinstructorpopoup closepopoup">X</div></h4>';
 				$data .= '<div class="instructorpopoupbody">';
@@ -69,10 +72,28 @@ class FronteventsController  extends AppController {
                     	<img style="'.$style.'" src="'.$image.'"/>
                     </div>';
                 }				
-				$data .= '<div class="instructorpopouphead instructorpopoupposition"><div class="instructorpopouppositionin">Position:</div> <div class="instructorpopoupcontent">'.$instructor['Instructor']['position'].'</div></div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupmail"><i class="icon-mail"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['mail'].'</div></div>';
-				$data .= '<div class="instructorpopouphead instructorpopoupfacebook"><i class="icon-facebook"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['facebook'].'</div></div>';
-				$data .= '<div class="instructorpopouphead instructorpopouplinkedin"><i class="icon-linkedin"></i><div class="instructorpopoupcontent">'.$instructor['Instructor']['linkedin'].'</div></div>';
+				$data .= '<div class="instructorpopouphead instructorpopoupposition">';
+				//$data .= '<div class="instructorpopouppositionin">Position:</div>';
+				$data .= '<div class="instructorpopoupcontent instructorpopouppositioninright">'.$instructor['Instructor']['position'].'</div>
+				</div>';
+				if(trim($mail) != ''){
+					$data .= '<div class="instructorpopouphead instructorpopoupmail">
+						<i class="icon-mail"></i>
+						<div class="instructorpopoupcontent"><a href="mailto:'.$mail.'">'.$mail.'</a></div>
+					</div>';
+				}
+				if(trim($facebook) != ''){
+					$data .= '<div class="instructorpopouphead instructorpopoupfacebook">
+						<i class="icon-facebook"></i>
+						<div class="instructorpopoupcontent"><a target="_blank" href="'.$facebook.'">'.$facebook.'</a></div>
+					</div>';
+				}
+				if(trim($linkedin) != ''){
+					$data .= '<div class="instructorpopouphead instructorpopouplinkedin">
+						<i class="icon-linkedin"></i>
+						<div class="instructorpopoupcontent"><a target="_blank" href="'.$linkedin.'">'.$linkedin.'</a></div>
+					</div>';
+				}
 				$data .= '<div class="instructorpopouphead instructorpopoupbiography"><div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                
                 $data .= '</div>';
             }
