@@ -1068,3 +1068,6 @@ input[type=radio].error, input[type=checkbox].error{
 #mesagepopboxcheckoutpopoup .mesagecontent{
 	height: 350px;
 }
+.post_coach_left, .post_coach_right{
+	height: 260px;
+}
