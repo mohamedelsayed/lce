@@ -1059,6 +1059,7 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .payment{
 	margin: 0 9%;
+	background-color: #FFFFFF;
 }
 .full_line{
 	width: 100%;
@@ -1070,4 +1071,61 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .post_coach_left, .post_coach_right{
 	height: 260px;
+}
+.post_coach_phone{
+	width: 52%;
+}
+.remote_coaching_div{
+	float: right;
+	width: 40%;
+	background: none;
+	text-align: right;
+}
+.post_coach_phone samp{
+	padding-left: 11%;	
+}
+.post_coach_profile samp{
+	float: right;
+}
+.post_coach_left img, .post_coach_right img{
+	width: 118px;
+	border-radius: 50%;
+}
+.post_coach_left_in{
+	float:left;
+	width: 25%;
+}
+.post_coach_right_in{
+	float: left;
+	width: 75%;
+}
+.post_coach_prograf{
+	width: 100%;
+}
+.post_coach_profile{
+	margin-left: 0px;
+	width: 100%;
+}
+.post_coach_sumit{
+	margin-left: 0px;
+}
+.instructorpopoupcontent a{	
+	color: #5e5e5e;
+}
+.instructorpopoupbiographybody{
+	overflow: hidden;
+	width: 100%;
+	height: 65px;
+	float: left;
+}
+.instructorpopouppositionin{
+	width: 49%;
+	float: left;
+	text-align: right;
+	padding-right:1%; 
+}
+.instructorpopouppositioninright{
+	width: 100%;
+	float: left;
+	text-align: center;
 }
