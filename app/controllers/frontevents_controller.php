@@ -114,6 +114,7 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="instructorpopouptitle">'.$title.'</div>';
 				$data .= '<div class="event_popup_location"><i class="icon-location"></i>'.$location.'</div>';
 				$data .= '<div class="event_popup_ticket_price"><i class="icon-ticket_price"></i>'.$ticket_price.' '.$this->currency.'</div>';
+				$data .= '<div class="full_line"></div>';
 				$data .= '<div class="event_popup_instructor_name"><i class="icon-instructor_name"></i>'.$instructor_name.'</div>';
 				$data .= '<div class="event_popup_all_date"><i class="icon-all_date_popup"></i>'.$all_date.'</div>';
 				$data .= '<div class="event_popup_ticket_price_all"><div class="event_popup_ticket_price_all_in">Total Price: </div>'.$ticket_price.' '.$this->currency.'</div>';              
