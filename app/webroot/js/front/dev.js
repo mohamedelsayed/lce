@@ -40,13 +40,15 @@ function ajax_list_coaches(type){
 	var filter = '';
 	var nextpage = coaches_page + 1;
 	var page = coaches_page;
+	var order_field = jQuery('#list_coaches_loadmore_button').attr('order_field');
+	var order_direction = jQuery('#list_coaches_loadmore_button').attr('order_direction');
 	if(ajax_list_coaches_run) {
 		ajax_list_coaches_run.abort();
 	}
     ajax_list_coaches_run = jQuery.ajax({
     	type: "POST",
         url: base_url + '/frontcoaches/ajax_list_coaches',
-        data: {page: page, limit: limit, filter:filter, type:type},
+        data: {page: page, limit: limit, filter:filter, type:type, order_field:order_field, order_direction:order_direction},
         beforeSend: function() {
         	list_coaches_loadmore_button.addClass("ajaxloading");
         },
