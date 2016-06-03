@@ -21,16 +21,11 @@ function reload_page_with_new_data(){
     var new_url = base_url+'/all-events?year='+year_val+'&month='+month_val;
     window.location.href = new_url;
 }
-jQuery(document).ready(function() {
-	jQuery('body').on('mousewheel', function(e){
-		start_ajax_list_coaches();
-	});		
-	jQuery(window).on('scroll', function() {
-		start_ajax_list_coaches();
-	});	
-});
 function start_ajax_list_coaches () {
-	if(jQuery(window).scrollTop() + jQuery(window).height() == jQuery(document).height()) {   
+	var scroll_height = jQuery(window).scrollTop() + jQuery(window).height();
+	var page_height = jQuery(document).height() - 250;
+	if(scroll_height >= page_height){
+		//if(jQuery(window).scrollTop() + jQuery(window).height() == jQuery(document).height() - 100) {   
 		ajax_list_coaches(0);
    }
 }
