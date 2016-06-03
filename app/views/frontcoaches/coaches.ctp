@@ -1,5 +1,9 @@
 <?php $tree = array(array('url' => '/all-coaches', 'str' => 'FIND A COACH'));
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));
+$order_fields = array('name', 'gender', 'created');
+$order_directions = array('ASC', 'DESC');
+$order_field = $order_fields[array_rand($order_fields)];
+$order_direction = $order_directions[array_rand($order_directions)];
 global $base_url;?>
 <div class="title_coach_page">
 	<p>FIND A COACH</p>
@@ -91,7 +95,7 @@ global $base_url;?>
 </div>
 <div class="post_coach_conter"></div>*/?>
 </div>
-<div id="list_coaches_loadmore_button" class="load-more" ></div>
+<div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>"></div>
 <script type="text/javascript">
 	ajax_list_coaches(0);
 </script>

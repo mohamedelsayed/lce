@@ -22,7 +22,7 @@ $(document).ready(function(){
 		{value: "<?php echo $key;?>", label: "<?php echo $value;?>"},
 	<?php }?>
 	];
-    $("#specializations_id" ).autocomplete({
+    $("#specializations_id").autocomplete({
     	select: function( event, ui ){
 			var oldids = jQuery("#specializations_ids").val();
 			if(oldids){
@@ -37,7 +37,11 @@ $(document).ready(function(){
 			jQuery("#specializations_id").val("");	
 			return false;
 		},
-		source: savailableTags
+		source: savailableTags,
+		minLength: 0
+    });
+	$("#specializations_id").focus(function(){
+		//$('#specializations_id').trigger("keyup"); 
     });
     jQuery("body").on("click", ".removeusers", function(){
 		var userid = jQuery(this).attr('userid');
