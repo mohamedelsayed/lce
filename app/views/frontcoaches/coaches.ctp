@@ -18,12 +18,12 @@ global $base_url;?>
 	<div class="coach_search">Coaching Area</div>
 	<div class="coach_select_select coach_select">
 		<select>
-			<option selected="selected" value="1">Please Select</option>
-			<option value="2">1</option>
-			<option value="3">2</option>
-			<option value="4">3</option>
-			<option value="5">4</option>
-			<option value="6">5</option>
+			<option value="0">Please Select</option>
+			<?php if(!empty($specializations)){
+				foreach ($specializations as $key => $value) {?>
+					<option value="<?php echo $key;?>"><?php echo $value;?></option>
+				<?php }?>
+			<?php }?>
 		</select>
 	</div>
 </div>
@@ -31,12 +31,12 @@ global $base_url;?>
 	<div class="coach_search">Geography</div>
 	<div class="coach_select_select coach_select">
 		<select>
-			<option selected="selected" value="1">Please Select</option>
-			<option value="2">1</option>
-			<option value="3">2</option>
-			<option value="4">3</option>
-			<option value="5">4</option>
-			<option value="6">5</option>
+			<option value="1">Please Select</option>
+			<?php if(!empty($geographys)){
+				foreach ($geographys as $key => $value) {?>
+					<option value="<?php echo $key;?>"><?php echo $value;?></option>
+				<?php }?>
+			<?php }?>
 		</select>
 	</div>
 </div>
@@ -98,4 +98,12 @@ global $base_url;?>
 <div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>"></div>
 <script type="text/javascript">
 	ajax_list_coaches(0);
+	jQuery(document).ready(function() {
+		jQuery('body').on('mousewheel', function(e){
+			start_ajax_list_coaches();
+		});		
+		jQuery(window).on('scroll', function() {
+			start_ajax_list_coaches();
+		});	
+	});
 </script>
