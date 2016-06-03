@@ -9,7 +9,10 @@ class FrontcoachesController  extends AppController {
 	var $uses = 'Coach';	
 	function coaches(){
 		$this->set('title_for_layout' , 'All Coaches');		
-		$this->set('selected','frontcoaches');	
+		$this->set('selected','frontcoaches');
+		$specializations = $this->Coach->Specialization->find('list');
+		$geographys = $this->Coach->Geography->find('list');		
+		$this->set(compact('specializations', 'geographys'));	
 	}
 	function coach($id = 0){
 		$this->set('title_for_layout' , 'Coach');		
@@ -51,6 +54,7 @@ class FrontcoachesController  extends AppController {
 		$coaches = array_slice($coaches_all, $start, $limit);
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
+			$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
 			$default_image = BASE_URL.'/img/front/coache_default_image.png';
 			$image = $default_image;
 			$style = '';
@@ -108,12 +112,15 @@ class FrontcoachesController  extends AppController {
 			$i++;
 			$html .= '<div class="'.$class.'">
 				<div class="post_coach_left_in">
-				<a href="#">
+				<a href="'.$coach_url.'">
 				<img style="'.$style.'" alt="'.$name.'" src="'.$image.'" />
 				</a>
 				</div>
 				<div class="post_coach_right_in">
-				<div class="post_coach_title">'.$name.'<samp>'.$specializations_title.'</samp></div>';
+				<a href="'.$coach_url.'">
+				<div class="post_coach_title">'.$name.
+				'</a>'.
+				'<samp>'.$specializations_title.'</samp></div>';
 			if($geographys_title != ''){
 				$html .= '<div class="post_coach_phone">'.$geographys_title.'</div>';
 			}			
@@ -124,7 +131,7 @@ class FrontcoachesController  extends AppController {
 				$html .= '<div class="post_coach_prograf">“'.$statement.'”</div>';
 			}
 			$html .= '<div class="post_coach_profile">
-				<a href="#">View Profile</a>
+				<a href="'.$coach_url.'">View Profile</a>
 				<samp><a href="#">Recommend this caoch</a></samp>
 				</div>
 				<div class="post_coach_sumit"><a href="#">Contact me</a></div>
