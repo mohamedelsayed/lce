@@ -25,6 +25,8 @@ class FrontcoachesController  extends AppController {
 		}
 		$limit = isset($_POST['limit'])? $_POST['limit']:6;
 		$page = isset($_POST['page'])? $_POST['page']:1;	
+		$order_field = isset($_POST['order_field'])? $_POST['order_field']:'created';	
+		$order_direction = isset($_POST['order_direction'])? $_POST['order_direction']:'DESC';	
 		$start = ($page - 1) * $limit;
 		$conditions = array();
 		$conditions['Coach.approved'] = 1;
@@ -34,7 +36,8 @@ class FrontcoachesController  extends AppController {
 		$coaches_all = $this->Coach->find(
 			'all', array(
 				'conditions' => $conditions,
-				'order' => 'RAND()',
+				//'order' => 'RAND()',
+				'order' => array('Coach.'.$order_field => $order_direction, 'Coach.id' => 'DESC'),
 				'page'	=> $page,
 				//'limit' => $limit,
 			)	  	 	
@@ -49,6 +52,11 @@ class FrontcoachesController  extends AppController {
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
 			$name = $coach['Coach']['name'];
+			$specializations = $coach['Specialization'];
+			$specializations_title = '';
+			if(isset($specializations[0])){
+				$specializations_title = $specializations[0]['title'];				
+			}
 			$class = 'post_coach_right';
 			$line_div = '<div class="post_coach_conter"></div>';
 			if($i % 2 == 0){
@@ -60,7 +68,7 @@ class FrontcoachesController  extends AppController {
 				<a href="#">
 				<img alt="" src="'.$base_url.'/img/front/pic_coach.png" />
 				</a>
-				<div class="post_coach_title">'.$name.'<samp>BS Psychology </samp></div>
+				<div class="post_coach_title">'.$name.'<samp>'.$specializations_title.'</samp></div>
 				<div class="post_coach_phone">Zamalek, Heliopolis and Maadi<samp>Remote Coaching</samp></div>
 				<div class="post_coach_prograf">“Lorem Ipsum is simply dummy text of the printing and typesetting industry.” </div>
 				<div class="post_coach_profile"><a href="#">View Profile</a><samp><a href="#">Recommend this caoch</a></samp></div>

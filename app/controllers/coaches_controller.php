@@ -13,6 +13,10 @@ class CoachesController extends AuthController {
 	var $biography_limit = 800;
 	function index() {
 		$this->Coach->recursive = 0;
+		$this->paginate = array(
+			//'conditions' => array($conditions),
+			'order' => array('Coach.created' => 'DESC', 'Coach.id' => 'DESC'),
+    	);
 		$this->set('coaches', $this->paginate());
 	}
 	function view($id = null) {
@@ -97,11 +101,11 @@ class CoachesController extends AuthController {
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Coach', true));
-			$this->redirect(array('action'=>'index'));
+			$this->redirect(array('action' => 'index'));
 		}
 		if ($this->Coach->delete($id)) {
 			$this->Session->setFlash(__('Coach deleted', true));
-			$this->redirect(array('action'=>'index'));
+			$this->redirect(array('action' => 'index'));
 		}
 		$this->Session->setFlash(__('Coach was not deleted', true));
 		$this->redirect(array('action' => 'index'));
