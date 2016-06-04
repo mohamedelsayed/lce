@@ -3184,52 +3184,54 @@ ul.primary li:hover > a{
 .form_item{
 	float: left;
 	width: 100%;
-	margin: 1% 0;
+	margin: 2% 0 1% 0;
+	text-align: center;
 	font-size: 16px;
 }
 #popup_form_name{
 	float: left;
 	width: 98%;
 	font-size: 16px;
-	border: 2px dashed #f58521;
+	border: 2px solid #979797;
 	padding: 2% 0 2% 2%;
-	color: #000000;
+	color: #3e3e3f;
 }
 #popup_form_email{
 	float: left;
 	width: 98%;
 	font-size: 16px;
 	padding:2% 0 2% 2%;
-	border: 2px dashed #f58521;
-	color: #000000;
+	border: 2px solid #979797;
+	color: #3e3e3f;
 }
-#popup_form_mobile_number{
+#popup_form_mobile_number ,#contactme_popup_form_first_name 
+,#contactme_popup_form_last_name ,#contactme_popup_form_email{
 	float: left;
 	width: 98%;
 	font-size: 16px;
 	padding: 2% 0 2% 2%;
-	border: 2px dashed #f58521;
-	color: #000000;
+	border: 2px solid #979797;
+	color: #3e3e3f;
 }
 .form_checkout_submit{
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border: 2px dashed #f58521;
+    border: 2px solid #f58521;
     color: #f58521;
 	cursor: pointer;
-    float: left;
     font-size: 16px;
-    margin-left: 30%;
-    margin-top: 1%;
+    margin-left: auto;
+	margin-right: auto;
     padding: 10px 0;
     text-align: center;
     text-decoration: none;
     width: 45%;
 }
 .form_checkout_submit:hover{
-	float: left;
-	border: 2px dashed #f58521;
+	border: 2px solid #f58521;
 	text-decoration:none;
 	color: #ffffff;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: #f58521;
 	transition: .5s all;
 	-webkit-transition: 0.5s all ease;
@@ -3237,11 +3239,12 @@ ul.primary li:hover > a{
 	-o-transition: 0.5s all ease;
 	-ms-transition: 0.5s all ease;
 }
+
 #popup_form_terms_and_conditions{
 	float: left;
 	margin-right: 1.6%;
     margin-top: 0.8%;
-	border: 2px solid #f58521;
+	border: 2px solid #979797;
 }
 .mesage-pop{
 	float: left;
@@ -3290,7 +3293,9 @@ ul.primary li:hover > a{
 /* width: 80%;
  float: left; */
 }
-.instructorpopoupbiography{
+.contactme_popuppopoupbody{
+	float: left;
+    margin: 2% 4%;
 }
 .instructorpopoupbiographybody{
 	display:block;
@@ -3300,4 +3305,40 @@ ul.primary li:hover > a{
  width: 100%;
  text-align: left;
   float: left;
+}
+#contactme_popup_form_message{
+	float: left;
+	width: 98%;
+	height: 110px;
+	font-size: 16px;
+	padding: 2% 0 2% 2%;
+	border: 2px solid #979797;
+	color: #3e3e3f;
+}
+.form_contactme_submit{
+	border: 2px solid #f58521;
+    border-radius: 5px;
+    color: #f58521;
+	background: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px 0;
+    text-align: center;
+    text-decoration: none;
+    width: 45%;
+	margin-left: auto;
+    margin-right: auto;
+}
+.form_contactme_submit:hover{
+	border: 2px solid #f68824;
+	text-decoration:none;
+	color: #ffffff;
+	margin-left: auto;
+    margin-right: auto;
+	background-color: #f68824;
+	transition: .5s all;
+	-webkit-transition: 0.5s all ease;
+	-moz-transition: 0.5s all ease;
+	-o-transition: 0.5s all ease;
+	-ms-transition: 0.5s all ease;
 }
