@@ -6,7 +6,8 @@
  */
 class FrontcoachesController  extends AppController {
 	var $name = 'Frontcoaches';
-	var $uses = 'Coach';	
+	var $uses = 'Coach';
+	var $components = array('Email');	
 	function coaches(){
 		$this->set('title_for_layout' , 'All Coaches');		
 		$this->set('selected','frontcoaches');
@@ -219,6 +220,26 @@ class FrontcoachesController  extends AppController {
 	    		if(isset($_POST['message'])){
 	    			$message = $_POST['message'];    			
 	    		}
+				$this->loadModel('Setting');            
+            	$settings = $this->Setting->read(null, 1);              
+				$coach = $this->Coach->read(null, $coach_id);
+				$subject = $settings['Setting']['title'].' - Contact Me Form';
+	            $this->Email->to = $coach['Coach']['email'];
+				$this->Email->subject = $subject;           
+				$this->Email->replyTo = $email;
+				$this->Email->from = $first_name.' '.$last_name.'<'.$email.'>';                
+            	$this->Email->sendAs = 'html'; 	     
+	            $this->Email->template = 'sendmailcoach';
+				$this->set('subject', $subject);
+				$this->set('first_name', $first_name);
+				$this->set('last_name', $last_name);
+				$this->set('email', $email);
+				$this->set('message', $message);
+        	    if ($this->Email->send()){
+        	    	$html = 'Email has been sent.';
+            	}else{
+            		$html = 'Error';            		
+            	}				
 			}else{
 				$html = 'Error';    						
 			}
