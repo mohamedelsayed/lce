@@ -172,6 +172,7 @@ jQuery(document).ready(function() {
     	close_instructor_popup(); 
     	close_event_popup();          
     	close_checkout_event_form_popup();  
+    	close_contact_me_popup();
     });
 });
 </script>

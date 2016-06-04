@@ -55,4 +55,8 @@ function contact_me(id){
 	jQuery('#contactme_coach_id').val(id);
 	jQuery("#mesagepopboxcontactmepopoup").show();	
 }
+function close_contact_me_popup(){
+	jQuery("#mesagepopboxcontactmepopoup").hide();        
+	jQuery('#contactme_coach_id').val(0);
+}
 </script>
