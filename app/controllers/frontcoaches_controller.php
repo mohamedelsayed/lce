@@ -97,6 +97,7 @@ class FrontcoachesController  extends AppController {
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
 			$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
+			$email = $coach['Coach']['email'];
 			$default_user_image = BASE_URL.$this->default_user_image;			
 			$image = $default_user_image;
 			$style = '';
@@ -175,9 +176,13 @@ class FrontcoachesController  extends AppController {
 			$html .= '<div class="post_coach_profile">
 				<a href="'.$coach_url.'">View Profile</a>
 				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
-				</div>
-				<div class="post_coach_sumit"><a class="contact_me_button" onclick="contact_me('.$coach['Coach']['id'].')">Contact me</a></div>
-			</div></div>'.$line_div;			
+				</div>';
+			if(trim($email) != ''){
+				$html .= '<div class="post_coach_sumit">
+					<a class="contact_me_button" onclick="contact_me('.$coach['Coach']['id'].')">Contact me</a>
+				</div>';
+			}
+			$html .= '</div></div>'.$line_div;			
 		}
 		if(count($coaches) == 0){
 			if($page == 1){
@@ -189,5 +194,39 @@ class FrontcoachesController  extends AppController {
 		$data['nextpage'] = $page+1;
 		echo json_encode($data);
         $this->autoRender = false;          
+    }
+    function send_coach_mail(){
+    	$html = '';
+    	if(!empty($_POST)){
+    		$coach_id = 0;
+    		if(isset($_POST['coach_id'])){
+    			$coach_id = $_POST['coach_id'];    			
+    		}
+			if($coach_id != 0){
+				$email = '';
+	    		if(isset($_POST['email'])){
+	    			$email = $_POST['email'];    			
+	    		}
+				$first_name = '';
+	    		if(isset($_POST['first_name'])){
+	    			$first_name = $_POST['first_name'];    			
+	    		}
+				$last_name = '';
+	    		if(isset($_POST['last_name'])){
+	    			$last_name = $_POST['last_name'];    			
+	    		}
+				$message = '';
+	    		if(isset($_POST['message'])){
+	    			$message = $_POST['message'];    			
+	    		}
+			}else{
+				$html = 'Error';    						
+			}
+    	}else{
+    		$html = 'Error';    		
+    	}   
+    	$data['html'] = $html;
+		echo json_encode($data);
+        $this->autoRender = false;           
     }
 }
