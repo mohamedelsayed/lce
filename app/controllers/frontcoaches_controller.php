@@ -176,7 +176,7 @@ class FrontcoachesController  extends AppController {
 				<a href="'.$coach_url.'">View Profile</a>
 				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
 				</div>
-				<div class="post_coach_sumit"><a href="#">Contact me</a></div>
+				<div class="post_coach_sumit"><a class="contact_me_button" onclick="contact_me('.$coach['Coach']['id'].')">Contact me</a></div>
 			</div></div>'.$line_div;			
 		}
 		if(count($coaches) == 0){
