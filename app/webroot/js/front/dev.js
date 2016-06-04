@@ -251,6 +251,7 @@ function validate_contactme_form(obj) {
         success: function(result) {
         	var html = result.html;
         	jQuery(".form_contactme_submit").removeAttr("disabled");
+        	close_contact_me_popup();
         	open_coach_popup(html);
         }
     }); 
