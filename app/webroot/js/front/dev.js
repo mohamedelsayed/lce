@@ -249,6 +249,7 @@ function validate_contactme_form(obj) {
         	jQuery('.form_contactme_submit').attr('disabled', 'disabled');
         },
         success: function(result) {
+        	result = jQuery.parseJSON(result);
         	var html = result.html;
         	jQuery(".form_contactme_submit").removeAttr("disabled");
         	close_contact_me_popup();
