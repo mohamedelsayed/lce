@@ -39,7 +39,8 @@ class FronteventsController  extends AppController {
                 )           
             );
             if(!empty($instructor)){
-            	$image = '';
+            	$default_user_image = BASE_URL.$this->default_user_image;			
+				$image = $default_user_image;
 				$style = '';
             	if(trim($instructor['Instructor']['image']) != ''){
             		$div_ratio = 200/200;
@@ -59,6 +60,8 @@ class FronteventsController  extends AppController {
 		                        $style = $max_height;
 		                    }
 		                }
+					}else{
+						$image = $default_user_image;
 					}
 				}
 				$mail = $instructor['Instructor']['mail'];
@@ -77,21 +80,18 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="instructorpopoupcontent instructorpopouppositioninright">'.$instructor['Instructor']['position'].'</div>
 				</div>';
 				if(trim($mail) != ''){
-					$data .= '<div class="instructorpopouphead instructorpopoupmail">
-						<i class="icon-mail"></i>
-						<div class="instructorpopoupcontent"><a href="mailto:'.$mail.'">'.$mail.'</a></div>
+					$data .= '<div class="instructorpopouphead instructorpopoupmail">						
+						<div class="instructorpopoupcontent instructorpopoucenter"><a href="mailto:'.$mail.'"><i class="icon-mail"></i>'.$mail.'</a></div>
 					</div>';
 				}
 				if(trim($facebook) != ''){
-					$data .= '<div class="instructorpopouphead instructorpopoupfacebook">
-						<i class="icon-facebook"></i>
-						<div class="instructorpopoupcontent"><a target="_blank" href="'.$facebook.'">'.$facebook.'</a></div>
+					$data .= '<div class="instructorpopouphead instructorpopoupfacebook">						
+						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$facebook.'</a></div>
 					</div>';
 				}
 				if(trim($linkedin) != ''){
-					$data .= '<div class="instructorpopouphead instructorpopouplinkedin">
-						<i class="icon-linkedin"></i>
-						<div class="instructorpopoupcontent"><a target="_blank" href="'.$linkedin.'">'.$linkedin.'</a></div>
+					$data .= '<div class="instructorpopouphead instructorpopouplinkedin">						
+						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$linkedin.'</a></div>
 					</div>';
 				}
 				$data .= '<div class="instructorpopouphead instructorpopoupbiography"><div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                

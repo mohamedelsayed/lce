@@ -55,8 +55,8 @@ class FrontcoachesController  extends AppController {
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
 			$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
-			$default_image = BASE_URL.'/img/front/coache_default_image.png';
-			$image = $default_image;
+			$default_user_image = BASE_URL.$this->default_user_image;			
+			$image = $default_user_image;
 			$style = '';
         	if(trim($coach['Coach']['image']) != ''){
         		$div_ratio = 118/118;
@@ -77,7 +77,7 @@ class FrontcoachesController  extends AppController {
 	                    }
 	                }
 				}else{
-					$image = $default_image;
+					$image = $default_user_image;
 				}
 			}
 			$name = $coach['Coach']['name'];
