@@ -1142,3 +1142,6 @@ input[type=radio].error, input[type=checkbox].error{
 .shareBtn{
 	cursor: pointer;
 }
+.contact_me_button{
+	cursor: pointer;	
+}
