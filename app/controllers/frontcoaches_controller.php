@@ -83,7 +83,6 @@ class FrontcoachesController  extends AppController {
 			if(!empty($coach_ids)){
 				$coach_ids_text = implode(',', $coach_ids);			
 				$conditions['Coach.id'] = $coach_ids;
-				//$conditions['Coach.id IN'] = $coach_ids;
 			}else{
 				$conditions['Coach.id < '] = '0';				
 			}
@@ -175,10 +174,15 @@ class FrontcoachesController  extends AppController {
 			}
 			$html .= '<div class="post_coach_profile">
 				<a href="'.$coach_url.'">View Profile</a>
-				<samp><a href="#">Recommend this caoch</a></samp>
+				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
 				</div>
 				<div class="post_coach_sumit"><a href="#">Contact me</a></div>
 			</div></div>'.$line_div;			
+		}
+		if(count($coaches) == 0){
+			if($page == 1){
+				$html = '<div class="no-data-found">No data found.</div>';
+			}
 		}
 		$data['html'] = $html;
 		$data['page_count'] = $page_count;
