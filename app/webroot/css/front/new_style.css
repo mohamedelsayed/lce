@@ -1067,7 +1067,7 @@ input[type=radio].error, input[type=checkbox].error{
 	height: 1px;
 }
 #mesagepopboxcheckoutpopoup .mesagecontent{
-	height: 350px;
+	height: 370px;
 }
 .post_coach_left, .post_coach_right{
 	height: 260px;
@@ -1144,4 +1144,7 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .contact_me_button{
 	cursor: pointer;	
+}
+#mesagepopboxcontactmepopoup .mesagecontent{
+	height: 480px;	
 }
