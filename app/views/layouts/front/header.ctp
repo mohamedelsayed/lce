@@ -58,6 +58,7 @@
 	</script>
 <?php }?>
 <?php include_once 'events_instructors.php'; ?>
+<?php include_once 'contact_me.php';?>
 <?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];

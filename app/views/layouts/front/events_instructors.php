@@ -29,8 +29,7 @@
 	            </div>
 	            <div class="form_item">
 	            	<input type="submit" class="form_checkout_submit" value="Checkout" />
-	            </div>
-	            
+	            </div>	            
 	            <input type="hidden" id="checkout_event_id" name="event_id" value="0">
 	        </form>
 	    </div>	    	
