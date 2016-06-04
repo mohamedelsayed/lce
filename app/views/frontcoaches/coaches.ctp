@@ -4,7 +4,14 @@ $order_fields = array('name', 'gender', 'created');
 $order_directions = array('ASC', 'DESC');
 $order_field = $order_fields[array_rand($order_fields)];
 $order_direction = $order_directions[array_rand($order_directions)];
-global $base_url;?>
+global $base_url;
+$http_host = $_SERVER['HTTP_HOST'];
+$appId = '1425994984092923';
+if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
+	$appId = '1425994984092923';
+}elseif (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
+	$appId = '1425986790760409';
+}?>
 <div class="title_coach_page">
 	<p>FIND A COACH</p>
 </div>
@@ -101,12 +108,11 @@ global $base_url;?>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1425986790760409',
+      appId      : '<?php echo $appId;?>',
       xfbml      : true,
       version    : 'v2.6'
     });
   };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
