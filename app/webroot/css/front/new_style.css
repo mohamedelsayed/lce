@@ -1136,3 +1136,6 @@ input[type=radio].error, input[type=checkbox].error{
 	margin: auto;
 	display: table;
 }
+.instructorpopoupbiographybody{
+	text-align: justify;	
+}
