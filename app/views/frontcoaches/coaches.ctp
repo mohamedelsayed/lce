@@ -107,5 +107,14 @@ jQuery(document).ready(function() {
 	jQuery(window).on('scroll', function() {
 		start_ajax_list_coaches();
 	});	
+	jQuery("body").on("click", ".shareBtn", function(){
+		var data_url = jQuery(this).attr('data-url');
+		alert(data_url);
+		FB.ui({
+			method: 'share',
+			display: 'popup',
+			href: data_url,
+		}, function(response){});
+	});
 });
 </script>
