@@ -53,7 +53,7 @@ function ajax_list_coaches(type){
 	}
     ajax_list_coaches_run = jQuery.ajax({
     	type: "POST",
-        url: base_url + '/frontcoaches/ajax_list_coaches',
+        url: base_url+'/frontcoaches/ajax_list_coaches',
         data: {
         		page: page, limit: limit, filter: filter, type: type, name: coach_name,
         		order_field: order_field, order_direction: order_direction,
