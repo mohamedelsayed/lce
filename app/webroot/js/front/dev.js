@@ -14,6 +14,15 @@ $(document).ready(function(){
     $('#year_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
+    $('#coach_specialization').on('change', function(){
+    	ajax_list_coaches(1);
+	});
+    $('#coach_geography').on('change', function(){
+    	ajax_list_coaches(1);
+	});
+	jQuery("#coach_name").on("change paste keyup", function() {
+		ajax_list_coaches(1);
+	});    
 });    
 function reload_page_with_new_data(){
 	var month_val = $('#month_select_id').val();      
@@ -25,7 +34,6 @@ function start_ajax_list_coaches () {
 	var scroll_height = jQuery(window).scrollTop() + jQuery(window).height();
 	var page_height = jQuery(document).height() - 250;
 	if(scroll_height >= page_height){
-		//if(jQuery(window).scrollTop() + jQuery(window).height() == jQuery(document).height() - 100) {   
 		ajax_list_coaches(0);
    }
 }
@@ -35,15 +43,22 @@ function ajax_list_coaches(type){
 	var filter = '';
 	var nextpage = coaches_page + 1;
 	var page = coaches_page;
-	var order_field = jQuery('#list_coaches_loadmore_button').attr('order_field');
+	var order_field = jQuery('#list_coaches_loadmore_button').attr('order_field');	
 	var order_direction = jQuery('#list_coaches_loadmore_button').attr('order_direction');
+	var coach_specialization = jQuery('#coach_specialization').val();
+	var coach_geography = jQuery('#coach_geography').val();
+	var coach_name = jQuery('#coach_name').val();
 	if(ajax_list_coaches_run) {
 		ajax_list_coaches_run.abort();
 	}
     ajax_list_coaches_run = jQuery.ajax({
     	type: "POST",
         url: base_url + '/frontcoaches/ajax_list_coaches',
-        data: {page: page, limit: limit, filter:filter, type:type, order_field:order_field, order_direction:order_direction},
+        data: {
+        		page: page, limit: limit, filter: filter, type: type, name: coach_name,
+        		order_field: order_field, order_direction: order_direction,
+        		coach_specialization: coach_specialization, coach_geography: coach_geography        		
+			  },
         beforeSend: function() {
         	list_coaches_loadmore_button.addClass("ajaxloading");
         },
