@@ -1132,3 +1132,7 @@ input[type=radio].error, input[type=checkbox].error{
 .post_coach_title a{
 	color: #404041;
 }
+.instructorpopoucenter{
+	margin: auto;
+	display: table;
+}
