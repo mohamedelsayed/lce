@@ -26,29 +26,72 @@ class FrontcoachesController  extends AppController {
 		if(isset($_POST['name'])){
 			$name = trim($_POST['name']);
 		}
+		$type = 0;
+		if(isset($_POST['type'])){
+			$type = trim($_POST['type']);
+		}
+		$coach_specialization = 0;
+		if(isset($_POST['coach_specialization'])){
+			$coach_specialization = trim($_POST['coach_specialization']);
+		}
+		$coach_geography = 0;
+		if(isset($_POST['coach_geography'])){
+			$coach_geography = trim($_POST['coach_geography']);
+		}				
 		$limit = isset($_POST['limit'])? $_POST['limit']:6;
 		$page = isset($_POST['page'])? $_POST['page']:1;	
 		$order_field = isset($_POST['order_field'])? $_POST['order_field']:'created';	
 		$order_direction = isset($_POST['order_direction'])? $_POST['order_direction']:'DESC';	
+		if($type == 1){
+			$page = 1;			
+		}
 		$start = ($page - 1) * $limit;
 		$conditions = array();
 		$conditions['Coach.approved'] = 1;
 		if($name != ''){
 			$conditions['Coach.name LIKE '] = '%'.$name.'%';			
 		}
-		$coaches_all = $this->Coach->find(
-			'all', array(
-				'conditions' => $conditions,
-				//'order' => 'RAND()',
-				'order' => array('Coach.'.$order_field => $order_direction, 'Coach.id' => 'DESC'),
-				'page'	=> $page,
-				//'limit' => $limit,
-			)	  	 	
-		);
-		/*$count = $this->Coach->find('count', array(
-	    		'conditions' => $conditions,
-    		)
-    	);*/
+		$coach_ids = array();
+		$coach_specialization_ids = array();
+		if($coach_specialization != 0){
+			$this->loadModel('CoachSpecialization');
+			$specializations = $this->CoachSpecialization->find('all', 
+				array('conditions' => array('CoachSpecialization.specialization_id' => $coach_specialization)));
+			if(!empty($specializations)){
+				foreach ($specializations as $key => $value) {
+					$coach_specialization_ids[] = $value['CoachSpecialization']['coach_id'];				
+				}
+			}
+			$coach_ids = $coach_specialization_ids;
+		}
+		$coach_geography_ids = array();
+		if($coach_geography != 0){
+			$this->loadModel('CoachGeography');
+			$geographys = $this->CoachGeography->find('all', 
+				array('conditions' => array('CoachGeography.geography_id' => $coach_geography)));
+			if(!empty($geographys)){
+				foreach ($geographys as $key => $value) {
+					$coach_geography_ids[] = $value['CoachGeography']['coach_id'];				
+				}
+			}
+			$coach_ids = $coach_geography_ids;
+		}		
+		if($coach_specialization != 0 && $coach_geography != 0){
+			$coach_ids = array_intersect($coach_specialization_ids, $coach_geography_ids);			
+		}
+		if($coach_specialization != 0 || $coach_geography != 0){
+			if(!empty($coach_ids)){
+				$coach_ids_text = implode(',', $coach_ids);			
+				$conditions['Coach.id'] = $coach_ids;
+				//$conditions['Coach.id IN'] = $coach_ids;
+			}else{
+				$conditions['Coach.id < '] = '0';				
+			}
+		}
+		$options['conditions'] = $conditions;
+		$options['order'] = array('Coach.'.$order_field => $order_direction, 'Coach.id' => 'DESC');
+		$options['page'] = $page;
+		$coaches_all = $this->Coach->find('all', $options);
     	$count = count($coaches_all);
 		$page_count = ceil($count / $limit);
 		$coaches = array_slice($coaches_all, $start, $limit);
