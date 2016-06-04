@@ -29,7 +29,7 @@
 </div>
 <script type="text/javascript">
 	function validate_contactme_form(obj) {		
-	var form_id = obj.attr('id');
+	var form_id = obj.attr('id');	
 	validate_required_input(jQuery('#contactme_popup_form_first_name'));
 	validate_required_input(jQuery('#contactme_popup_form_last_name'));
 	validate_email_input(jQuery('#contactme_popup_form_email'));
@@ -45,10 +45,23 @@
 		    }
 		}
 	});
-	if(contactme_form_flag === 0){
-		return true;
+	if(contactme_form_flag === 0){		
+		var formData = jQuery('#'+form_id).serialize();
+		alert(formData);
+		jQuery.ajax({
+    	url: base_url+'/frontcoaches/send_coach_mail/',
+        type: 'POST',
+        data: formData,            
+        beforeSend: function() {
+        	jQuery('.form_contactme_submit').attr('disabled', 'disabled');
+        },
+        success: function(result) {
+        	jQuery(".form_contactme_submit").removeAttr("disabled");
+        }
+    }); 
+		//return true;
 	}else{
-		return false;
+		//return false;
 	}   	
 }
 function contact_me(id){   
@@ -59,4 +72,9 @@ function close_contact_me_popup(){
 	jQuery("#mesagepopboxcontactmepopoup").hide();        
 	jQuery('#contactme_coach_id').val(0);
 }
+$(document).ready(function(){
+	jQuery("#contactme_popup_form").submit(function (event) {
+		event.preventDefault();
+	});
+});
 </script>

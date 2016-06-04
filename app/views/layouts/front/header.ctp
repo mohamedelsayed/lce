@@ -57,8 +57,8 @@
 	});
 	</script>
 <?php }?>
-<?php include_once 'events_instructors.php'; ?>
-<?php include_once 'contact_me.php';?>
+<?php include_once 'frontevents.php'; ?>
+<?php include_once 'frontcoaches.php';?>
 <?php /*
 		<?php if(!empty($quote)){
 			$quote_name = $quote['Quote']['name'];
