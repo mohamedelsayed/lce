@@ -241,7 +241,6 @@ function validate_contactme_form(obj) {
 	});
 	if(contactme_form_flag === 0){		
 		var formData = jQuery('#'+form_id).serialize();
-		alert(formData);
 		jQuery.ajax({
     	url: base_url+'/frontcoaches/send_coach_mail/',
         type: 'POST',
@@ -250,8 +249,9 @@ function validate_contactme_form(obj) {
         	jQuery('.form_contactme_submit').attr('disabled', 'disabled');
         },
         success: function(result) {
+        	var html = result.html;
         	jQuery(".form_contactme_submit").removeAttr("disabled");
-        	open_coach_popup(result);
+        	open_coach_popup(html);
         }
     }); 
 		//return true;
