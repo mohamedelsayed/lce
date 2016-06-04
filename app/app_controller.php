@@ -14,6 +14,7 @@ class AppController extends Controller {
 	public $payment_merchant_id = 'Test290510EGP';
 	public $payment_access_code = 'B972DDBB';
 	public $payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
+	public $default_user_image = '/img/front/default-user-image.png';
 	function beforeFilter() {
 		//write settings in session
 		if(!$this->Session->check('Setting')){
