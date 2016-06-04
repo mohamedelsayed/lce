@@ -1,3 +1,7 @@
+<div id="mesagepopboxcoachpopoup" class="mesage-pop" >
+    <div class="mesagecontent"></div>
+    <div class="mesage-pop-bg"></div>
+</div>
 <div id="mesagepopboxcontactmepopoup" class="mesage-pop" >
     <div class="mesagecontent">
     	<h4>
@@ -27,54 +31,3 @@
     </div>
     <div class="mesage-pop-bg"></div>
 </div>
-<script type="text/javascript">
-	function validate_contactme_form(obj) {		
-	var form_id = obj.attr('id');	
-	validate_required_input(jQuery('#contactme_popup_form_first_name'));
-	validate_required_input(jQuery('#contactme_popup_form_last_name'));
-	validate_email_input(jQuery('#contactme_popup_form_email'));
-	validate_required_input(jQuery('#contactme_popup_form_message'));	
-	var contactme_form_flag = 0;
-	var focused = 0;
-	jQuery('#'+form_id+' input').each(function(){
-		if(jQuery(this).hasClass('error')){ 
-			contactme_form_flag = 1;
-			if(focused == 0){
-	    		focused = 1;
-		    	jQuery(this).focus();
-		    }
-		}
-	});
-	if(contactme_form_flag === 0){		
-		var formData = jQuery('#'+form_id).serialize();
-		alert(formData);
-		jQuery.ajax({
-    	url: base_url+'/frontcoaches/send_coach_mail/',
-        type: 'POST',
-        data: formData,            
-        beforeSend: function() {
-        	jQuery('.form_contactme_submit').attr('disabled', 'disabled');
-        },
-        success: function(result) {
-        	jQuery(".form_contactme_submit").removeAttr("disabled");
-        }
-    }); 
-		//return true;
-	}else{
-		//return false;
-	}   	
-}
-function contact_me(id){   
-	jQuery('#contactme_coach_id').val(id);
-	jQuery("#mesagepopboxcontactmepopoup").show();	
-}
-function close_contact_me_popup(){
-	jQuery("#mesagepopboxcontactmepopoup").hide();        
-	jQuery('#contactme_coach_id').val(0);
-}
-$(document).ready(function(){
-	jQuery("#contactme_popup_form").submit(function (event) {
-		event.preventDefault();
-	});
-});
-</script>
