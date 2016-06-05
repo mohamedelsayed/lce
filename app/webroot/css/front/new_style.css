@@ -1090,7 +1090,7 @@ input[type=radio].error, input[type=checkbox].error{
 	padding-left: 11%;	
 }
 .post_coach_profile samp{
-	float: right;
+	float: left;
 }
 .post_coach_left img, .post_coach_right img{
 	
@@ -1107,8 +1107,9 @@ input[type=radio].error, input[type=checkbox].error{
 	width: 100%;
 }
 .post_coach_profile{
-	margin-left: 0px;
-	width: 100%;
+	margin: 3% 0 0;
+    padding: 0;
+    width: 100%;
 }
 .post_coach_sumit{
 	margin-left: 0px;
@@ -1157,10 +1158,9 @@ input[type=radio].error, input[type=checkbox].error{
 	width: 20%;
 }
 .coachpopoupleft img{
-	width: 200px;
 }
 .coachpopoupright{
-	width: 80%;
+	width: 75%;
 	float: right;
 }
 .post_coach_image{

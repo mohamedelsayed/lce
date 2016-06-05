@@ -3342,3 +3342,47 @@ ul.primary li:hover > a{
 	-o-transition: 0.5s all ease;
 	-ms-transition: 0.5s all ease;
 }
+
+.coachpopoupbody{
+	float: left;
+	width: 100%;
+	padding: 2% 4%;
+}
+..coachpopoupleft{
+	float: left;
+	width: 20%;
+}
+.post_coach_image3{
+	border-radius: 50%;
+    float: left;
+    height: 140px;
+    overflow: hidden;
+    width: 140px;
+}
+.coachpopoupname{
+	float: left;
+	font-size: 20px;
+	font-weight: bold;
+	color: #404041;
+	width: 60%;
+}
+.coachpopoupspecializations{
+	float: left;
+	width: 100%;
+	font-size: 18px;
+	color: #404041;
+}
+.coachpopoupgeographysout{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach.png") no-repeat scroll left center;
+    color: #2bbab6;
+    float: left;
+	margin-top: 3%;
+    font-size: 14px;
+    padding: 0 0 0 3%;
+    width: 72%;
+}
+.post_coach_ok{
+	float: left;
+	width:100%;
+	height: 10px;
+}
