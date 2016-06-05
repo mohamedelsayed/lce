@@ -44,9 +44,28 @@ $all_events_link = $base_url.'/all-events';?>
 			<?php foreach ($testimonials as $key => $testimonial) {
 				$image = '';
 				if($testimonial['Testimonial']['image'] != ''){
+					$model = 'Testimonial';
 					//$image = $base_url.'/img/upload/thumb_'.$testimonial['Testimonial']['image'];
 					$image = $base_url.'/img/upload/'.$testimonial['Testimonial']['image'];
-				}
+		    		$div_ratio = 80/80;
+		    		$img = $testimonial[$model]['image'];
+		        	$image = BASE_URL.'/img/upload/'.$img;            
+		            $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+					$max_height = 'max-height:100%;';
+		            $max_width  = 'max-width:100%;';
+		            $style = $max_width;
+					if (file_exists($image_path)) { 
+		            $image_size = getimagesize($image_path);                      
+				        if(!empty($image_size)){
+				            $width = $image_size[0];
+				            $height = $image_size[1];   
+				            $image_ratio = $width/$height;
+				            if($image_ratio > $div_ratio){                  
+				                $style = $max_height;
+				            }
+				        }
+					}
+				}				
 				$name = '';
 				if($testimonial['Testimonial']['name'] != ''){
 					$name = $testimonial['Testimonial']['name'];
@@ -60,12 +79,12 @@ $all_events_link = $base_url.'/all-events';?>
 					$body = strip_tags($testimonial['Testimonial']['body']);
 				}
 				$testimonial_link = $all_testimonial_link.'#testimonial'.$testimonial['Testimonial']['id'];?>
-				<div class="top_pic">				
-					<div class="top_img testimonial_image_home">
-						<a href="<?php echo $testimonial_link;?>">
-							<img src="<?php echo $image;?>"/>
-						</a>
-					</div>
+				<div class="top_pic">	
+					<a href="<?php echo $testimonial_link;?>">			
+						<div class="top_img testimonial_image_home">						
+							<img src="<?php echo $image;?>" style="<?php echo $style;?>" />					
+						</div>
+					</a>
 					<div class="top_wrie testimonial_title_home">
 						<a href="<?php echo $testimonial_link;?>">
 							<?php echo $name;?>
@@ -149,7 +168,9 @@ $all_events_link = $base_url.'/all-events';?>
 			<div class="top_right article_home">
 				<div class="top_img_article article_home_image article_home_image_new">
 					<a>
-						<img class="home_event_img" src="<?php echo $image;?>" />
+						<div class="home_event_img_div">
+							<img class="home_event_img" src="<?php echo $image;?>" 	style="<?php echo $style;?>" />
+						</div>
 					</a>
 				</div>
 				<div class="top_wrie_b article_home_title"><?php echo $title;?></div>

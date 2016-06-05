@@ -63,9 +63,11 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		<div class="post_event">
 			<div class="post_event_left">
 				<?php if($image != ''){?>
-					<a>					
-						<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
-					</a>
+					<div class="post_event_image_in">
+						<a>					
+							<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
+						</a>
+					</div>
 				<?php }?>
 				<div class="post_event_details"><i class="icon_details"></i><?php echo $location;?></div>
 				<div class="post_event_date" style="height: auto;"><i class="icon_date"></i><?php echo $all_date;?></div>
