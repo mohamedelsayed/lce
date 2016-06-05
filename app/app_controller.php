@@ -37,6 +37,7 @@ class AppController extends Controller {
 		$this->set('payment_merchant_id', $this->payment_merchant_id);
 		$this->set('payment_access_code', $this->payment_access_code);
 		$this->set('payment_hash_secret', $this->payment_hash_secret);
+		$this->set('default_user_image', $this->default_user_image);
 	}	
 	function beforeRender(){
 		if($this->name == 'CakeError'){
