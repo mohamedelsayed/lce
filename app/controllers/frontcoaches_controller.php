@@ -331,7 +331,7 @@ class FrontcoachesController  extends AppController {
 						}
 						$html .= '</div>'; 						
 						if($statement != ''){
-							$html .= '<div class="coachpopoupstatement">“'.$statement.'”</div>';
+							$html .= '<div class="coachpopoupstatement">“'.'“'. substr($statement, 0, 100).'”'.'”</div>';
 						}
 						if(trim($mobile) != ''){
 							$html .= '<div class="coachpopoupmobile">						
@@ -345,12 +345,12 @@ class FrontcoachesController  extends AppController {
 						}
 						if(trim($facebook) != ''){
 							$html .= '<div class="coachpopoupfacebook">						
-								<div class="coachpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$facebook.'</a></div>
+								<div class="coachpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$this->remove_facebook_linkedin_string($facebook).'</a></div>
 							</div>';
 						}
 						if(trim($linkedin) != ''){
 							$html .= '<div class="coachpopouplinkedin">						
-								<div class="coachpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$linkedin.'</a></div>
+								<div class="coachpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$this->remove_facebook_linkedin_string($linkedin).'</a></div>
 							</div>';
 						} 
 						$html .= '<div class="post_coach_profile coachpopoupviewprofile">
@@ -358,10 +358,10 @@ class FrontcoachesController  extends AppController {
 							<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
 							</div>';										
 		                $html .= '</div>';
+						$html .= '</div>';
 						$html .= '<div class="post_coach_ok">
 							<a class="contact_me_button_ok" onclick="close_coach_popup();">OK</a>
-						</div>';		
-						$html .= '</div>';
+						</div>';								
 		            }
 	            }
 			}else{

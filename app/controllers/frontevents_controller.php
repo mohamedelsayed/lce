@@ -86,12 +86,12 @@ class FronteventsController  extends AppController {
 				}
 				if(trim($facebook) != ''){
 					$data .= '<div class="instructorpopouphead instructorpopoupfacebook">						
-						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$facebook.'</a></div>
+						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$this->remove_facebook_linkedin_string($facebook).'</a></div>
 					</div>';
 				}
 				if(trim($linkedin) != ''){
 					$data .= '<div class="instructorpopouphead instructorpopouplinkedin">						
-						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$linkedin.'</a></div>
+						<div class="instructorpopoupcontent instructorpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$this->remove_facebook_linkedin_string($linkedin).'</a></div>
 					</div>';
 				}
 				$data .= '<div class="instructorpopouphead instructorpopoupbiography"><div class="instructorpopoupcontent instructorpopoupbiographybody">'.$instructor['Instructor']['biography'].'</div></div>';                
