@@ -3398,7 +3398,7 @@ ul.primary li:hover > a{
     margin-bottom: 2%;
     margin-top: 4%;
     text-align: center;
-    width: 85%;
+    width: 100%;
 }
 .contact_me_button_ok{
 	border: 1px solid #f58521;
@@ -3464,7 +3464,6 @@ ul.primary li:hover > a{
 	 margin-top: 2%;
 }
 .coachpopoupfacebook a{
-	float: left;
 	color: #9d9d9d;
 	white-space: nowrap;
 	font-size: 14px;
@@ -3475,7 +3474,6 @@ ul.primary li:hover > a{
 	 margin-top: 2%;
 }
 .coachpopouplinkedin a{
-	float: left;
 	color: #9d9d9d;
 	white-space: nowrap;
 	font-size: 14px;
