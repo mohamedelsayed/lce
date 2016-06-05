@@ -2685,6 +2685,13 @@ select {
 	font-size: 16px;
     width: 100%; */
 }
+.icon-mobile{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_mobile.png") no-repeat scroll;
+    float: left;
+    height: 35px;
+    width: 40px;
+	margin: -4% auto auto;
+}
 .icon-mail{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_email.png") no-repeat scroll;
     float: left;
@@ -3428,6 +3435,17 @@ ul.primary li:hover > a{
 	float: right;
 	width: 40%;
 }
+.coachpopoupmobile{
+	float: left;
+	width:46%;
+	 margin-top: 2%;
+}
+.coachpopoupmobile a{
+	float: left;
+	white-space: nowrap;
+	color: #9d9d9d;
+	font-size: 14px;
+}
 .coachpopoupemail{
 	float: left;
 	width:46%;
@@ -3435,27 +3453,30 @@ ul.primary li:hover > a{
 }
 .coachpopoupemail a{
 	float: left;
+	white-space: nowrap;
 	color: #9d9d9d;
 	font-size: 14px;
 }
 .coachpopoupfacebook{
 	float: left;
-	width:50%;
+	width:46%;
 	 margin-top: 2%;
 }
 .coachpopoupfacebook a{
 	float: left;
 	color: #9d9d9d;
+	white-space: nowrap;
 	font-size: 14px;
 }
 .coachpopouplinkedin{
 	float: left;
-	width:90%;
+	width:46%;
 	 margin-top: 2%;
 }
 .coachpopouplinkedin a{
 	float: left;
 	color: #9d9d9d;
+	white-space: nowrap;
 	font-size: 14px;
 }
 .coachpopoupviewprofile{
