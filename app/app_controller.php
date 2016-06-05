@@ -274,4 +274,24 @@ class AppController extends Controller {
 								   	   array('username' => $this->Session->read('userInfo.User.username'),
 								   	 	     'password' => $this->Session->read('userInfo.User.password'))));
 	}
+	public function remove_facebook_linkedin_string($string = ''){
+		$replace = '';
+		$search1 = 'https://www.linkedin.com';
+		$search2 = 'http://www.linkedin.com';
+		$search3 = 'https://linkedin.com';
+		$search4 = 'http://linkedin.com';
+		$string = str_replace($search1, $replace, $string);
+		$string = str_replace($search2, $replace, $string);
+		$string = str_replace($search3, $replace, $string);
+		$string = str_replace($search4, $replace, $string);
+		$search1 = 'https://www.facebook.com';
+		$search2 = 'http://www.facebook.com';
+		$search3 = 'https://facebook.com';
+		$search4 = 'http://facebook.com';
+		$string = str_replace($search1, $replace, $string);
+		$string = str_replace($search2, $replace, $string);
+		$string = str_replace($search3, $replace, $string);
+		$string = str_replace($search4, $replace, $string);
+		return $string;		
+	}
 }
