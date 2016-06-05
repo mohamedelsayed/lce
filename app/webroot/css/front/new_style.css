@@ -1087,7 +1087,7 @@ input[type=radio].error, input[type=checkbox].error{
 	text-align: right;
 }
 .post_coach_phone samp{
-	padding-left: 11%;	
+	padding-left: 15%;	
 }
 .post_coach_profile samp{
 	float: left;
@@ -1097,11 +1097,11 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .post_coach_left_in{
 	float:left;
-	width: 25%;
+	width: 23%;
 }
 .post_coach_right_in{
 	float: left;
-	width: 75%;
+	width: 77%;
 }
 .post_coach_prograf{
 	width: 100%;
@@ -1160,7 +1160,7 @@ input[type=radio].error, input[type=checkbox].error{
 .coachpopoupleft img{
 }
 .coachpopoupright{
-	width: 75%;
+	width: 78%;
 	float: right;
 }
 .post_coach_image{

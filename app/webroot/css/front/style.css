@@ -2288,7 +2288,7 @@ select {
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach_phone.png") no-repeat scroll left center;
     color: #2bbab6;
     font-size: 14px;
-    margin-left: 6%;
+	float: left;
 	font-family: Montserrat;
     padding: 0 5%;
 }
@@ -2312,7 +2312,7 @@ select {
     color: #f58521;
     float: left;
     font-size: 16px;
-	padding: 1% 4%;
+	padding: 1.2% 6%;
 	text-decoration: underline;
 }
 .post_coach_profile samp{
@@ -2333,7 +2333,7 @@ select {
 .post_coach_sumit{
 	float: left;
     margin-left: 23%;
-    margin-top: 1%;
+    margin-top: 2%;
     width: 77%;
 }
 .post_coach_sumit a{
@@ -2690,21 +2690,21 @@ select {
     float: left;
     height: 35px;
     width: 40px;
-	margin: auto;
+	margin: -2% auto auto;
 }
 .icon-facebook{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_facebook.png") no-repeat scroll;
     float: left;
     height: 35px;
-	margin: auto;
-    width: 40px;
+    width: 42px;
+	margin: -2% auto auto;
 }
 .icon-linkedin{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_linkedin.png") no-repeat scroll;
     float: left;
     height: 35px;
-	margin: auto;
-    width: 40px;
+    width: 42px;
+	margin: -1% auto auto;
 }
 #cssmenu,
 #cssmenu ul,
@@ -3346,7 +3346,7 @@ ul.primary li:hover > a{
 .coachpopoupbody{
 	float: left;
 	width: 100%;
-	padding: 2% 4%;
+	padding: 2%;
 }
 ..coachpopoupleft{
 	float: left;
@@ -3368,21 +3368,96 @@ ul.primary li:hover > a{
 }
 .coachpopoupspecializations{
 	float: left;
+	margin-top: 1%;
 	width: 100%;
 	font-size: 18px;
 	color: #404041;
 }
 .coachpopoupgeographysout{
+	float: left;
+	margin-top: 3%;
+	width: 100%;
+}
+.coachpopoupgeographys{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach.png") no-repeat scroll left center;
     color: #2bbab6;
     float: left;
-	margin-top: 3%;
     font-size: 14px;
     padding: 0 0 0 3%;
-    width: 72%;
+    width: 25%;
 }
 .post_coach_ok{
 	float: left;
 	width:100%;
-	height: 10px;
+	margin-top: 2%;
+	text-align: center;
+}
+.contact_me_button_ok{
+	border: 1px solid #f58521;
+    border-radius: 5px;
+    color: #f58521;
+    font-size: 16px;
+    margin: auto;
+    padding: 1% 0;
+    text-align: center;
+    width: 220px;
+	cursor: pointer;
+}
+.contact_me_button_ok:hover{
+	color: #ffffff;
+	background-color: #f58521;
+	text-align: center;
+	border-radius: 5px;
+	text-transform:uppercase;
+}
+.coachpopoupstatement{
+	float: left;
+	 color: #404041;
+	width:100%;
+	 margin-bottom: 2%;
+	 line-height: 25px;
+	font-size: 16px;
+	 margin-top: 2%;
+}
+.coachpopoupremote_coaching{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach_phone.png") no-repeat scroll left center;
+    color: #2bbab6;
+    font-size: 14px;
+	font-family: Montserrat;
+    padding: 0 6%;
+	float: right;
+	width: 40%;
+}
+.coachpopoupemail{
+	float: left;
+	width:50%;
+	 margin-top: 2%;
+}
+.coachpopoupemail a{
+	float: left;
+	color: #9d9d9d;
+	font-size: 14px;
+}
+.coachpopoupfacebook{
+	float: left;
+	width:50%;
+	 margin-top: 2%;
+}
+.coachpopoupfacebook a{
+	float: left;
+	color: #9d9d9d;
+	font-size: 14px;
+}
+.coachpopouplinkedin{
+	float: left;
+	width:90%;
+	 margin-top: 2%;
+}
+.coachpopouplinkedin a{
+	float: left;
+	color: #9d9d9d;
+	font-size: 14px;
+}
+.coachpopoupviewprofile{
+	 margin: 2% 0 0;
 }
