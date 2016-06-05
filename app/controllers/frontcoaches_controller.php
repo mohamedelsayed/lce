@@ -17,7 +17,12 @@ class FrontcoachesController  extends AppController {
 	}
 	function coach($id = 0){
 		$this->set('title_for_layout' , 'Coach');		
-		$this->set('selected','frontcoaches');	
+		$this->set('selected', 'frontcoaches');	
+		$coach = $this->Coach->read(null, $id);
+		$this->set('coach', $coach);	
+		if(!empty($coach)){
+			$this->set('title_for_layout' , $coach['Coach']['name']);		
+		}
 	}
 	function ajax_list_coaches(){
 		$base_url = BASE_URL;
@@ -99,16 +104,16 @@ class FrontcoachesController  extends AppController {
 		foreach ($coaches as $key => $coach) {
 			$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
 			$email = $coach['Coach']['email'];
+			$max_height = 'max-height:100%;';
+		    $max_width  = 'max-width:100%;';
 			$default_user_image = BASE_URL.$this->default_user_image;			
 			$image = $default_user_image;
-			$style = '';
+			$style = $max_width;
         	if(trim($coach['Coach']['image']) != ''){
         		$div_ratio = 118/118;
         		$img = $coach['Coach']['image'];
             	$image = BASE_URL.'/img/upload/'.$img;     					     
                 $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
-				$max_height = 'max-height:100%;';
-                $max_width  = 'max-width:100%;';
                 $style = $max_width;
 				if (file_exists($image_path)) { 
 	                $image_size = getimagesize($image_path);          		                
@@ -157,7 +162,9 @@ class FrontcoachesController  extends AppController {
 			$html .= '<div class="'.$class.'">
 				<div class="post_coach_left_in">
 				<a href="'.$coach_url.'">
+				<div class="post_coach_image post_coach_image1">
 				<img style="'.$style.'" alt="'.$name.'" src="'.$image.'" />
+				</div>
 				</a>
 				</div>
 				<div class="post_coach_right_in">
@@ -197,7 +204,12 @@ class FrontcoachesController  extends AppController {
         $this->autoRender = false;          
     }
     function send_coach_mail(){
+    	$data = array();
     	$html = '';
+		$error_html = '<h4 style="">'.strtoupper('Error').
+						'<div id="closecoachpopoup" class="closecoachpopoup closepopoup">X</div>
+						</h4>
+						<div class="no-data-found">Error</div>';
     	if(!empty($_POST)){
     		$coach_id = 0;
     		if(isset($_POST['coach_id'])){
@@ -236,15 +248,127 @@ class FrontcoachesController  extends AppController {
 				$this->set('email', $email);
 				$this->set('message', $message);
         	    if ($this->Email->send()){
-        	    	$html = 'Email has been sent.';
+        	    	//$html = 'Email has been sent.';        	    	
+        	    	$sent = 1;
             	}else{
-            		$html = 'Error';            		
-            	}				
+            		$sent = 0;
+					$html = $error_html;
+            	}
+				if(true){
+				//if($sent == 1){			
+					if(!empty($coach)){
+						$html = '';
+        	    		$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
+						$max_height = 'max-height:100%;';
+					    $max_width  = 'max-width:100%;';
+						$default_user_image = BASE_URL.$this->default_user_image;			
+						$image = $default_user_image;
+						$style = $max_width;
+		            	if(trim($coach['Coach']['image']) != ''){
+		            		$div_ratio = 200/200;
+		            		$img = $coach['Coach']['image'];
+			            	$image = BASE_URL.'/img/upload/'.$img;     					     
+			                $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
+			                $style = $max_width;
+							if (file_exists($image_path)) { 
+				                $image_size = getimagesize($image_path);          		                
+				                if(!empty($image_size)){
+				                    $width = $image_size[0];
+				                    $height = $image_size[1];   
+				                    $image_ratio = $width/$height;
+				                    if($image_ratio > $div_ratio){                  
+				                        $style = $max_height;
+				                    }
+				                }
+							}else{
+								$image = $default_user_image;
+							}
+						}
+						$name = $coach['Coach']['name'];
+						$specializations_title = '';
+						$specializations = $coach['Specialization'];			
+						if(!empty($specializations)){
+							foreach ($specializations as $key => $specialization) {
+								if(isset($specialization['title'])){
+									$specializations_title .= $specialization['title'].', ';
+								}
+							}
+						}
+						$specializations_title = trim(trim($specializations_title), ',');
+						$geographys_title = '';
+						$geographys = $coach['Geography'];			
+						if(!empty($geographys)){
+							foreach ($geographys as $key => $geography) {
+								if(isset($geography['title'])){
+									$geographys_title .= $geography['title'].', ';
+								}
+							}
+						}
+						$geographys_title = trim(trim($geographys_title), ',');
+						$remote_coaching = $coach['Coach']['remote_coaching'];
+						$statement = $coach['Coach']['statement'];
+						$email = $coach['Coach']['email'];
+						$facebook = $coach['Coach']['facebook'];
+						$linkedin = $coach['Coach']['linkedin'];
+						$mobile = $coach['Coach']['mobile'];
+		                $html .= '<h4 style="">'.strtoupper('Contact ME').
+		                	     '<div id="closecoachpopoup" class="closecoachpopoup closepopoup">X</div></h4>';
+						$html .= '<div class="coachpopoupbody">';
+						if($image != ''){
+		                    $html .= '<div class="coachpopouphead coachpopoupheadimg coachpopoupleft">
+		                    	<div class="post_coach_image post_coach_image3">
+		                    		<img style="'.$style.'" src="'.$image.'"/>
+		                    	</div>
+		                    </div>';
+		                }
+						$html .= '<div class="coachpopoupright">';				
+						$html .= '<div class="coachpopoupname">'.$name.'</div>';
+						$html .= '<div class="coachpopoupspecializations">'.$specializations_title.'</div>';
+						$html .= '<div class="coachpopoupgeographysout">'; 
+						$html .= '<div class="coachpopoupgeographys">'.$geographys_title.'</div>';
+						if($remote_coaching == 1){
+							$html .= '<div class="coachpopoupremote_coaching">Remote Coaching</div>';
+						}
+						$html .= '</div>'; 						
+						if($statement != ''){
+							$html .= '<div class="coachpopoupstatement">“'.$statement.'”</div>';
+						}
+						if(trim($mobile) != ''){
+							$html .= '<div class="coachpopoupmobile">						
+								<div class="coachpopoucenter"><a><i class="icon-mobile"></i>'.$mobile.'</a></div>
+							</div>';
+						}
+						if(trim($email) != ''){
+							$html .= '<div class="coachpopoupemail">						
+								<div class="coachpopoucenter"><a href="mailto:'.$email.'"><i class="icon-mail"></i>'.$email.'</a></div>
+							</div>';
+						}
+						if(trim($facebook) != ''){
+							$html .= '<div class="coachpopoupfacebook">						
+								<div class="coachpopoucenter"><a target="_blank" href="'.$facebook.'"><i class="icon-facebook"></i>'.$facebook.'</a></div>
+							</div>';
+						}
+						if(trim($linkedin) != ''){
+							$html .= '<div class="coachpopouplinkedin">						
+								<div class="coachpopoucenter"><a target="_blank" href="'.$linkedin.'"><i class="icon-linkedin"></i>'.$linkedin.'</a></div>
+							</div>';
+						} 
+						$html .= '<div class="post_coach_profile coachpopoupviewprofile">
+							<a href="'.$coach_url.'">View Profile</a>
+							<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
+							</div>';
+						$html .= '<div class="post_coach_ok">
+								<a class="contact_me_button_ok" onclick="close_coach_popup();">OK</a>
+							</div>';						
+		                $html .= '</div>';
+						$html .= '</div>';
+		            }
+	            }
 			}else{
-				$html = 'Error';    						
+				$html = $error_html;
 			}
     	}else{
-    		$html = 'Error';    		
+    		$html = $error_html;
     	}   
     	$data['html'] = $html;
 		echo json_encode($data);
