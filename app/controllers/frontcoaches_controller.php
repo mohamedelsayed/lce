@@ -356,11 +356,11 @@ class FrontcoachesController  extends AppController {
 						$html .= '<div class="post_coach_profile coachpopoupviewprofile">
 							<a href="'.$coach_url.'">View Profile</a>
 							<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
-							</div>';
-						$html .= '<div class="post_coach_ok">
-								<a class="contact_me_button_ok" onclick="close_coach_popup();">OK</a>
-							</div>';						
+							</div>';										
 		                $html .= '</div>';
+						$html .= '<div class="post_coach_ok">
+							<a class="contact_me_button_ok" onclick="close_coach_popup();">OK</a>
+						</div>';		
 						$html .= '</div>';
 		            }
 	            }
