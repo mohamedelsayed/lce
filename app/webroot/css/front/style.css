@@ -3413,7 +3413,7 @@ ul.primary li:hover > a{
 .coachpopoupstatement{
 	float: left;
 	 color: #404041;
-	width:100%;
+	width:90%;
 	 margin-bottom: 2%;
 	 line-height: 25px;
 	font-size: 16px;
@@ -3430,7 +3430,7 @@ ul.primary li:hover > a{
 }
 .coachpopoupemail{
 	float: left;
-	width:50%;
+	width:46%;
 	 margin-top: 2%;
 }
 .coachpopoupemail a{
