@@ -1208,3 +1208,6 @@ input[type=radio].error, input[type=checkbox].error{
 	width: auto;
 	height: auto;
 }
+.post_profile_sumit a, .post_profile_text_about a{
+	cursor: pointer;
+}
