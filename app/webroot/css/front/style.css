@@ -2371,7 +2371,7 @@ select {
 .post_profile_left img{
 	float: left;
 	margin-right: 1%;
-	width: 25%;
+	/*width: 25%;*/
 }
 .post_profile_title{
 	float: left;

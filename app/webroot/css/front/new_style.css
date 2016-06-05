@@ -1088,8 +1088,7 @@ input[type=radio].error, input[type=checkbox].error{
 	float: right;
 }
 .post_coach_left img, .post_coach_right img{
-	width: 118px;
-	border-radius: 50%;
+	
 }
 .post_coach_left_in{
 	float:left;
@@ -1147,4 +1146,28 @@ input[type=radio].error, input[type=checkbox].error{
 }
 #mesagepopboxcontactmepopoup .mesagecontent{
 	height: 480px;	
+}
+.coachpopoupleft{
+	float: left;
+	width: 20%;
+}
+.coachpopoupleft img{
+	width: 200px;
+}
+.coachpopoupright{
+	width: 80%;
+	float: right;
+}
+.post_coach_image{
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 50%;
+	float: left;
+}
+.post_coach_image2{
+	width: 165px;
+	height: 165px;	
+}
+.post_coach_image3{
 }
