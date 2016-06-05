@@ -115,14 +115,14 @@ body {
 	right: 0px;
 }
 .top_img img{
-	border-radius: 50%;
+	/*border-radius: 50%;
     display: block;
     left: 0;
     margin: auto;
     max-height: 80px;
     max-width: 80px;
     position: absolute;
-    right: 0;
+    right: 0;*/
 }
 .top_img{
 	position: relative;
@@ -545,7 +545,12 @@ p{
 }*/
 .testimonial_image_home{
 	margin-top: 10px;
-	padding-right: 20px;
+	margin-right: 20px;
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	border-radius: 50%;
+	float: left;
 }
 .facebook_fotter img{
 	/*width: 40px;*/	
@@ -1017,10 +1022,10 @@ footer {
 	width: 327px;
 	height: 218px;
 }
-.home_event_img{
+/*.home_event_img{
 	width: 183px !important;
 	height: 122px !important;	
-}
+}*/
 .open_instructor{
 	cursor: pointer;
 }
@@ -1170,4 +1175,36 @@ input[type=radio].error, input[type=checkbox].error{
 	height: 165px;	
 }
 .post_coach_image3{
+}
+.post_event_image_in{
+	height: 218px;
+    width: 327px;
+    overflow: hidden;
+    float: left;
+}
+.post_event_image_in img{
+	width: auto;
+	height: auto;
+}
+.instructorpopoupheadimg{
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+.instructorpopoupheadimg img{
+	width: auto;
+	height: auto;
+}
+.home_event_img_div{
+	width: 183px;
+	height: 122px;
+	overflow: hidden;	
+}
+.home_event_img_div img{
+	width: auto;
+	height: auto;
+}
+.testimonial_image_home img{
+	width: auto;
+	height: auto;
 }
