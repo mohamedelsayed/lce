@@ -1211,3 +1211,15 @@ input[type=radio].error, input[type=checkbox].error{
 .post_profile_sumit a, .post_profile_text_about a{
 	cursor: pointer;
 }
+#contactme_popup_form_message{
+	height: 90px;
+}
+.coachpopoupemail, .coachpopoupfacebook, .coachpopouplinkedin{
+	/*overflow-x: hidden;	*/
+}
+#mesagepopboxcoachpopoup .coachpopoupbody{
+	width: 96%;
+	overflow: hidden;
+	padding: 0%;
+	margin: 2%;
+}
