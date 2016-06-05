@@ -3395,9 +3395,10 @@ ul.primary li:hover > a{
 }
 .post_coach_ok{
 	float: left;
-	width:100%;
-	margin-top: 2%;
-	text-align: center;
+    margin-bottom: 2%;
+    margin-top: 4%;
+    text-align: center;
+    width: 85%;
 }
 .contact_me_button_ok{
 	border: 1px solid #f58521;
