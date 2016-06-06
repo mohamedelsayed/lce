@@ -1,3 +1,5 @@
+<?php $tree = array(array('url' => '/page/view/'.$cat['Cat']['id'], 'str' => $cat['Cat']['title']));
+echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".leftmenuparent").click(function(){

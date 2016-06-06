@@ -1,3 +1,8 @@
+<?php $tree = array(array('url' => '/contact-us', 'str' => 'Contact Us'));
+echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
+<div class="title_event_page">
+	<p><?php echo $content['Content']['title'];?></p>
+</div>
 <div id="requestpopup" class="mesage-pop">
 	<h4>Contact Us<div id="closealert" class="closealert">X</div></h4>
 	<div id="contactus_Resultdiv"></div>
@@ -29,12 +34,12 @@
 			jQuery('body').removeClass("mobile-menu-opend");		
 		});
 	});
-</script>
+</script><br />
 <div class="img_about" style="margin-top: 10px;">
 	<?php echo $content['Content']['map_iframe'];?>
 	<?php /*<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d27513.56686643945!2d31.1884216!3d30.4588901!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sar!2seg!4v1397339395281" width="1200" height="400" frameborder="0" style="border:0"></iframe>*/?>
 </div>
-<div class="bottom_grop_top">
+<div class="bottom_grop_top">	
 	<div class="img_top"><?php echo $content['Content']['inner_title'];?></div>
 	<div class="left_bot_2"><?php echo $content['Content']['body'];?></div>
 	<?php echo $this->Javascript->link('front/ajax/contactus');?>
