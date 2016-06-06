@@ -11,13 +11,13 @@
 			<?php echo $settings['title'].' - '.$title_for_layout; ?>
 		</title>
 		<?php
-		echo $this->Html->meta('icon', $settings['url'].'/app/webroot/img/backend/favicon.ico' );
+		echo $this->Html->meta('icon', $base_url.'/app/webroot/img/backend/favicon.ico' );
 		//CSS
 		echo $this->Html->css('backend/style');
 		echo $this->Html->css('backend/dropdown');
 		//SCRIPTS
-		echo $this->Html->scriptBlock("var siteUrl ='".$settings['url']."';");//Define global var siteUrl
-		echo $this->Html->scriptBlock("var base_url ='".$settings['url']."';");//Define global var siteUrl
+		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
+		echo $this->Html->scriptBlock("var base_url ='".$base_url."';");//Define global var siteUrl
 		if($this->name =='Images'){
 			echo $this->Javascript->link('libs/jquery');
 		}else{
@@ -36,8 +36,8 @@
 			<div class="bg_web">
 				<div class="content_left">
 					<div class="name_title" style="margin-top: -30px;">
-						<a href="<?php echo $settings['url'];?>" target="_blank">
-							<img src="<?php echo $settings['url']."/img/front/logo.png";?>" width="" height="" />
+						<a href="<?php echo $base_url;?>" target="_blank">
+							<img src="<?php echo $base_url."/img/front/logo.png";?>" width="" height="" />
 						</a>				
 					</div>		
 					<?php if(($this->action != 'login') && ($this->action != 'forgot')){?>
@@ -87,14 +87,14 @@
 					</div>
 					<div class="logos_img" style="display: none;">
 						<a href="http://www.mohamedelsayed.net/" target="_blank">
-							<img src="<?php echo $settings['url']."/img/backend/logos.jpg";?>" width="585" height="277" />
+							<img src="<?php echo $base_url."/img/backend/logos.jpg";?>" width="585" height="277" />
 						</a>
 					</div>
 				</div>
 				<div class="content_right" style="margin-left: 646px;width: 354px;">
 					<div class="image" style="margin-top: 75px;margin-left: 25px;display: none;">
 						<a href="http://www.mohamedelsayed.net/" target="_blank">
-							<img src="<?php echo $settings['url']."/img/backend/logo.png";?>" width="354" />
+							<img src="<?php echo $base_url."/img/backend/logo.png";?>" width="354" />
 						</a>
 					</div>
 				</div>
