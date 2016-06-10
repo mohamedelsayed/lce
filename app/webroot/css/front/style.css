@@ -367,7 +367,7 @@ body {
 .ri_3{
 	float:left;
 	font-size: 16px;
-	padding: 10px 0;
+	padding: 1% 0 3%;
 	text-decoration:none;
 	color: #6a6a6a;
 	width: 100%;
@@ -2697,20 +2697,20 @@ select {
     float: left;
     height: 35px;
     width: 40px;
-	margin: -2% auto auto;
+	margin: -1% auto auto;
 }
 .icon-facebook{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_facebook.png") no-repeat scroll;
     float: left;
     height: 35px;
-    width: 42px;
-	margin: -2% auto auto;
+    width: 40px;
+	margin: -1% auto auto;
 }
 .icon-linkedin{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_linkedin.png") no-repeat scroll;
     float: left;
     height: 35px;
-    width: 42px;
+    width: 40px;
 	margin: -1% auto auto;
 }
 #cssmenu,
