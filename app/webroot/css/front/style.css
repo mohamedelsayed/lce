@@ -2692,12 +2692,26 @@ select {
     width: 40px;
 	margin: -4% auto auto;
 }
+#mesagepopboxcoachpopoup .icon-mail{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_email.png") no-repeat scroll;
+    float: left;
+    height: 35px;
+    width: 40px;
+	margin: -2% auto auto;
+}
 .icon-mail{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_email.png") no-repeat scroll;
     float: left;
     height: 35px;
     width: 40px;
 	margin: -1% auto auto;
+}
+#mesagepopboxcoachpopoup .icon-facebook{
+	background: rgba(0, 0, 0, 0) url("../../img/front/icon_facebook.png") no-repeat scroll;
+    float: left;
+    height: 35px;
+    width: 40px;
+	margin: -2% auto auto;
 }
 .icon-facebook{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_facebook.png") no-repeat scroll;
