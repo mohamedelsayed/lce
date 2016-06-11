@@ -1238,3 +1238,19 @@ input[type=radio].error, input[type=checkbox].error{
 .board_members_right{
 	float: left;	
 }
+.services_menu_arrow_close{
+	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu.png") no-repeat scroll;
+	float: right;
+	width: 6px;
+	margin-top: 22px;
+	margin-left: 5px;
+	height: 6px;	
+}
+.services_menu_arrow_open{
+	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu2.png") no-repeat scroll;
+	float: right;
+	width: 6px;
+	margin-top: 22px;
+	margin-left: 5px;
+	height: 6px;	
+}
