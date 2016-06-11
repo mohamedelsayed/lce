@@ -3,8 +3,11 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".leftmenuparent").click(function(){
+			var div_id = $(this).attr('id');
 			$('.leftmenuparent').removeClass('leftmenuparentcurrent');
 			$('.leftmenuchild').removeClass('leftmenuchildcurent');
+			$('.leftmenuparent i').removeClass('services_menu_arrow_open');
+			$('.leftmenuparent i').addClass('services_menu_arrow_close');
 			var nextDiv = $(this).next();
 			var status = nextDiv.css("display");
 			$(".leftmenuchild").fadeOut();
@@ -12,11 +15,14 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 				nextDiv.fadeIn();
 				$(this).addClass('leftmenuparentcurrent');
 				nextDiv.addClass('leftmenuchildcurent');
-			}
-			else if(status == 'block'){								
+				$('#'+div_id+' i').removeClass('services_menu_arrow_close');
+				$('#'+div_id+' i').addClass('services_menu_arrow_open');				
+			}else if(status == 'block'){								
 				nextDiv.fadeOut();								
 				$(this).removeClass('leftmenuparentcurrent');
 				nextDiv.removeClass('leftmenuchildcurent');
+				$('#'+div_id+' i').removeClass('services_menu_arrow_open');
+				$('#'+div_id+' i').addClass('services_menu_arrow_close');
 			}
 		});									
 	});
@@ -35,7 +41,12 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			if($j == 1){
 				$classtop = 'leftmenuchildcurent';
 			}?>
-			<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>"><?php echo $all_cat['Cat']['title'];?></div>
+			<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>">
+				<?php echo $all_cat['Cat']['title'];?>
+				<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
+				<i class="services_menu_arrow_close"></i>
+				<?php }?>
+			</div>
 			<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
 	    		<div class="leftmenuchild <?php echo $classtop;?>" id="childcontent<?php echo $all_cat['Cat']['id'];?>">
 	    			<ul>

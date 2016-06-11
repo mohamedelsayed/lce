@@ -30,6 +30,7 @@
 						<li class=""><a href="<?php echo $base_url.'/queues';?>">Sending Queue</a></li>
 					</ul>
 				</li>
+				<li class="heading"><a href="<?php echo $base_url.'/values';?>">Values</a></li>				
 				<li class="heading new_items_li" ><a>Events</a>
     				<ul>
     					<li class=""><a href="<?php echo $base_url.'/instructors';?>">Instructors</a></li>
