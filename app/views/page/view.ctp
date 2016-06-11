@@ -55,18 +55,48 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		 			<?php if($node['Node']['id'] == 2){
 		 				if(!empty($teamMembers2)){
 			        		foreach ($teamMembers2 as $key => $teamMember) {
-			        			$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
+			        			//$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];
+			        			$max_height = 'max-height:100%;';
+							    $max_width  = 'max-width:100%;';
+								$default_user_image = BASE_URL.$default_user_image;			
+								$image = $default_user_image;
+								$style = $max_width;
+								if(trim($teamMember['TeamMember']['image']) != ''){
+									$div_ratio = 300/300;
+									$img = $teamMember['TeamMember']['image'];
+							    	$image = BASE_URL.'/img/upload/'.$img;     					     
+							        $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    									
+							        $style = $max_width;
+									if (file_exists($image_path)) { 
+							            $image_size = getimagesize($image_path);          		                
+							            if(!empty($image_size)){
+							                $width = $image_size[0];
+							                $height = $image_size[1];   
+							                $image_ratio = $width/$height;
+							                if($image_ratio > $div_ratio){                  
+							                    $style = $max_height;
+							                }
+							            }
+									}else{
+										$image = $default_user_image;
+									}
+								}?>
 			        			<div class="board_members_div" id="member<?php echo $teamMember['TeamMember']['id'];?>">
 			        				<div class="board_members_left">
-			        					<div class="img_cly_2 team_member_image">
-			        						<a>
-			        							<img src="<?php echo $image_team_member;?>" />
-		        							</a>
-	        							</div>
-	        							<div class="top_a_con"><?php echo $teamMember['TeamMember']['name'];?></div>
+			        					<div class="img_cly_2 board_members_image">
+		        							<img style="<?php echo $style;?>" src="<?php echo $image;?>" />
+	        							</div>	        							
         							</div>
-        							<div class="top_con_6">
-        								<?php echo $teamMember['TeamMember']['biography'];?>
+        							<div class="board_members_right">
+        								<div class="board_members_title">
+        									<?php echo $teamMember['TeamMember']['name'];?>
+    									</div>
+        								<div class="board_members_position">
+        									<?php echo $teamMember['TeamMember']['position'];?>
+    									</div>        							
+	        							<div class="top_con_6 board_members_body">
+	        								<?php echo $teamMember['TeamMember']['biography'];?>
+	    								</div>
     								</div>
 								</div>
 							<?php }?>

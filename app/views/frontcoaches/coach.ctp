@@ -12,8 +12,7 @@
 		$div_ratio = 200/200;
 		$img = $coach['Coach']['image'];
     	$image = BASE_URL.'/img/upload/'.$img;     					     
-        $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    
-		
+        $image_path = WWW_ROOT.'img'.DS.'upload'.DS.$img;    		
         $style = $max_width;
 		if (file_exists($image_path)) { 
             $image_size = getimagesize($image_path);          		                
