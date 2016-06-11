@@ -374,7 +374,6 @@ p{
 }
 .board_members_left{
 	float: left;
-	width: 150px;
 	margin-right: 20px;
 }
 .board_members_div{
@@ -1222,4 +1221,20 @@ input[type=radio].error, input[type=checkbox].error{
 	overflow: hidden;
 	padding: 0%;
 	margin: 2%;
+}
+.board_members_image{
+	border-radius: 50%;
+    float: left;
+    overflow: hidden;  
+    height: 200px;   
+    width: 200px;
+}
+.board_members_image img {
+	height: auto;
+    width: auto;	
+    border-radius:0px;
+    max-width: auto;
+}
+.board_members_right{
+	float: left;	
 }
