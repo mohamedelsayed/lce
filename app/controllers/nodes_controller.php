@@ -103,7 +103,7 @@ class NodesController extends AuthController {
 	}
 
 	function delete($id = null) {
-		$forbidden_ids = array(2,3,5,6);
+		$forbidden_ids = array(2, 3, 5, 6, 20);
 		if(in_array($id, $forbidden_ids)){
 			$this->Session->setFlash(__('You cannot delete this Node!', true));
 			$this->redirect(array('action'=>'index'));
