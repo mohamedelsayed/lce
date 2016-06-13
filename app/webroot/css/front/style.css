@@ -886,7 +886,8 @@ ul.tabs li.current{
 	float:left;
 	font-size: 16px;
 	text-decoration:none;
-	color: #000000;
+	color: #f58521;
+	margin-top: 5px;
 	padding-left: 6px;
 }
 .bot_tom{
@@ -1069,7 +1070,6 @@ ul.tabs li.current{
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
-	width: 745px;
 	padding-top: 5px;
 }
 .img_about{
@@ -1165,9 +1165,9 @@ ul.tabs li.current{
 	border-radius: 85px;
 }
 .img_cly{
-	float:left;
-	width: 140px;
-	border-radius: 75px;
+	border-radius: 50%;
+    float: left;
+    width: 150px;
 }
 .img_mm_2{
 	float:left;
@@ -3512,4 +3512,13 @@ ul.primary li:hover > a{
 	text-align:center;
 	font-weight: bold;
 	margin: 30px 0;
+}
+.board_members_title{
+	color: #2b2b2b;
+	font-size: 18px;
+}
+.board_members_position{
+	color: #f58521;
+	font-size: 18px;
+	margin-top: 5px;
 }

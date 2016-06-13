@@ -387,7 +387,7 @@ p{
 .team_member_div_two{
 	float: left;
 	margin-right: 45px;
-	width: 150px;
+	width: 190px;
 	margin-bottom: 10px;
 	height: 230px;
 }
@@ -1236,7 +1236,8 @@ input[type=radio].error, input[type=checkbox].error{
     max-width: auto;
 }
 .board_members_right{
-	float: left;	
+	float: left;
+	width: 80%;
 }
 .services_menu_arrow_close{
 	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu.png") no-repeat scroll;
