@@ -1240,18 +1240,18 @@ input[type=radio].error, input[type=checkbox].error{
 	width: 80%;
 }
 .services_menu_arrow_close{
-	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_services_bottom.png") no-repeat scroll;
 	float: right;
-	width: 6px;
-	margin-top: 22px;
+	width: 16px;
+	margin-top: 12px;
 	margin-left: 5px;
-	height: 6px;	
+	height: 8px;	
 }
 .services_menu_arrow_open{
-	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_menu2.png") no-repeat scroll;
+	background: rgba(0, 0, 0, 0) url("../../img/front/arrow_services.png") no-repeat scroll;
 	float: right;
-	width: 6px;
-	margin-top: 22px;
+	width: 16px;
+	margin-top: 12px;
 	margin-left: 5px;
-	height: 6px;	
+	height: 8px;	
 }
