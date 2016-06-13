@@ -3495,3 +3495,21 @@ ul.primary li:hover > a{
 .coachpopoupviewprofile{
 	 margin: 2% 0 0;
 }
+.values_wrap_div{
+	float: left;
+	width:20%;
+}
+.values_title{
+	color: #2b2b2b;
+	font-size: 18px;
+	font-weight: bold;
+	text-align:center;
+	margin: 30px 0;
+}
+.values_body{
+	color: #2b2b2b;
+	font-size: 16px;
+	text-align:center;
+	font-weight: bold;
+	margin: 30px 0;
+}
