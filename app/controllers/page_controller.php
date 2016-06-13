@@ -8,7 +8,6 @@ class PageController  extends AppController {
 	var $name = 'Page';
 	var $uses = null;
 	var $components = array('Email');
-	
 	function index(){
 		$this->redirect(array('controller'=>'/'));
 	}
@@ -89,6 +88,17 @@ class PageController  extends AppController {
                     )           
                 );
                 $this->set('values_data' , $values);   
+			}
+			if($node['Node']['id'] == 19){
+				$this->loadModel('Point');
+                $points = $this->Point->find(
+                    'all', array(
+                        'conditions' => array('Point.approved' => 1),
+                        'order' => array('Point.weight' => 'ASC', 'Point.id'=>'DESC'),
+                        //'limit' => 4
+                    )           
+                );
+                $this->set('points_data' , $points);   
 			}		
 		}			
 	}
