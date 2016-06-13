@@ -12,7 +12,7 @@
     			</li>
 				<?php if(!empty($header_cats)){
 	            	foreach ($header_cats as $key => $header_cat) {?>
-	            		<li>
+	            		<li class="header_menu_li header_menu_li<?php echo $header_cat['Cat']['id'];?>">
 			            	<a href="<?php echo $base_url.'/page/view/'.$header_cat['Cat']['id'];?>" class="fNiv" id="page<?php echo $header_cat['Cat']['id'];?>">
 			            		<?php echo $header_cat['Cat']['title'];?>
                                 <i class="header_menu_arrow"></i>
@@ -127,3 +127,8 @@ $(document).ready(function() {
 	});
 });
 </script>*/?>
+<style type="text/css">
+	li.header_menu_li2 ul li a{
+		min-width: 310px;		
+	}
+</style>
