@@ -1,4 +1,5 @@
-<?php /**
+<?php
+/**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.lifecoachingegypt.com
