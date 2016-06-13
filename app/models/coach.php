@@ -20,7 +20,7 @@ class Coach extends AppModel {
 		),'email' => array(
 			'rule' => array('email'),
 			'message' => 'Please supply a valid email address.',
-			'allowEmpty' => true,
+			'allowEmpty' => false,
 		),'facebook' => array(
 			'rule' => array('url'),
 			'message' => 'Please supply a valid url.',
