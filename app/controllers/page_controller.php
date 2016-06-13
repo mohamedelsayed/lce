@@ -2,7 +2,7 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 class PageController  extends AppController {
 	var $name = 'Page';
@@ -12,7 +12,6 @@ class PageController  extends AppController {
 	function index(){
 		$this->redirect(array('controller'=>'/'));
 	}
-
 	function view($cat_id){
 		if($cat_id == 2){
 			$this->redirect(array('action'=>'show/'.$cat_id));			
@@ -78,8 +77,19 @@ class PageController  extends AppController {
 						)	  	 	
 					);
 					$this->set('teamMembersCommunity' , $teamMembersCommunity);
-				}
-			}			
+				}				
+			}	
+			if($node['Node']['id'] == 20){
+				$this->loadModel('Value');
+                $values = $this->Value->find(
+                    'all', array(
+                        'conditions' => array('Value.approved' => 1),
+                        'order' => array('Value.weight' => 'ASC', 'Value.id'=>'DESC'),
+                        //'limit' => 4
+                    )           
+                );
+                $this->set('values_data' , $values);   
+			}		
 		}			
 	}
 	function show($cat_id = 2){
@@ -120,4 +130,3 @@ class PageController  extends AppController {
 		);	
 	}	
 }
-?>
