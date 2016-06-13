@@ -35,11 +35,13 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 	<?php }?>
 	<?php if(!empty($all_cats)){?>
 		<?php $i = 0;$j = 0;
+		$first_cat_id = 0;
 		foreach ($all_cats as $key => $all_cat) {
 			$classtop = '';
 			$j++;
 			if($j == 1){
 				$classtop = 'leftmenuchildcurent';
+				$first_cat_id = $all_cat['Cat']['id'];
 			}?>
 			<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>">
 				<?php echo $all_cat['Cat']['title'];?>
@@ -116,14 +118,20 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		});
 	</script>
 <?php }?>
-<?php if(isset($_REQUEST['childid'])){?>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
-			var nextDiv = childdiv.next();
-			var divid = nextDiv.attr('id');
-			childdiv.click();
-			$('#'+divid+' li:first').click();
-		});
-	</script>
-<?php }?>
+<script type="text/javascript">
+$(document).ready(function(){
+	<?php if(isset($_REQUEST['childid'])){?>			
+		var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
+		var nextDiv = childdiv.next();
+		var divid = nextDiv.attr('id');
+		childdiv.click();
+		$('#'+divid+' li:first').click();
+	<?php }else{?>
+		var childdiv = $('#child<?php echo $first_cat_id;?>');
+		var nextDiv = childdiv.next();
+		var divid = nextDiv.attr('id');
+		childdiv.click();
+		$('#'+divid+' li:first').click();	
+	<?php }?>
+});
+</script>
