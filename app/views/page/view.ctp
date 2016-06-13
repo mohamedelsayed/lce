@@ -380,4 +380,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 .values_body{
 	font-weight: normal;
 }
+.points_image{
+	margin-top: 0px;
+}
 </style>
