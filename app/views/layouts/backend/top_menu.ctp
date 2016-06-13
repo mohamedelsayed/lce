@@ -3,8 +3,13 @@
 		<div id="dropdown-holder">
 			<ul id="nav" class="dropdown">
 		        <li class="heading"><a href="<?php echo $base_url.'/users';?>">Users</a></li>
-		        <li class="heading"><a href="<?php echo $base_url.'/cats';?>">Categories</a></li>
-		        <li class="heading"><a href="<?php echo $base_url.'/nodes';?>">Nodes</a></li>
+		        <li class="heading"><a>Contents</a>
+    				<ul>
+    					<li class=""><a href="<?php echo $base_url.'/cats';?>">Categories</a></li>
+				        <li class=""><a href="<?php echo $base_url.'/nodes';?>">Nodes</a></li>
+				        <li class=""><a href="<?php echo $base_url.'/testimonials';?>">Testimonials</a></li>
+					</ul>
+				</li>	
 		        <li class="heading"><a href="<?php echo $base_url.'/faqs';?>">FAQs</a></li>
 		        <li class="heading"><a>Blog</a>
     				<ul>
@@ -16,7 +21,7 @@
 		        <li class="heading"><a href="<?php echo $base_url.'/slideshows';?>">Slideshows</a></li>
 		        <?php /*<li class="heading"><a href="<?php echo $base_url.'/logos';?>">Logos</a></li>*/?>
 		        <li class="heading"><a href="<?php echo $base_url.'/team_members';?>">Members</a></li>
-		        <li class="heading"><a href="<?php echo $base_url.'/testimonials';?>">Testimonials</a></li>
+		        
         		<?php $contents = $this->requestAction('main/getContents');
         		foreach ($contents as $content){?>
         			<li class="heading">
@@ -30,7 +35,12 @@
 						<li class=""><a href="<?php echo $base_url.'/queues';?>">Sending Queue</a></li>
 					</ul>
 				</li>
-				<li class="heading"><a href="<?php echo $base_url.'/values';?>">Values</a></li>				
+				<li class="heading"><a>About US Items</a>
+    				<ul>
+		    			<li class=""><a href="<?php echo $base_url.'/values';?>">Values</a></li>
+						<li class=""><a href="<?php echo $base_url.'/points';?>">Vision & Mission</a></li>
+					</ul>
+				</li>		
 				<li class="heading new_items_li" ><a>Events</a>
     				<ul>
     					<li class=""><a href="<?php echo $base_url.'/instructors';?>">Instructors</a></li>
