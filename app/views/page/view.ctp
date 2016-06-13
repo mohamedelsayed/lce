@@ -25,7 +25,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			$divopencode = '<div class="bottom_page_image_client_div">';
 			$divclosecode = '</div>';
 		}?>
-		<div id="tab-<?php echo $i++;?>" class="tab-content <?php echo $class;?>">
+		<div id="tab-<?php echo $i++;?>" class="tab-content <?php echo $class;?> ">
 			 <div class="tab-content_top">
 			 	<div class="top_con">
 			 		<?php /*<div class="top_con_2"><?php echo $cat['Cat']['title'];?></div>
@@ -370,3 +370,11 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		});
 	</script>
 <?php }?>
+<style type="text/css">
+#tab-3{
+	margin-left: 20px;
+}
+.values_body{
+	font-weight: normal;
+}
+</style>
