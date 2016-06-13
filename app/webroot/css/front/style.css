@@ -3522,3 +3522,25 @@ ul.primary li:hover > a{
 	font-size: 18px;
 	margin-top: 5px;
 }
+.points_image{
+	font-size: 18px;
+	float: left;
+	width: 6.5%;
+	margin-top: 5px;
+}
+.vision_and_mission_right{
+	font-size: 18px;
+	float: left;
+	width: 90%;
+}
+.points_title{
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 12px;
+	color: #2b2b2b;
+}
+.points_body{
+	font-size: 16px;
+	padding-bottom: 30px;
+	color: #2b2b2b;
+}
