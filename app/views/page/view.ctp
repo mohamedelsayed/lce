@@ -357,6 +357,9 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			    	<?php }?>        
 			    	<?php  if($node['Node']['id'] == 20){		    		
 					    include_once 'values.php';
+					}
+					if($node['Node']['id'] == 19){		    		
+					    include_once 'vision_and_mission.php';
 					}?>
  				</div>
 			</div>

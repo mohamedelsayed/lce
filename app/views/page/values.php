@@ -15,7 +15,7 @@
             $image = $base_url.'/img/upload/'.$value['Value']['image'];
         }?>
         <div class="values_wrap_div">
-            <div class="values_image" style=";overflow: hidden;">
+            <div class="values_image" style="overflow: hidden;">
                 <a>
                     <img style="<?php echo $max_width.$max_height;?>" src="<?php echo $image;?>"/>
                 </a>
