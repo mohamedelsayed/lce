@@ -26,7 +26,6 @@ class FrontcoachesController  extends AppController {
 	}
 	function ajax_list_coaches(){
 		$settings = $this->settings;
-		$base_url = BASE_URL;
 		$data = array();
         $html = '';
 		$name = '';
@@ -112,7 +111,7 @@ class FrontcoachesController  extends AppController {
 			$style = $max_width;
 			$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
 			if (file_exists($image_path)) {
-				$image = $base_url.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+				$image = BASE_URL.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
 			}
         	/*if(trim($coach['Coach']['image']) != ''){
         		$div_ratio = 118/118;
@@ -274,7 +273,11 @@ class FrontcoachesController  extends AppController {
 						$default_user_image = BASE_URL.$this->default_user_image;			
 						$image = $default_user_image;
 						$style = $max_width;
-		            	if(trim($coach['Coach']['image']) != ''){
+						$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
+						if (file_exists($image_path)) {
+							$image = BASE_URL.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+						}
+		            	/*if(trim($coach['Coach']['image']) != ''){
 		            		$div_ratio = 200/200;
 		            		$img = $coach['Coach']['image'];
 			            	$image = BASE_URL.'/img/upload/'.$img;     					     
@@ -293,7 +296,7 @@ class FrontcoachesController  extends AppController {
 							}else{
 								$image = $default_user_image;
 							}
-						}
+						}*/
 						$name = $coach['Coach']['name'];
 						$specializations_title = '';
 						$specializations = $coach['Specialization'];			
