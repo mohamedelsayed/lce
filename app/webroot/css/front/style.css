@@ -2401,9 +2401,9 @@ select {
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach_phone.png") no-repeat scroll left center;
     color: #2bbab6;
     font-size: 14px;
-    margin-left: 6%;
+    margin-left: 10%;
 	font-family: Montserrat;
-    padding: 0 5%;
+    padding: 0 6%;
 }
 .post_profile_prograf{
 	color: #404041;
@@ -2415,17 +2415,17 @@ select {
 .post_profile{
 	 background: rgba(0, 0, 0, 0) url("../../img/front/icon_profile.png") no-repeat scroll left center;
     color: #f58521;
-    float: right;
+    float: left;
     font-size: 16px;
     margin-left: 2%;
-    padding: 2% 0 2% 2%;
+	margin-top: 20px;
     width: 70%;
 }
 .post_profile a{
     color: #f58521;
     float: left;
     font-size: 16px;
-	padding: 1% 4%;
+	padding: 5px 5% 0 7%;
 	text-decoration: underline;
 }
 .post_profile samp{
@@ -2441,12 +2441,12 @@ select {
     color: #f58521;
     font-size: 16px;
     margin-left: 4%;
-    padding: 1% 5%;
+    padding: 0 5% 1%;
 }
 .post_profile_sumit{
 	float: left;
-    margin-left: 28%;
-    margin-top: 0%;
+    margin-left: 27%;
+    margin-top: 3%;
     width: 70%;
 }
 .post_profile_sumit a{
