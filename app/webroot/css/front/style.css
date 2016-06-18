@@ -3226,7 +3226,8 @@ ul.primary li:hover > a{
 	color: #3e3e3f;
 }
 #popup_form_mobile_number ,#contactme_popup_form_first_name 
-,#contactme_popup_form_last_name ,#contactme_popup_form_email{
+,#contactme_popup_form_last_name ,#contactme_popup_form_email
+,#contactme_popup_form_mobile{
 	float: left;
 	width: 98%;
 	font-size: 16px;
