@@ -4,14 +4,7 @@ $order_fields = array('name', 'gender', 'created');
 $order_directions = array('ASC', 'DESC');
 $order_field = $order_fields[array_rand($order_fields)];
 $order_direction = $order_directions[array_rand($order_directions)];
-global $base_url;
-$http_host = $_SERVER['HTTP_HOST'];
-$appId = '1425994984092923';
-if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
-	$appId = '1425994984092923';
-}elseif (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
-	$appId = '1425986790760409';
-}?>
+global $base_url;?>
 <div class="title_coach_page">
 	<p>FIND A COACH</p>
 </div>
@@ -52,3 +45,14 @@ if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
 <div class="coach_posts_group" id="list_coaches"></div>
 <div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>"></div>
 <?php include_once 'facebook_share.php'; ?>
+<script type="text/javascript">
+ajax_list_coaches(0);
+jQuery(document).ready(function() {
+	jQuery('body').on('mousewheel', function(e){
+		start_ajax_list_coaches();
+	});		
+	jQuery(window).on('scroll', function() {
+		start_ajax_list_coaches();
+	});	
+});	
+</script>

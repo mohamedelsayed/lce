@@ -1,3 +1,10 @@
+<?php $http_host = $_SERVER['HTTP_HOST'];
+$appId = '1425994984092923';
+if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
+	$appId = '1425994984092923';
+}elseif (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
+	$appId = '1425986790760409';
+}?>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -15,14 +22,7 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 <script type="text/javascript">
-ajax_list_coaches(0);
 jQuery(document).ready(function() {
-	jQuery('body').on('mousewheel', function(e){
-		start_ajax_list_coaches();
-	});		
-	jQuery(window).on('scroll', function() {
-		start_ajax_list_coaches();
-	});	
 	jQuery("body").on("click", ".shareBtn", function(){
 		var data_url = jQuery(this).attr('data-url');
 		FB.ui({
