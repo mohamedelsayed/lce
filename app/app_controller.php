@@ -34,6 +34,7 @@ class AppController extends Controller {
 		$this->set("minYearValue", $settings['Setting']['minimum_year']);
 		$this->set("maxYearValue", $settings['Setting']['maximum_year']);
 		$this->set('settings', $settings['Setting']);
+		$this->settings = $settings['Setting'];
 		$this->set('currency', $this->currency);
 		$this->set('payment_merchant_id', $this->payment_merchant_id);
 		$this->set('payment_access_code', $this->payment_access_code);
