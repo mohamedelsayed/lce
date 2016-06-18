@@ -20,7 +20,10 @@
 	                <input id="contactme_popup_form_email" class="form_text" type="text" name="email" placeholder="Email" />    
 	            </div>
 	            <div class="form_item">
-	            	<textarea id="contactme_popup_form_message" class="form_text" name="message" placeholder="message" ></textarea>
+	                <input id="contactme_popup_form_mobile" class="form_text" type="text" name="mobile_number" placeholder="Mobile Number" />    
+	            </div>
+	            <div class="form_item">
+	            	<textarea id="contactme_popup_form_message" class="form_text" name="message" placeholder="Message" ></textarea>
 	            </div>
 	            <div class="form_item">
 	            	<input type="submit" class="form_contactme_submit" value="Submit" />
