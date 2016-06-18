@@ -227,6 +227,7 @@ function validate_contactme_form(obj) {
 	validate_required_input(jQuery('#contactme_popup_form_first_name'));
 	validate_required_input(jQuery('#contactme_popup_form_last_name'));
 	validate_email_input(jQuery('#contactme_popup_form_email'));
+	validate_numeric_input(jQuery('#contactme_popup_form_mobile'));
 	validate_required_input(jQuery('#contactme_popup_form_message'));	
 	var contactme_form_flag = 0;
 	var focused = 0;
