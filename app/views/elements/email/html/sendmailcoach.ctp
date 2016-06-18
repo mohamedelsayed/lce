@@ -61,6 +61,16 @@
 						<font class="element"><?php echo $email;?></font>
 					</td>
 				</tr>
+			<?php }?>
+			<?php if($mobile_number != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Mobile Number:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $mobile_number;?></font>
+					</td>
+				</tr>
 			<?php }?>	
 			<?php if($message != ''){?>
 				<tr>
