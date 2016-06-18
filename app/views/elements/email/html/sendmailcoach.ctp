@@ -21,6 +21,9 @@
 				border-top-color:#384270;
 			}
 		</style>
+		<?php if(isset($additional_admin_info)){
+			echo $additional_admin_info;
+		}?>
 		<table style="direction: ltr;" class="maintable" width='500' cellspacing='0' cellpadding='2' bgcolor="#cdcbcc">
 			<tr bgcolor='#000000'>
 				<td height='30' colspan='2'>
