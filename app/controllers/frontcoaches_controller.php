@@ -271,13 +271,19 @@ class FrontcoachesController  extends AppController {
 				$name = $coach['Coach']['name'];
 				$additional_admin_info = '"'.$name.'"'. 'has recieved this info from contact me form:<br />';
 				$this->set('additional_admin_info', $additional_admin_info);
-				$this->Email->to = $settings['coaches_email'];
-				if ($this->Email->send()){
-        	    	//$sent = 1;
-            	}else{
-            		//$sent = 0;
-					//$html = $error_html;
-            	}
+				$emails = explode(',', $settings['coaches_email']);
+				if(!empty($emails)){
+					foreach ($emails as $key => $email) {
+						$email = trim($email);
+						$this->Email->to = $email;
+						if ($this->Email->send()){
+		        	    	//$sent = 1;
+		            	}else{
+		            		//$sent = 0;
+							//$html = $error_html;
+		            	}
+					}
+				}				
 				if(true){
 				//if($sent == 1){			
 					if(!empty($coach)){
