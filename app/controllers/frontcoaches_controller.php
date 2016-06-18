@@ -25,7 +25,7 @@ class FrontcoachesController  extends AppController {
 		}
 	}
 	function ajax_list_coaches(){
-		$base_url = BASE_URL;
+		$settings = $this->settings;
 		$data = array();
         $html = '';
 		$name = '';
@@ -111,7 +111,7 @@ class FrontcoachesController  extends AppController {
 			$style = $max_width;
 			$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
 			if (file_exists($image_path)) {
-				$image = $base_url.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+				$image = BASE_URL.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
 			}
         	/*if(trim($coach['Coach']['image']) != ''){
         		$div_ratio = 118/118;
@@ -144,16 +144,20 @@ class FrontcoachesController  extends AppController {
 				}
 			}
 			$specializations_title = trim(trim($specializations_title), ',');
-			$geographys_title = '';
-			$geographys = $coach['Geography'];			
-			if(!empty($geographys)){
-				foreach ($geographys as $key => $geography) {
-					if(isset($geography['title'])){
-						$geographys_title .= $geography['title'].', ';
+			$geographys_title = '';					
+			if($settings['hide_geography'] == 0){
+				$geographys = $coach['Geography'];	
+				if(!empty($geographys)){
+					foreach ($geographys as $key => $geography) {
+						if(isset($geography['title'])){
+							$geographys_title .= $geography['title'].', ';
+						}
 					}
 				}
+				$geographys_title = trim(trim($geographys_title), ',');
+			}else{
+				$geographys_title = $coach['Coach']['certification'];				
 			}
-			$geographys_title = trim(trim($geographys_title), ',');
 			$class = 'post_coach_right';
 			$line_div = '<div class="post_coach_conter"><'.DS.'div>';
 			if($i % 2 == 0){
@@ -210,6 +214,7 @@ class FrontcoachesController  extends AppController {
         $this->autoRender = false;          
     }
     function send_coach_mail(){
+    	$settings = $this->settings;
     	$data = array();
     	$html = '';
 		$error_html = '<h4 style="">'.strtoupper('Error').
@@ -237,11 +242,9 @@ class FrontcoachesController  extends AppController {
 				$message = '';
 	    		if(isset($_POST['message'])){
 	    			$message = $_POST['message'];    			
-	    		}
-				$this->loadModel('Setting');            
-            	$settings = $this->Setting->read(null, 1);              
+	    		}          
 				$coach = $this->Coach->read(null, $coach_id);
-				$subject = $settings['Setting']['title'].' - Contact Me Form';
+				$subject = $settings['title'].' - Contact Me Form';
 	            $this->Email->to = $coach['Coach']['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
@@ -270,7 +273,11 @@ class FrontcoachesController  extends AppController {
 						$default_user_image = BASE_URL.$this->default_user_image;			
 						$image = $default_user_image;
 						$style = $max_width;
-		            	if(trim($coach['Coach']['image']) != ''){
+						$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
+						if (file_exists($image_path)) {
+							$image = BASE_URL.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+						}
+		            	/*if(trim($coach['Coach']['image']) != ''){
 		            		$div_ratio = 200/200;
 		            		$img = $coach['Coach']['image'];
 			            	$image = BASE_URL.'/img/upload/'.$img;     					     
@@ -289,7 +296,7 @@ class FrontcoachesController  extends AppController {
 							}else{
 								$image = $default_user_image;
 							}
-						}
+						}*/
 						$name = $coach['Coach']['name'];
 						$specializations_title = '';
 						$specializations = $coach['Specialization'];			
@@ -302,15 +309,19 @@ class FrontcoachesController  extends AppController {
 						}
 						$specializations_title = trim(trim($specializations_title), ',');
 						$geographys_title = '';
-						$geographys = $coach['Geography'];			
-						if(!empty($geographys)){
-							foreach ($geographys as $key => $geography) {
-								if(isset($geography['title'])){
-									$geographys_title .= $geography['title'].', ';
+						if($settings['hide_geography'] == 0){
+							$geographys = $coach['Geography'];			
+							if(!empty($geographys)){
+								foreach ($geographys as $key => $geography) {
+									if(isset($geography['title'])){
+										$geographys_title .= $geography['title'].', ';
+									}
 								}
 							}
+							$geographys_title = trim(trim($geographys_title), ',');
+						}else{
+							$geographys_title = $coach['Coach']['certification'];				
 						}
-						$geographys_title = trim(trim($geographys_title), ',');
 						$remote_coaching = $coach['Coach']['remote_coaching'];
 						$statement = $coach['Coach']['statement'];
 						$email = $coach['Coach']['email'];

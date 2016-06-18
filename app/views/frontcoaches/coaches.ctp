@@ -5,9 +5,9 @@ $order_directions = array('ASC', 'DESC');
 $order_field = $order_fields[array_rand($order_fields)];
 $order_direction = $order_directions[array_rand($order_directions)];
 global $base_url;?>
-<div class="title_coach_page">
+<?php /*<div class="title_coach_page">
 	<p>FIND A COACH</p>
-</div>
+</div>*/?>
 <form id="search_coach_form" accept-charset="utf-8" action="" method="post" enctype="multipart/form-data">
 	<div class="coach_search_group">
 		<div class="coach_search">Search</div>
@@ -28,19 +28,21 @@ global $base_url;?>
 			</select>
 		</div>
 	</div>
-	<div class="coach_select_right">
-		<div class="coach_search">Geography</div>
-		<div class="coach_select_select coach_select">
-			<select name="coach_geography" id="coach_geography">
-				<option value="0">Please Select</option>
-				<?php if(!empty($geographys)){
-					foreach ($geographys as $key => $value) {?>
-						<option value="<?php echo $key;?>"><?php echo $value;?></option>
+	<?php if($settings['hide_geography'] == 0){?>
+		<div class="coach_select_right">
+			<div class="coach_search">Geography</div>
+			<div class="coach_select_select coach_select">
+				<select name="coach_geography" id="coach_geography">
+					<option value="0">Please Select</option>
+					<?php if(!empty($geographys)){
+						foreach ($geographys as $key => $value) {?>
+							<option value="<?php echo $key;?>"><?php echo $value;?></option>
+						<?php }?>
 					<?php }?>
-				<?php }?>
-			</select>
+				</select>
+			</div>
 		</div>
-	</div>
+	<?php }?>
 </form>
 <div class="coach_posts_group" id="list_coaches"></div>
 <div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>"></div>

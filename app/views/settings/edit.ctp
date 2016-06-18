@@ -1,14 +1,16 @@
 <div class="settings form">
 <?php echo $this->Form->create('Setting');?>
 	<fieldset>
- 		<legend><?php __('Edit Setting'); ?></legend>
+ 		<legend><?php __('Edit SettingS'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		//echo $this->Form->input('url');
 		echo $this->Form->input('email');
+		echo $this->Form->input('coaches_email');
 		//echo $this->Form->input('contact_us_email');		
 		echo $this->Form->input('title');
 		echo $this->Form->input('footer');
+		echo $this->Form->input('hide_geography');
 		echo $this->Form->input('meta_keywords');
 		echo $this->Form->input('meta_description');
 		echo $this->Form->input('file_types');
