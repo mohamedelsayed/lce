@@ -40,15 +40,17 @@
 	}
 	$specializations_title = trim(trim($specializations_title), ',');
 	$geographys_title = '';
-	$geographys = $coach['Geography'];			
-	if(!empty($geographys)){
-		foreach ($geographys as $key => $geography) {
-			if(isset($geography['title'])){
-				$geographys_title .= $geography['title'].', ';
+	if($settings['hide_geography'] == 0){
+		$geographys = $coach['Geography'];			
+		if(!empty($geographys)){
+			foreach ($geographys as $key => $geography) {
+				if(isset($geography['title'])){
+					$geographys_title .= $geography['title'].', ';
+				}
 			}
 		}
+		$geographys_title = trim(trim($geographys_title), ',');
 	}
-	$geographys_title = trim(trim($geographys_title), ',');
 	$remote_coaching = $coach['Coach']['remote_coaching'];
 	$statement = $coach['Coach']['statement'];
 	$email = $coach['Coach']['email'];

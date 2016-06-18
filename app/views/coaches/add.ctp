@@ -4,6 +4,7 @@
  		<legend><?php __('Add Coach'); ?></legend>
 	<?php
 		echo $this->Form->input('name');
+		echo $this->Form->input('certification');		
 		echo $this->Form->input('statement', array('maxLength' => $statement_limit));?>
 		<div id="statement_remain" class="characters_remain"></div>
 		<?php echo $this->Form->input('biography', array('maxLength' => $biography_limit));?>
