@@ -268,14 +268,47 @@ class FrontcoachesController  extends AppController {
             		$sent = 0;
 					$html = $error_html;
             	}
-				$name = $coach['Coach']['name'];
+				$name = '';
+				if(!empty($coach)){
+					$name = $coach['Coach']['name'];
+					$specializations_title = '';
+					$specializations = $coach['Specialization'];			
+					if(!empty($specializations)){
+						foreach ($specializations as $key => $specialization) {
+							if(isset($specialization['title'])){
+								$specializations_title .= $specialization['title'].', ';
+							}
+						}
+					}
+					$specializations_title = trim(trim($specializations_title), ',');
+					$geographys_title = '';
+					if($settings['hide_geography'] == 0){
+						$geographys = $coach['Geography'];			
+						if(!empty($geographys)){
+							foreach ($geographys as $key => $geography) {
+								if(isset($geography['title'])){
+									$geographys_title .= $geography['title'].', ';
+								}
+							}
+						}
+						$geographys_title = trim(trim($geographys_title), ',');
+					}else{
+						$geographys_title = $coach['Coach']['certification'];				
+					}
+					$remote_coaching = $coach['Coach']['remote_coaching'];
+					$statement = $coach['Coach']['statement'];
+					$email2 = $coach['Coach']['email'];
+					$facebook = $coach['Coach']['facebook'];
+					$linkedin = $coach['Coach']['linkedin'];
+					$mobile = $coach['Coach']['mobile'];
+				}
 				$additional_admin_info = '"'.$name.'"'. 'has recieved this info from contact me form:<br />';
 				$this->set('additional_admin_info', $additional_admin_info);
 				$emails = explode(',', $settings['coaches_email']);
 				if(!empty($emails)){
-					foreach ($emails as $key => $email) {
-						$email = trim($email);
-						$this->Email->to = $email;
+					foreach ($emails as $key => $email3) {
+						$email3 = trim($email3);
+						$this->Email->to = $email3;
 						if ($this->Email->send()){
 		        	    	//$sent = 1;
 		            	}else{
@@ -284,6 +317,20 @@ class FrontcoachesController  extends AppController {
 		            	}
 					}
 				}				
+				$this->Email->template = 'sendmailcoach_user';
+				$this->set('subject', $subject);
+				$this->set('name', $name);
+				$this->set('email', $email2);
+				$this->set('facebook', $facebook);
+				$this->set('linkedin', $linkedin);
+				$this->set('mobile', $mobile);
+				$this->Email->to = $email;
+				if ($this->Email->send()){
+        	    	//$sent = 1;
+            	}else{
+            		//$sent = 0;
+					//$html = $error_html;
+            	}
 				if(true){
 				//if($sent == 1){			
 					if(!empty($coach)){
