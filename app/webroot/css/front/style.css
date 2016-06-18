@@ -2255,7 +2255,7 @@ select {
 	font-size: 20px;
 	font-weight: bold;
 	color: #404041;
-	width: 60%;
+	width: 100%;
 	padding: 1% 2%;
 }
 .post_coach_title samp{
@@ -2312,7 +2312,7 @@ select {
     color: #f58521;
     float: left;
     font-size: 16px;
-	padding: 1.2% 6%;
+	padding: 0% 6%;
 	text-decoration: underline;
 }
 .post_coach_profile samp{
@@ -2322,18 +2322,18 @@ select {
     margin-left: 10%;
 	font-family: Montserrat;
 	float: left;
-    padding: 1% 0 1% 2%;
+    padding: 0 0 1% 2%;
 }
 .post_coach_profile samp a{
     color: #f58521;
     font-size: 16px;
     margin-left: 4%;
-    padding: 1% 5%;
+    padding: 0% 5%;
 }
 .post_coach_sumit{
 	float: left;
     margin-left: 23%;
-    margin-top: 2%;
+    margin-top: 4%;
     width: 77%;
 }
 .post_coach_sumit a{
@@ -3543,4 +3543,16 @@ ul.primary li:hover > a{
 	font-size: 16px;
 	padding-bottom: 30px;
 	color: #2b2b2b;
+}
+.coach_bottom_wrap{
+	float: left;
+	bottom: 0;
+	position:absolute;
+}
+.coach_specializations_in{
+	color: #404041;
+    float: left;
+    font-size: 18px;
+    padding: 0 2% 1%;
+    width: 100%;
 }

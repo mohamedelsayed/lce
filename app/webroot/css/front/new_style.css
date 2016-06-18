@@ -1100,14 +1100,16 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .post_coach_right_in{
 	float: left;
+	height: 100%;
 	width: 77%;
+	position: relative;
 }
 .post_coach_prograf{
 	width: 100%;
 }
 .post_coach_profile{
 	margin: 3% 0 0;
-    padding: 0;
+    padding: 4px 0 0;
     width: 100%;
 }
 .post_coach_sumit{
