@@ -109,7 +109,11 @@ class FrontcoachesController  extends AppController {
 			$default_user_image = BASE_URL.$this->default_user_image;			
 			$image = $default_user_image;
 			$style = $max_width;
-        	if(trim($coach['Coach']['image']) != ''){
+			$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
+			if (file_exists($image_path)) {
+				$image = $base_url.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+			}
+        	/*if(trim($coach['Coach']['image']) != ''){
         		$div_ratio = 118/118;
         		$img = $coach['Coach']['image'];
             	$image = BASE_URL.'/img/upload/'.$img;     					     
@@ -128,7 +132,7 @@ class FrontcoachesController  extends AppController {
 				}else{
 					$image = $default_user_image;
 				}
-			}
+			}*/			
 			$name = $coach['Coach']['name'];
 			$specializations_title = '';
 			$specializations = $coach['Specialization'];			
@@ -151,7 +155,7 @@ class FrontcoachesController  extends AppController {
 			}
 			$geographys_title = trim(trim($geographys_title), ',');
 			$class = 'post_coach_right';
-			$line_div = '<div class="post_coach_conter"></div>';
+			$line_div = '<div class="post_coach_conter"><'.DS.'div>';
 			if($i % 2 == 0){
 				$class = 'post_coach_left';
 				$line_div = '';				
