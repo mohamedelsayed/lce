@@ -239,6 +239,10 @@ class FrontcoachesController  extends AppController {
 	    		if(isset($_POST['last_name'])){
 	    			$last_name = $_POST['last_name'];    			
 	    		}
+				$mobile_number = '';
+	    		if(isset($_POST['mobile_number'])){
+	    			$mobile_number = $_POST['mobile_number'];    			
+	    		}
 				$message = '';
 	    		if(isset($_POST['message'])){
 	    			$message = $_POST['message'];    			
@@ -255,6 +259,7 @@ class FrontcoachesController  extends AppController {
 				$this->set('first_name', $first_name);
 				$this->set('last_name', $last_name);
 				$this->set('email', $email);
+				$this->set('mobile_number', $mobile_number);
 				$this->set('message', $message);
         	    if ($this->Email->send()){
         	    	//$html = 'Email has been sent.';        	    	
