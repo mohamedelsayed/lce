@@ -169,9 +169,9 @@ class FrontcoachesController  extends AppController {
 				</div>
 				<div class="post_coach_right_in">
 				<a href="'.$coach_url.'">
-				<div class="post_coach_title">'.$name.
+					<div class="post_coach_title">'.$name.'</div>'.
 				'</a>'.
-				'<samp>'.$specializations_title.'</samp></div>';
+				'<div class="coach_specializations_in">'.$specializations_title.'</div>';
 			if($geographys_title != ''){
 				$html .= '<div class="post_coach_phone">'.$geographys_title.'</div>';
 			}			
@@ -181,6 +181,7 @@ class FrontcoachesController  extends AppController {
 			if($statement != ''){
 				$html .= '<div class="post_coach_prograf">“'.$statement.'”</div>';
 			}
+			$html .= '<div class="coach_bottom_wrap">';
 			$html .= '<div class="post_coach_profile">
 				<a href="'.$coach_url.'">View Profile</a>
 				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
@@ -190,6 +191,7 @@ class FrontcoachesController  extends AppController {
 					<a class="contact_me_button" onclick="contact_me('.$coach['Coach']['id'].')">Contact me</a>
 				</div>';
 			}
+			$html .= '</div>';
 			$html .= '</div></div>'.$line_div;			
 		}
 		if(count($coaches) == 0){
