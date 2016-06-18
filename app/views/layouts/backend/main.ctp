@@ -23,12 +23,18 @@
 		}else{
 			echo $this->Javascript->link('backend/jquery-1.10.2');
 		}
-		echo $this->Javascript->link('backend/jquery-ui.js');
+		if($this->params['controller'] != 'images'){
+			echo $this->Javascript->link('backend/jquery-ui.js');
+		}
 		echo $scripts_for_layout;
-		echo $this->Javascript->link('backend/all');
+		if($this->params['controller'] != 'images'){
+			echo $this->Javascript->link('backend/all');
+		}
 		echo $this->Javascript->link('/ckeditor/ckeditor');?>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>		
+		<?php if($this->params['controller'] != 'images'){?>
+			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<?php }?>
 	</head>	
 	<body>
 		<div id="container">

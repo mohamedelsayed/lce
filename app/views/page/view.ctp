@@ -61,7 +61,11 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 								$default_user_image = BASE_URL.$default_user_image;			
 								$image = $default_user_image;
 								$style = $max_width;
-								if(trim($teamMember['TeamMember']['image']) != ''){
+								$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$teamMember['TeamMember']['image'];    
+								if (file_exists($image_path)) {
+									$image = $base_url.''.DS.'img'.DS.'upload'.DS.'thumb_'.$teamMember['TeamMember']['image'];
+								}
+								/*if(trim($teamMember['TeamMember']['image']) != ''){
 									$div_ratio = 300/300;
 									$img = $teamMember['TeamMember']['image'];
 							    	$image = BASE_URL.'/img/upload/'.$img;     					     
@@ -80,7 +84,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 									}else{
 										$image = $default_user_image;
 									}
-								}?>
+								}*/?>
 			        			<div class="board_members_div" id="member<?php echo $teamMember['TeamMember']['id'];?>">
 			        				<div class="board_members_left">
 			        					<div class="img_cly_2 board_members_image">
