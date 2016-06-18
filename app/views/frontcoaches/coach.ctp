@@ -8,7 +8,11 @@
 	$default_user_image = BASE_URL.$default_user_image;			
 	$image = $default_user_image;
 	$style = $max_width;
-	if(trim($coach['Coach']['image']) != ''){
+	$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
+	if (file_exists($image_path)) {
+		$image = $base_url.''.DS.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];
+	}
+	/*if(trim($coach['Coach']['image']) != ''){
 		$div_ratio = 200/200;
 		$img = $coach['Coach']['image'];
     	$image = BASE_URL.'/img/upload/'.$img;     					     
@@ -27,7 +31,7 @@
 		}else{
 			$image = $default_user_image;
 		}
-	}
+	}*/
 	$name = $coach['Coach']['name'];
 	$specializations_title = '';
 	$specializations = $coach['Specialization'];			
@@ -50,6 +54,8 @@
 			}
 		}
 		$geographys_title = trim(trim($geographys_title), ',');
+	}else{
+		$geographys_title = $coach['Coach']['certification'];			
 	}
 	$remote_coaching = $coach['Coach']['remote_coaching'];
 	$statement = $coach['Coach']['statement'];
@@ -81,14 +87,21 @@
 				<samp><a class="shareBtn">Recommend this caoch</a></samp></div>
 			<div class="post_profile_sumit"><a data-url="<?php echo $coach_url;?>" onclick="contact_me(<?php echo $coach['Coach']['id'];?>)">Contact me</a></div>
 		</div>
-		<div class="text_border"></div>
+		<?php /*<div class="text_border"></div>
 		<div class="post_profile_text">
 			<?php if($statement != ''){
 				echo $statement;
 			}?>
-		</div>
+		</div>*/?>
 	</div>
-	<div class="post_profile_text_about"><samp>About Me</samp>
+	<?php $about_me_style = 'width:100%;padding:0px;';
+	if(isset($coach['Coach']['video_file'])){
+		if($coach['Coach']['video_file'] != ''){
+			$about_me_style = 'width:48%';
+		}
+	}?>			
+	<div class="post_profile_text_about" style="<?php echo $about_me_style;?>">
+		<samp>About Me</samp>
 		<?php echo $biography;?>
 		<a onclick="contact_me(<?php echo $coach['Coach']['id'];?>)">Contact me</a>
 	</div>	
