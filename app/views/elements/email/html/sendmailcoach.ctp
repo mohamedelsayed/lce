@@ -1,7 +1,7 @@
 <?php $dark_color1 = '#f58521';
 $dark_color2 = '#000000';
 $medium_color = '#cdcbcc';
-$light_color1 = '#FFFFFF';?>
+$light_color = '#FFFFFF';?>
 <html>
 	<head></head>
 	<body>
