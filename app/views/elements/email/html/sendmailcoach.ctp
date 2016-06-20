@@ -1,25 +1,26 @@
+<?php $dark_color = '#f58521';
+$medium_color = '#cdcbcc';
+$light_color = '#FFFFFF';?>
 <html>
 	<head></head>
 	<body>
 		<style type="text/css">
-			.element{
-				text-shadow:#000000;
-				font-size:16px;		
-				color: #000000;
-				font-family: Verdana, Arial, Helvetica, sans-serif; 		
-			}
-			.title{
-				font-family: Verdana, Arial, Helvetica, sans-serif;
-				text-shadow:#000000;
-				font-size:16px;
-				color:#FFFFFF;
-			}
-			.maintable{
-				border-bottom-color:#384270;
-				border-left-color: #384270;
-				border-right-color:#384270;
-				border-top-color:#384270;
-			}
+		@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+		.element{
+			text-shadow:<?php echo $dark_color;?>;
+			font-size:16px;		
+			color: <?php echo $dark_color;?>;
+			font-family: Montserrat; 		
+		}
+		.title{
+			font-family: Montserrat;
+			text-shadow:<?php echo $dark_color;?>;
+			font-size:16px;
+			color:<?php echo $light_color;?>;
+		}
+		.bold{
+			font-weight: bold;
+		}
 		</style>
 		<?php if($coach_admin == 1){
 			if(isset($additional_admin_info)){
@@ -27,8 +28,8 @@
 			}
 		}?>
 		<?php if($normal_coach == 1 || $coach_admin == 1){?>
-		<table style="direction: ltr;" class="maintable" width='500' cellspacing='0' cellpadding='2' bgcolor="#cdcbcc">
-			<tr bgcolor='#000000'>
+		<table style="direction: ltr;" class="maintable" width='100%' cellspacing='0' cellpadding='2' bgcolor="<?php echo $medium_color;?>">
+			<tr bgcolor='<?php echo $dark_color;?>'>
 				<td height='30' colspan='2'>
 					<font class="title">
 						<strong><?php echo $subject;?></strong>
@@ -40,8 +41,8 @@
 			</tr>
 			<?php if($first_name != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">First Name:</font>
+					<td align='left'>
+						<font class="element bold">First Name:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $first_name;?></font>
@@ -50,8 +51,8 @@
 			<?php }?>
 			<?php if($last_name != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Last Name:</font>
+					<td align='left'>
+						<font class="element bold">Last Name:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $last_name;?></font>
@@ -60,8 +61,8 @@
 			<?php }?>
 			<?php if($email != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Email:</font>
+					<td align='left'>
+						<font class="element bold">Email:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $email;?></font>
@@ -70,8 +71,8 @@
 			<?php }?>
 			<?php if($mobile_number != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Mobile Number:</font>
+					<td align='left'>
+						<font class="element bold">Mobile Number:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $mobile_number;?></font>
@@ -80,8 +81,8 @@
 			<?php }?>	
 			<?php if($message != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Message:</font>
+					<td align='left'>
+						<font class="element bold">Message:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $message;?></font>
@@ -92,7 +93,7 @@
 				<td colspan='2' height="30"></td>
 			</tr>
 			<tr>
-				<td height='30' colspan='2' bgcolor='#000000'></td>
+				<td height='30' colspan='2' bgcolor='<?php echo $dark_color;?>'></td>
 			</tr>
 		</table>
 		<?php }?>
@@ -104,8 +105,9 @@
 			<p>Dear <?php echo $user_full_name;?>,</p>
 			<p>Thank you for your interest in our services. Kindly find below the contacts of <?php echo $name;?>.</p>
 		<?php }?>
-		<table style="direction: ltr;" class="maintable" width='500' cellspacing='0' cellpadding='2' bgcolor="#cdcbcc">
-			<tr bgcolor='#000000'>
+		<br />
+		<table style="direction: ltr;" class="maintable" width='100%' cellspacing='0' cellpadding='2' bgcolor="<?php echo $medium_color;?>">
+			<tr bgcolor='<?php echo $dark_color;?>'>
 				<td height='30' colspan='2'>
 					<font class="title">
 						<strong><?php echo $subject;?></strong>
@@ -117,8 +119,8 @@
 			</tr>
 			<?php if($name != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Coache Name:</font>
+					<td align='left'>
+						<font class="element bold">Coache Name:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $name;?></font>
@@ -127,8 +129,8 @@
 			<?php }?>
 			<?php if($email != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Email:</font>
+					<td align='left'>
+						<font class="element bold">Email:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $email;?></font>
@@ -137,8 +139,8 @@
 			<?php }?>
 			<?php if($facebook != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Facebook:</font>
+					<td align='left'>
+						<font class="element bold">Facebook:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $facebook;?></font>
@@ -147,8 +149,8 @@
 			<?php }?>	
 			<?php if($linkedin != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Linkedin:</font>
+					<td align='left'>
+						<font class="element bold">Linkedin:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $linkedin;?></font>
@@ -157,8 +159,8 @@
 			<?php }?>
 			<?php if($mobile != ''){?>
 				<tr>
-					<td align='left' style='color:#FFFF00'>
-						<font class="element">Mobile:</font>
+					<td align='left'>
+						<font class="element bold">Mobile:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $mobile;?></font>
@@ -169,7 +171,7 @@
 				<td colspan='2' height="30"></td>
 			</tr>
 			<tr>
-				<td height='30' colspan='2' bgcolor='#000000'></td>
+				<td height='30' colspan='2' bgcolor='<?php echo $dark_color;?>'></td>
 			</tr>
 		</table>
 		<?php }?>
