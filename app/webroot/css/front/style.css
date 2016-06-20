@@ -2256,7 +2256,7 @@ select {
 	font-weight: bold;
 	color: #404041;
 	width: 100%;
-	padding: 1% 2%;
+	padding: 1% 0%;
 }
 .post_coach_title samp{
 	float: left;
@@ -2280,8 +2280,7 @@ select {
     color: #2bbab6;
     float: left;
     font-size: 14px;
-    margin-left: 2%;
-    padding: 0.6% 0 1% 2%;
+    padding: 0.6% 0 1% 3%;
     width: 72%;
 }
 .post_coach_phone samp{
@@ -2294,9 +2293,11 @@ select {
 }
 .post_coach_prograf{
 	color: #404041;
+	text-align:justify;
     float: left;
+	margin-top: 8px;
     font-size: 16px;
-    padding: 1% 2% 0;
+    padding: 0;
     width: 70%;
 }
 .post_coach_profile{
@@ -2304,15 +2305,14 @@ select {
     color: #f58521;
     float: right;
     font-size: 16px;
-    margin-left: 2%;
-    padding: 2% 0 2% 2%;
+    padding: 0%;
     width: 75%;
 }
 .post_coach_profile a{
     color: #f58521;
     float: left;
     font-size: 16px;
-	padding: 0% 6%;
+	padding: 2px 7% 0;
 	text-decoration: underline;
 }
 .post_coach_profile samp{
@@ -2322,13 +2322,14 @@ select {
     margin-left: 10%;
 	font-family: Montserrat;
 	float: left;
-    padding: 0 0 1% 2%;
+    padding: 0px 0 3px 2%;
 }
 .post_coach_profile samp a{
     color: #f58521;
     font-size: 16px;
-    margin-left: 4%;
-    padding: 0% 5%;
+    margin-left: 10%;
+	width: 100%;
+    padding: 0%;
 }
 .post_coach_sumit{
 	float: left;
@@ -3554,6 +3555,6 @@ ul.primary li:hover > a{
 	color: #404041;
     float: left;
     font-size: 18px;
-    padding: 0 2% 1%;
+    padding: 0 0% 1%;
     width: 100%;
 }
