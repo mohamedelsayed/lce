@@ -21,9 +21,12 @@
 				border-top-color:#384270;
 			}
 		</style>
-		<?php if(isset($additional_admin_info)){
-			echo $additional_admin_info;
+		<?php if($coach_admin == 1){
+			if(isset($additional_admin_info)){
+				echo $additional_admin_info;
+			}
 		}?>
+		<?php if($normal_coach == 1 || $coach_admin == 1){?>
 		<table style="direction: ltr;" class="maintable" width='500' cellspacing='0' cellpadding='2' bgcolor="#cdcbcc">
 			<tr bgcolor='#000000'>
 				<td height='30' colspan='2'>
@@ -92,5 +95,85 @@
 				<td height='30' colspan='2' bgcolor='#000000'></td>
 			</tr>
 		</table>
+		<?php }?>
+		<?php if($coach_admin == 1){
+			$subject = 'Coach info';
+		}?>
+		<?php if($normal_user == 1 || $coach_admin == 1){?>
+			<?php if($normal_user == 1 ){?>
+			<p>Dear <?php echo $user_full_name;?>,</p>
+			<p>Thank you for your interest in our services. Kindly find below the contacts of <?php echo $name;?>.</p>
+		<?php }?>
+		<table style="direction: ltr;" class="maintable" width='500' cellspacing='0' cellpadding='2' bgcolor="#cdcbcc">
+			<tr bgcolor='#000000'>
+				<td height='30' colspan='2'>
+					<font class="title">
+						<strong><?php echo $subject;?></strong>
+					</font>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2' align='center' height="30"></td>
+			</tr>
+			<?php if($name != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Coache Name:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $name;?></font>
+					</td>
+				</tr>
+			<?php }?>
+			<?php if($email != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Email:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $email;?></font>
+					</td>
+				</tr>
+			<?php }?>
+			<?php if($facebook != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Facebook:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $facebook;?></font>
+					</td>
+				</tr>
+			<?php }?>	
+			<?php if($linkedin != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Linkedin:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $linkedin;?></font>
+					</td>
+				</tr>
+			<?php }?>
+			<?php if($mobile != ''){?>
+				<tr>
+					<td align='left' style='color:#FFFF00'>
+						<font class="element">Mobile:</font>
+					</td>
+					<td>
+						<font class="element"><?php echo $mobile;?></font>
+					</td>
+				</tr>
+			<?php }?>
+			<tr>
+				<td colspan='2' height="30"></td>
+			</tr>
+			<tr>
+				<td height='30' colspan='2' bgcolor='#000000'></td>
+			</tr>
+		</table>
+		<?php }?>
+		Warm regards,
+		LCE Team
 	</body>
 </html>
