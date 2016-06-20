@@ -173,7 +173,7 @@
 			</tr>
 		</table>
 		<?php }?>
-		Warm regards,
-		LCE Team
+		<p>Warm regards,</p>
+		<p>LCE Team</p>
 	</body>
 </html>
