@@ -8,7 +8,7 @@ $light_color1 = '#FFFFFF';?>
 		<style type="text/css">
 		@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 		.element{
-			text-shadow:<?php echo $dark_color;?>;
+			text-shadow:<?php echo $dark_color2;?>;
 			font-size:16px;		
 			color: <?php echo $dark_color2;?>;
 			font-family: Montserrat; 		
@@ -30,7 +30,7 @@ $light_color1 = '#FFFFFF';?>
 		}?>
 		<?php if($normal_coach == 1 || $coach_admin == 1){?>
 		<table style="direction: ltr;" class="maintable" width='100%' cellspacing='0' cellpadding='2' bgcolor="<?php echo $medium_color;?>">
-			<tr bgcolor='<?php echo $dark_color;?>'>
+			<tr bgcolor='<?php echo $dark_color1;?>'>
 				<td height='30' colspan='2'>
 					<font class="title">
 						<strong><?php echo $subject;?></strong>
@@ -94,7 +94,7 @@ $light_color1 = '#FFFFFF';?>
 				<td colspan='2' height="30"></td>
 			</tr>
 			<tr>
-				<td height='30' colspan='2' bgcolor='<?php echo $dark_color;?>'></td>
+				<td height='30' colspan='2' bgcolor='<?php echo $dark_color1;?>'></td>
 			</tr>
 		</table>
 		<?php }?>
@@ -108,7 +108,7 @@ $light_color1 = '#FFFFFF';?>
 		<?php }?>
 		<br />
 		<table style="direction: ltr;" class="maintable" width='100%' cellspacing='0' cellpadding='2' bgcolor="<?php echo $medium_color;?>">
-			<tr bgcolor='<?php echo $dark_color;?>'>
+			<tr bgcolor='<?php echo $dark_color1;?>'>
 				<td height='30' colspan='2'>
 					<font class="title">
 						<strong><?php echo $subject;?></strong>
@@ -172,7 +172,7 @@ $light_color1 = '#FFFFFF';?>
 				<td colspan='2' height="30"></td>
 			</tr>
 			<tr>
-				<td height='30' colspan='2' bgcolor='<?php echo $dark_color;?>'></td>
+				<td height='30' colspan='2' bgcolor='<?php echo $dark_color1;?>'></td>
 			</tr>
 		</table>
 		<?php }?>
