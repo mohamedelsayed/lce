@@ -1,6 +1,7 @@
-<?php $dark_color = '#f58521';
+<?php $dark_color1 = '#f58521';
+$dark_color2 = '#000000';
 $medium_color = '#cdcbcc';
-$light_color = '#FFFFFF';?>
+$light_color1 = '#FFFFFF';?>
 <html>
 	<head></head>
 	<body>
@@ -9,12 +10,12 @@ $light_color = '#FFFFFF';?>
 		.element{
 			text-shadow:<?php echo $dark_color;?>;
 			font-size:16px;		
-			color: <?php echo $dark_color;?>;
+			color: <?php echo $dark_color2;?>;
 			font-family: Montserrat; 		
 		}
 		.title{
 			font-family: Montserrat;
-			text-shadow:<?php echo $dark_color;?>;
+			text-shadow:<?php echo $dark_color1;?>;
 			font-size:16px;
 			color:<?php echo $light_color;?>;
 		}
