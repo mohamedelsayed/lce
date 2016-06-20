@@ -1077,16 +1077,18 @@ input[type=radio].error, input[type=checkbox].error{
 	height: 260px;
 }
 .post_coach_phone{
-	width: 52%;
+	width: 49%;
+	font-size: 16px;
 }
 .remote_coaching_div{
 	float: right;
-	width: 40%;
+	width: 45%;
 	background: none;
 	text-align: right;
 }
 .post_coach_phone samp{
-	padding-left: 18%;	
+	padding-left: 18%;
+	font-size: 16px;	
 }
 .post_coach_profile samp{
 	float: left;
