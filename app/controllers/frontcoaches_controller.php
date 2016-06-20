@@ -261,6 +261,9 @@ class FrontcoachesController  extends AppController {
 				$this->set('email', $email);
 				$this->set('mobile_number', $mobile_number);
 				$this->set('message', $message);
+				$this->set('coach_admin', 0);
+				$this->set('normal_coach', 1);
+				$this->set('normal_user', 0);
         	    if ($this->Email->send()){
         	    	//$html = 'Email has been sent.';        	    	
         	    	$sent = 1;
@@ -303,7 +306,15 @@ class FrontcoachesController  extends AppController {
 					$mobile = $coach['Coach']['mobile'];
 				}
 				$additional_admin_info = '"'.$name.'"'. 'has recieved this info from contact me form:<br />';
+				$this->set('name', $name);
+				$this->set('email2', $email2);
+				$this->set('facebook', $facebook);
+				$this->set('linkedin', $linkedin);
+				$this->set('mobile', $mobile);
 				$this->set('additional_admin_info', $additional_admin_info);
+				$this->set('coach_admin', 1);
+				$this->set('normal_coach', 0);
+				$this->set('normal_user', 0);
 				$emails = explode(',', $settings['coaches_email']);
 				if(!empty($emails)){
 					foreach ($emails as $key => $email3) {
@@ -317,13 +328,12 @@ class FrontcoachesController  extends AppController {
 		            	}
 					}
 				}				
-				$this->Email->template = 'sendmailcoach_user';
-				$this->set('subject', $subject);
-				$this->set('name', $name);
-				$this->set('email', $email2);
-				$this->set('facebook', $facebook);
-				$this->set('linkedin', $linkedin);
-				$this->set('mobile', $mobile);
+				//$this->Email->template = 'sendmailcoach_user';
+				$this->set('subject', $subject);				
+				$this->set('coach_admin', 0);
+				$this->set('normal_coach', 0);
+				$this->set('normal_user', 1);
+				$this->set('user_full_name', $first_name.' '.$last_name);
 				$this->Email->to = $email;
 				if ($this->Email->send()){
         	    	//$sent = 1;
