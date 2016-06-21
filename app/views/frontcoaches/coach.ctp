@@ -77,22 +77,22 @@
 					<samp>Remote Coaching</samp>
 				<?php }?>
 			</div>
-			<div class="post_profile_prograf">
+			<?php /*<div class="post_profile_prograf">
 				<?php if($statement != ''){
 					echo '“'. substr($statement, 0, 100).'”';
 				}?>
-			</div>
+			</div>*/?>
 			<div class="post_profile">
 				<a href="<?php echo $coach_url;?>">View Profile</a>
 				<samp><a class="shareBtn">Recommend this caoch</a></samp></div>
 			<div class="post_profile_sumit"><a data-url="<?php echo $coach_url;?>" onclick="contact_me(<?php echo $coach['Coach']['id'];?>)">Contact me</a></div>
 		</div>
-		<?php /*<div class="text_border"></div>
+		<div class="text_border"></div>
 		<div class="post_profile_text">
 			<?php if($statement != ''){
 				echo $statement;
 			}?>
-		</div>*/?>
+		</div>
 	</div>
 	<?php $about_me_style = 'width:100%;padding:0px;';
 	if(isset($coach['Coach']['video_file'])){
