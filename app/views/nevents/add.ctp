@@ -12,6 +12,7 @@
 		echo $this->Form->input('time_from');
 		echo $this->Form->input('time_to');
 		echo $this->Form->input('ticket_price');
+		echo $this->Form->input('number_of_participants');
 		echo $this->Form->input('instructor_id');
 		echo $this->Form->input('approved');
 		echo $this->Form->input('weight', array('value'=> 0));

@@ -51,6 +51,11 @@
 			<?php echo $nevent['Nevent']['ticket_price']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __(ucfirst('Number of Participants')); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $nevent['Nevent']['number_of_participants']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __(ucfirst('Instructor')); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($nevent['Instructor']['name'], array('controller' => 'instructors', 'action' => 'view', $nevent['Instructor']['id'])); ?>
