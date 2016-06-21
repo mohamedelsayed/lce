@@ -990,7 +990,7 @@ footer {
 .events_select select{
 	-moz-appearance: none;
     background: #fff none repeat scroll 0 0;
-    border: 2px solid #abadb3;
+    border: none;
     color: #000000;
     cursor: pointer;
     display: inline-block;
@@ -998,12 +998,14 @@ footer {
     margin: 0;
     outline: medium none;
     padding: 4px;
-    width: 100%;    
+    width: 120%;    
     border-radius: 5px;
     font-size: 18px;
 }
 .events_select{
+	border: 2px solid #abadb3;
 	position: relative;
+	overflow: hidden;
 	margin-right: 23px;
 	margin-left: 10px;
 }
