@@ -1,5 +1,5 @@
 <?php if(isset($values_data) && !empty($values_data)){?>
-    <?php //$x = 0;
+    <?php $x = 0;
     foreach ($values_data as $key => $value) {
         $image = '';
 		$max_width = '';
@@ -8,13 +8,18 @@
         //$max_height  = 'max-height:80%;';
         //$x++;
         //$height = '162px';
-        //if($x == 3){
-            //$height = '127px';
-        //}
+        $style = '';
+        if($x == 0){
+        	$style = 'margin-left:1%';
+        }
+		if($x == 4){
+        	$style = 'margin-right:1%';
+        }
+		$x++;
         if(isset($value['Value'])){
             $image = $base_url.'/img/upload/'.$value['Value']['image'];
         }?>
-        <div class="values_wrap_div">
+        <div class="values_wrap_div" style="<?php echo $style;?>">
             <div class="values_image" style="overflow: hidden;">
                 <a>
                     <img style="<?php echo $max_width.$max_height;?>" src="<?php echo $image;?>"/>
