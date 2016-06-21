@@ -18,3 +18,4 @@ CREATE TABLE IF NOT EXISTS `nevents` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 ALTER TABLE `nevents` ADD `image` VARCHAR( 255 ) NULL;
+ALTER TABLE `nevents` ADD `number_of_participants` INT NOT NULL DEFAULT '0';
