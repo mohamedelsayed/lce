@@ -379,17 +379,19 @@ p{
 .board_members_div{
 	float: left;
 	width: 100%;
-	margin-top: 50px;
+	margin-top: 10px;
+	margin-bottom: 40px;
 }
 .team_member_all_div_two{
 	margin-top: 0px;
 }
 .team_member_div_two{
 	float: left;
-	margin-right: 45px;
-	width: 190px;
-	margin-bottom: 10px;
-	height: 230px;
+    width: 238px;
+    margin-bottom: 10px;
+    height: 230px;
+    margin: auto;
+    text-align: center;
 }
 .team_member_title_postion_div_two{
 	margin-left: 0px;
@@ -442,7 +444,7 @@ p{
 }
 .team_member_right_div_three{
 	float: left;
-	width: 665px;
+	width: 75%;
 }
 .team_member_postion_div_three{
 	margin-top: 0px;
@@ -463,6 +465,7 @@ p{
 }
 .team_member_mail_inner_div_three a{
 	color: #535353;
+	margin-top: 3px;
 	text-decoration: none;	
 }
 .team_member_mail_inner_div_three a:hover{
@@ -621,18 +624,25 @@ p{
 	width: 100%;
 }
 .bottom_page_image_client{
-	width: 150px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	margin: 0px;	
 }
 .bottom_page_image_client img{
-	/*max-width:150px;
-	max-height: 150px;*/
+	max-width: 200px;
+	max-height: 250px;
+	display: block;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 .bottom_page_image_client_div{
 	float: left;
-	width: 150px;
-	height: 150px;	
+	width: 218px;
+	height: 215px;	
 	margin-left: 10px;
     margin-right: 10px;
 }
@@ -665,7 +675,7 @@ p{
 	float: left;
 }
 .team_member_name_hover{
-	color: #ED4640;
+	color: #f58521;
 }
 .facebook_box_div{
 	margin-top: 30px;
@@ -701,8 +711,9 @@ p{
 }
 .team_member_image_hover{
 	filter: none;
+	border: 1px solid #898989;
 	-webkit-filter: grayscale(0);	
-	/*border: 2px solid #ED4640;
+	/*border: 2px solid #f58521;
 	width: 136px;*/	  
 }
 .article_home_image_new{
@@ -805,7 +816,7 @@ p{
 	margin-bottom: 100px;
 }
 h2.coaches_instructors{
-	color: #ff5953;
+	color: #f58521;
     float: left;
     font-size: 24px;
     margin-bottom: 20px;
