@@ -1282,3 +1282,6 @@ input[type=radio].error, input[type=checkbox].error{
 	width: 107%;
 	border: none;
 }
+.events_select{
+	border-radius: 3px;
+}
