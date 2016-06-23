@@ -182,7 +182,7 @@ class FronteventsController  extends AppController {
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
-				$_POST["vpc_OrderInfo"] = $event_id.'-'.Inflector::slug(strtolower($title), '-').time();					
+				$_POST["vpc_OrderInfo"] = $event_id.'-'.slugify(strtolower($title)).time();					
 				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
 				unset($_POST["virtualPaymentClientURL"]); 
 				unset($_POST["SubButL"]);
@@ -518,5 +518,24 @@ class FronteventsController  extends AppController {
 	        $return .= '</table>';
 	    }
 	    return $return;
+	}
+	function slugify($text = '') {
+	    // replace non letter or digits by -
+	    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+	    // trim
+	    $text = trim($text, '-');
+	    // transliterate
+	    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+	    // lowercase
+	    $text = strtolower($text);
+	    // remove unwanted characters
+	    $text = preg_replace('~[^-\w]+~', '', $text);
+		$text = str_replace(':', '-', $text);
+		$text = str_replace('(', '-', $text);
+		$text = str_replace(')', '-', $text);
+	    if (empty($text)) {
+	        return 'n-a';
+	    }
+	    return $text;
 	}
 }
