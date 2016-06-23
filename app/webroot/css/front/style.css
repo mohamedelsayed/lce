@@ -2404,7 +2404,7 @@ select {
 .post_profile_phone samp{
 	background: rgba(0, 0, 0, 0) url("../../img/front/icon_coach_phone.png") no-repeat scroll left center;
     color: #2bbab6;
-    font-size: 14px;
+    font-size: 16px;
 	float: right;
     margin-right: 11%;
 	font-family: Montserrat;
