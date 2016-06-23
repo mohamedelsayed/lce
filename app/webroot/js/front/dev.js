@@ -8,6 +8,7 @@ var ajax_list_coaches_run;
 var coaches_page = 1;
 var limit = 2;
 var global_number_of_participants = 0;
+var global_ticket_price = 0;
 $(document).ready(function(){
     $('#month_select_id').on('change', function(){
         reload_page_with_new_data();      
@@ -144,6 +145,9 @@ function open_event(id){
         	var html = result.html;
         	var number_of_participants = result.number_of_participants;
         	global_number_of_participants = number_of_participants;
+			var ticket_price = result.ticket_price;
+			global_ticket_price = ticket_price;
+			jQuery('.total_ticket_price').html(global_ticket_price);
         	open_event_popup(html);            
         }
     }); 
@@ -293,22 +297,41 @@ function close_coach_popup(){
 function validate_tickets_number () {
 	var tickets_number_obj = jQuery('#popup_form_tickets_number');
 	var val = tickets_number_obj.val();
-	if (isNumeric(val)){
-		if(tickets_number_obj.hasClass('error')){
-			tickets_number_obj.removeClass("error");			
-		}
-	}else{
-		if(!(tickets_number_obj.hasClass('error'))){
-			tickets_number_obj.addClass("error");			
-		}			
-	}	
-	if(val > global_number_of_participants){
-		if(!(tickets_number_obj.hasClass('error'))){
-			tickets_number_obj.addClass("error");			
-		}			
-	}else{
-		if(tickets_number_obj.hasClass('error')){
-			tickets_number_obj.removeClass("error");			
-		}		
+	var error_flag = 0;
+	jQuery('.total_ticket_price').html(0);
+	if(val == 0){
+		error_flag = 1;
+	}else if(parseInt(val) > parseInt(global_number_of_participants)){
+		tickets_number_obj.val(global_number_of_participants);
+		//error_flag = 1;
+		error_flag = 0;
+	}else{		
+		error_flag = 0;
 	}
+	var val = tickets_number_obj.val();
+	jQuery('.total_ticket_price').html(val * global_ticket_price);
+	if(error_flag == 1){
+		if(!(tickets_number_obj.hasClass('error'))){
+			tickets_number_obj.addClass("error");			
+		}			
+	}else{
+		if(tickets_number_obj.hasClass('error')){
+			tickets_number_obj.removeClass("error");			
+		}	
+	}
+}
+function validate_tickets_number_keyup(e){ 
+	var key = e.which || e.keyCode; 
+	var flag = 0;	
+	if(key == 8){
+		flag = 1;		
+	}
+	if(e.charCode >= 48 && e.charCode <= 57){
+		flag = 1;			
+	}
+    if(flag == 1){
+    	return true;    	
+    }else{
+    	return false;
+    }
 }
