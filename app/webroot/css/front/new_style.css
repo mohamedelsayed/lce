@@ -1293,3 +1293,10 @@ input[type=radio].error, input[type=checkbox].error{
 	margin-left: 100px;
 	float: left;
 }
+.terms_and_conditions a{
+	display: initial;
+	color: #000000;
+}
+.terms_and_conditions a:hover{
+	color: #f58521;
+}
