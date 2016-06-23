@@ -6,7 +6,7 @@
  */
 var ajax_list_coaches_run;
 var coaches_page = 1;
-var limit = 2;
+var limit = 6;
 var global_number_of_participants = 0;
 var global_ticket_price = 0;
 $(document).ready(function(){
