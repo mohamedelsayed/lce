@@ -2,18 +2,16 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 class TextsController extends AppController {
 	var $name = 'Texts';
 	var $uses = array('Content');
 	var $components = array('Email');
-	//var $helpers = array('GoogleMapV3'); 
-	
+	//var $helpers = array('GoogleMapV3'); 	
 	function index(){
 		$this->redirect($this->referer($this->Session->read('Setting.url')));		
 	}
-	
 	function display($id = null, $title = null){
 		if(!$id){
 			$this->redirect($this->referer($this->Session->read('Setting.url')));
@@ -22,6 +20,15 @@ class TextsController extends AppController {
 		$this->set('title_for_layout', $content['Content']['title']);
 		$this->set('content', $content);
 		$this->set('selected','content');
+	}
+	function terms_and_conditions($id = null){
+		if(!$id){
+			$this->redirect($this->referer($this->Session->read('Setting.url')));
+		}
+		$content = $this->Content->read(null, $id);
+		$this->set('title_for_layout', $content['Content']['title']);
+		$this->set('content', $content);
+		$this->set('selected','content2');		
 	}
 	function contactusForm($type = 'notajax'){
 		$error = '';	
@@ -87,4 +94,3 @@ class TextsController extends AppController {
 		}
 	}       
 }
-?>
