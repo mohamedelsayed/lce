@@ -99,9 +99,9 @@ $all_events_link = $base_url.'/all-events';?>
 					</div>
 				</div>
 			<?php }?>
-			<a href="<?php echo $all_testimonial_link;?>">
+			<?php /*<a href="<?php echo $all_testimonial_link;?>">
 				<div class="top_see">More Tesimonials ></div>
-			</a>
+			</a>*/?>
 		</div>
 	</div>
 <?php }?>

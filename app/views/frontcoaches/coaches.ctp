@@ -16,8 +16,8 @@ global $base_url;?>
 		</div>
 	</div>
 	<div class="coach_select_left">
-		<div class="coach_search">Coaching Area</div>
-		<div class="coach_select_select coach_select">
+		<div class="coach_search specializations_label">Coaching Specialization</div>
+		<div class="coach_select_select coach_select specializations_div">
 			<select name="coach_specialization" id="coach_specialization">
 				<option value="0">Please Select</option>
 				<?php if(!empty($specializations)){

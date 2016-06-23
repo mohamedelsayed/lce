@@ -1,4 +1,4 @@
-<div class="return_title" >
+<div class="return_title" style="margin-top: 20px;">
 	<?php echo $custom_message;?>
 </div>
 <?php if($custom_error_flag == 0){?>
