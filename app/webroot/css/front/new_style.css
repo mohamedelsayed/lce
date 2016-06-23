@@ -1309,3 +1309,11 @@ input[type=radio].error, input[type=checkbox].error{
 .team_member_selected{
 	border: 1px solid #898989;
 }
+.coach_select_left{
+	width: 45%;
+}
+.specializations_div{
+	width: 35%;	
+}
+.specializations_label{
+}
