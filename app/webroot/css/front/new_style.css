@@ -551,7 +551,7 @@ p{
 	width: 80px;
 	height: 80px;
 	overflow: hidden;
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 	float: left;
 }
 .facebook_fotter img{
@@ -1223,6 +1223,8 @@ input[type=radio].error, input[type=checkbox].error{
 .testimonial_image_home img{
 	width: auto;
 	height: auto;
+	max-width: 100%;
+	max-height: 100%;
 }
 .post_profile_sumit a, .post_profile_text_about a{
 	cursor: pointer;
