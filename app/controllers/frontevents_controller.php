@@ -396,7 +396,8 @@ class FronteventsController  extends AppController {
 	            $this->Email->sendAs = 'html';
 				$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
 							  Your transaction number: '.$transactionNo.',<br />
-							  Total paid amount: '.$amount.' '.$this->currency.'.';
+							  Total paid amount: '.$amount.' '.$this->currency.'.'.
+							  'Tickets Number: '.$tickets_number.'.';
 				$this->Email->template = 'event_customer';
 				$this->set('mail_body', $mail_body);
 				if ($this->Email->send()){
@@ -409,13 +410,14 @@ class FronteventsController  extends AppController {
 	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
 	            $this->Email->sendAs = 'html';
 				$data2 = array(
-					array('Name' , $name),
-			        array('Email' , $email),
-			        array('Mobile Number' , $mobile_number),
-			        array('Receipt Number' , $receiptNo),
-			        array('Transaction Number' , $transactionNo),
-			        array('Event' , $event_id),
-			        array('Amount' , $amount.' '.$this->currency),			        
+					array('Name', $name),
+			        array('Email', $email),
+			        array('Mobile Number', $mobile_number),
+			        array('Receipt Number', $receiptNo),
+			        array('Transaction Number', $transactionNo),
+			        //array('Event id', $event_id),
+			        array('Amount', $amount.' '.$this->currency),
+			        array('Tickets Number', $tickets_number),			        
 				);
 				$html = $this->draw_array_as_table($data2);
 				$mail_body = 'This is checkout in  '.$title.' Event,<br />
