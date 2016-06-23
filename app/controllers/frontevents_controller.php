@@ -124,6 +124,7 @@ class FronteventsController  extends AppController {
 				$time_from = date('g:i a', strtotime($event[$model]['time_from']));
 				$time_to = date('g:i a', strtotime($event[$model]['time_to']));
 				$duration = $event[$model]['duration'];		
+				$number_of_participants = $event[$model]['number_of_participants'];
 				$all_date = $date;
 				if($duration > 1){
 					$all_date .= ' '.$duration.' Days';
@@ -144,7 +145,10 @@ class FronteventsController  extends AppController {
                 $data .= '</div>';
             }
         }
-        echo $data;     
+		$return['html'] = $data;
+		$return['number_of_participants'] = $number_of_participants;
+		echo json_encode($return);
+        //echo $data;     
         $this->autoRender = false;          
     }
 	function vpc_php_serverhost_do(){
@@ -346,6 +350,10 @@ class FronteventsController  extends AppController {
 			$mobile_number = '';
 			if(isset($_GET['mobile_number'])){
 				$mobile_number = $_GET['mobile_number'];
+			}
+			$tickets_number = '';
+			if(isset($_GET['tickets_number'])){
+				$tickets_number = $_GET['tickets_number'];
 			}			
 			$amount = $amount / 100;
 			$model = 'NeventOrder';
@@ -364,7 +372,8 @@ class FronteventsController  extends AppController {
 				        'receipt_number' => $receiptNo,
 				        'transaction_number' => $transactionNo,
 				        'event_id' => $event_id,
-				        'amount' => $amount,			        
+				        'amount' => $amount,	
+				        'tickets_number' => $tickets_number,		        
 				    )
 				);
 				$this->$model->create();

@@ -31,6 +31,11 @@
 			<?php echo $nevent_order['NeventOrder']['transaction_number']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Tickets Number'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $nevent_order['NeventOrder']['tickets_number']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Amount'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $nevent_order['NeventOrder']['amount'].' '.$currency; ?>

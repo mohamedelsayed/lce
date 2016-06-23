@@ -24,6 +24,16 @@
 	                <input id="popup_form_mobile_number" class="form_text" type="text" name="mobile_number" placeholder="Mobile Number" />    
 	            </div>
 	            <div class="form_item">
+	            	<div class="left_tickets">
+		            	<label>Tickets</label>
+		                <input id="popup_form_tickets_number" class="form_text" type="text" name="tickets_number" value="1" />    
+	                </div>
+		            <div class="event_popup_ticket_price_all_popup">
+		            	<div class="event_popup_ticket_price_all_in_popup">Total Price: </div>
+		            	<div class="total_ticket_price"></div><?php echo $currency;?>
+	            	</div>
+            	</div>
+	            <div class="form_item">
 	            	<input type="checkbox" name="terms_and_conditions" id="popup_form_terms_and_conditions" /> 
 	            	I agree to the Terms and Conditions.
 	            </div>
