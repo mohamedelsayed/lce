@@ -1285,3 +1285,11 @@ input[type=radio].error, input[type=checkbox].error{
 .events_select{
 	border-radius: 3px;
 }
+.total_ticket_price, .currency_popup{
+	float: left;	
+}
+.total_ticket_price_currency_popup{
+	width: 100%;
+	margin-left: 100px;
+	float: left;
+}
