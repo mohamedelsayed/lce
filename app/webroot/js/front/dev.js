@@ -7,6 +7,7 @@
 var ajax_list_coaches_run;
 var coaches_page = 1;
 var limit = 2;
+var global_number_of_participants = 0;
 $(document).ready(function(){
     $('#month_select_id').on('change', function(){
         reload_page_with_new_data();      
@@ -32,6 +33,9 @@ $(document).ready(function(){
     });
     jQuery("#contactme_popup_form").submit(function (event) {
 		event.preventDefault();
+	});
+	jQuery("#popup_form_tickets_number").on("change paste keyup", function() {
+		validate_tickets_number();
 	});
 });
 function reload_page_with_new_data(){
@@ -136,7 +140,11 @@ function open_event(id){
         	open_event_popup('<h4>Loading<div id="closeeventpopoup" class="closeeventpopoup closepopoup">X</div></h4><div class="event_loading ajax_loading"></div>');            
         },
         success: function(result) {
-        	open_event_popup(result);            
+        	result = jQuery.parseJSON(result);
+        	var html = result.html;
+        	var number_of_participants = result.number_of_participants;
+        	global_number_of_participants = number_of_participants;
+        	open_event_popup(html);            
         }
     }); 
 }
@@ -150,6 +158,7 @@ function validate_checkout_form(obj) {
 	validate_email_input(jQuery('#popup_form_email'));	
 	validate_numeric_input(jQuery('#popup_form_mobile_number'));
 	validate_required_input_checkbox('popup_form_terms_and_conditions');
+	validate_tickets_number();
 	var checkout_form_flag = 0;
 	var focused = 0;
 	jQuery('#'+form_id+' input').each(function(){
@@ -280,4 +289,26 @@ function open_coach_popup(content){
 function close_coach_popup(){
 	jQuery("#mesagepopboxcoachpopoup").hide(); 
     jQuery("#mesagepopboxcoachpopoup .mesagecontent").html('');      
+}
+function validate_tickets_number () {
+	var tickets_number_obj = jQuery('#popup_form_tickets_number');
+	var val = tickets_number_obj.val();
+	if (isNumeric(val)){
+		if(tickets_number_obj.hasClass('error')){
+			tickets_number_obj.removeClass("error");			
+		}
+	}else{
+		if(!(tickets_number_obj.hasClass('error'))){
+			tickets_number_obj.addClass("error");			
+		}			
+	}	
+	if(val > global_number_of_participants){
+		if(!(tickets_number_obj.hasClass('error'))){
+			tickets_number_obj.addClass("error");			
+		}			
+	}else{
+		if(tickets_number_obj.hasClass('error')){
+			tickets_number_obj.removeClass("error");			
+		}		
+	}
 }
