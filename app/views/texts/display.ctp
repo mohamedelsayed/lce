@@ -1,4 +1,4 @@
-<?php $tree = array(array('url' => '/contact-us', 'str' => 'Contact Us'));
+<?php $tree = array(array('url' => '/contact-us', 'str' => $content['Content']['title']));
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <div class="title_event_page">
 	<p><?php echo $content['Content']['title'];?></p>

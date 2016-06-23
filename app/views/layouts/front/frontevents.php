@@ -36,9 +36,9 @@
 		            	</div>
 	            	</div>
             	</div>
-	            <div class="form_item">
-	            	<input type="checkbox" name="terms_and_conditions" id="popup_form_terms_and_conditions" /> 
-	            	I agree to the Terms and Conditions.
+	            <div class="form_item terms_and_conditions">
+	            	<input type="checkbox" name="terms_and_conditions" id="popup_form_terms_and_conditions" />
+	            	I agree to the <a target="_blank" href="<?php echo $base_url.'/terms-and-conditions';?>">Terms and Conditions.</a>
 	            </div>
 	            <div class="form_item">
 	            	<input type="submit" class="form_checkout_submit" value="CHECKOUT" />
