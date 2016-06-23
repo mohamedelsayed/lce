@@ -112,13 +112,17 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		        			<div class="img_about team_member_all_div_two">	
 		        				<h2 class="coaches_instructors" style="margin-top: 0px;">LCE Coaches/Instructors</h2>	        				
         						<?php foreach ($teamMembers3 as $key => $teamMember) {
+        							$selected = '';
+        							if($i == 0){
+        								$selected = 'team_member_selected';
+        							}
         							$i++;
 									$class = '';
 									if($i%5 == 0){
 										$class = 'team_member_div_two_special';
 									}
         							$image_team_member = $base_url.'/img/upload/thumb_'.$teamMember['TeamMember']['image'];?>
-        							<div class="team_member_div_two <?php echo $class;?>" id="teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>">
+        							<div class="team_member_div_two teammemberdiv <?php echo $class.' '.$selected;?>" id="teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>">
 	        							<div class="img_about_2 team_member_image_div_two">
 				        					<a class="teamMemberanchor teammember<?php echo $teamMember['TeamMember']['id'];?>">
 				        						<img id="teammemberimage<?php echo $teamMember['TeamMember']['id'];?>" class="img_cly team_member_image_two" src="<?php echo $image_team_member;?>"/>
@@ -126,12 +130,14 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		        						</div>
 		        						<div class="a_con team_member_title_postion_div_two">
 		        							<div id="teammembername<?php echo $teamMember['TeamMember']['id'];?>" class="top_a_con_2 team_member_title_div_two teammember<?php echo $teamMember['TeamMember']['id'];?>"><?php echo $teamMember['TeamMember']['name'];?></div>
-		        							<div class="top_a_con_3 team_member_postion_div_two teammember<?php echo $teamMember['TeamMember']['id'];?>"><?php echo $teamMember['TeamMember']['position'];?></div>
+		        							<div id="teammemberposition<?php echo $teamMember['TeamMember']['id'];?>" class="top_a_con_3 team_member_postion_div_two teammember<?php echo $teamMember['TeamMember']['id'];?>"><?php echo $teamMember['TeamMember']['position'];?></div>
 	        							</div>
 	        						</div>
 	        						<script type="text/javascript">
 										$(document).ready(function(){
 											$('.teammember<?php echo $teamMember['TeamMember']['id'];?>').click(function(){
+												$('.teammemberdiv').removeClass('team_member_selected');
+										    	$("#teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>").addClass('team_member_selected');
 												$('.team_member_div_three').removeClass('team_member_current');
 												$('#team_member_view<?php echo $teamMember['TeamMember']['id'];?>').addClass('team_member_current');
 												$('html, body').animate({
@@ -141,11 +147,14 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 										    $("#teammemberdiv<?php echo $teamMember['TeamMember']['id'];?>").hover(function(){
 										    	$('.team_member_title_div_two').removeClass('team_member_name_hover');
 										    	$('.team_member_image_two').removeClass('team_member_image_hover');
+										    	$('.team_member_postion_div_two').removeClass('team_member_position_hover');								    		
 										    	$("#teammembername<?php echo $teamMember['TeamMember']['id'];?>").addClass('team_member_name_hover');
 										    	$("#teammemberimage<?php echo $teamMember['TeamMember']['id'];?>").addClass('team_member_image_hover');
+										    	$("#teammemberposition<?php echo $teamMember['TeamMember']['id'];?>").addClass('team_member_position_hover');
 									    	},function(){
 									    		$('.team_member_title_div_two').removeClass('team_member_name_hover');	
-									    		$('.team_member_image_two').removeClass('team_member_image_hover');								    		
+									    		$('.team_member_image_two').removeClass('team_member_image_hover');	
+									    		$('.team_member_postion_div_two').removeClass('team_member_position_hover');								    		
 									    	});
 										});
 									</script>
