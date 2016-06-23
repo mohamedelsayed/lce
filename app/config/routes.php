@@ -4,6 +4,7 @@ Router::connect('/maintenance', array('controller' => 'home', 'action' => 'maint
 //Router::connect('/', array('controller' => 'admin', 'action' => 'index'));
 //Router::connect('/about-us', array('controller' => 'texts', 'action' => 'display', 1));
 Router::connect('/contact-us', array('controller' => 'texts', 'action' => 'display', 1));
+Router::connect('/terms-and-conditions', array('controller' => 'texts', 'action' => 'terms_and_conditions', 2));
 Router::connect('/forget-password/*', array('controller' => 'profil', 'action' => 'forgot'));
 Router::connect('/me-admin', array('controller' => 'meadmin', 'action' => 'index'));
 Router::connect('/me-admin/index', array('controller' => 'meadmin', 'action' => 'index'));
