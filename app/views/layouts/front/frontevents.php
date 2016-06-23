@@ -26,11 +26,14 @@
 	            <div class="form_item">
 	            	<div class="left_tickets">
 		            	<label>Tickets</label>
-		                <input id="popup_form_tickets_number" class="form_text" type="text" name="tickets_number" value="1" />    
+		                <input onkeypress="return validate_tickets_number_keyup(event);" id="popup_form_tickets_number" class="form_text" type="text" name="tickets_number" value="1" />    
 	                </div>
 		            <div class="event_popup_ticket_price_all_popup">
 		            	<div class="event_popup_ticket_price_all_in_popup">Total Price: </div>
-		            	<div class="total_ticket_price"></div><?php echo $currency;?>
+		            	<div class="total_ticket_price_currency_popup">
+			            	<div class="total_ticket_price"></div>
+			            	<div class="currency_popup"><?php echo $currency;?></div>
+		            	</div>
 	            	</div>
             	</div>
 	            <div class="form_item">
