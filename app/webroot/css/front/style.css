@@ -3243,6 +3243,14 @@ ul.primary li:hover > a{
 	border: 2px solid #979797;
 	color: #3e3e3f;
 }
+#popup_form_tickets_number{
+	float: left;
+	width: 100%;
+	font-size: 16px;
+	padding: 2% 0 2% 2%;
+	border: 2px solid #979797;
+	color: #3e3e3f;
+}
 .form_checkout_submit{
 	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 2px solid #f58521;
@@ -3569,4 +3577,29 @@ ul.primary li:hover > a{
 }
 #tab-3{
 	margin: 0 !important;
+}
+.left_tickets{
+	float:left;
+	width: 50%;
+}
+.left_tickets label{
+	color: #5e5e5e;
+    float: left;
+    font-size: 18px;
+    width: 100%;
+	text-align:left;
+	margin-bottom: 7px;
+}
+.event_popup_ticket_price_all_popup{
+	color: #2b2b2b;
+    float: left;
+    font-weight: bold;
+    font-size: 35px;
+    width: 50%;
+}
+.event_popup_ticket_price_all_in_popup{
+	color: #5e5e5e;
+    float: left;
+    font-size: 18px;
+    width: 100%;
 }
