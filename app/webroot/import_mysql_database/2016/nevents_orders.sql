@@ -12,3 +12,4 @@ CREATE TABLE IF NOT EXISTS `nevents_orders` (
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+ALTER TABLE `nevents_orders` ADD `tickets_number` INT NOT NULL DEFAULT '1';
