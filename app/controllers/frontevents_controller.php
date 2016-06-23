@@ -182,7 +182,7 @@ class FronteventsController  extends AppController {
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
-				$_POST["vpc_OrderInfo"] = $event_id.'-'.$title.time();					
+				$_POST["vpc_OrderInfo"] = $event_id.'-event'.time();					
 				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
 				unset($_POST["virtualPaymentClientURL"]); 
 				unset($_POST["SubButL"]);
