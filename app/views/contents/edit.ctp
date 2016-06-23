@@ -1,4 +1,5 @@
-<?php if($this->data['Content']['id'] == 2){?>
+<?php $id = $this->data['Content']['id'];
+/*if($this->data['Content']['id'] == 2){?>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript">
 	var map;
@@ -52,7 +53,7 @@
 	}
 	window.onload = function(){initialize();};	
 	</script>
-<?php }?>
+<?php }*/?>
 <div class="contents form">
 <?php echo $this->Form->create('Content', array('type'=>'file'));?>
 	<fieldset>
@@ -61,15 +62,19 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('title');
-		echo $this->Form->input('inner_title');
+		if($id == 1){
+			echo $this->Form->input('inner_title');
+		}
 		echo $this->Form->input('Content.body', array('class'=>'ckeditor'));
-		echo $this->Form->input('map_iframe');
-		echo $this->Form->input('address');
-		echo $this->Form->input('phone');
-		echo $this->Form->input('mail');
-		echo $this->Form->input('facebook_link');
-		echo $this->Form->input('linkedin_link');
-		echo $this->Form->input('working_hours', array('class'=>'ckeditor'));
+		if($id == 1){
+			echo $this->Form->input('map_iframe');
+			echo $this->Form->input('address');
+			echo $this->Form->input('phone');
+			echo $this->Form->input('mail');
+			echo $this->Form->input('facebook_link');
+			echo $this->Form->input('linkedin_link');
+			echo $this->Form->input('working_hours', array('class'=>'ckeditor'));
+		}
 		/*if($this->data['Content']['id'] == 2){
 			//echo $this->Form->input('map_iframe');
 			echo "Location Map (Google Map details)";?>

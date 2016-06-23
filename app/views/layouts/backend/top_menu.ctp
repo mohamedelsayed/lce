@@ -20,13 +20,18 @@
 		        <li class="heading"><a href="<?php echo $base_url.'/quotes';?>">Quotes</a></li>
 		        <li class="heading"><a href="<?php echo $base_url.'/slideshows';?>">Slideshows</a></li>
 		        <?php /*<li class="heading"><a href="<?php echo $base_url.'/logos';?>">Logos</a></li>*/?>
-		        <li class="heading"><a href="<?php echo $base_url.'/team_members';?>">Members</a></li>
-		        
+		        <li class="heading"><a href="<?php echo $base_url.'/team_members';?>">Members</a></li>		        
         		<?php $contents = $this->requestAction('main/getContents');
-        		foreach ($contents as $content){?>
-        			<li class="heading">
-        				<a href="<?php echo $base_url.'/contents/edit/'.$content['Content']['id'];?>"><?php echo $content['Content']['title'];?></a>
-    				</li>
+        		if(!empty($contents)){?>
+	        		<li class="heading"><a>Content</a>
+	    				<ul>
+	        		<?php foreach ($contents as $content){?>
+	        			<li class="">
+	        				<a href="<?php echo $base_url.'/contents/edit/'.$content['Content']['id'];?>"><?php echo $content['Content']['title'];?></a>
+	    				</li>
+	    			<?php }?>
+		    			</ul>
+	    			</li>
     			<?php }?>
     			<li class="heading"><a>Newsletter System</a>
     				<ul>
