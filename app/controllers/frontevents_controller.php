@@ -146,9 +146,16 @@ class FronteventsController  extends AppController {
             }
         }
 		$return['html'] = $data;
-		$return['number_of_participants'] = $number_of_participants;
+		$sql="SELECT SUM(tickets_number) as sum_tickets_number FROM `nevents_orders`
+		WHERE event_id = ".$id."";                          
+        $temp = $this->Nevent->query($sql);
+		$sum_tickets_number = 0;
+		if(isset($temp[0][0]['sum_tickets_number'])){
+			$sum_tickets_number = $temp[0][0]['sum_tickets_number'];
+		}
+		$return['number_of_participants'] = $number_of_participants - $sum_tickets_number;
+		$return['ticket_price'] = $ticket_price;
 		echo json_encode($return);
-        //echo $data;     
         $this->autoRender = false;          
     }
 	function vpc_php_serverhost_do(){
@@ -170,7 +177,8 @@ class FronteventsController  extends AppController {
 				$title = $event[$model]['title'];
 			}
 			if($event_amount > 0 && is_numeric($event_amount)){
-				$_POST["Title"] = $title;
+				unset($_POST['terms_and_conditions']);
+				//$_POST["Title"] = $title;
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
@@ -183,7 +191,7 @@ class FronteventsController  extends AppController {
 				$_POST["vpc_Merchant"] = $this->payment_merchant_id;
 				$_POST["vpc_AccessCode"] = $this->payment_access_code;
 				$_POST["vpc_MerchTxnRef"] = $event_id.time();
-				$_POST["vpc_Amount"] = $event_amount * 100;
+				$_POST["vpc_Amount"] = $event_amount * $_POST['tickets_number'] * 100;
 				$_POST["vpc_ReturnURL"] = BASE_URL.'/return-transaction?event_id='.$event_id;	 
 				ksort ($_POST);		
 				// set a parameter to show the first pair in the URL
@@ -272,7 +280,7 @@ class FronteventsController  extends AppController {
 		$message         = $this->null2unknown($_GET["vpc_Message"]);
 		$version         = $this->null2unknown($_GET["vpc_Version"]);
 		$cardType        = $this->null2unknown($_GET["vpc_Card"]);
-		$orderInfo       = $this->null2unknown($_GET["vpc_OrderInfo"]);
+		//$orderInfo       = $this->null2unknown($_GET["vpc_OrderInfo"]);
 		$receiptNo       = $this->null2unknown($_GET["vpc_ReceiptNo"]);
 		$merchantID      = $this->null2unknown($_GET["vpc_Merchant"]);
 		$authorizeID     = $this->null2unknown($_GET["vpc_AuthorizeId"]);
@@ -351,10 +359,10 @@ class FronteventsController  extends AppController {
 			if(isset($_GET['mobile_number'])){
 				$mobile_number = $_GET['mobile_number'];
 			}
-			$tickets_number = '';
+			$tickets_number = 1;
 			if(isset($_GET['tickets_number'])){
 				$tickets_number = $_GET['tickets_number'];
-			}			
+			}		
 			$amount = $amount / 100;
 			$model = 'NeventOrder';
 			$this->loadModel($model);
