@@ -389,9 +389,10 @@ p{
 	float: left;
     width: 238px;
     margin-bottom: 10px;
-    height: 230px;
+    /*height: 230px;*/
     margin: auto;
     text-align: center;
+    padding: 10px 0;
 }
 .team_member_title_postion_div_two{
 	margin-left: 0px;
@@ -711,7 +712,7 @@ p{
 }
 .team_member_image_hover{
 	filter: none;
-	border: 1px solid #898989;
+	/*border: 1px solid #898989;*/
 	-webkit-filter: grayscale(0);	
 	/*border: 2px solid #f58521;
 	width: 136px;*/	  
@@ -1301,4 +1302,10 @@ input[type=radio].error, input[type=checkbox].error{
 }
 .terms_and_conditions a:hover{
 	color: #f58521;
+}
+.team_member_position_hover{
+	color: #000000;
+}
+.team_member_selected{
+	border: 1px solid #898989;
 }

@@ -890,7 +890,7 @@ ul.tabs li.current{
 }
 .top_a_con_3:hover{
 	text-decoration:none;
-	color: #000000 !important;
+	/*color: #000000 !important;*/
 }
 .bot_tom{
 	float:left;
