@@ -3629,8 +3629,7 @@ ul.primary li:hover > a{
 .article_home_image_creator_date ul{
 	list-style: inherit;
 }
-.team_member_body_div_three ,
-.article_home_image_creator_date ul li{
+.team_member_body_div_three ul li, .article_home_image_creator_date ul li{
 	float: none;
 }
 .points_wrap_div{
