@@ -76,6 +76,7 @@ function ajax_list_coaches(type){
 			  },
         beforeSend: function() {
         	list_coaches_loadmore_button.addClass("ajaxloading");
+        	jQuery('#list_coaches_loading_icon').addClass("ajaxloading");
         },
         success: function(result) {
         	result = jQuery.parseJSON(result);
@@ -84,6 +85,7 @@ function ajax_list_coaches(type){
         	var nextpage = parseInt(result.nextpage);
     		coaches_page = nextpage;
         	list_coaches_loadmore_button.removeClass("ajaxloading");
+        	jQuery('#list_coaches_loading_icon').removeClass("ajaxloading");
         	if(type == 0){        	        		
         		list_coaches_div.append(html);
         	}else{
