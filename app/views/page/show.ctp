@@ -2,8 +2,10 @@
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$(".leftmenuparent").click(function(){
-			var div_id = $(this).attr('id');
+		$(".leftmenuparentout").hover(function(){
+			var data_id = $(this).attr('data-id');
+			show_left_item_menu(data_id);
+			/*var div_id = $(this).attr('id');
 			$('.leftmenuparent').removeClass('leftmenuparentcurrent');
 			$('.leftmenuchild').removeClass('leftmenuchildcurent');
 			$('.leftmenuparent i').removeClass('services_menu_arrow_open');
@@ -11,7 +13,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			var nextDiv = $(this).next();
 			var status = nextDiv.css("display");
 			$(".leftmenuchild").fadeOut();
-			if(status == 'none'){								
+			if(status == 'none'){			
 				nextDiv.fadeIn();
 				$(this).addClass('leftmenuparentcurrent');
 				nextDiv.addClass('leftmenuchildcurent');
@@ -23,9 +25,17 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 				nextDiv.removeClass('leftmenuchildcurent');
 				$('#'+div_id+' i').removeClass('services_menu_arrow_open');
 				$('#'+div_id+' i').addClass('services_menu_arrow_close');
-			}
+			}*/
 		});									
 	});
+	function show_left_item_menu (data_id) {
+		//$('.leftmenuparent i').not('#child'+data_id+' i').removeClass('services_menu_arrow_open').addClass('services_menu_arrow_close');
+		//$('#child'+data_id+' i').removeClass('services_menu_arrow_close').addClass('services_menu_arrow_open');		
+		$('.leftmenuparent i').not('#child'+data_id+' i').removeClass('rotate-180');
+		$('#child'+data_id+' i').addClass('rotate-180');
+		$('.leftmenuchild').not('#childcontent'+data_id).slideUp();			
+		$('#child'+data_id).next('.leftmenuchild').slideDown();	  
+	}
 </script>
 <div class="leftmenu">
 	<?php if(!empty($cat)){?>
@@ -33,6 +43,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			<?php echo $cat['Cat']['title'];?>
 		</div>
 	<?php }?>
+	
 	<?php if(!empty($all_cats)){?>
 		<?php $i = 0;$j = 0;
 		$first_cat_id = 0;
@@ -43,36 +54,38 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 				$classtop = 'leftmenuchildcurent';
 				$first_cat_id = $all_cat['Cat']['id'];
 			}?>
-			<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>">
-				<?php echo $all_cat['Cat']['title'];?>
+			<div class="leftmenuparentout" data-id="<?php echo $all_cat['Cat']['id'];?>">
+				<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>">
+					<?php echo $all_cat['Cat']['title'];?>
+					<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
+					<i class="services_menu_arrow_close"></i>
+					<?php }?>
+				</div>
 				<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
-				<i class="services_menu_arrow_close"></i>
+		    		<div class="leftmenuchild <?php echo $classtop;?>" id="childcontent<?php echo $all_cat['Cat']['id'];?>">
+		    			<ul>
+		    				<?php foreach ($all_nodes[$all_cat['Cat']['id']] as $key => $all_node) {
+		    					$i++;
+		    					$class = '';
+								if($i == 1){
+									$class = 'currentnodeitem';								
+								}?>
+		    					<li class="nodeitem <?php echo $class;?>" id="nodeitem<?php echo $all_node['Node']['id'];?>"><?php echo $all_node['Node']['title'];?></li>
+		    					<script type="text/javascript">
+									$(document).ready(function(){
+										$('#nodeitem<?php echo $all_node['Node']['id'];?>').click(function(){
+											$('.nodeitemview').removeClass('currentnodeitemview');
+											$('.nodeitem').removeClass('currentnodeitem');
+											$('#nodeitemview<?php echo $all_node['Node']['id'];?>').addClass('currentnodeitemview');
+											$('#nodeitem<?php echo $all_node['Node']['id'];?>').addClass('currentnodeitem');
+										});
+									});
+								</script>
+	    					<?php }?>
+		    			</ul>
+					</div>
 				<?php }?>
 			</div>
-			<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
-	    		<div class="leftmenuchild <?php echo $classtop;?>" id="childcontent<?php echo $all_cat['Cat']['id'];?>">
-	    			<ul>
-	    				<?php foreach ($all_nodes[$all_cat['Cat']['id']] as $key => $all_node) {
-	    					$i++;
-	    					$class = '';
-							if($i == 1){
-								$class = 'currentnodeitem';								
-							}?>
-	    					<li class="nodeitem <?php echo $class;?>" id="nodeitem<?php echo $all_node['Node']['id'];?>"><?php echo $all_node['Node']['title'];?></li>
-	    					<script type="text/javascript">
-								$(document).ready(function(){
-									$('#nodeitem<?php echo $all_node['Node']['id'];?>').click(function(){
-										$('.nodeitemview').removeClass('currentnodeitemview');
-										$('.nodeitem').removeClass('currentnodeitem');
-										$('#nodeitemview<?php echo $all_node['Node']['id'];?>').addClass('currentnodeitemview');
-										$('#nodeitem<?php echo $all_node['Node']['id'];?>').addClass('currentnodeitem');
-									});
-								});
-							</script>
-    					<?php }?>
-	    			</ul>
-				</div>
-			<?php }?>
 		<?php }?>
 	<?php }?>
 </div>
@@ -120,18 +133,38 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <?php }?>
 <script type="text/javascript">
 $(document).ready(function(){
-	<?php if(isset($_REQUEST['childid'])){?>			
-		var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
+	<?php if(isset($_REQUEST['childid'])){?>		
+		show_left_item_menu(<?php echo $_REQUEST['childid'];?>);	
+		<?php /*var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
 		var nextDiv = childdiv.next();
 		var divid = nextDiv.attr('id');
 		childdiv.click();
-		$('#'+divid+' li:first').click();
+		$('#'+divid+' li:first').click();*/?>
 	<?php }else{?>
-		var childdiv = $('#child<?php echo $first_cat_id;?>');
+		show_left_item_menu(<?php echo $first_cat_id;?>);	
+		<?php /*var childdiv = $('#child<?php echo $first_cat_id;?>');
 		var nextDiv = childdiv.next();
 		var divid = nextDiv.attr('id');
 		childdiv.click();
-		$('#'+divid+' li:first').click();	
+		$('#'+divid+' li:first').click();*/?>	
 	<?php }?>
 });
 </script>
+<style type="text/css">
+.rotate-180 {
+	 -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    display:inline-block;
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+}
+.services_menu_arrow_close{
+	width: 12px;
+	height: 7px;
+}
+</style>
