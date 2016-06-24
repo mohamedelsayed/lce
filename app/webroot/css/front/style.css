@@ -14,6 +14,7 @@ body {
 	width:1200px;
 	margin-right: auto;
 	margin-left: auto;
+	margin-top: 75px;
 }
 .container_big{
 	width:100%;
@@ -37,8 +38,8 @@ body {
 	padding-bottom: 5px;
 }
 @media screen{
-body>.header_big{
-   position: fixed;
+.header_big{
+  height: 70px;
  }
 }
 .logo{
@@ -2509,6 +2510,7 @@ select {
     float: left;
 	text-align: justify;
     font-size: 16px;
+	line-height: 30px;
 	width: 48%;
 	padding: 0 1% 0 0;
 }
@@ -3215,8 +3217,15 @@ ul.primary li:hover > a{
 	float: left;
     height: 360px;
     padding: 2% 5%;
+	width: 90%;
     overflow-x: hidden;
     overflow-y: auto;
+    text-align: center;
+}
+#mesagepopboxeventpopoup .instructorpopoupbody{
+	float: left;
+    height: 380px;
+    padding: 2% 5%;
     text-align: center;
 }
 .checkout_popuppopoupbody{

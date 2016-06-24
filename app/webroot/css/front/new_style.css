@@ -575,7 +575,7 @@ p{
 	padding-right: 10px;	
 }
 .top_con{
-	margin-top: 25px;
+	margin-top: 40px;
 }
 .top_con_3{
 	font-size: 28px;
@@ -1017,7 +1017,8 @@ footer {
 }
 .slider_main_div{
 	height: 465px;
-	overflow: hidden;	
+	overflow: hidden;
+	margin-top: 75px;
 	float: left;
 	width: 100%;
 }
