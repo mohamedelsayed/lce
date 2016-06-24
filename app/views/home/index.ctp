@@ -264,3 +264,8 @@ $all_events_link = $base_url.'/all-events';?>
 		</div>
 	<?php }?>
 <?php }*/?>
+<style type="text/css">
+	.container{
+		margin-top: 0px;
+	}
+</style>

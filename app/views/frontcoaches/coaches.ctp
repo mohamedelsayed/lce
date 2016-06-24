@@ -28,6 +28,7 @@ global $base_url;?>
 			</select>
 		</div>
 	</div>
+	<div id="list_coaches_loading_icon" class="list_coaches_loading_icon ajax_loading"></div>
 	<?php if($settings['hide_geography'] == 0){?>
 		<div class="coach_select_right">
 			<div class="coach_search">Geography</div>
