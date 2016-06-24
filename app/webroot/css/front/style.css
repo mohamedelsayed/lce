@@ -3633,3 +3633,7 @@ ul.primary li:hover > a{
 .article_home_image_creator_date ul li{
 	float: none;
 }
+.points_wrap_div{
+	float:left;
+	margin-top: 20px;
+}
