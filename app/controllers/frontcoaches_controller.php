@@ -328,7 +328,6 @@ class FrontcoachesController  extends AppController {
 		            	}
 					}
 				}				
-				//$this->Email->template = 'sendmailcoach_user';
 				$this->set('subject', $subject);				
 				$this->set('coach_admin', 0);
 				$this->set('normal_coach', 0);
