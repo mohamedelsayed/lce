@@ -79,7 +79,7 @@ $all_events_link = $base_url.'/all-events';?>
 					$body = strip_tags($testimonial['Testimonial']['body']);
 				}
 				$testimonial_link = $all_testimonial_link.'#testimonial'.$testimonial['Testimonial']['id'];?>
-				<div class="top_pic">	
+				<div class="top_pic" style="margin-bottom: 20px;">	
 					<a href="<?php echo $testimonial_link;?>">			
 						<div class="top_img testimonial_image_home">						
 							<img src="<?php echo $image;?>" style="<?php echo $style;?>" />					
@@ -112,11 +112,11 @@ $all_events_link = $base_url.'/all-events';?>
 	<div class="articles_home_left">
 		<div class="top_right article_home">
 			<div class="article_home_image_creator_date">
-				It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+				You can hire a personal coach from our community of accreditted coaches that have completed the Dialogical Coaching Certification (DCC).
 			</div>
 		</div>
 		<a href="<?php echo $all_coaches_link;?>">
-			<div class="top_see_now">Submit coaching form</div>
+			<div class="top_see_now">Search the DCC Community</div>
 		</a>
 	</div>
 </div>
@@ -176,24 +176,28 @@ $all_events_link = $base_url.'/all-events';?>
 		}
 		//$all_date .= ' <br />'.$time_from.' to '.$time_to;?>
 		<div class="articles_home_left">		
-			<div class="top_right article_home">
-				<div class="top_img_article article_home_image article_home_image_new">
+			<div class="top_right article_home event_home_wrap">
+				<div class="top_img_article article_home_image article_home_image_new" style="padding: 0px;">
 					<a>
 						<div class="home_event_img_div">
 							<img class="home_event_img" src="<?php echo $image;?>" 	style="<?php echo $style;?>" />
 						</div>
 					</a>
 				</div>
-				<div class="top_wrie_b article_home_title"><?php echo $title;?></div>
-				<div class="mm_tt article_home_creator"><?php echo $location;?></div>
-				<div class="mm_tt article_home_data"><?php echo $all_date;?></div>
-				<div class="mm_tt article_home_name open_instructor"><?php echo $instructor_name;?></div>
-				<div class="article_home_image_creator_date">
-					<?php echo $description;?>
+				<div class="event_home_right">
+					<div class="top_wrie_b article_home_title" style="padding: 0px;width: 100%;"><?php echo $title;?></div>
+					<?php /*<div class="mm_tt article_home_creator"><?php echo $location;?></div>*/?>
+					<?php /*<div class="mm_tt article_home_data"><?php echo $all_date;?></div>*/?>
+					<div class="mm_tt article_home_name open_instructor" style="margin: 0px 0;padding: 12px 0 0 20px;width: 100%">
+						<?php echo $instructor_name;?>
+					</div>
 				</div>
+				<?php /*<div class="article_home_image_creator_date">
+					<?php echo $description;?>
+				</div>*/?>				
 			</div>
-			<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
-				<div class="top_see_now">Register Now</div>
+			<a class="open_event" href="<?php echo $all_events_link;?>">
+				<div class="top_see_now">More Details</div>
 			</a>
 		</div>
 	<?php }?>
@@ -201,6 +205,18 @@ $all_events_link = $base_url.'/all-events';?>
 <style type="text/css">	
 .header_big {
 	border-bottom: 0px solid #ebebeb !important;
+}
+.event_home_wrap{
+	padding-top: 15px;
+	margin-bottom: 0px;
+}
+.event_home_right{
+	margin-left: 15px;
+	width: 172px;
+	float: left;	
+}
+.container{
+	margin-top: 0px;
 }
 </style>
 <?php /* }?>
@@ -275,8 +291,3 @@ $all_events_link = $base_url.'/all-events';?>
 		</div>
 	<?php }?>
 <?php }*/?>
-<style type="text/css">
-	.container{
-		margin-top: 0px;
-	}
-</style>

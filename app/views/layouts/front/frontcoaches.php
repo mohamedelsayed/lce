@@ -9,6 +9,7 @@
             <div class="closepopoup">X</div>
         </h4>
         <div class="contactme_popuppopoupbody">
+        	<div class="contact_me_hint">Please fill in the form below so that we help you and your coach exchange contacts</div>
         	<form id="contactme_popup_form" action="<?php echo $base_url;?>" method="post" accept-charset="UTF-8" enctype="multipart/form-data" onsubmit="return validate_contactme_form(jQuery(this));">
 	            <div class="form_item">
 	                <input id="contactme_popup_form_first_name" class="form_text" type="text" name="first_name" placeholder="First Name" />    
