@@ -168,8 +168,7 @@ $all_events_link = $base_url.'/all-events';?>
 						$icon = '<i class="home_event_icon_name no_icon"></i>';
 					}
 					$i++;
-					$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.'</i>'.$instructor['name']
-					//.' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>'
+					$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.'</i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>'
 					.'</div> ';
 				}
 			}
@@ -196,11 +195,11 @@ $all_events_link = $base_url.'/all-events';?>
 				</div>
 				<div class="event_home_right">
 					<div class="top_wrie_b article_home_title" style="padding: 0px;width: 100%;"><?php echo $title;?></div>
-					<?php /*<div class="mm_tt article_home_creator"><?php echo $location;?></div>*/?>
-					<?php /*<div class="mm_tt article_home_data"><?php echo $all_date;?></div>*/?>
+					<?php /*<div class="mm_tt article_home_creator"><?php echo $location;?></div>*/?>					
 					<div class="mm_tt article_home_name open_instructor" style="margin: 0px 0;padding: 12px 0 0 0px;width: 100%">
 						<?php echo $instructor_name;?>
 					</div>
+					<div class="mm_tt article_home_data"><i class="home_event_icon_date"></i><?php echo $all_date;?></div>
 				</div>
 				<?php /*<div class="article_home_image_creator_date">
 					<?php echo $description;?>

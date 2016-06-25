@@ -2,7 +2,7 @@
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$(".leftmenuparentout").hover(function(){
+		$(".leftmenuparentout").click(function(){
 			var data_id = $(this).attr('data-id');
 			show_left_item_menu(data_id);
 			/*var div_id = $(this).attr('id');
