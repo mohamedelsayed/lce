@@ -21,6 +21,8 @@ class NeventsController extends AuthController {
 		}
 		$this->set('nevent', $this->Nevent->read(null, $id));
 		$this->set('title_for_layout' , 'Events');
+		$saved_instructors = $this->get_saved_many_items($id);
+		$this->set(compact('saved_instructors'));		
 	}
 	function add() {
 		if (!empty($this->data)) {
@@ -28,15 +30,19 @@ class NeventsController extends AuthController {
 			$this->data['Nevent']['image']=$this->Upload->uploadImage($this->data['Nevent']['image']);
 			$this->Nevent->create();
 			if ($this->Nevent->save($this->data)) {
+				$event_id = $this->Nevent->id;
+				$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
 				$this->Session->setFlash(__('The Event has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
 			}
 		}
-		$instructors = $this->Nevent->Instructor->find('list');
+		//$instructors = $this->Nevent->Instructor->find('list');
 		$this->set(compact('instructors'));
 		$this->set('title_for_layout' , 'Events');
+		$saved_instructors = array();
+		$this->set(compact('saved_instructors'));
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -52,6 +58,8 @@ class NeventsController extends AuthController {
 			}else
 				unset($this->data['Nevent']['image']);
 			if ($this->Nevent->save($this->data)) {
+				$event_id = $this->data['Nevent']['id'];
+				$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
 				$this->Session->setFlash(__('The Event has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -64,6 +72,8 @@ class NeventsController extends AuthController {
 		$instructors = $this->Nevent->Instructor->find('list');
 		$this->set(compact('instructors'));
 		$this->set('title_for_layout' , 'Events');
+		$saved_instructors = $this->get_saved_many_items($id);
+		$this->set(compact('saved_instructors'));
 	}
 	function delete($id = null) {
 		if (!$id) {
@@ -76,5 +86,53 @@ class NeventsController extends AuthController {
 		}
 		$this->Session->setFlash(__('Nevent was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+	}
+	function save_many_items_ids($event_id = 0, $items_ids, $model = 'NeventInstructor'){
+		if($model != ''){
+			if($model == 'NeventInstructor'){
+				$field = 'instructor_id';
+			}
+			$items_ids =  trim(trim($items_ids, ','));
+			$new_items_array = explode(',', $items_ids);
+			$this->loadModel($model);
+			$old_items_array = $this->get_saved_many_items($event_id, $model);
+			$data_intersect = array_intersect($new_items_array, $old_items_array);
+	        $data_to_add = array_diff($new_items_array, $data_intersect);
+	        $data_to_delete = array_diff($old_items_array, $data_intersect);
+			foreach ($data_to_add as $key => $value) {
+				if(is_numeric($value) && $value > 0){
+					$data = array(
+					    $model => array(
+					        'event_id' => $event_id,
+					        $field => $value
+					    )
+					);
+					$this->$model->create();
+					$this->$model->save($data);			
+				}
+			}		
+			foreach ($data_to_delete as $key => $value) {
+				$this->$model->deleteAll(array($model.'.event_id' => $event_id,
+															$model.'.instructor_id' => $value,));
+			}
+		}
+	}
+	function get_saved_many_items($event_id = 0, $model = 'NeventInstructor'){
+		if($model == 'NeventInstructor'){
+			$field = 'instructor_id';
+		}
+		$this->loadModel($model);
+		$old_items = $this->$model->find(
+			'all', array(
+				'conditions' => array($model.'.event_id' => $event_id),
+			)	  	 	
+		);
+		$old_items_array = array();
+		if(!empty($old_items)){
+			foreach ($old_items as $key => $value) {
+				$old_items_array[] = $value[$model][$field];		
+			}
+		}	
+		return $old_items_array;
 	}
 }
