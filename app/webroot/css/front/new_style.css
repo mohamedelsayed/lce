@@ -1327,3 +1327,9 @@ input[type=radio].error, input[type=checkbox].error{
 #mesagepopboxeventpopoup .mesagecontent{
 	height: 460px;
 }
+.list_coaches_loading_icon{
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin-top: 15px;
+}
