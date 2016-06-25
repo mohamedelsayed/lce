@@ -29,11 +29,9 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		});									
 	});
 	function show_left_item_menu (data_id) {
-		//$('.leftmenuparent i').not('#child'+data_id+' i').removeClass('services_menu_arrow_open').addClass('services_menu_arrow_close');
-		//$('#child'+data_id+' i').removeClass('services_menu_arrow_close').addClass('services_menu_arrow_open');		
-		$('.leftmenuparent i').not('#child'+data_id+' i').removeClass('rotate-180');
+		$('.leftmenuparent i').not('#child'+data_id+' i').not('.leftmenuparentcurrent'+' i').removeClass('rotate-180');
 		$('#child'+data_id+' i').addClass('rotate-180');
-		$('.leftmenuchild').not('#childcontent'+data_id).slideUp();			
+		$('.leftmenuchild').not('#childcontent'+data_id).not('.leftmenuchildcurent').slideUp();			
 		$('#child'+data_id).next('.leftmenuchild').slideDown();	  
 	}
 </script>
@@ -42,20 +40,21 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 		<div class="menu_left">
 			<?php echo $cat['Cat']['title'];?>
 		</div>
-	<?php }?>
-	
+	<?php }?>	
 	<?php if(!empty($all_cats)){?>
 		<?php $i = 0;$j = 0;
 		$first_cat_id = 0;
 		foreach ($all_cats as $key => $all_cat) {
 			$classtop = '';
+			$classout = '';
 			$j++;
 			if($j == 1){
 				$classtop = 'leftmenuchildcurent';
+				$classout = 'leftmenuparentcurrent';
 				$first_cat_id = $all_cat['Cat']['id'];
 			}?>
 			<div class="leftmenuparentout" data-id="<?php echo $all_cat['Cat']['id'];?>">
-				<div class="leftmenuparent" id="child<?php echo $all_cat['Cat']['id'];?>">
+				<div class="leftmenuparent <?php echo $classout;?>" id="child<?php echo $all_cat['Cat']['id'];?>">
 					<?php echo $all_cat['Cat']['title'];?>
 					<?php if(!empty($all_nodes[$all_cat['Cat']['id']])){?>
 					<i class="services_menu_arrow_close"></i>
@@ -70,7 +69,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 								if($i == 1){
 									$class = 'currentnodeitem';								
 								}?>
-		    					<li class="nodeitem <?php echo $class;?>" id="nodeitem<?php echo $all_node['Node']['id'];?>"><?php echo $all_node['Node']['title'];?></li>
+		    					<li data-cat-id="<?php echo $all_cat['Cat']['id'];?>" class="nodeitem <?php echo $class;?>" id="nodeitem<?php echo $all_node['Node']['id'];?>"><?php echo $all_node['Node']['title'];?></li>
 		    					<script type="text/javascript">
 									$(document).ready(function(){
 										$('#nodeitem<?php echo $all_node['Node']['id'];?>').click(function(){
@@ -133,13 +132,20 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 <?php }?>
 <script type="text/javascript">
 $(document).ready(function(){
+	$('.nodeitem').click(function(){
+		var cat_id = $(this).attr('data-cat-id');
+		$('.leftmenuchild').not('#childcontent'+cat_id).removeClass('leftmenuchildcurent');
+		$('#childcontent'+cat_id).addClass('leftmenuchildcurent');
+		$('.leftmenuparent').not('#child'+cat_id).removeClass('leftmenuparentcurrent');
+		$('#child'+cat_id).addClass('leftmenuparentcurrent');
+	});
 	<?php if(isset($_REQUEST['childid'])){?>		
 		show_left_item_menu(<?php echo $_REQUEST['childid'];?>);	
-		<?php /*var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
+		var childdiv = $('#child<?php echo $_REQUEST['childid'];?>');
 		var nextDiv = childdiv.next();
 		var divid = nextDiv.attr('id');
-		childdiv.click();
-		$('#'+divid+' li:first').click();*/?>
+		<?php /*childdiv.click();*/?>
+		$('#'+divid+' li:first').click();
 	<?php }else{?>
 		show_left_item_menu(<?php echo $first_cat_id;?>);	
 		<?php /*var childdiv = $('#child<?php echo $first_cat_id;?>');
