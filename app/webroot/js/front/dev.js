@@ -70,10 +70,10 @@ function ajax_list_coaches(type){
     	type: "POST",
         url: base_url+'/frontcoaches/ajax_list_coaches',
         data: {
-        		page: page, limit: limit, filter: filter, type: type, name: coach_name,
-        		order_field: order_field, order_direction: order_direction,
-        		coach_specialization: coach_specialization, coach_geography: coach_geography        		
-			  },
+    		page: page, limit: limit, filter: filter, type: type, name: coach_name,
+    		order_field: order_field, order_direction: order_direction,
+    		coach_specialization: coach_specialization, coach_geography: coach_geography        		
+		},
         beforeSend: function() {
         	list_coaches_loadmore_button.addClass("ajaxloading");
         	jQuery('#list_coaches_loading_icon').addClass("ajaxloading");
