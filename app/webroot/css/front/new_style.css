@@ -652,6 +652,7 @@ p{
 }
 .articles_home_left{
 	float: left;
+	width: 100%;
 }
 .article_header{	
     color: #404041;
@@ -1341,21 +1342,32 @@ input[type=radio].error, input[type=checkbox].error{
 .instructor_bio_wrap{
 	width: 100%;
 	float: left;
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 .post_event_name{
 	height: auto;
 	margin: 0px;
 	width: 100%;
+	min-height: 70px;
 }
 .post_event_price{
 	margin-top: 0px;
 }
 .home_event_icon_name{
-	background:url("../../img/front/icon_name.jpg");
+	background:rgba(0, 0, 0, 0) url("../../img/front/icon_name.jpg") no-repeat;
     color: #5e5e5e;
     float: left;
     height: 27px;
     width: 17px;
     margin-right: 4px;
+    background-size: 13px auto;
+}
+.event_home_right{
+	width: 51%;
+}
+.article_home_image_new{
+	width: 44%;
+}
+.no_icon{
+	background-image: none;	
 }
