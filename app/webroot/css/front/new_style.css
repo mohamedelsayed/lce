@@ -1324,3 +1324,6 @@ input[type=radio].error, input[type=checkbox].error{
 	display: initial;
 	cursor: pointer;
 }
+#mesagepopboxeventpopoup .mesagecontent{
+	height: 460px;
+}
