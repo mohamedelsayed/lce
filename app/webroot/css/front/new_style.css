@@ -1088,7 +1088,7 @@ input[type=radio].error, input[type=checkbox].error{
 	height: 1px;
 }
 #mesagepopboxcheckoutpopoup .mesagecontent{
-	height: 475px;
+	height: 495px;
 }
 .post_coach_left, .post_coach_right{
 	height: 260px;
@@ -1169,7 +1169,8 @@ input[type=radio].error, input[type=checkbox].error{
 	cursor: pointer;	
 }
 #mesagepopboxcontactmepopoup .mesagecontent{
-	height: 520px;	
+	height: 570px;	
+	top: 50px;
 }
 .coachpopoupleft{
 	float: left;
@@ -1316,8 +1317,6 @@ input[type=radio].error, input[type=checkbox].error{
 .specializations_div{
 	width: 35%;	
 }
-.specializations_label{
-}
 .instructor_bio_link{
 	color: #f58521;
 	text-decoration: underline;	
@@ -1332,4 +1331,10 @@ input[type=radio].error, input[type=checkbox].error{
 	height: 30px;
 	float: left;
 	margin-top: 15px;
+}
+.checkout_hint{
+	text-align: center;	
+}
+#mesagepopboxcontactmepopoup{
+	top: 15%;
 }
