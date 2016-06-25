@@ -56,11 +56,21 @@
 			<?php echo $nevent['Nevent']['number_of_participants']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __(ucfirst('Instructor')); ?></dt>
+		<?php /*<dt<?php if ($i % 2 == 0) echo $class;?>><?php __(ucfirst('Instructor')); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($nevent['Instructor']['name'], array('controller' => 'instructors', 'action' => 'view', $nevent['Instructor']['id'])); ?>
 			&nbsp;
-		</dd>
+		</dd>*/?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Instructors'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<ul id="instructors_result" class="autocomplete_ul_result instructors_result">
+				<?php foreach ($instructors as $key => $value) {
+					if(in_array($key, $saved_instructors)){?>
+						<li class="itemli" id="sitemli<?php echo $key;?>"><h5><?php echo $value;?></h5>
+					<?php }?>
+				<?php }?>
+			</ul>
+		</dd>	
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Approved'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 		<?php if($nevent['Nevent']['approved'] == 1) echo 'Yes';

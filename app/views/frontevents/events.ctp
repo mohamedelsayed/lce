@@ -27,8 +27,19 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		$description = $event[$model]['description'];
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
-		$instructor_id = $event[$model]['instructor_id'];
-		$instructor_name = $event[$model2]['name'];
+		//$instructor_id = $event[$model]['instructor_id'];
+		//$instructor_name = $event[$model2]['name'];
+		$instructors_title = '';
+		$instructors = $event['Instructor'];			
+		if(!empty($instructors)){
+			foreach ($instructors as $key => $instructor) {
+				if(isset($instructor['name'])){
+					$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+				}
+			}
+		}
+		$instructors_title = trim(trim($instructors_title), ',');
+		$instructor_name = $instructors_title;
 		$date = date('F d, Y', strtotime($event[$model]['start_date']));
 		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
 		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
@@ -71,7 +82,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 				<?php }?>
 				<div class="post_event_details"><i class="icon_details"></i><?php echo $location;?></div>
 				<div class="post_event_date" style="height: auto;"><i class="icon_date"></i><?php echo $all_date;?></div>
-				<div class="post_event_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');">
+				<div class="post_event_name open_instructor">
 					<i class="icon_name"></i><?php echo $instructor_name;?>
 				</div>
 				<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>

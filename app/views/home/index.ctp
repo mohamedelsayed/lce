@@ -153,8 +153,19 @@ $all_events_link = $base_url.'/all-events';?>
 		$description = $event[$model]['description'];
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
-		$instructor_id = $event[$model]['instructor_id'];
-		$instructor_name = $event[$model2]['name'];
+		//$instructor_id = $event[$model]['instructor_id'];
+		//$instructor_name = $event[$model2]['name'];
+		$instructors_title = '';
+		$instructors = $event['Instructor'];			
+		if(!empty($instructors)){
+			foreach ($instructors as $key => $instructor) {
+				if(isset($instructor['name'])){
+					$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+				}
+			}
+		}
+		$instructors_title = trim(trim($instructors_title), ',');
+		$instructor_name = $instructors_title;
 		$date = date('F d, Y', strtotime($event[$model]['start_date']));
 		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
 		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
@@ -176,7 +187,7 @@ $all_events_link = $base_url.'/all-events';?>
 				<div class="top_wrie_b article_home_title"><?php echo $title;?></div>
 				<div class="mm_tt article_home_creator"><?php echo $location;?></div>
 				<div class="mm_tt article_home_data"><?php echo $all_date;?></div>
-				<div class="mm_tt article_home_name open_instructor" onclick="open_instructor('<?php echo $instructor_id;?>');"><?php echo $instructor_name;?></div>
+				<div class="mm_tt article_home_name open_instructor"><?php echo $instructor_name;?></div>
 				<div class="article_home_image_creator_date">
 					<?php echo $description;?>
 				</div>
