@@ -88,13 +88,13 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 						</a>
 					</div>
 				<?php }?>				
-				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;"><i class="icon_date"></i><?php echo $all_date;?></div>				
+				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;margin-top: 15px;"><i class="icon_date"></i><?php echo $all_date;?></div>				
 				<div class="post_event_details" style="margin: 2% 0;"><i class="icon_details"></i><?php echo $location;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
 				<div class="event_description" style="text-align: justify;min-height: 175px;"><?php echo $description;?></div>
-				<div class="event_list_instructor_price_register" style="float: left;width: 100%;margin-top: 10px;">
+				<div class="event_list_instructor_price_register" style="float: left;width: 100%;margin-top: 0px;">
 					<div class="event_list_instructor_price" style="float: left;width: 50%;border-right: 2px solid #abadb3;">
 						<div class="post_event_name open_instructor">
 							<?php echo $instructor_name;?>
