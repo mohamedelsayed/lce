@@ -88,7 +88,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 						</a>
 					</div>
 				<?php }?>				
-				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;margin-top: 15px;"><i class="icon_date"></i><?php echo $all_date;?></div>				
+				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;margin-top: 20px;"><i class="icon_date"></i><?php echo $all_date;?></div>				
 				<div class="post_event_details" style="margin: 2% 0;"><i class="icon_details"></i><?php echo $location;?></div>
 			</div>
 			<div class="post_event_right">
