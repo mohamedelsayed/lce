@@ -161,8 +161,8 @@ $all_events_link = $base_url.'/all-events';?>
 			foreach ($instructors as $key => $instructor) {
 				if(isset($instructor['name'])){
 					$instructors_title .= '<div class="instructor_bio_wrap"><i class="home_event_icon_name"></i>'.$instructor['name']
-					//.' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> '
-					;
+					//.' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>'
+					.'</div> ';
 				}
 			}
 		}
