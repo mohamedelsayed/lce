@@ -125,7 +125,8 @@ class FronteventsController  extends AppController {
 				if(!empty($instructors)){
 					foreach ($instructors as $key => $instructor) {
 						if(isset($instructor['name'])){
-							$instructors_title .= $instructor['name'].', ';
+							$instructors_title .= '<div class="instructor_bio_wrap"><i class="icon-instructor_name"></i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
+							//$instructors_title .= $instructor['name'].', ';
 						}
 					}
 				}
@@ -148,7 +149,7 @@ class FronteventsController  extends AppController {
 				$data .= '<div class="event_popup_location"><i class="icon-location"></i>'.$location.'</div>';
 				$data .= '<div class="event_popup_ticket_price"><i class="icon-ticket_price"></i>'.$ticket_price.' '.$this->currency.'</div>';
 				$data .= '<div class="full_line"></div>';
-				$data .= '<div class="event_popup_instructor_name"><i class="icon-instructor_name"></i>'.$instructor_name.'</div>';
+				$data .= '<div class="event_popup_instructor_name">'.$instructor_name.'</div>';
 				$data .= '<div class="event_popup_all_date"><i class="icon-all_date_popup"></i>'.$all_date.'</div>';
 				$data .= '<div class="event_popup_ticket_price_all"><div class="event_popup_ticket_price_all_in">Total Price: </div>'.$ticket_price.' '.$this->currency.'</div>';              
 				$data .= '<div class="event_popup_arab_african"><img src="'.$arab_african_image.'" /></div>';  
@@ -346,7 +347,8 @@ class FronteventsController  extends AppController {
 				if(!empty($instructors)){
 					foreach ($instructors as $key => $instructor) {
 						if(isset($instructor['name'])){
-							$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+							$instructors_title .= '<div class="instructor_bio_wrap"><i class="icon_name"></i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
+							//$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
 						}
 					}
 				}
