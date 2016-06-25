@@ -1031,6 +1031,8 @@ footer {
 .instructorpopoupheadimg img{
 	width: 150px; 
 	height:150px; 
+	max-height: 100%;
+	max-width: 100%;	
 }
 .post_event_left img{
 	width: 327px;
@@ -1041,7 +1043,7 @@ footer {
 	height: 122px !important;	
 }*/
 .open_instructor{
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 .open_event{
 	cursor: pointer;	
@@ -1315,4 +1317,10 @@ input[type=radio].error, input[type=checkbox].error{
 	width: 35%;	
 }
 .specializations_label{
+}
+.instructor_bio_link{
+	color: #f58521;
+	text-decoration: underline;	
+	display: initial;
+	cursor: pointer;
 }
