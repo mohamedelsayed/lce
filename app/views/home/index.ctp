@@ -79,7 +79,7 @@ $all_events_link = $base_url.'/all-events';?>
 					$body = strip_tags($testimonial['Testimonial']['body']);
 				}
 				$testimonial_link = $all_testimonial_link.'#testimonial'.$testimonial['Testimonial']['id'];?>
-				<div class="top_pic" style="margin-bottom: 20px;">	
+				<div class="top_pic" style="margin-bottom: 10px;">	
 					<a href="<?php echo $testimonial_link;?>">			
 						<div class="top_img testimonial_image_home">						
 							<img src="<?php echo $image;?>" style="<?php echo $style;?>" />					
@@ -157,10 +157,18 @@ $all_events_link = $base_url.'/all-events';?>
 		//$instructor_name = $event[$model2]['name'];
 		$instructors_title = '';
 		$instructors = $event['Instructor'];			
+		$i = 0;
 		if(!empty($instructors)){
 			foreach ($instructors as $key => $instructor) {
 				if(isset($instructor['name'])){
-					$instructors_title .= '<div class="instructor_bio_wrap"><i class="home_event_icon_name"></i>'.$instructor['name']
+					$icon = '';					
+					if($i == 0){
+						$icon = '<i class="home_event_icon_name"></i>';
+					}else{
+						$icon = '<i class="home_event_icon_name no_icon"></i>';
+					}
+					$i++;
+					$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.'</i>'.$instructor['name']
 					//.' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>'
 					.'</div> ';
 				}
@@ -214,15 +222,15 @@ $all_events_link = $base_url.'/all-events';?>
 }
 .event_home_right{
 	margin-left: 15px;
-	width: 172px;
 	float: left;	
 }
 .container{
 	margin-top: 0px;
 }
 .instructor_bio_wrap{
-	line-height: 30px;
-	margin-bottom: 5px;
+	line-height: 22px;
+	margin-bottom: 0px;
+	font-size: 14px;
 }
 </style>
 <?php /* }?>
