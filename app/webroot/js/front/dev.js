@@ -10,6 +10,7 @@ var limit = 6;
 var global_number_of_participants = 0;
 var global_ticket_price = 0;
 $(document).ready(function(){
+	$('ul').removeAttr("style");
     $('#month_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
