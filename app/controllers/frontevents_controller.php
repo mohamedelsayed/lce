@@ -118,8 +118,19 @@ class FronteventsController  extends AppController {
 				$description = $event[$model]['description'];
 				$location = $event[$model]['location'];
 				$ticket_price = $event[$model]['ticket_price'];
-				$instructor_id = $event[$model]['instructor_id'];
-				$instructor_name = $event[$model2]['name'];
+				//$instructor_id = $event[$model]['instructor_id'];
+				//$instructor_name = $event[$model2]['name'];
+				$instructors_title = '';
+				$instructors = $event['Instructor'];			
+				if(!empty($instructors)){
+					foreach ($instructors as $key => $instructor) {
+						if(isset($instructor['name'])){
+							$instructors_title .= $instructor['name'].', ';
+						}
+					}
+				}
+				$instructors_title = trim(trim($instructors_title), ',');
+				$instructor_name = $instructors_title;
 				$date = date('F d, Y', strtotime($event[$model]['start_date']));
 				$time_from = date('g:i a', strtotime($event[$model]['time_from']));
 				$time_to = date('g:i a', strtotime($event[$model]['time_to']));
@@ -328,8 +339,19 @@ class FronteventsController  extends AppController {
 				$title = $event[$model]['title'];
 				$location = $event[$model]['location'];
 				$ticket_price = $event[$model]['ticket_price'];
-				$instructor_id = $event[$model]['instructor_id'];
-				$instructor_name = $event[$model2]['name'];
+				//$instructor_id = $event[$model]['instructor_id'];
+				//$instructor_name = $event[$model2]['name'];
+				$instructors_title = '';
+				$instructors = $event['Instructor'];			
+				if(!empty($instructors)){
+					foreach ($instructors as $key => $instructor) {
+						if(isset($instructor['name'])){
+							$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+						}
+					}
+				}
+				$instructors_title = trim(trim($instructors_title), ',');
+				$instructor_name = $instructors_title;
 				$date = date('F d, Y', strtotime($event[$model]['start_date']));
 				$time_from = date('g:i a', strtotime($event[$model]['time_from']));
 				$time_to = date('g:i a', strtotime($event[$model]['time_to']));
@@ -435,7 +457,7 @@ class FronteventsController  extends AppController {
 		$this->set('title' , $title);
 		$this->set('location' , $location);
 		$this->set('ticket_price' , $ticket_price);
-		$this->set('instructor_id' , $instructor_id);
+		//$this->set('instructor_id' , $instructor_id);
 		$this->set('instructor_name' , $instructor_name);
 		$this->set('all_date' , $all_date);		
 		$this->set('title_for_layout' , strtoupper($custom_message));		

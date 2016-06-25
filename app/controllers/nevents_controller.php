@@ -22,6 +22,8 @@ class NeventsController extends AuthController {
 		$this->set('nevent', $this->Nevent->read(null, $id));
 		$this->set('title_for_layout' , 'Events');
 		$saved_instructors = $this->get_saved_many_items($id);
+		$instructors = $this->Nevent->Instructor->find('list');
+		$this->set(compact('instructors'));
 		$this->set(compact('saved_instructors'));		
 	}
 	function add() {
@@ -38,7 +40,7 @@ class NeventsController extends AuthController {
 				$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
 			}
 		}
-		//$instructors = $this->Nevent->Instructor->find('list');
+		$instructors = $this->Nevent->Instructor->find('list');
 		$this->set(compact('instructors'));
 		$this->set('title_for_layout' , 'Events');
 		$saved_instructors = array();
