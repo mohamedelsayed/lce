@@ -67,11 +67,12 @@
  * In development mode, you need to click the flash message to continue.
 
  */
-
-	Configure::write('debug', 2);
-
-
-
+$http_host = $_SERVER['HTTP_HOST'];
+if (strpos($http_host, 'localhost') !== FALSE) {
+	Configure::write('debug', 2);	
+}else{
+	Configure::write('debug', 0);	
+}
 /**
 
  * CakePHP Log Level:
