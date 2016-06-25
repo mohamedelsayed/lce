@@ -56,7 +56,7 @@ class Nevent extends AppModel {
 		),*/
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
+	/*var $belongsTo = array(
 		'Instructor' => array(
 			'className' => 'Instructor',
 			'foreignKey' => 'instructor_id',
@@ -64,20 +64,37 @@ class Nevent extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
-	);
+	);*/
 	var $hasMany = array(
-		/*'Node' => array(
-			'className' => 'Node',
-			'foreignKey' => 'cat_id',
+		'NeventInstructor' => array(
+			'className' => 'NeventInstructor',
+			'foreignKey' => 'event_id',
 			'dependent' => false,
-			'conditions' => array('Node.approved' => 1),
+			'conditions' => '',
 			'fields' => '',
-			'order' => array('Node.weight' => 'ASC', 'Node.id' => 'DESC'),
+			'order' => array(),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)*/
+		)
+	);
+	var $hasAndBelongsToMany = array(
+		'Instructor' => array(
+			'className' => 'Instructor',
+			'joinTable' => 'nevents_instructors',
+			'foreignKey' => 'event_id',
+			'associationForeignKey' => 'instructor_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
 	);
 }

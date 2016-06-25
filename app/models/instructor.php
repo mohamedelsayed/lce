@@ -59,7 +59,7 @@ class Instructor extends AppModel {
 			'order' => ''
 		),*/
 	);
-	var $hasMany = array(
+	/*var $hasMany = array(
 		'Nevent' => array(
 			'className' => 'Nevent',
 			'foreignKey' => 'instructor_id',
@@ -73,5 +73,5 @@ class Instructor extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-	);
+	);*/
 }
