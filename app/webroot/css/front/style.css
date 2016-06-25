@@ -1608,15 +1608,15 @@ input.file{
     width: 41%;
 }
 .article_home_data{
-	background-image: url("../../img/front/icon_data.jpg");
+	/*background-image: url("../../img/front/icon_data.jpg");
     background-position: 2px 13px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
     float: left;
     font-family: montserrat;
     height: 23px;
-    margin-left: 10px;
-    padding: 15px 0 0 9%;
-    width: 41%;
+    /*margin-left: 10px;
+    padding: 15px 0 0 9%;*/
+    width: 100%;
 }
 .article_home_name{
 	/*background-image: url("../../img/front/icon_name.jpg");

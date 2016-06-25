@@ -1371,3 +1371,17 @@ input[type=radio].error, input[type=checkbox].error{
 .no_icon{
 	background-image: none;	
 }
+.home_event_icon_date{
+	background:rgba(0, 0, 0, 0) url("../../img/front/icon_data.jpg") no-repeat;
+    color: #5e5e5e;
+    float: left;
+    height: 27px;
+    width: 17px;
+    margin-right: 4px;
+    background-size: 16px auto;	
+}
+.article_home_data{
+	margin: 0px;
+	padding: 0px;
+	margin-top: 12px;	
+}
