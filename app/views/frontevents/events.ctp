@@ -34,7 +34,7 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		if(!empty($instructors)){
 			foreach ($instructors as $key => $instructor) {
 				if(isset($instructor['name'])){
-					$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+					$instructors_title .= '<div class="instructor_bio_wrap"><i class="icon_name"></i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
 				}
 			}
 		}
@@ -79,20 +79,26 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 							<img style="<?php echo $style;?>" src="<?php echo $image;?>"/>
 						</a>
 					</div>
-				<?php }?>
-				<div class="post_event_details"><i class="icon_details"></i><?php echo $location;?></div>
-				<div class="post_event_date" style="height: auto;"><i class="icon_date"></i><?php echo $all_date;?></div>
-				<div class="post_event_name open_instructor">
-					<i class="icon_name"></i><?php echo $instructor_name;?>
-				</div>
-				<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
+				<?php }?>				
+				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;"><i class="icon_date"></i><?php echo $all_date;?></div>				
+				<div class="post_event_details" style="margin: 2% 0;"><i class="icon_details"></i><?php echo $location;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
-				<div class="event_description"><?php echo $description;?></div>
-				<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
-					<div class="input_event open_event">Register Now</div>
-				</a>
+				<div class="event_description" style="text-align: justify;"><?php echo $description;?></div>
+				<div class="event_list_instructor_price_register" style="float: left;width: 100%;margin-top: 15px;">
+					<div class="event_list_instructor_price" style="float: left;width: 50%;border-right: 2px solid #abadb3;">
+						<div class="post_event_name open_instructor">
+							<?php echo $instructor_name;?>
+						</div>
+						<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
+					</div>
+					<div class="event_list_register" style="float: left;width: 44%;padding:0 0 0 5%;">				
+						<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+							<div class="input_event open_event" style="width: 100%;margin: 30px 0px;">Register & Pay Now</div>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	<?php }?>
@@ -110,3 +116,11 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 		<li><a href="#">></a></li>
 	</ul>
 </div>*/?>
+<style type="text/css">
+	.icon_name{
+		margin-left: -10px;
+	}
+	.icon_price{
+		margin-left: -8px;
+	}
+</style>

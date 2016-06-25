@@ -7,7 +7,7 @@
 	</div>
 	<div class="return_group_left" >
 		<div class="post_return_details"><i class="icon_details"></i><?php echo $location;?></div>
-		<div class="post_return_name"><i class="icon_name"></i><?php echo $instructor_name;?></div>
+		<div class="post_return_name" style="height: auto;margin-bottom: 0px;"><?php echo $instructor_name;?></div>
 		<div class="post_return_date"><i class="icon_date"></i><?php echo $all_date;?></div>
 		<div class="post_return_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
 	</div>

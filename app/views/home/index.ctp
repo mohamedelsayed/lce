@@ -160,7 +160,8 @@ $all_events_link = $base_url.'/all-events';?>
 		if(!empty($instructors)){
 			foreach ($instructors as $key => $instructor) {
 				if(isset($instructor['name'])){
-					$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
+					$instructors_title .= '<div class="instructor_bio_wrap"><i class="home_event_icon_name"></i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
+					//$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
 				}
 			}
 		}
@@ -188,7 +189,7 @@ $all_events_link = $base_url.'/all-events';?>
 					<div class="top_wrie_b article_home_title" style="padding: 0px;width: 100%;"><?php echo $title;?></div>
 					<?php /*<div class="mm_tt article_home_creator"><?php echo $location;?></div>*/?>
 					<?php /*<div class="mm_tt article_home_data"><?php echo $all_date;?></div>*/?>
-					<div class="mm_tt article_home_name open_instructor" style="margin: 0px 0;padding: 12px 0 0 20px;width: 100%">
+					<div class="mm_tt article_home_name open_instructor" style="margin: 0px 0;padding: 12px 0 0 0px;width: 100%">
 						<?php echo $instructor_name;?>
 					</div>
 				</div>
@@ -203,9 +204,9 @@ $all_events_link = $base_url.'/all-events';?>
 	<?php }?>
 </div>
 <style type="text/css">	
-.header_big {
+/*.header_big {
 	border-bottom: 0px solid #ebebeb !important;
-}
+}*/
 .event_home_wrap{
 	padding-top: 15px;
 	margin-bottom: 0px;
@@ -217,6 +218,10 @@ $all_events_link = $base_url.'/all-events';?>
 }
 .container{
 	margin-top: 0px;
+}
+.instructor_bio_wrap{
+	line-height: 30px;
+	margin-bottom: 5px;
 }
 </style>
 <?php /* }?>
