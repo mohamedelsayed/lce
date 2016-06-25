@@ -1619,9 +1619,9 @@ input.file{
     width: 41%;
 }
 .article_home_name{
-	background-image: url("../../img/front/icon_name.jpg");
+	/*background-image: url("../../img/front/icon_name.jpg");
     background-position: 2px 7px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
     float: left;
     font-family: montserrat;
     margin-left: 10px;

@@ -1338,3 +1338,24 @@ input[type=radio].error, input[type=checkbox].error{
 #mesagepopboxcontactmepopoup{
 	top: 15%;
 }
+.instructor_bio_wrap{
+	width: 100%;
+	float: left;
+	margin-bottom: 15px;
+}
+.post_event_name{
+	height: auto;
+	margin: 0px;
+	width: 100%;
+}
+.post_event_price{
+	margin-top: 0px;
+}
+.home_event_icon_name{
+	background:url("../../img/front/icon_name.jpg");
+    color: #5e5e5e;
+    float: left;
+    height: 27px;
+    width: 17px;
+    margin-right: 4px;
+}
