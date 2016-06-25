@@ -121,20 +121,20 @@ $light_color = '#FFFFFF';?>
 			<?php if($name != ''){?>
 				<tr>
 					<td align='left'>
-						<font class="element bold">Coache Name:</font>
+						<font class="element bold">Coach Name:</font>
 					</td>
 					<td>
 						<font class="element"><?php echo $name;?></font>
 					</td>
 				</tr>
 			<?php }?>
-			<?php if($email != ''){?>
+			<?php if($email2 != ''){?>
 				<tr>
 					<td align='left'>
 						<font class="element bold">Email:</font>
 					</td>
 					<td>
-						<font class="element"><?php echo $email;?></font>
+						<font class="element"><?php echo $email2;?></font>
 					</td>
 				</tr>
 			<?php }?>
