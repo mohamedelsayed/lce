@@ -121,11 +121,19 @@ class FronteventsController  extends AppController {
 				//$instructor_id = $event[$model]['instructor_id'];
 				//$instructor_name = $event[$model2]['name'];
 				$instructors_title = '';
-				$instructors = $event['Instructor'];			
+				$instructors = $event['Instructor'];	
+				$i = 0;		
 				if(!empty($instructors)){
 					foreach ($instructors as $key => $instructor) {
 						if(isset($instructor['name'])){
-							$instructors_title .= '<div class="instructor_bio_wrap"><i class="icon-instructor_name"></i>'.$instructor['name']
+							$icon = '';					
+							if($i == 0){
+								$icon = '<i class="icon-instructor_name"></i>';
+							}else{
+								$icon = '<i class="icon-instructor_name no_icon"></i>';
+							}
+							$i++;
+							$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$instructor['name']
 							//.' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>'
 							.'</div> ';
 						}
@@ -345,10 +353,18 @@ class FronteventsController  extends AppController {
 				//$instructor_name = $event[$model2]['name'];
 				$instructors_title = '';
 				$instructors = $event['Instructor'];			
+				$i = 0;
 				if(!empty($instructors)){
 					foreach ($instructors as $key => $instructor) {
 						if(isset($instructor['name'])){
-							$instructors_title .= '<div class="instructor_bio_wrap"><i class="icon_name"></i>'.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
+							$icon = '';					
+							if($i == 0){
+								$icon = '<i class="icon_name"></i>';
+							}else{
+								$icon = '<i class="icon_name no_icon"></i>';
+							}
+							$i++;
+							$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
 							//$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
 						}
 					}
