@@ -31,8 +31,8 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 	function show_left_item_menu (data_id) {
 		$('.leftmenuparent i').not('#child'+data_id+' i').not('.leftmenuparentcurrent'+' i').removeClass('rotate-180');
 		$('#child'+data_id+' i').addClass('rotate-180');
-		$('.leftmenuchild').not('#childcontent'+data_id).not('.leftmenuchildcurent').slideUp();			
-		$('#child'+data_id).next('.leftmenuchild').slideDown();	  
+		$('.leftmenuchild').not('#childcontent'+data_id).not('.leftmenuchildcurent').slideUp('slow');			
+		$('#child'+data_id).next('.leftmenuchild').slideDown('slow');	  
 	}
 </script>
 <div class="leftmenu">
