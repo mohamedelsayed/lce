@@ -579,4 +579,68 @@ class FronteventsController  extends AppController {
 	    }
 	    return $text;
 	}
+	function send_event_mail(){
+		$settings = $this->settings;
+    	$data = array();
+    	$html = '';
+		$error = 1;
+		$error_html = 'Error';
+    	if(!empty($_POST)){
+    		$event_id = 0;
+    		if(isset($_POST['event_id'])){
+    			$event_id = $_POST['event_id'];    			
+    		}
+			if($event_id != 0){
+				$email = '';
+	    		if(isset($_POST['email'])){
+	    			$email = $_POST['email'];    			
+	    		}
+				$first_name = '';
+	    		if(isset($_POST['first_name'])){
+	    			$first_name = $_POST['first_name'];    			
+	    		}
+				$last_name = '';
+	    		if(isset($_POST['last_name'])){
+	    			$last_name = $_POST['last_name'];    			
+	    		}
+				$mobile_number = '';
+	    		if(isset($_POST['mobile_number'])){
+	    			$mobile_number = $_POST['mobile_number'];    			
+	    		}
+				$message = '';
+	    		if(isset($_POST['message'])){
+	    			$message = $_POST['message'];    			
+	    		}          
+				$event = $this->Nevent->read(null, $event_id);
+				$subject = $settings['title'].' - Enquire Workshop Form';
+	            $this->Email->to = $settings['email'];
+				$this->Email->subject = $subject;           
+				$this->Email->replyTo = $email;
+				$this->Email->from = $first_name.' '.$last_name.'<'.$email.'>';                
+            	$this->Email->sendAs = 'html'; 	     
+	            $this->Email->template = 'sendmailevent';
+				$this->set('subject', $subject);
+				$this->set('first_name', $first_name);
+				$this->set('last_name', $last_name);
+				$this->set('email', $email);
+				$this->set('mobile_number', $mobile_number);
+				$this->set('message', $message);
+				$this->set('event_title', $event['Nevent']['title']);	
+        	    if ($this->Email->send()){
+        	    	$html = 'Email has been sent.';   
+					$error = 0;     	    	
+            	}else{
+					$html = $error_html;
+            	}				
+			}else{
+				$html = $error_html;
+			}
+    	}else{
+    		$html = $error_html;
+    	}   
+    	$data['html'] = $html;
+		$data['error'] = $error;
+		echo json_encode($data);
+        $this->autoRender = false;           		
+	}
 }
