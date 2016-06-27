@@ -9,17 +9,17 @@ var coaches_page = 1;
 var limit = 6;
 var global_number_of_participants = 0;
 var global_ticket_price = 0;
-$(document).ready(function(){
-    $('#month_select_id').on('change', function(){
+jQuery(document).ready(function(){
+    jQuery('#month_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
-    $('#year_select_id').on('change', function(){
+    jQuery('#year_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
-    $('#coach_specialization').on('change', function(){
+    jQuery('#coach_specialization').on('change', function(){
     	ajax_list_coaches(1);
 	});
-    $('#coach_geography').on('change', function(){
+    jQuery('#coach_geography').on('change', function(){
     	ajax_list_coaches(1);
 	});
 	jQuery("#coach_name").on("change paste keyup", function() {
@@ -31,8 +31,12 @@ $(document).ready(function(){
     	close_checkout_event_form_popup();  
     	close_contact_me_popup();
     	close_coach_popup();
+    	close_contact_event_popup();
     });
     jQuery("#contactme_popup_form").submit(function (event) {
+		event.preventDefault();
+	});
+	jQuery("#contactevent_popup_form").submit(function (event) {
 		event.preventDefault();
 	});
 	jQuery("#popup_form_tickets_number").on("change paste keyup", function() {
@@ -40,8 +44,8 @@ $(document).ready(function(){
 	});
 });
 function reload_page_with_new_data(){
-	var month_val = $('#month_select_id').val();      
-    var year_val = $('#year_select_id').val();     
+	var month_val = jQuery('#month_select_id').val();      
+    var year_val = jQuery('#year_select_id').val();     
     var new_url = base_url+'/all-events?year='+year_val+'&month='+month_val;
     window.location.href = new_url;
 }
@@ -336,4 +340,63 @@ function validate_tickets_number_keyup(e){
     }else{
     	return false;
     }
+}
+function validate_contactevent_form(obj) {	
+	jQuery('.contactevent_status').html('');	
+	var form_id = obj.attr('id');	
+	validate_required_input(jQuery('#contactevent_popup_form_first_name'));
+	validate_required_input(jQuery('#contactevent_popup_form_last_name'));
+	validate_email_input(jQuery('#contactevent_popup_form_email'));
+	validate_numeric_input(jQuery('#contactevent_popup_form_mobile'));
+	validate_required_input(jQuery('#contactevent_popup_form_message'));	
+	var contactevent_form_flag = 0;
+	var focused = 0;
+	jQuery('#'+form_id+' input').each(function(){
+		if(jQuery(this).hasClass('error')){ 
+			contactevent_form_flag = 1;
+			if(focused == 0){
+	    		focused = 1;
+		    	jQuery(this).focus();
+		    }
+		}
+	});
+	if(contactevent_form_flag === 0){		
+		var formData = jQuery('#'+form_id).serialize();
+		jQuery.ajax({
+    	url: base_url+'/frontevents/send_event_mail/',
+        type: 'POST',
+        data: formData,            
+        beforeSend: function() {        	
+        	jQuery('.form_contactevent_submit').attr('disabled', 'disabled');
+        },
+        success: function(result) {
+        	result = jQuery.parseJSON(result);
+        	var html = result.html;
+        	var error = result.error;
+        	jQuery(".form_contactevent_submit").removeAttr("disabled");
+        	jQuery('.contactevent_status').html(html);
+        	jQuery('.contactevent_status').removeClass('contactevent_form_fail');
+        	jQuery('.contactevent_status').removeClass('contactevent_form_success');
+        	if(error == 0){
+        		jQuery('.contactevent_status').addClass('contactevent_form_success');        		
+        	}else{
+        		jQuery('.contactevent_status').addClass('contactevent_form_fail');        		
+        	}        	
+        }
+    }); 
+		//return true;
+	}else{
+		//return false;
+	}   	
+}
+function contact_event(id){  
+	open_contact_event_popup(id);
+}
+function open_contact_event_popup (id) {
+	jQuery('#contactevent_event_id').val(id);
+	jQuery("#mesagepopboxcontacteventpopoup").show();	  
+}
+function close_contact_event_popup(){
+	jQuery("#mesagepopboxcontacteventpopoup").hide();        
+	jQuery('#contactevent_event_id').val(0);
 }
