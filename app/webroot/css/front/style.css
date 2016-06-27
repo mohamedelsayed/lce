@@ -3258,7 +3258,7 @@ ul.primary li:hover > a{
 }
 #popup_form_mobile_number ,#contactme_popup_form_first_name 
 ,#contactme_popup_form_last_name ,#contactme_popup_form_email
-,#contactme_popup_form_mobile{
+,#contactme_popup_form_mobile, #mesagepopboxcontacteventpopoup input[type=text]{
 	float: left;
 	width: 98%;
 	font-size: 16px;
@@ -3354,7 +3354,7 @@ ul.primary li:hover > a{
 /* width: 80%;
  float: left; */
 }
-.contactme_popuppopoupbody{
+.contactme_popuppopoupbody, .contactevent_popuppopoupbody{
 	float: left;
     margin: 2% 4%;
 }
@@ -3367,7 +3367,7 @@ ul.primary li:hover > a{
  text-align: left;
   float: left;
 }
-#contactme_popup_form_message{
+#contactme_popup_form_message, #contactevent_popup_form_message{
 	float: left;
 	width: 98%;
 	height: 110px;
@@ -3376,7 +3376,7 @@ ul.primary li:hover > a{
 	border: 2px solid #979797;
 	color: #3e3e3f;
 }
-.form_contactme_submit{
+.form_contactme_submit, .form_contactevent_submit{
 	border: 2px solid #f58521;
     border-radius: 5px;
     color: #f58521;
@@ -3390,7 +3390,7 @@ ul.primary li:hover > a{
 	margin-left: auto;
     margin-right: auto;
 }
-.form_contactme_submit:hover{
+.form_contactme_submit:hover, .form_contactevent_submit:hover{
 	border: 2px solid #f68824;
 	text-decoration:none;
 	color: #ffffff;

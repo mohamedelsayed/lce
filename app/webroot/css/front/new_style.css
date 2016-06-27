@@ -1233,7 +1233,7 @@ input[type=radio].error, input[type=checkbox].error{
 .post_profile_sumit a, .post_profile_text_about a{
 	cursor: pointer;
 }
-#contactme_popup_form_message{
+#contactme_popup_form_message, #contactevent_popup_form_message{
 	height: 90px;
 }
 .coachpopoupemail, .coachpopoupfacebook, .coachpopouplinkedin{
@@ -1384,4 +1384,19 @@ input[type=radio].error, input[type=checkbox].error{
 	margin: 0px;
 	padding: 0px;
 	margin-top: 12px;	
+}
+#mesagepopboxcontacteventpopoup .mesagecontent{
+	height: 545px;	
+	top: 50px;
+}
+.contactevent_status{
+	text-align: center;	
+	float: left;
+	width: 100%;
+}
+.contactevent_form_success{
+	color: #00ff00;
+}
+.contactevent_form_fail{
+	color: #ff0000;
 }
