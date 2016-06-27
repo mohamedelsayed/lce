@@ -612,7 +612,7 @@ class FronteventsController  extends AppController {
 	    			$message = $_POST['message'];    			
 	    		}          
 				$event = $this->Nevent->read(null, $event_id);
-				$subject = $settings['title'].' - Enquire Workshop Form';
+				$subject = $settings['title'].' - Inquire Workshop Form';
 	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
