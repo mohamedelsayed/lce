@@ -381,8 +381,9 @@ function validate_contactevent_form(obj) {
         		jQuery('.contactevent_status').addClass('contactevent_form_success');        		
         	}else{
         		jQuery('.contactevent_status').addClass('contactevent_form_fail');        		
-        	}        	
-        }
+        	}      
+        	jQuery('#mesagepopboxcontacteventpopoup').find('form')[0].reset();
+    	}
     }); 
 		//return true;
 	}else{
