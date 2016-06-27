@@ -102,8 +102,11 @@ $month = isset($_GET['month'])?$_GET['month']:date("m");?>
 						<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
 					</div>
 					<div class="event_list_register" style="float: left;width: 44%;padding:0 0 0 5%;">				
+						<a class="contact_event" onclick="contact_event('<?php echo $event[$model]['id'];?>');" >
+							<div class="input_event contact_event" style="width: 100%;margin: 10px 0px;">Enquire Workshop</div>
+						</a>
 						<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
-							<div class="input_event open_event" style="width: 100%;margin: 30px 0px;">Register & Pay Now</div>
+							<div class="input_event open_event" style="width: 100%;margin: 10px 0px;">Register & Pay Now</div>
 						</a>
 					</div>
 				</div>

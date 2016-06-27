@@ -2,6 +2,10 @@
     <div class="mesagecontent"></div>
     <div class="mesage-pop-bg"></div>
 </div>
+<div id="mesagepopboxcoachpopoup" class="mesage-pop" >
+    <div class="mesagecontent"></div>
+    <div class="mesage-pop-bg"></div>
+</div>
 <div id="mesagepopboxcontactmepopoup" class="mesage-pop" >
     <div class="mesagecontent">
     	<h4>
