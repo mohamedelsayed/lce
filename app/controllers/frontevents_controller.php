@@ -141,16 +141,9 @@ class FronteventsController  extends AppController {
 				}
 				$instructors_title = trim(trim($instructors_title), ',');
 				$instructor_name = $instructors_title;
-				$date = date('F d, Y', strtotime($event[$model]['start_date']));
-				$time_from = date('g:i a', strtotime($event[$model]['time_from']));
-				$time_to = date('g:i a', strtotime($event[$model]['time_to']));
 				$duration = $event[$model]['duration'];		
 				$number_of_participants = $event[$model]['number_of_participants'];
-				$all_date = $date;
-				if($duration > 1){
-					$all_date .= ' '.$duration.' Days';
-				}
-				$all_date .= ' <br />'.$time_from.' to '.$time_to;           
+				$all_date = $this->get_event_date($event, 1);  
                 $data .= '<h4 style="">CHECKOUT'.
                 	     '<div id="closeinstructorpopoup" class="closeinstructorpopoup closepopoup">X</div></h4>';
 				$data .= '<div class="instructorpopoupbody">';
@@ -371,15 +364,8 @@ class FronteventsController  extends AppController {
 				}
 				$instructors_title = trim(trim($instructors_title), ',');
 				$instructor_name = $instructors_title;
-				$date = date('F d, Y', strtotime($event[$model]['start_date']));
-				$time_from = date('g:i a', strtotime($event[$model]['time_from']));
-				$time_to = date('g:i a', strtotime($event[$model]['time_to']));
 				$duration = $event[$model]['duration'];		
-				$all_date = $date;
-				if($duration > 1){
-					$all_date .= ' '.$duration.' Days';
-				}
-				$all_date .= ' <br />'.$time_from.' to '.$time_to;          
+				$all_date = $this->get_event_date($event, 1);         
 			} 
 			if($txnResponseCode == 0){
 				$custom_error_flag = 0;
@@ -612,7 +598,7 @@ class FronteventsController  extends AppController {
 	    			$message = $_POST['message'];    			
 	    		}          
 				$event = $this->Nevent->read(null, $event_id);
-				$subject = $settings['title'].' - Inquire Workshop Form';
+				$subject = $settings['title'].' - Inquire about event Form';
 	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
