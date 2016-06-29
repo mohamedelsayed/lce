@@ -141,9 +141,8 @@ class FronteventsController  extends AppController {
 				}
 				$instructors_title = trim(trim($instructors_title), ',');
 				$instructor_name = $instructors_title;
-				$duration = $event[$model]['duration'];		
 				$number_of_participants = $event[$model]['number_of_participants'];
-				$all_date = $this->get_event_date($event, 1);  
+				$all_date = $this->print_event_date($event, 1);  
                 $data .= '<h4 style="">CHECKOUT'.
                 	     '<div id="closeinstructorpopoup" class="closeinstructorpopoup closepopoup">X</div></h4>';
 				$data .= '<div class="instructorpopoupbody">';
@@ -364,8 +363,7 @@ class FronteventsController  extends AppController {
 				}
 				$instructors_title = trim(trim($instructors_title), ',');
 				$instructor_name = $instructors_title;
-				$duration = $event[$model]['duration'];		
-				$all_date = $this->get_event_date($event, 1);         
+				$all_date = $this->print_event_date($event, 1);         
 			} 
 			if($txnResponseCode == 0){
 				$custom_error_flag = 0;
