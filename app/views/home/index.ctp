@@ -175,15 +175,29 @@ $all_events_link = $base_url.'/all-events';?>
 		}
 		$instructors_title = trim(trim($instructors_title), ',');
 		$instructor_name = $instructors_title;
-		$date = date('F d, Y', strtotime($event[$model]['start_date']));
-		$time_from = date('g:i a', strtotime($event[$model]['time_from']));
-		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
 		$duration = $event[$model]['duration'];		
-		$all_date = $date;
+		$from_date = strtotime($event[$model]['start_date']);
+		$from_date_month = date('M', $from_date);
+		$from_date_day = date('j', $from_date);
+		$from_date_year = date('Y', $from_date);
+		$all_date = $from_date_month.' '.$from_date_day.', '.$from_date_year;
 		if($duration > 1){
-			$all_date .= ' '.$duration.' Days';
+			$duration_in = $duration - 1;
+			$to_date = strtotime("+".$duration_in." day", strtotime($event[$model]['start_date']));
+			$to_date_month = date('M', $to_date);
+			$to_date_day = date('j', $to_date);
+			$to_date_year = date('Y', $to_date);			
+			if($to_date_year == $from_date_year && $to_date_month == $from_date_month){
+				$all_date = $from_date_month.' '.$from_date_day.'-'.$to_date_day.', '.$from_date_year;
+			}elseif($to_date_year == $from_date_year){
+				$all_date = $from_date_month.' '.$from_date_day.' - '.$to_date_month.' '.$to_date_day.', '.$from_date_year;
+			}else{
+				$all_date = $from_date_month.' '.$from_date_day.', '.$from_date_year.'-'.$to_date_month.' '.$to_date_day.', '.$from_date_year;
+			}
 		}
-		//$all_date .= ' <br />'.$time_from.' to '.$time_to;?>
+		/*$time_from = date('g:i a', strtotime($event[$model]['time_from']));
+		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
+		$all_date .= ' <br />'.$time_from.' to '.$time_to;*/?>
 		<div class="articles_home_left">		
 			<div class="top_right article_home event_home_wrap">
 				<div class="top_img_article article_home_image article_home_image_new" style="padding: 0px;">

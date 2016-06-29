@@ -53,7 +53,7 @@
 <div id="mesagepopboxcontacteventpopoup" class="mesage-pop" >
     <div class="mesagecontent">
     	<h4>
-            <span class="contactevent_popup_title">Inquire Workshop</span>
+            <span class="contactevent_popup_title">Inquire about event</span>
             <div class="closepopoup">X</div>
         </h4>
         <div class="contactevent_popuppopoupbody">
