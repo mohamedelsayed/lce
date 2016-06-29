@@ -23,6 +23,11 @@ class Nevent extends AppModel {
 				'rule' => 'numeric',
 				'message' => 'Ticket Price must be Number',
 			),
+		),'number_of_participants' => array(
+			'numeric' => array(
+				'rule' => 'numeric',
+				'message' => 'Number Of Participants must be Number',
+			),
 		)/*,
 		'artist_id' => array(
 			'numeric' => array(
