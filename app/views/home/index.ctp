@@ -175,29 +175,7 @@ $all_events_link = $base_url.'/all-events';?>
 		}
 		$instructors_title = trim(trim($instructors_title), ',');
 		$instructor_name = $instructors_title;
-		$duration = $event[$model]['duration'];		
-		$from_date = strtotime($event[$model]['start_date']);
-		$from_date_month = date('M', $from_date);
-		$from_date_day = date('j', $from_date);
-		$from_date_year = date('Y', $from_date);
-		$all_date = $from_date_month.' '.$from_date_day.', '.$from_date_year;
-		if($duration > 1){
-			$duration_in = $duration - 1;
-			$to_date = strtotime("+".$duration_in." day", strtotime($event[$model]['start_date']));
-			$to_date_month = date('M', $to_date);
-			$to_date_day = date('j', $to_date);
-			$to_date_year = date('Y', $to_date);			
-			if($to_date_year == $from_date_year && $to_date_month == $from_date_month){
-				$all_date = $from_date_month.' '.$from_date_day.'-'.$to_date_day.', '.$from_date_year;
-			}elseif($to_date_year == $from_date_year){
-				$all_date = $from_date_month.' '.$from_date_day.' - '.$to_date_month.' '.$to_date_day.', '.$from_date_year;
-			}else{
-				$all_date = $from_date_month.' '.$from_date_day.', '.$from_date_year.'-'.$to_date_month.' '.$to_date_day.', '.$from_date_year;
-			}
-		}
-		/*$time_from = date('g:i a', strtotime($event[$model]['time_from']));
-		$time_to = date('g:i a', strtotime($event[$model]['time_to']));
-		$all_date .= ' <br />'.$time_from.' to '.$time_to;*/?>
+		$duration = $event[$model]['duration'];?>
 		<div class="articles_home_left">		
 			<div class="top_right article_home event_home_wrap">
 				<div class="top_img_article article_home_image article_home_image_new" style="padding: 0px;">
@@ -213,7 +191,9 @@ $all_events_link = $base_url.'/all-events';?>
 					<div class="mm_tt article_home_name open_instructor" style="margin: 0px 0;padding: 12px 0 0 0px;width: 100%">
 						<?php echo $instructor_name;?>
 					</div>
-					<div class="mm_tt article_home_data"><i class="home_event_icon_date"></i><?php echo $all_date;?></div>
+					<div class="mm_tt article_home_data"><i class="home_event_icon_date"></i>
+						<?php echo $this->element('front'.DS.'print_event_date', array('event' => $event, 'show_time' => 0));?>
+					</div>
 				</div>
 				<?php /*<div class="article_home_image_creator_date">
 					<?php echo $description;?>
