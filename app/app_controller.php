@@ -296,7 +296,7 @@ class AppController extends Controller {
 		$string = str_replace($search4, $replace, $string);
 		return $string;		
 	}
-	function get_event_date($event = array(), $show_time = 1){
+	function print_event_date($event = array(), $show_time = 1){
 		$all_date = '';
 		if(!empty($event)){
 			$model = 'Nevent';
