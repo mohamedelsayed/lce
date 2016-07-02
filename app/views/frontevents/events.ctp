@@ -3,15 +3,13 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));
 global $base_url;
 $months_options = array();
 for($m = 1;$m <= 12; $m++){
-    $month =  date("F", mktime(0, 0, 0, $m, 1, date('Y')));
-    $months_options[$m] = $month;	
+    $month_in =  date("F", mktime(0, 0, 0, $m, 1, date('Y')));
+    $months_options[$m] = $month_in;	
 }
 $years_options = array();
 for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
     $years_options[$i] =$i;
-}
-$year = isset($_GET['year'])?$_GET['year']:date("Y");
-$month = isset($_GET['month'])?$_GET['month']:date("m");?>
+}?>
 <div class="title_event_page">
 	<p>UPCOMING EVENTS</p>
 	<div class="events_filter_div">
