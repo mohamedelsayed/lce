@@ -1,8 +1,7 @@
 <?php $http_host = $_SERVER['HTTP_HOST'];
 $appId = '1425994984092923';
 if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
-	//$appId = '1425994984092923';
-	$appId = '1425986790760409';
+	$appId = '1425994984092923';
 }elseif (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
 	$appId = '1425986790760409';
 }?>
