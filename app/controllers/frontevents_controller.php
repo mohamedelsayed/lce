@@ -11,8 +11,26 @@ class FronteventsController  extends AppController {
 	function events(){
 		$this->set('title_for_layout' , 'All Events');	
 		$this->set('selected', 'frontevents');
-		$year = isset($_GET['year'])?$_GET['year']:date("Y");
-		$month = isset($_GET['month'])?$_GET['month']:date("m");
+		$from_date_year = date("Y");
+		$from_date_month = date("m");
+		$today = date("Y-m-d"); 
+		$event = $this->Nevent->find(
+			'first', array(
+				'conditions' => array('Nevent.approved' => 1, 'Nevent.start_date >=' => $today,),
+				'order' => array('Nevent.start_date' => 'ASC','Nevent.id'=>'DESC'),
+				'limit' => 1
+			)	  	 	
+		);
+		if(!empty($event)){
+			if(isset($event['Nevent']['start_date'])){
+				$model = 'Nevent';
+				$from_date = strtotime($event[$model]['start_date']);
+				$from_date_year = date('Y', $from_date);
+				$from_date_month = date('m', $from_date);				
+			}
+		}
+		$year = isset($_GET['year'])?$_GET['year']:$from_date_year;
+		$month = isset($_GET['month'])?$_GET['month']:$from_date_month;		
 		$events = $this->Nevent->find('all', array(
             'conditions' => array(
                 'AND' => array(
@@ -28,6 +46,8 @@ class FronteventsController  extends AppController {
             'order' => array('Nevent.start_date'=>'ASC','Nevent.id'=>'DESC'),
         ));	
         $this->set('events' , $events);
+		$this->set('year' , $year);
+		$this->set('month' , $month);
 	}
 	function get_instructor($id = 0){
         $data = '';
