@@ -50,7 +50,7 @@ class HomeController  extends AppController {
 		$event = $this->Nevent->find(
 			'first', array(
 				'conditions' => array('Nevent.approved' => 1, 'Nevent.start_date >=' => $today,),
-				'order' => array('Nevent.id'=>'DESC'),
+				'order' => array('Nevent.start_date' => 'ASC','Nevent.id'=>'DESC'),
 				'limit' => 1
 			)	  	 	
 		);
