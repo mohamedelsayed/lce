@@ -353,7 +353,7 @@ echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));?>
 			        						<img src="<?php echo $base_url.'/img/upload/'.$testimonial['Testimonial']['image'];?>"/>
 		        						</a>
 			    					</div>
-			    					<div class="wrie_go">
+			    					<div class="wrie_go" style="width: 87%;">
 			    						<div class="top_wrie">
 			    							<?php echo $testimonial['Testimonial']['name'];?>
 										</div>
