@@ -1,7 +1,7 @@
 <div class="settings form">
 <?php echo $this->Form->create('Setting');?>
 	<fieldset>
- 		<legend><?php __('Edit SettingS'); ?></legend>
+ 		<legend><?php __('Edit Instalments Settings'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('number_of_instalments');
