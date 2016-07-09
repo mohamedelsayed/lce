@@ -59,11 +59,3 @@ jQuery(document).ready(function() {
 	});	
 });	
 </script>
-<style type="text/css">
-.instructor_bio_wrap{
-	margin-bottom: -3px;
-}
-.post_event_details{
-	line-height: 36px;
-}
-</style>

@@ -119,10 +119,16 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 	</ul>
 </div>*/?>
 <style type="text/css">
-	.icon_name{
-		margin-left: -10px;
-	}
-	.icon_price{
-		margin-left: -8px;
-	}
+.icon_name{
+	margin-left: -10px;
+}
+.icon_price{
+	margin-left: -8px;
+}
+.instructor_bio_wrap{
+	margin-bottom: -3px;
+}
+.post_event_details{
+	line-height: 36px;
+}
 </style>
