@@ -60,6 +60,7 @@
 		    			<li class=""><a href="<?php echo $base_url.'/coaches';?>">Coaches</a></li>						
 					</ul>
 				</li>
+				<li class="new_items_li"><a href="<?php echo $base_url.'/settings/instalments';?>">Instalments</a></li>
 		    </ul>
 	    </div>
 	<?php }?>

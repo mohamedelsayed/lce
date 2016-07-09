@@ -1,7 +1,7 @@
 <div class="settings form">
 <?php echo $this->Form->create('Setting');?>
 	<fieldset>
- 		<legend><?php __('Edit SettingS'); ?></legend>
+ 		<legend><?php __('Edit Settings'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		//echo $this->Form->input('url');
@@ -48,7 +48,8 @@
 		echo $this->Form->input('testimonial_cut_string', array('label' => 'Testimonial Cut String Home'));
 		echo $this->Form->input('maintenance_mode');
 		echo $this->Form->input('Setting.maintenance_mode_text', array('class'=>'ckeditor'));
-	?>
+		echo $this->Form->input('number_of_instalments', array('type' => 'hidden'));
+		echo $this->Form->input('value_for_each_installment', array('type' => 'hidden'));?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
