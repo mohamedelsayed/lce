@@ -78,7 +78,7 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;margin-top: 20px;"><i class="icon_date"></i>
 					<?php echo $this->element('front'.DS.'print_event_date', array('event' => $event, 'show_time' => 1));?>
 				</div>				
-				<div class="post_event_details" style="margin: 5px 0;"><i class="icon_details"></i><?php echo $location;?></div>
+				<div class="post_event_details" style="margin: 8px 0;"><i class="icon_details"></i><?php echo $location;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
