@@ -25,8 +25,6 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 		$description = $event[$model]['description'];
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
-		//$instructor_id = $event[$model]['instructor_id'];
-		//$instructor_name = $event[$model2]['name'];
 		$instructors_title = '';
 		$instructors = $event['Instructor'];			
 		$i = 0;
@@ -80,7 +78,7 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 				<div class="post_event_date" style="height: auto;margin: 4% 0 2%;margin-top: 20px;"><i class="icon_date"></i>
 					<?php echo $this->element('front'.DS.'print_event_date', array('event' => $event, 'show_time' => 1));?>
 				</div>				
-				<div class="post_event_details" style="margin: 2% 0;"><i class="icon_details"></i><?php echo $location;?></div>
+				<div class="post_event_details" style="margin: 5px 0;"><i class="icon_details"></i><?php echo $location;?></div>
 			</div>
 			<div class="post_event_right">
 				<h1><?php echo $title;?></h1>
@@ -107,17 +105,6 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 <?php }else{ ?>
 	<div class="no-data-found">No data found.</div>
 <?php }?>
-<?php /*<div class="pagination_event">
-	<ul>
-		<li><a href="#"><</a></li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">></a></li>
-	</ul>
-</div>*/?>
 <style type="text/css">
 .icon_name{
 	margin-left: -10px;
