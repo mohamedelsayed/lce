@@ -550,7 +550,8 @@ class FronteventsController  extends AppController {
 			$this->set('all_date' , $all_date);		
 		}else{
 			$this->set('number_of_paid_installments' , $number_of_paid_installments);
-			$this->set('number_of_remain_installments' , $number_of_remain_installments);			
+			$this->set('number_of_remain_installments' , $number_of_remain_installments);	
+			$this->set('selected', '');		
 		}		
 		$this->set('title_for_layout' , strtoupper($custom_message));		
 	}
