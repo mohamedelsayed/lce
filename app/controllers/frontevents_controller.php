@@ -522,10 +522,10 @@ class FronteventsController  extends AppController {
 			        //array('Number of Tickets', $tickets_number),			        
 				);
 				if($installment_flag == 0){
-					$data2['Number of Tickets'] = $tickets_number;			    
+					$data2[] = array('Number of Tickets', $tickets_number);			    
 				}elseif($installment_flag == 1){
-					$data2['Number of paid installments'] = $number_of_paid_installments;	
-					$data2['Number of remaining installments'] = $number_of_remain_installments;			    
+					$data2[] = array('Number of paid installments', $number_of_paid_installments);	
+					$data2[] = array('Number of remaining installments', $number_of_remain_installments);			    
 				}
 				$html = $this->draw_array_as_table($data2);
 				if($installment_flag == 1){
