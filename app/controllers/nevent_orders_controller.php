@@ -101,7 +101,7 @@ class NeventOrdersController extends AuthController {
 				}
 				$data[] = $row;				
 			}
-			$filename = "Report-".date("Y-m-d");
+			$filename = ucfirst($type).'-'."Report-".date("Y-m-d");
 			$this->export_array_to_excel($header, $data, $filename, $config);		
 		}
 	}
