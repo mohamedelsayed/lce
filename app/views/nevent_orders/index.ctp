@@ -28,7 +28,7 @@
 	<?php
 	$i = 0;
 	foreach ($nevent_orders as $nevent_order):
-		if($nevent_order['NeventOrder']['transaction_number'] > 0){
+		//if($nevent_order['NeventOrder']['transaction_number'] > 0){
 			$class = null;
 			if ($i++ % 2 == 0) {
 				$class = ' class="altrow"';
@@ -46,7 +46,7 @@
 				<?php echo $this->Html->link(__('View', true), array('action' => 'view', $nevent_order['NeventOrder']['id'])); ?>
 			</td>
 		</tr>
-	<?php }?>
+	<?php //}?>
 <?php endforeach; ?>
 	</table>
 	<p>
