@@ -493,8 +493,8 @@ class FronteventsController  extends AppController {
 					$mail_body = 'This is confirmation e-mail that you have checkout one installment'.',<br />
 							  Your transaction number: '.$transactionNo.',<br />
 							  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
-							  'Number of paid installments: '.$number_of_paid_installments.'.<br />';
-							  'Number of remaining installments: '.$number_of_remain_installments.'.<br />';
+							  'Number of paid installments: '.$number_of_paid_installments.'.<br />'.
+							  'Number of remaining installments: '.$number_of_remain_installments.'.';
 				}else{
 					$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
 							  Your transaction number: '.$transactionNo.',<br />
