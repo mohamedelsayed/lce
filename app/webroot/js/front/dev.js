@@ -122,6 +122,7 @@ function close_event_popup(){
 function open_checkout_event_form_popup(id){  
 	jQuery('#checkout_event_id').val(id);
 	jQuery("#mesagepopboxcheckoutpopoup").show();	
+	jQuery('.left_tickets').show();
 }
 function close_checkout_event_form_popup(){
 	jQuery("#mesagepopboxcheckoutpopoup").hide();        
@@ -303,27 +304,32 @@ function close_coach_popup(){
 function validate_tickets_number () {
 	var tickets_number_obj = jQuery('#popup_form_tickets_number');
 	var val = tickets_number_obj.val();
-	var error_flag = 0;
-	jQuery('.total_ticket_price').html(0);
-	if(val == 0){
-		error_flag = 1;
-	}else if(parseInt(val) > parseInt(global_number_of_participants)){
-		tickets_number_obj.val(global_number_of_participants);
-		//error_flag = 1;
-		error_flag = 0;
-	}else{		
-		error_flag = 0;
-	}
-	var val = tickets_number_obj.val();
-	jQuery('.total_ticket_price').html(val * global_ticket_price);
-	if(error_flag == 1){
-		if(!(tickets_number_obj.hasClass('error'))){
-			tickets_number_obj.addClass("error");			
-		}			
+	var checkout_installment_flag = jQuery('#checkout_installment_flag').val();
+	if(checkout_installment_flag == 0){
+		var error_flag = 0;
+		jQuery('.total_ticket_price').html(0);
+		if(val == 0){
+			error_flag = 1;
+		}else if(parseInt(val) > parseInt(global_number_of_participants)){
+			tickets_number_obj.val(global_number_of_participants);
+			//error_flag = 1;
+			error_flag = 0;
+		}else{		
+			error_flag = 0;
+		}
+		var val = tickets_number_obj.val();
+		jQuery('.total_ticket_price').html(val * global_ticket_price);
+		if(error_flag == 1){
+			if(!(tickets_number_obj.hasClass('error'))){
+				tickets_number_obj.addClass("error");			
+			}			
+		}else{
+			if(tickets_number_obj.hasClass('error')){
+				tickets_number_obj.removeClass("error");			
+			}	
+		}
 	}else{
-		if(tickets_number_obj.hasClass('error')){
-			tickets_number_obj.removeClass("error");			
-		}	
+		tickets_number_obj.removeClass("error");		
 	}
 }
 function validate_tickets_number_keyup(e){ 
@@ -400,4 +406,10 @@ function open_contact_event_popup (id) {
 function close_contact_event_popup(){
 	jQuery("#mesagepopboxcontacteventpopoup").hide();        
 	jQuery('#contactevent_event_id').val(0);
+}
+function open_checkout_installment_form_popup(){  
+	jQuery('.total_ticket_price').html(value_for_each_installment);
+	jQuery('#checkout_installment_flag').val(1);
+	jQuery("#mesagepopboxcheckoutpopoup").show();	
+	jQuery('.left_tickets').hide();
 }
