@@ -236,8 +236,7 @@ class FronteventsController  extends AppController {
 				if(count($nevent_orders) >= $number_of_instalments){
 					header("Location: ".BASE_URL.'/pay-instalment?all_instalments_done=1');exit;
 				}				
-			}
-			pr($amount);pr($_POST);exit;
+			}			
 			if($amount > 0 && is_numeric($amount)){
 				unset($_POST['terms_and_conditions']);
 				//$_POST["Title"] = $title;
@@ -256,6 +255,7 @@ class FronteventsController  extends AppController {
 				$_POST["vpc_Amount"] = $amount * $_POST['tickets_number'] * 100;
 				$_POST["vpc_ReturnURL"] = $vpc_ReturnURL;	 
 				ksort ($_POST);		
+				pr($amount);pr($_POST);exit;
 				// set a parameter to show the first pair in the URL
 				$appendAmp = 0;		
 				foreach($_POST as $key => $value) {		
