@@ -4,6 +4,7 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
+include 'PHPReport/PHPReport.php';
 require_once '../auth_controller.php';
 class NeventOrdersController extends AuthController {
 	var $name = 'NeventOrders';
@@ -24,53 +25,35 @@ class NeventOrdersController extends AuthController {
 		}
 		$this->set('nevent_order', $this->NeventOrder->read(null, $id));
 	}
-	/*function add() {
-		if (!empty($this->data)) {
-			//upload image
-			$this->data['NeventOrder']['image']=$this->Upload->uploadImage($this->data['NeventOrder']['image']);
-			$this->NeventOrder->create();
-			if ($this->NeventOrder->save($this->data)) {
-				$this->Session->setFlash(__('The NeventOrder has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The NeventOrder could not be saved. Please, try again.', true));
-			}
-		}
+	function export_array_to_excel(){
+		$filename = "Report-".date("Y-m-d");
+		$R=new PHPReport();
+		$R->load(array(
+		            'id'=>'product',
+					'header'=>array(
+							'product'=>'Product name','price'=>'Price','tax'=>'Tax'
+						),
+					'config'=>array(
+							'header'=>array(
+								'product'=>array('width'=>120,'align'=>'center'),
+								'price'=>array('width'=>80,'align'=>'center'),
+								'tax'=>array('width'=>80,'align'=>'center')
+							),
+							'data'=>array(
+								'product'=>array('align'=>'left'),
+								'price'=>array('align'=>'right'),
+								'tax'=>array('align'=>'right')
+							)
+						),
+		            'data'=>array(
+							array('product'=>'Some product','price'=>23.99,'tax'=>12),
+							array('product'=>'Other product','price'=>5.25,'tax'=>2.25),
+							array('product'=>'Third product','price'=>0.20,'tax'=>3.5)
+		                ),
+		            )
+		        );
+		
+		echo $R->render('excel', $filename);
+		exit();
 	}
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Invalid NeventOrder', true));
-			$this->redirect(array('action' => 'index'));
-		}
-		if (!empty($this->data)) {
-			//upload image
-			$this->NeventOrder->id = $id;
-			if($this->data['NeventOrder']['image']['name']){
-				$this->Upload->filesToDelete = array($this->NeventOrder->field('image'));
-				$this->data['NeventOrder']['image']=$this->Upload->uploadImage($this->data['NeventOrder']['image']);
-			}else
-				unset($this->data['NeventOrder']['image']);
-			if ($this->NeventOrder->save($this->data)) {
-				$this->Session->setFlash(__('The NeventOrder has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The NeventOrder could not be saved. Please, try again.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->data = $this->NeventOrder->read(null, $id);
-		}
-	}
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for NeventOrder', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		if ($this->NeventOrder->delete($id)) {
-			$this->Session->setFlash(__('NeventOrder deleted', true));
-			$this->redirect(array('action'=>'index'));
-		}
-		$this->Session->setFlash(__('NeventOrder was not deleted', true));
-		$this->redirect(array('action' => 'index'));
-	}*/
 }
