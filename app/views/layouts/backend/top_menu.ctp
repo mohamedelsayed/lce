@@ -50,7 +50,7 @@
     				<ul>
     					<li class=""><a href="<?php echo $base_url.'/instructors';?>">Instructors</a></li>
 		    			<li class=""><a href="<?php echo $base_url.'/nevents';?>">Events</a></li>
-		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders';?>">Events Checkouts</a></li>							    				
+		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/events';?>">Events Checkouts</a></li>							    				
 					</ul>
 				</li>
 				<li class="heading new_items_li"><a>Coaches</a>
@@ -60,7 +60,12 @@
 		    			<li class=""><a href="<?php echo $base_url.'/coaches';?>">Coaches</a></li>						
 					</ul>
 				</li>
-				<li class="new_items_li"><a href="<?php echo $base_url.'/settings/instalments';?>">Instalments</a></li>
+				<li class="heading new_items_li"><a>Instalments</a>
+					<ul>
+    					<li class=""><a href="<?php echo $base_url.'/settings/instalments';?>">Instalments Settings</a></li>
+		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/instalments';?>">Instalments Checkouts</a></li>						
+					</ul>
+				</li>
 		    </ul>
 	    </div>
 	<?php }?>

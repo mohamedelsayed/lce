@@ -41,11 +41,13 @@
 			<?php echo $nevent_order['NeventOrder']['amount'].' '.$currency; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Event'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $nevent_order['Nevent']['title']; ?>
-			&nbsp;
-		</dd>
+		<?php if($nevent_order['NeventOrder']['installment_flag'] == 0){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Event'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $nevent_order['Nevent']['title']; ?>
+				&nbsp;
+			</dd>
+		<?php }?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $nevent_order['NeventOrder']['created']; ?>
@@ -56,9 +58,10 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-		<li><?php //echo $this->Html->link(__('Edit NeventOrder', true), array('action' => 'edit', $nevent_order['NeventOrder']['id'])); ?> </li>
-		<li><?php //echo $this->Html->link(__('Delete NeventOrder', true), array('action' => 'delete', $nevent_order['NeventOrder']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $nevent_order['NeventOrder']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Events Checkouts', true), array('action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New NeventOrder', true), array('action' => 'add')); ?> </li>
+		<?php $action_list = 'index/events';		
+		if($nevent_order['NeventOrder']['installment_flag'] == 1){
+			$action_list = 'index/instalments';			
+		}?>
+		<li><?php echo $this->Html->link(__('List Events Checkouts', true), array('action' => $action_list));?></li>
 	</ul>
 </div>
