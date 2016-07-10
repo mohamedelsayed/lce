@@ -28,6 +28,7 @@ class NeventOrdersController extends AuthController {
 			$email = trim($this->data['NeventOrder']['email']);
 		}
 		$conditions = array();
+		$conditions['NeventOrder.transaction_number > '] = 0;	
 		if($event_id > 0 && is_numeric($event_id)){
 			$conditions['NeventOrder.event_id'] = $event_id;						
 		}else{
