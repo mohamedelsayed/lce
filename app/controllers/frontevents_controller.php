@@ -197,25 +197,53 @@ class FronteventsController  extends AppController {
 		if(isset($_POST['event_id'])){
 			$event_id = $_POST['event_id'];			
 		}
-		if($event_id > 0 && is_numeric($event_id)){
-			$event_amount = 0;
-			$event = $this->Nevent->find(
-                'first', array(
-                    'conditions' => array('Nevent.approved' => 1, 'Nevent.id' => $event_id),
-                )           
-            );
-            $model = 'Nevent';
-			if(isset($event[$model]['ticket_price'])){
-				$event_amount = $event[$model]['ticket_price'];
-				$title = $event[$model]['title'];
+		$installment_flag = 0;
+		if(isset($_POST['installment_flag'])){
+			$installment_flag = $_POST['installment_flag'];			
+		}
+		if(($event_id > 0 && is_numeric($event_id)) || ($installment_flag == 1)){
+			$amount = 0;
+			$title = '';
+			if($event_id > 0 && is_numeric($event_id)){
+				$event = $this->Nevent->find(
+	                'first', array(
+	                    'conditions' => array('Nevent.approved' => 1, 'Nevent.id' => $event_id),
+	                )           
+	            );
+	            $model = 'Nevent';
+				if(isset($event[$model]['ticket_price'])){
+					$amount = $event[$model]['ticket_price'];
+					//$title = $event[$model]['title'];
+					$vpc_OrderInfo = 'event'.$event_id.'-'.time();
+					$vpc_ReturnURL = BASE_URL.'/return-transaction?event_id='.$event_id;
+				}
 			}
-			if($event_amount > 0 && is_numeric($event_amount)){
+			if($installment_flag == 1){
+				$settings = $this->settings;
+				$amount = $settings['value_for_each_installment'];
+				$number_of_instalments = $settings['number_of_instalments'];
+				$vpc_OrderInfo = 'installment'.'-'.time();	
+				$event_id = 0;		
+				$vpc_ReturnURL = BASE_URL.'/return-transaction?installment_flag=1';	
+				$_POST['tickets_number'] = 1;
+				$email = $_POST['email'];
+				$this->loadModel('NeventOrder');
+				$nevent_orders = $this->NeventOrder->find(
+					'all', array(
+						'conditions' => array('NeventOrder.email' => $email),
+					)	  	 	
+				);				
+				if(count($nevent_orders) >= $number_of_instalments){
+					header("Location: ".BASE_URL.'/pay-instalment?all_instalments_done=1');exit;
+				}				
+			}
+			if($amount > 0 && is_numeric($amount)){
 				unset($_POST['terms_and_conditions']);
 				//$_POST["Title"] = $title;
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
-				$_POST["vpc_OrderInfo"] = 'event'.$event_id.'-'.time();					
+				$_POST["vpc_OrderInfo"] = $vpc_OrderInfo;					
 				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
 				unset($_POST["virtualPaymentClientURL"]); 
 				unset($_POST["SubButL"]);
@@ -224,8 +252,8 @@ class FronteventsController  extends AppController {
 				$_POST["vpc_Merchant"] = $this->payment_merchant_id;
 				$_POST["vpc_AccessCode"] = $this->payment_access_code;
 				$_POST["vpc_MerchTxnRef"] = $event_id.time();
-				$_POST["vpc_Amount"] = $event_amount * $_POST['tickets_number'] * 100;
-				$_POST["vpc_ReturnURL"] = BASE_URL.'/return-transaction?event_id='.$event_id;	 
+				$_POST["vpc_Amount"] = $amount * $_POST['tickets_number'] * 100;
+				$_POST["vpc_ReturnURL"] = $vpc_ReturnURL;	 
 				ksort ($_POST);		
 				// set a parameter to show the first pair in the URL
 				$appendAmp = 0;		
@@ -260,6 +288,7 @@ class FronteventsController  extends AppController {
 		}
 	}
 	function return_transaction(){
+		$settings = $this->settings;    
 		$custom_error_flag = 1;
 		$custom_message = 'Error';
 		$amount = 0;			
@@ -348,43 +377,49 @@ class FronteventsController  extends AppController {
 		$event_id = 0;
 		if(isset($_GET['event_id'])){
 			$event_id = $_GET['event_id'];			
-		}		
-		if($event_id > 0 && is_numeric($event_id)){
-			$event = $this->Nevent->find(
-                'first', array(
-                    'conditions' => array('Nevent.approved' => 1, 'Nevent.id' => $event_id),
-                )           
-            );
-            $model = 'Nevent';	
-			$model2 = 'Instructor'; 	
-			if(!empty($event)){	
-				$title = $event[$model]['title'];
-				$location = $event[$model]['location'];
-				$ticket_price = $event[$model]['ticket_price'];
-				//$instructor_id = $event[$model]['instructor_id'];
-				//$instructor_name = $event[$model2]['name'];
-				$instructors_title = '';
-				$instructors = $event['Instructor'];			
-				$i = 0;
-				if(!empty($instructors)){
-					foreach ($instructors as $key => $instructor) {
-						if(isset($instructor['name'])){
-							$icon = '';					
-							if($i == 0){
-								$icon = '<i class="icon_name"></i>';
-							}else{
-								$icon = '<i class="icon_name no_icon"></i>';
+		}	
+		$installment_flag = 0;
+		if(isset($_GET['installment_flag'])){
+			$installment_flag = $_GET['installment_flag'];			
+		}				
+		if(($event_id > 0 && is_numeric($event_id)) || ($installment_flag == 1)){
+			if($event_id > 0 && is_numeric($event_id)){ 
+				$event = $this->Nevent->find(
+	                'first', array(
+	                    'conditions' => array('Nevent.approved' => 1, 'Nevent.id' => $event_id),
+	                )           
+	            );
+	            $model = 'Nevent';	
+				$model2 = 'Instructor'; 	
+				if(!empty($event)){	
+					$title = $event[$model]['title'];
+					$location = $event[$model]['location'];
+					$ticket_price = $event[$model]['ticket_price'];
+					//$instructor_id = $event[$model]['instructor_id'];
+					//$instructor_name = $event[$model2]['name'];
+					$instructors_title = '';
+					$instructors = $event['Instructor'];			
+					$i = 0;
+					if(!empty($instructors)){
+						foreach ($instructors as $key => $instructor) {
+							if(isset($instructor['name'])){
+								$icon = '';					
+								if($i == 0){
+									$icon = '<i class="icon_name"></i>';
+								}else{
+									$icon = '<i class="icon_name no_icon"></i>';
+								}
+								$i++;
+								$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
+								//$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
 							}
-							$i++;
-							$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a></div> ';
-							//$instructors_title .= ''.$instructor['name'].' <a class="instructor_bio_link" onclick="open_instructor('.$instructor['id'].');">bio</a>, ';
 						}
 					}
-				}
-				$instructors_title = trim(trim($instructors_title), ',');
-				$instructor_name = $instructors_title;
-				$all_date = $this->print_event_date($event, 1);         
-			} 
+					$instructors_title = trim(trim($instructors_title), ',');
+					$instructor_name = $instructors_title;
+					$all_date = $this->print_event_date($event, 1);         
+				} 
+			}
 			if($txnResponseCode == 0){
 				$custom_error_flag = 0;
 				$custom_message = 'successful transaction';
@@ -416,6 +451,15 @@ class FronteventsController  extends AppController {
                     'conditions' => array($model.'.transaction_number' => $transactionNo),
                 )           
             );
+			$number_of_instalments = $settings['number_of_instalments'];
+			$this->loadModel('NeventOrder');
+			$nevent_orders = $this->NeventOrder->find(
+				'all', array(
+					'conditions' => array('NeventOrder.email' => $email),
+				)	  	 	
+			);				
+			$number_of_paid_installments = count($nevent_orders);
+			$number_of_remain_installments = $number_of_instalments - $number_of_paid_installments;
 			if(empty($order)){
 				$data = array(
 				    $model => array(
@@ -426,33 +470,47 @@ class FronteventsController  extends AppController {
 				        'transaction_number' => $transactionNo,
 				        'event_id' => $event_id,
 				        'amount' => $amount,	
-				        'tickets_number' => $tickets_number,		        
+				        'tickets_number' => $tickets_number,	
+				        'installment_flag' => $installment_flag,	        
 				    )
 				);
 				$this->$model->create();
 				$this->$model->save($data);		
-				$this->loadModel('Setting');            
-            	$settings = $this->Setting->read(null, 1);              
             	$subject = $title.' Checkout';
 	            $this->Email->to = $email;
 				$this->Email->subject = $subject;           
-            	$this->Email->replyTo = $settings['Setting']['email'];
-	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
+            	$this->Email->replyTo = $settings['email'];
+	            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
 	            $this->Email->sendAs = 'html';
-				$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
+				$nevent_orders = $this->NeventOrder->find(
+					'all', array(
+						'conditions' => array('NeventOrder.email' => $email),
+					)	  	 	
+				);				
+				$number_of_paid_installments = count($nevent_orders);
+				$number_of_remain_installments = $number_of_instalments - $number_of_paid_installments;
+				if($installment_flag == 1){
+					$mail_body = 'This is confirmation e-mail that you have checkout one installment'.',<br />
+							  Your transaction number: '.$transactionNo.',<br />
+							  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
+							  'Number of paid installments: '.$number_of_paid_installments.'.<br />';
+							  'Number of remaining installments: '.$number_of_remain_installments.'.<br />';
+				}else{
+					$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
 							  Your transaction number: '.$transactionNo.',<br />
 							  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
 							  'Number of Tickets: '.$tickets_number.'.';
+				}
 				$this->Email->template = 'event_customer';
 				$this->set('mail_body', $mail_body);
 				if ($this->Email->send()){
 	                //echo __('Email has been sent.', true);
     	        }
 				$subject = $title.' Checkout';
-	            $this->Email->to = $settings['Setting']['email'];
+	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
-            	$this->Email->replyTo = $settings['Setting']['email'];
-	            $this->Email->from = $settings['Setting']['title'].'<'.$settings['Setting']['email'].'>';                
+            	$this->Email->replyTo = $settings['email'];
+	            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
 	            $this->Email->sendAs = 'html';
 				$data2 = array(
 					array('Name', $name),
@@ -460,13 +518,20 @@ class FronteventsController  extends AppController {
 			        array('Mobile Number', $mobile_number),
 			        array('Receipt Number', $receiptNo),
 			        array('Transaction Number', $transactionNo),
-			        //array('Event id', $event_id),
 			        array('Amount', $amount.' '.$this->currency),
-			        array('Number of Tickets', $tickets_number),			        
+			        //array('Number of Tickets', $tickets_number),			        
 				);
+				if($installment_flag == 0){
+					$data2['Number of Tickets'] = $tickets_number;			    
+				}
 				$html = $this->draw_array_as_table($data2);
-				$mail_body = 'This is checkout in  '.$title.' Event,<br />
+				if($installment_flag == 1){
+					$mail_body = 'This is checkout one installment,<br />
 							  User information:'.$html;
+				}else{
+					$mail_body = 'This is checkout in  '.$title.' Event,<br />
+							  User information:'.$html;
+				}
 				$this->Email->template = 'event_site_admin';
 				$this->set('mail_body', $mail_body);
 				if ($this->Email->send()){
@@ -477,12 +542,16 @@ class FronteventsController  extends AppController {
 		$this->set('custom_message' , $custom_message);
 		$this->set('custom_error_flag' , $custom_error_flag);
 		$this->set('amount' , $amount);
-		$this->set('title' , $title);
-		$this->set('location' , $location);
-		$this->set('ticket_price' , $ticket_price);
-		//$this->set('instructor_id' , $instructor_id);
-		$this->set('instructor_name' , $instructor_name);
-		$this->set('all_date' , $all_date);		
+		if($installment_flag == 0){
+			$this->set('title' , $title);
+			$this->set('location' , $location);
+			$this->set('ticket_price' , $ticket_price);
+			$this->set('instructor_name' , $instructor_name);
+			$this->set('all_date' , $all_date);		
+		}else{
+			$this->set('number_of_paid_installments' , $number_of_paid_installments);
+			$this->set('number_of_remain_installments' , $number_of_remain_installments);			
+		}		
 		$this->set('title_for_layout' , strtoupper($custom_message));		
 	}
 	function null2unknown($data) {
@@ -646,5 +715,10 @@ class FronteventsController  extends AppController {
 		$data['error'] = $error;
 		echo json_encode($data);
         $this->autoRender = false;           		
+	}
+	function pay_instalment(){
+		$title = 'Pay Instalment';
+		$this->set('title_for_layout', $title);		
+		$this->set('title', $title);		
 	}
 }

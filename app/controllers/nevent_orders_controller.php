@@ -64,11 +64,13 @@ class NeventOrdersController extends AuthController {
 				)	  	 	
 			);	
 			$header = array('Id', 'Name', 'Email', 'Mobile Number', 'Receipt Number', 'Transaction Number', 
-							'Tickets Number', 'Amount', 
+							'Amount', 
 							'Created',
+							'Tickets Number',
 							'Event',
 							);
 			if($type_flag == 1){
+				array_pop($header);
 				array_pop($header);
 			}
 			$config = array();
@@ -93,11 +95,12 @@ class NeventOrdersController extends AuthController {
 				$amount = $nevent_order['NeventOrder']['amount'].' '.$this->currency;
 				$created = $nevent_order['NeventOrder']['created'];
 				$row = array($id, $name, $email, $mobile_number, $receipt_number, $transaction_number, 
-							$tickets_number, $amount,
-							$created,
+							$amount, $created,
+							$tickets_number, 
 							$event, 							
 							);
 				if($type_flag == 1){
+					array_pop($row);
 					array_pop($row);
 				}
 				$data[] = $row;				
@@ -108,7 +111,7 @@ class NeventOrdersController extends AuthController {
 	}
 	function view($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid NeventOrder', true));
+			$this->Session->setFlash(__('Invalid Order', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('nevent_order', $this->NeventOrder->read(null, $id));
