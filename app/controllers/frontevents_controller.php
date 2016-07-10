@@ -492,8 +492,8 @@ class FronteventsController  extends AppController {
 				if($installment_flag == 1){
 					$mail_body = 'This is confirmation e-mail that you have checkout one installment'.',<br />
 							  Your transaction number: '.$transactionNo.',<br />
-							  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
-							  'Number of paid installments: '.$number_of_paid_installments.'.<br />'.
+							  Total paid amount: '.$amount.' '.$this->currency.',<br />'.
+							  'Number of paid installments: '.$number_of_paid_installments.',<br />'.
 							  'Number of remaining installments: '.$number_of_remain_installments.'.';
 				}else{
 					$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
@@ -523,6 +523,9 @@ class FronteventsController  extends AppController {
 				);
 				if($installment_flag == 0){
 					$data2['Number of Tickets'] = $tickets_number;			    
+				}elseif($installment_flag == 1){
+					$data2['Number of paid installments'] = $number_of_paid_installments;	
+					$data2['Number of remaining installments'] = $number_of_remain_installments;			    
 				}
 				$html = $this->draw_array_as_table($data2);
 				if($installment_flag == 1){
