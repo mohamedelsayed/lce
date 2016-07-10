@@ -71,7 +71,7 @@ $http_host = $_SERVER['HTTP_HOST'];
 if (strpos($http_host, 'localhost') !== FALSE) {
 	Configure::write('debug', 2);	
 }else{
-	Configure::write('debug', 2);	
+	Configure::write('debug', 0);	
 }
 /**
 
