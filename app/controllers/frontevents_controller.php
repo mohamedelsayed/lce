@@ -222,7 +222,7 @@ class FronteventsController  extends AppController {
 				$settings = $this->settings;
 				$amount = $settings['value_for_each_installment'];
 				$number_of_instalments = $settings['number_of_instalments'];
-				$vpc_OrderInfo = 'installment'.'-'.time();	
+				$vpc_OrderInfo = 'installm'.'-'.time();	
 				$event_id = 0;		
 				$vpc_ReturnURL = BASE_URL.'/return-transaction?installment_flag=1';	
 				$_POST['tickets_number'] = 1;
