@@ -255,7 +255,6 @@ class FronteventsController  extends AppController {
 				$_POST["vpc_Amount"] = $amount * $_POST['tickets_number'] * 100;
 				$_POST["vpc_ReturnURL"] = $vpc_ReturnURL;	 
 				ksort ($_POST);		
-				pr($amount);pr($_POST);exit;
 				// set a parameter to show the first pair in the URL
 				$appendAmp = 0;		
 				foreach($_POST as $key => $value) {		
