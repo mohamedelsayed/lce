@@ -60,11 +60,11 @@
 		    			<li class=""><a href="<?php echo $base_url.'/coaches';?>">Coaches</a></li>						
 					</ul>
 				</li>
-				<li class="heading new_items_li"><a>Instalments</a>
+				<li class="heading new_items_li"><a>Installments</a>
 					<ul>
-    					<li class=""><a href="<?php echo $base_url.'/settings/instalments';?>">Instalments Settings</a></li>
-		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/instalments';?>">Instalments Checkouts</a></li>
-		    			<li class=""><a target="_blank" href="<?php echo $base_url.'/pay-instalment';?>">Go to front pay instalment</a></li>						
+    					<li class=""><a href="<?php echo $base_url.'/settings/instalments';?>">installments Settings</a></li>
+		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/instalments';?>">installments Checkouts</a></li>
+		    			<li class=""><a target="_blank" href="<?php echo $base_url.'/pay-installment';?>">Go to front pay installment</a></li>						
 					</ul>
 				</li>
 		    </ul>
