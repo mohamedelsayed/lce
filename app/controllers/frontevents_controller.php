@@ -234,7 +234,7 @@ class FronteventsController  extends AppController {
 					)	  	 	
 				);				
 				if(count($nevent_orders) >= $number_of_instalments){
-					header("Location: ".BASE_URL.'/pay-instalment?all_instalments_done=1');exit;
+					header("Location: ".BASE_URL.'/pay-installment?all_instalments_done=1');exit;
 				}				
 			}			
 			if($amount > 0 && is_numeric($amount)){
