@@ -63,7 +63,8 @@
 				<li class="heading new_items_li"><a>Instalments</a>
 					<ul>
     					<li class=""><a href="<?php echo $base_url.'/settings/instalments';?>">Instalments Settings</a></li>
-		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/instalments';?>">Instalments Checkouts</a></li>						
+		    			<li class=""><a href="<?php echo $base_url.'/nevent_orders/index/instalments';?>">Instalments Checkouts</a></li>
+		    			<li class=""><a target="_blank" href="<?php echo $base_url.'/pay-instalment';?>">Go to front pay instalment</a></li>						
 					</ul>
 				</li>
 		    </ul>
