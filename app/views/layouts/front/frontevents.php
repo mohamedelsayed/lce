@@ -45,6 +45,7 @@
 	            </div>	   
 	            <div class="checkout_hint">Please make sure that cookies are enabled on your browser and that your anti-virus allows online payment</div>         
 	            <input type="hidden" id="checkout_event_id" name="event_id" value="0">
+	            <input type="hidden" id="checkout_installment_flag" name="installment_flag" value="0">	            
 	        </form>
 	    </div>	    	
     </div>

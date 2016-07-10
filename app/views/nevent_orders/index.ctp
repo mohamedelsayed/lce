@@ -28,25 +28,23 @@
 	<?php
 	$i = 0;
 	foreach ($nevent_orders as $nevent_order):
-		//if($nevent_order['NeventOrder']['transaction_number'] > 0){
-			$class = null;
-			if ($i++ % 2 == 0) {
-				$class = ' class="altrow"';
-			}
-		?>
-		<tr<?php echo $class;?>>
-			<td><?php echo $nevent_order['NeventOrder']['id']; ?>&nbsp;</td>
-			<td><?php echo $nevent_order['NeventOrder']['name']; ?>&nbsp;</td>
-			<td><?php echo $nevent_order['NeventOrder']['email']; ?>&nbsp;</td>
-			<?php if($type_flag == 0){?>
-				<td><?php echo $nevent_order['Nevent']['title']; ?>&nbsp;</td>
-			<?php }?>
-			<td><?php echo $nevent_order['NeventOrder']['created']; ?>&nbsp;</td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View', true), array('action' => 'view', $nevent_order['NeventOrder']['id'])); ?>
-			</td>
-		</tr>
-	<?php //}?>
+		$class = null;
+		if ($i++ % 2 == 0) {
+			$class = ' class="altrow"';
+		}
+	?>
+	<tr<?php echo $class;?>>
+		<td><?php echo $nevent_order['NeventOrder']['id']; ?>&nbsp;</td>
+		<td><?php echo $nevent_order['NeventOrder']['name']; ?>&nbsp;</td>
+		<td><?php echo $nevent_order['NeventOrder']['email']; ?>&nbsp;</td>
+		<?php if($type_flag == 0){?>
+			<td><?php echo $nevent_order['Nevent']['title']; ?>&nbsp;</td>
+		<?php }?>
+		<td><?php echo $nevent_order['NeventOrder']['created']; ?>&nbsp;</td>
+		<td class="actions">
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $nevent_order['NeventOrder']['id'])); ?>
+		</td>
+	</tr>
 <?php endforeach; ?>
 	</table>
 	<p>
