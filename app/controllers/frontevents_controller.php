@@ -192,6 +192,7 @@ class FronteventsController  extends AppController {
         $this->autoRender = false;          
     }
 	function vpc_php_serverhost_do(){
+		$settings = $this->settings;
 		$SECURE_SECRET = $this->payment_hash_secret;
 		$event_id = 0;
 		if(isset($_POST['event_id'])){
@@ -218,11 +219,10 @@ class FronteventsController  extends AppController {
 					$vpc_ReturnURL = BASE_URL.'/return-transaction?event_id='.$event_id;
 				}
 			}
-			if($installment_flag == 1){
-				$settings = $this->settings;
+			if($installment_flag == 1){				
 				$amount = $settings['value_for_each_installment'];
 				$number_of_instalments = $settings['number_of_instalments'];
-				$vpc_OrderInfo = 'installm'.'-'.time();	
+				$vpc_OrderInfo = 'installment'.'-'.time();	
 				$event_id = 0;		
 				$vpc_ReturnURL = BASE_URL.'/return-transaction?installment_flag=1';	
 				$_POST['tickets_number'] = 1;
@@ -237,6 +237,7 @@ class FronteventsController  extends AppController {
 					header("Location: ".BASE_URL.'/pay-instalment?all_instalments_done=1');exit;
 				}				
 			}
+			pr($amount);pr($_POST);exit;
 			if($amount > 0 && is_numeric($amount)){
 				unset($_POST['terms_and_conditions']);
 				//$_POST["Title"] = $title;
