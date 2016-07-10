@@ -277,7 +277,7 @@ class FronteventsController  extends AppController {
 				}		
 				// FINISH TRANSACTION - Redirect the customers using the Digital Order
 				// ===================================================================
-				header("Location: ".$vpcURL);		
+				header("Location: ".$vpcURL);exit;	
 			}else{
 				$this->layout = 'error';
 				//header("Location: ".BASE_URL);				
