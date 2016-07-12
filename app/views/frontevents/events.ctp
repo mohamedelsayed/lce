@@ -94,9 +94,11 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 						<a class="contact_event" onclick="contact_event('<?php echo $event[$model]['id'];?>');" >
 							<div class="input_event contact_event" style="width: 100%;margin: 10px 0px;">Inquire about event</div>
 						</a>
-						<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
-							<div class="input_event open_event" style="width: 100%;margin: 10px 0px;">Register & Pay Now</div>
-						</a>
+						<?php if(SHOW_PAYMENT_BUTTON == 1){?>
+							<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+								<div class="input_event open_event" style="width: 100%;margin: 10px 0px;">Register & Pay Now</div>
+							</a>
+						<?php }?>
 					</div>
 				</div>
 			</div>
