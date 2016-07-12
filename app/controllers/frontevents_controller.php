@@ -376,6 +376,7 @@ class FronteventsController  extends AppController {
 		// This is the display title for 'Receipt' page 
 		//$title = $_GET["Title"];
 		$event_id = 0;
+		$transaction_message = '';
 		if(isset($_GET['event_id'])){
 			$event_id = $_GET['event_id'];			
 		}	
@@ -478,6 +479,7 @@ class FronteventsController  extends AppController {
 					);
 					$this->$model->create();
 					$this->$model->save($data);		
+					$invoice_number = $this->$model->id;
 	            	$subject = $title.' Checkout';
 		            $this->Email->to = $email;
 					$this->Email->subject = $subject;           
@@ -503,6 +505,7 @@ class FronteventsController  extends AppController {
 								  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
 								  'Number of Tickets: '.$tickets_number.'.';
 					}
+					$transaction_message = 'Your transaction number: '.$transactionNo.', Your invoice number: '.$invoice_number;
 					$this->Email->template = 'event_customer';
 					$this->set('mail_body', $mail_body);
 					if ($this->Email->send()){
@@ -552,6 +555,7 @@ class FronteventsController  extends AppController {
 			}
 		}
 		$this->set('custom_message' , $custom_message);
+		$this->set('transaction_message' , $transaction_message);
 		$this->set('custom_error_flag' , $custom_error_flag);
 		$this->set('amount' , $amount);
 		if($installment_flag == 0){
