@@ -203,6 +203,7 @@ class FronteventsController  extends AppController {
 			$installment_flag = $_POST['installment_flag'];			
 		}
 		if(($event_id > 0 && is_numeric($event_id)) || ($installment_flag == 1)){
+			$email = $_POST['email'];
 			$amount = 0;
 			$title = '';
 			if($event_id > 0 && is_numeric($event_id)){
@@ -215,18 +216,17 @@ class FronteventsController  extends AppController {
 				if(isset($event[$model]['ticket_price'])){
 					$amount = $event[$model]['ticket_price'];
 					//$title = $event[$model]['title'];
-					$vpc_OrderInfo = 'event'.$event_id.'-'.time();
+					//$vpc_OrderInfo = 'event'.$event_id.'-'.time();
 					$vpc_ReturnURL = BASE_URL.'/return-transaction?event_id='.$event_id;
 				}
 			}
 			if($installment_flag == 1){				
 				$amount = $settings['value_for_each_installment'];
 				$number_of_instalments = $settings['number_of_instalments'];
-				$vpc_OrderInfo = 'installment'.'-'.time();	
+				//$vpc_OrderInfo = 'installment'.'-'.time();	
 				$event_id = 0;		
 				$vpc_ReturnURL = BASE_URL.'/return-transaction?installment_flag=1';	
 				$_POST['tickets_number'] = 1;
-				$email = $_POST['email'];
 				$this->loadModel('NeventOrder');
 				$nevent_orders = $this->NeventOrder->find(
 					'all', array(
@@ -236,7 +236,8 @@ class FronteventsController  extends AppController {
 				if(count($nevent_orders) >= $number_of_instalments){
 					header("Location: ".BASE_URL.'/pay-installment?all_instalments_done=1');exit;
 				}				
-			}			
+			}	
+			$vpc_OrderInfo = $email;		
 			if($amount > 0 && is_numeric($amount)){
 				unset($_POST['terms_and_conditions']);
 				//$_POST["Title"] = $title;
@@ -507,7 +508,6 @@ class FronteventsController  extends AppController {
 	                //echo __('Email has been sent.', true);
     	        }
 				$subject = $title.' Checkout';
-	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
             	$this->Email->replyTo = $settings['email'];
 	            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
@@ -537,9 +537,16 @@ class FronteventsController  extends AppController {
 				}
 				$this->Email->template = 'event_site_admin';
 				$this->set('mail_body', $mail_body);
-				if ($this->Email->send()){
-	                //echo __('Email has been sent.', true);
-    	        }
+				$emails = explode(',', $settings['payment_email']);
+				if(!empty($emails)){
+					foreach ($emails as $key => $email3) {
+						$email3 = trim($email3);
+						$this->Email->to = $email3;
+						if ($this->Email->send()){
+		        	    	//$sent = 1;
+		            	}
+					}
+				}	
 			}
 		}
 		$this->set('custom_message' , $custom_message);
