@@ -461,92 +461,94 @@ class FronteventsController  extends AppController {
 			);				
 			$number_of_paid_installments = count($nevent_orders);
 			$number_of_remain_installments = $number_of_instalments - $number_of_paid_installments;
-			if(empty($order)){
-				$data = array(
-				    $model => array(
-				        'name' => $name,
-				        'email' => $email,
-				        'mobile_number' => $mobile_number,
-				        'receipt_number' => $receiptNo,
-				        'transaction_number' => $transactionNo,
-				        'event_id' => $event_id,
-				        'amount' => $amount,	
-				        'tickets_number' => $tickets_number,	
-				        'installment_flag' => $installment_flag,	        
-				    )
-				);
-				$this->$model->create();
-				$this->$model->save($data);		
-            	$subject = $title.' Checkout';
-	            $this->Email->to = $email;
-				$this->Email->subject = $subject;           
-            	$this->Email->replyTo = $settings['email'];
-	            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
-	            $this->Email->sendAs = 'html';
-				$nevent_orders = $this->NeventOrder->find(
-					'all', array(
-						'conditions' => array('NeventOrder.email' => $email),
-					)	  	 	
-				);				
-				$number_of_paid_installments = count($nevent_orders);
-				$number_of_remain_installments = $number_of_instalments - $number_of_paid_installments;
-				if($installment_flag == 1){
-					$mail_body = 'This is confirmation e-mail that you have checkout one installment'.',<br />
-							  Your transaction number: '.$transactionNo.',<br />
-							  Total paid amount: '.$amount.' '.$this->currency.',<br />'.
-							  'Number of paid installments: '.$number_of_paid_installments.',<br />'.
-							  'Number of remaining installments: '.$number_of_remain_installments.'.';
-				}else{
-					$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
-							  Your transaction number: '.$transactionNo.',<br />
-							  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
-							  'Number of Tickets: '.$tickets_number.'.';
-				}
-				$this->Email->template = 'event_customer';
-				$this->set('mail_body', $mail_body);
-				if ($this->Email->send()){
-	                //echo __('Email has been sent.', true);
-    	        }
-				$subject = $title.' Checkout';
-				$this->Email->subject = $subject;           
-            	$this->Email->replyTo = $settings['email'];
-	            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
-	            $this->Email->sendAs = 'html';
-				$data2 = array(
-					array('Name', $name),
-			        array('Email', $email),
-			        array('Mobile Number', $mobile_number),
-			        array('Receipt Number', $receiptNo),
-			        array('Transaction Number', $transactionNo),
-			        array('Amount', $amount.' '.$this->currency),
-			        //array('Number of Tickets', $tickets_number),			        
-				);
-				if($installment_flag == 0){
-					$data2[] = array('Number of Tickets', $tickets_number);			    
-				}elseif($installment_flag == 1){
-					$data2[] = array('Number of paid installments', $number_of_paid_installments);	
-					$data2[] = array('Number of remaining installments', $number_of_remain_installments);			    
-				}
-				$html = $this->draw_array_as_table($data2);
-				if($installment_flag == 1){
-					$mail_body = 'This is checkout one installment,<br />
-							  User information:'.$html;
-				}else{
-					$mail_body = 'This is checkout in  '.$title.' Event,<br />
-							  User information:'.$html;
-				}
-				$this->Email->template = 'event_site_admin';
-				$this->set('mail_body', $mail_body);
-				$emails = explode(',', $settings['payment_email']);
-				if(!empty($emails)){
-					foreach ($emails as $key => $email3) {
-						$email3 = trim($email3);
-						$this->Email->to = $email3;
-						if ($this->Email->send()){
-		        	    	//$sent = 1;
-		            	}
+			if($custom_error_flag == 0){
+				if(empty($order)){
+					$data = array(
+					    $model => array(
+					        'name' => $name,
+					        'email' => $email,
+					        'mobile_number' => $mobile_number,
+					        'receipt_number' => $receiptNo,
+					        'transaction_number' => $transactionNo,
+					        'event_id' => $event_id,
+					        'amount' => $amount,	
+					        'tickets_number' => $tickets_number,	
+					        'installment_flag' => $installment_flag,	        
+					    )
+					);
+					$this->$model->create();
+					$this->$model->save($data);		
+	            	$subject = $title.' Checkout';
+		            $this->Email->to = $email;
+					$this->Email->subject = $subject;           
+	            	$this->Email->replyTo = $settings['email'];
+		            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
+		            $this->Email->sendAs = 'html';
+					$nevent_orders = $this->NeventOrder->find(
+						'all', array(
+							'conditions' => array('NeventOrder.email' => $email),
+						)	  	 	
+					);				
+					$number_of_paid_installments = count($nevent_orders);
+					$number_of_remain_installments = $number_of_instalments - $number_of_paid_installments;
+					if($installment_flag == 1){
+						$mail_body = 'This is confirmation e-mail that you have checkout one installment'.',<br />
+								  Your transaction number: '.$transactionNo.',<br />
+								  Total paid amount: '.$amount.' '.$this->currency.',<br />'.
+								  'Number of paid installments: '.$number_of_paid_installments.',<br />'.
+								  'Number of remaining installments: '.$number_of_remain_installments.'.';
+					}else{
+						$mail_body = 'This is confirmation e-mail that you have checkout in  '.$title.' Event,<br />
+								  Your transaction number: '.$transactionNo.',<br />
+								  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
+								  'Number of Tickets: '.$tickets_number.'.';
 					}
-				}	
+					$this->Email->template = 'event_customer';
+					$this->set('mail_body', $mail_body);
+					if ($this->Email->send()){
+		                //echo __('Email has been sent.', true);
+	    	        }
+					$subject = $title.' Checkout';
+					$this->Email->subject = $subject;           
+	            	$this->Email->replyTo = $settings['email'];
+		            $this->Email->from = $settings['title'].'<'.$settings['email'].'>';                
+		            $this->Email->sendAs = 'html';
+					$data2 = array(
+						array('Name', $name),
+				        array('Email', $email),
+				        array('Mobile Number', $mobile_number),
+				        array('Receipt Number', $receiptNo),
+				        array('Transaction Number', $transactionNo),
+				        array('Amount', $amount.' '.$this->currency),
+				        //array('Number of Tickets', $tickets_number),			        
+					);
+					if($installment_flag == 0){
+						$data2[] = array('Number of Tickets', $tickets_number);			    
+					}elseif($installment_flag == 1){
+						$data2[] = array('Number of paid installments', $number_of_paid_installments);	
+						$data2[] = array('Number of remaining installments', $number_of_remain_installments);			    
+					}
+					$html = $this->draw_array_as_table($data2);
+					if($installment_flag == 1){
+						$mail_body = 'This is checkout one installment,<br />
+								  User information:'.$html;
+					}else{
+						$mail_body = 'This is checkout in  '.$title.' Event,<br />
+								  User information:'.$html;
+					}
+					$this->Email->template = 'event_site_admin';
+					$this->set('mail_body', $mail_body);
+					$emails = explode(',', $settings['payment_email']);
+					if(!empty($emails)){
+						foreach ($emails as $key => $email3) {
+							$email3 = trim($email3);
+							$this->Email->to = $email3;
+							if ($this->Email->send()){
+			        	    	//$sent = 1;
+			            	}
+						}
+					}	
+				}
 			}
 		}
 		$this->set('custom_message' , $custom_message);
