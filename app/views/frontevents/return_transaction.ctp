@@ -1,6 +1,7 @@
 <div class="return_title" style="margin-top: 20px;">
 	<?php echo $custom_message;?>
 </div>
+<div style="text-align: center;float: left;width: 100%;"><?php echo $transaction_message;?></div>
 <?php if($custom_error_flag == 0){?>
 	<?php if(isset($title)){?>
 		<div class="post_return">
