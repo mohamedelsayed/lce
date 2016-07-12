@@ -11,6 +11,7 @@ $database = 'lce';
 $username = 'root';
 $password = 'root';
 $http_string = "http://";
+$show_payment_button = 1;
 if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
     $http_string = "https://";
 }
@@ -24,6 +25,7 @@ if (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
     $database = 'lifecoj0_lifecoa_chingwebsite';
 	$username = 'lifecoj0_chidbus';
     $password = 'L0gmeuIn0W3';
+	$show_payment_button = 0;
 }elseif (strpos($http_host, 'localhost') !== FALSE) {
 	$base_url = $http_string . $http_host . '/myworkspace/lce';
     if (PHP_OS == 'Linux') {
@@ -36,3 +38,4 @@ define('DB_NAME', $database);
 define('DB_USERNAME', $username);
 define('DB_PASSWORD', $password);
 define('BASE_URL', $base_url);
+define('SHOW_PAYMENT_BUTTON', $show_payment_button);
