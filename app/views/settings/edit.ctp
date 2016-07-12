@@ -6,7 +6,8 @@
 		echo $this->Form->input('id');
 		//echo $this->Form->input('url');
 		echo $this->Form->input('email');
-		echo $this->Form->input('coaches_email');
+		echo $this->Form->input('coaches_email', array('rows' => 2));
+		echo $this->Form->input('payment_email', array('rows' => 2));
 		//echo $this->Form->input('contact_us_email');		
 		echo $this->Form->input('title');
 		echo $this->Form->input('footer');
