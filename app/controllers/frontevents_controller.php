@@ -505,7 +505,7 @@ class FronteventsController  extends AppController {
 								  Total paid amount: '.$amount.' '.$this->currency.'.<br />'.
 								  'Number of Tickets: '.$tickets_number.'.';
 					}
-					$transaction_message = 'Your transaction number: '.$transactionNo.', Your invoice number: '.$invoice_number;
+					$transaction_message = 'Your transaction number: '.$transactionNo.'<br /> Your invoice number: '.$invoice_number;
 					$this->Email->template = 'event_customer';
 					$this->set('mail_body', $mail_body);
 					if ($this->Email->send()){
