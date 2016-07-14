@@ -23,6 +23,13 @@ class FrontcoachesController  extends AppController {
 		if(!empty($coach)){
 			$this->set('title_for_layout' , $coach['Coach']['name']);		
 		}
+		if(isset($coach['Coach']['image'])){
+			$image_path = WWW_ROOT.'img'.DS.'upload'.DS.'thumb_'.$coach['Coach']['image'];    
+			if (file_exists($image_path)) {
+				$this->set('shareImage', 'thumb_'.$coach['Coach']['image']);
+			}
+		}
+		$this->set('metaDescription', $coach['Coach']['statement']);		
 	}
 	function ajax_list_coaches(){
 		$settings = $this->settings;
