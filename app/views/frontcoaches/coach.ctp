@@ -84,7 +84,7 @@
 			</div>*/?>
 			<div class="post_profile">
 				<a href="<?php echo $coach_url;?>">View Profile</a>
-				<samp><a data-url="<?php echo $coach_url;?>" class="shareBtn">Recommend this caoch</a></samp></div>
+				<samp><a data-url="<?php echo $coach_url;?>" class="shareBtn">Recommend this coach</a></samp></div>
 			<div class="post_profile_sumit"><a data-url="<?php echo $coach_url;?>" onclick="contact_me(<?php echo $coach['Coach']['id'];?>)">Contact me</a></div>
 		</div>
 		<div class="text_border"></div>
