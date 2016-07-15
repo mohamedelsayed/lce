@@ -199,7 +199,7 @@ class FrontcoachesController  extends AppController {
 			$html .= '<div class="coach_bottom_wrap">';
 			$html .= '<div class="post_coach_profile">
 				<a href="'.$coach_url.'">View Profile</a>
-				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
+				<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this coach</a></samp>
 				</div>';
 			if(trim($email) != ''){
 				$html .= '<div class="post_coach_sumit">
@@ -456,7 +456,7 @@ class FrontcoachesController  extends AppController {
 						} 
 						$html .= '<div class="post_coach_profile coachpopoupviewprofile">
 							<a href="'.$coach_url.'">View Profile</a>
-							<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this caoch</a></samp>
+							<samp><a data-url="'.$coach_url.'" class="shareBtn">Recommend this coach</a></samp>
 							</div>';										
 		                $html .= '</div>';
 						$html .= '</div>';
