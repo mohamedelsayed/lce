@@ -17,6 +17,7 @@
 		include_once 'instructors.php';
 		echo $this->Form->input('approved');
 		echo $this->Form->input('weight', array('value'=> 0));
+		echo $this->Form->input('fully_booked');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
