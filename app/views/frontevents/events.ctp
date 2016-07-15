@@ -25,6 +25,7 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 		$description = $event[$model]['description'];
 		$location = $event[$model]['location'];
 		$ticket_price = $event[$model]['ticket_price'];
+		$fully_booked = $event[$model]['fully_booked'];
 		$instructors_title = '';
 		$instructors = $event['Instructor'];			
 		$i = 0;
@@ -95,9 +96,17 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 							<div class="input_event contact_event" style="width: 100%;margin: 10px 0px;">Inquire about event</div>
 						</a>
 						<?php if(SHOW_PAYMENT_BUTTON == 1){?>
-							<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
-								<div class="input_event open_event" style="width: 100%;margin: 10px 0px;">Register & Pay Now</div>
-							</a>
+							<?php if($fully_booked == 0){?>
+								<a class="open_event" onclick="open_event('<?php echo $event[$model]['id'];?>');" >
+									<div class="input_event open_event" style="width: 100%;margin: 10px 0px;">Register & Pay Now</div>
+								</a>
+							<?php }else{?>
+								<a class="open_event" >
+									<div class="input_event fully_booked_div" style="width: 100%;margin: 10px 0px;">
+										FULLY BOOKED
+									</div>
+								</a>								
+							<?php }?>
 						<?php }?>
 					</div>
 				</div>
@@ -119,5 +128,18 @@ for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
 }
 .post_event_details{
 	line-height: 36px;
+}
+.fully_booked_div{
+	position: relative;
+	border:2px solid #D7171E;
+	color:#D7171E;
+	text-decoration: line-through;
+	cursor: default;
+}
+.fully_booked_div:hover{
+	background:#D7171E;
+	border:2px solid #D7171E;
+	text-decoration: line-through;
+	color:#FFFFFF;
 }
 </style>
