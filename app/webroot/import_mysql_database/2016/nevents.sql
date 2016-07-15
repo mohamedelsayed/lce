@@ -19,3 +19,4 @@ CREATE TABLE IF NOT EXISTS `nevents` (
 
 ALTER TABLE `nevents` ADD `image` VARCHAR( 255 ) NULL;
 ALTER TABLE `nevents` ADD `number_of_participants` INT NOT NULL DEFAULT '0';
+ALTER TABLE `nevents` ADD `fully_booked` BOOLEAN NOT NULL DEFAULT '0';
