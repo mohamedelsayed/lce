@@ -36,6 +36,14 @@ class ProfilController  extends AuthController {
 					$this->User->id = $member['User']['id'];
 					$this->User->saveField('confirm_code', $unId, false);
 					//send confirmation mail
+					$this->Email->smtpOptions = array(
+						'port' => STMP_PORT,
+						'timeout' => STMP_TIMEOUT,
+						'host' => STMP_SERVER,
+						'username' => STMP_USERNAME,
+						'password' => STMP_PASSWORD,
+					);
+					$this->Email->delivery = 'smtp';
 					$this->Email->to = $this->data['User']['email'];
 					$this->Email->subject = $settings['Setting']['title'];
 					$this->Email->replyTo = $settings['Setting']['email'];
