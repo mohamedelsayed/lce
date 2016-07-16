@@ -353,7 +353,7 @@ class AppController extends Controller {
 			    $mail->Password = $server_email_info['Password'];	
 			    $mail->setFrom($from_email, $from_name);
 			    $mail->addReplyTo($from_email, $from_name);
-			    $mail->addAddress(trim(strtolower($to_email));
+			    $mail->addAddress(trim(strtolower($to_email)));
 			    $mail->Subject = $subject;
 			    $mail->Body = $message;
 			    if ($mail->send()) {
