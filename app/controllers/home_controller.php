@@ -78,14 +78,16 @@ class HomeController  extends AppController {
 				$this->loadModel('Setting');
 				$settings = $this->Setting->read(null, 1);				
 				$subject = $settings['Setting']['title'].' Newsletter';
-				$this->Email->smtpOptions = array(
-					'port' => STMP_PORT,
-					'timeout' => STMP_TIMEOUT,
-					'host' => STMP_SERVER,
-					'username' => STMP_USERNAME,
-					'password' => STMP_PASSWORD,
-				);
-				$this->Email->delivery = 'smtp';
+				if(SEND_STMP_PORT){
+					$this->Email->smtpOptions = array(
+						'port' => STMP_PORT,
+						'timeout' => STMP_TIMEOUT,
+						'host' => STMP_SERVER,
+						'username' => STMP_USERNAME,
+						'password' => STMP_PASSWORD,
+					);
+					$this->Email->delivery = 'smtp';
+				}
 				$this->Email->to = $this->data['newsletter']['email'];
 				$this->Email->subject = $subject;			
 				$this->Email->replyTo = $settings['Setting']['email'];

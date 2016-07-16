@@ -55,14 +55,16 @@ class TextsController extends AppController {
 			$settings = $this->Setting->read(null, 1);	
 			$contents = $this->Content->read(null, 1);					
 			$subject = __('Contact Us',true);
-			$this->Email->smtpOptions = array(
-				'port' => STMP_PORT,
-				'timeout' => STMP_TIMEOUT,
-				'host' => STMP_SERVER,
-				'username' => STMP_USERNAME,
-				'password' => STMP_PASSWORD,
-			);
-			$this->Email->delivery = 'smtp';
+			if(SEND_STMP_PORT){
+				$this->Email->smtpOptions = array(
+					'port' => STMP_PORT,
+					'timeout' => STMP_TIMEOUT,
+					'host' => STMP_SERVER,
+					'username' => STMP_USERNAME,
+					'password' => STMP_PASSWORD,
+				);
+				$this->Email->delivery = 'smtp';
+			}
 			$this->Email->to = $contents['Content']['mail'];
 			$this->Email->subject = $subject;			
 			$this->Email->replyTo = $this->data['Contactus']['email'];

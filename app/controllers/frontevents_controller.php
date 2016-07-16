@@ -481,14 +481,16 @@ class FronteventsController  extends AppController {
 					$this->$model->save($data);		
 					$invoice_number = $this->$model->id;
 	            	$subject = $title.' Checkout';
-					$this->Email->smtpOptions = array(
-						'port' => STMP_PORT,
-						'timeout' => STMP_TIMEOUT,
-						'host' => STMP_SERVER,
-						'username' => STMP_USERNAME,
-						'password' => STMP_PASSWORD,
-					);
-					$this->Email->delivery = 'smtp';
+					if(SEND_STMP_PORT){
+						$this->Email->smtpOptions = array(
+							'port' => STMP_PORT,
+							'timeout' => STMP_TIMEOUT,
+							'host' => STMP_SERVER,
+							'username' => STMP_USERNAME,
+							'password' => STMP_PASSWORD,
+						);
+						$this->Email->delivery = 'smtp';
+					}
 		            $this->Email->to = $email;
 					$this->Email->subject = $subject;           
 	            	$this->Email->replyTo = $settings['email'];
@@ -711,14 +713,16 @@ class FronteventsController  extends AppController {
 	    		}          
 				$event = $this->Nevent->read(null, $event_id);
 				$subject = $settings['title'].' - Inquire about event Form';
-				$this->Email->smtpOptions = array(
-					'port' => STMP_PORT,
-					'timeout' => STMP_TIMEOUT,
-					'host' => STMP_SERVER,
-					'username' => STMP_USERNAME,
-					'password' => STMP_PASSWORD,
-				);
-				$this->Email->delivery = 'smtp';
+				if(SEND_STMP_PORT){
+					$this->Email->smtpOptions = array(
+						'port' => STMP_PORT,
+						'timeout' => STMP_TIMEOUT,
+						'host' => STMP_SERVER,
+						'username' => STMP_USERNAME,
+						'password' => STMP_PASSWORD,
+					);
+					$this->Email->delivery = 'smtp';
+				}
 	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;

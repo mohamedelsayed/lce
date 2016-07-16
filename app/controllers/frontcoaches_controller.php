@@ -256,14 +256,16 @@ class FrontcoachesController  extends AppController {
 	    		}          
 				$coach = $this->Coach->read(null, $coach_id);
 				$subject = $settings['title'].' - Contact Me Form';
-				$this->Email->smtpOptions = array(
-					'port' => STMP_PORT,
-					'timeout' => STMP_TIMEOUT,
-					'host' => STMP_SERVER,
-					'username' => STMP_USERNAME,
-					'password' => STMP_PASSWORD,
-				);
-				$this->Email->delivery = 'smtp';
+				if(SEND_STMP_PORT){
+					$this->Email->smtpOptions = array(
+						'port' => STMP_PORT,
+						'timeout' => STMP_TIMEOUT,
+						'host' => STMP_SERVER,
+						'username' => STMP_USERNAME,
+						'password' => STMP_PASSWORD,
+					);
+					$this->Email->delivery = 'smtp';
+				}
 	            $this->Email->to = $coach['Coach']['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
