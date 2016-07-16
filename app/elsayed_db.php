@@ -44,8 +44,8 @@ define('STMP_TIMEOUT', 60);
 define('STMP_PASSWORD', 'DDVwD0tMlDEO');
 define('STMP_SERVER', 'mail.mohamedelsayed.net');
 define('STMP_PORT', 26);*/
-define('STMP_USERNAME', 'lce.mail.site@gmail.com');
+/*define('STMP_USERNAME', 'lce.mail.site@gmail.com');
 define('STMP_PASSWORD', 'DDVwD0tMlDEO');
 define('STMP_SERVER', 'smtp.gmail.com');
-define('STMP_PORT', 465);
+define('STMP_PORT', 465);*/
 define('SEND_STMP_PORT', FALSE);
