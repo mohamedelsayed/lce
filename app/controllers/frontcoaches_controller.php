@@ -256,7 +256,7 @@ class FrontcoachesController  extends AppController {
 	    		}          
 				$coach = $this->Coach->read(null, $coach_id);
 				$subject = $settings['title'].' - Contact Me Form';
-				if(SEND_STMP_PORT){
+				/*if(SEND_STMP){
 					$this->Email->smtpOptions = array(
 						'port' => STMP_PORT,
 						'timeout' => STMP_TIMEOUT,
@@ -265,7 +265,8 @@ class FrontcoachesController  extends AppController {
 						'password' => STMP_PASSWORD,
 					);
 					$this->Email->delivery = 'smtp';
-				}
+				}*/
+				//$this->Email->delivery = 'debug';
 	            $this->Email->to = $coach['Coach']['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
@@ -281,13 +282,27 @@ class FrontcoachesController  extends AppController {
 				$this->set('coach_admin', 0);
 				$this->set('normal_coach', 1);
 				$this->set('normal_user', 0);
-        	    if ($this->Email->send()){
-        	    	//$html = 'Email has been sent.';        	    	
+				//$this->layout = 'ajax';
+				//$message_content = $this->render('/elements/email/html/'.$this->Email->template);
+				$viewClass = $this->view;
+				if ($this->view != 'View') {
+					list($plugin, $viewClass) = pluginSplit($viewClass);
+					$viewClass = $viewClass . 'View';
+					App::import('View', $this->view);
+				}
+				$View =& new $viewClass($this);				
+				$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+				$message_content = $View->_render($viewFileName, $View->viewVars);		
+				$to_emails = array($coach['Coach']['email']);
+				$from_email = $email;
+				$from_name = $first_name.' '.$last_name;
+				$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);
+        	    /*if ($this->Email->send()){
         	    	$sent = 1;
             	}else{
             		$sent = 0;
 					$html = $error_html;
-            	}
+            	}*/
 				$name = '';
 				if(!empty($coach)){
 					$name = $coach['Coach']['name'];
@@ -332,8 +347,23 @@ class FrontcoachesController  extends AppController {
 				$this->set('coach_admin', 1);
 				$this->set('normal_coach', 0);
 				$this->set('normal_user', 0);
-				$emails = explode(',', $settings['coaches_email']);
-				if(!empty($emails)){
+				$emails = explode(',', $settings['coaches_email']);				
+				//$this->layout = 'ajax';
+				//$message_content = $this->render('/elements/email/html/'.$this->Email->template);
+				$viewClass = $this->view;
+				if ($this->view != 'View') {
+					list($plugin, $viewClass) = pluginSplit($viewClass);
+					$viewClass = $viewClass . 'View';
+					App::import('View', $this->view);
+				}
+				$View =& new $viewClass($this);				
+				$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+				$message_content = $View->_render($viewFileName, $View->viewVars);		
+				$to_emails = $emails;
+				$from_email = $email;
+				$from_name = $first_name.' '.$last_name;
+				$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);
+				/*if(!empty($emails)){
 					foreach ($emails as $key => $email3) {
 						$email3 = trim($email3);
 						$this->Email->to = $email3;
@@ -344,21 +374,35 @@ class FrontcoachesController  extends AppController {
 							//$html = $error_html;
 		            	}
 					}
-				}				
+				}*/				
 				$this->set('subject', $subject);				
 				$this->set('coach_admin', 0);
 				$this->set('normal_coach', 0);
 				$this->set('normal_user', 1);
 				$this->set('user_full_name', $first_name.' '.$last_name);
 				$this->Email->to = $email;
-				if ($this->Email->send()){
+				//$this->layout = 'ajax';
+				//$message_content = $this->render('/elements/email/html/'.$this->Email->template);
+				$viewClass = $this->view;
+				if ($this->view != 'View') {
+					list($plugin, $viewClass) = pluginSplit($viewClass);
+					$viewClass = $viewClass . 'View';
+					App::import('View', $this->view);
+				}
+				$View =& new $viewClass($this);				
+				$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+				$message_content = $View->_render($viewFileName, $View->viewVars);		
+				$to_emails = array($email);
+				$from_email = $settings['email'];
+				$from_name = $settings['title'];
+				$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);				
+				/*if ($this->Email->send()){
         	    	//$sent = 1;
             	}else{
             		//$sent = 0;
 					//$html = $error_html;
-            	}
+            	}*/
 				if(true){
-				//if($sent == 1){			
 					if(!empty($coach)){
 						$html = '';
         	    		$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
@@ -482,7 +526,7 @@ class FrontcoachesController  extends AppController {
     		$html = $error_html;
     	}   
     	$data['html'] = $html;
-		echo json_encode($data);
+		echo json_encode($data);exit;
         $this->autoRender = false;           
     }
 }

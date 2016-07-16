@@ -91,7 +91,7 @@ class ForumController  extends AuthfrontController {
 					$this->Member->id = $member['Member']['id'];
 					$this->Member->saveField('confirm_code', $unId, false);
 					//send confirmation mail
-					if(SEND_STMP_PORT){
+					if(SEND_STMP){
 						$this->Email->smtpOptions = array(
 							'port' => STMP_PORT,
 							'timeout' => STMP_TIMEOUT,

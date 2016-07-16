@@ -55,7 +55,7 @@ class TextsController extends AppController {
 			$settings = $this->Setting->read(null, 1);	
 			$contents = $this->Content->read(null, 1);					
 			$subject = __('Contact Us',true);
-			if(SEND_STMP_PORT){
+			if(SEND_STMP){
 				$this->Email->smtpOptions = array(
 					'port' => STMP_PORT,
 					'timeout' => STMP_TIMEOUT,

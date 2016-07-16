@@ -144,7 +144,7 @@ class AnnouncementsController extends AuthfrontController {
 					foreach ($membersids as $key => $memberid) {
 						$member = $this->Member->read(null, $memberid);
 						if($member['Member']['block_announcements_notification'] == 0){
-							if(SEND_STMP_PORT){
+							if(SEND_STMP){
 								$this->Email->smtpOptions = array(
 									'port' => STMP_PORT,
 									'timeout' => STMP_TIMEOUT,

@@ -78,7 +78,7 @@ class HomeController  extends AppController {
 				$this->loadModel('Setting');
 				$settings = $this->Setting->read(null, 1);				
 				$subject = $settings['Setting']['title'].' Newsletter';
-				if(SEND_STMP_PORT){
+				if(SEND_STMP){
 					$this->Email->smtpOptions = array(
 						'port' => STMP_PORT,
 						'timeout' => STMP_TIMEOUT,

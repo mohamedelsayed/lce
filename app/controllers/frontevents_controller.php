@@ -481,7 +481,7 @@ class FronteventsController  extends AppController {
 					$this->$model->save($data);		
 					$invoice_number = $this->$model->id;
 	            	$subject = $title.' Checkout';
-					if(SEND_STMP_PORT){
+					/*if(SEND_STMP){
 						$this->Email->smtpOptions = array(
 							'port' => STMP_PORT,
 							'timeout' => STMP_TIMEOUT,
@@ -490,7 +490,7 @@ class FronteventsController  extends AppController {
 							'password' => STMP_PASSWORD,
 						);
 						$this->Email->delivery = 'smtp';
-					}
+					}*/
 		            $this->Email->to = $email;
 					$this->Email->subject = $subject;           
 	            	$this->Email->replyTo = $settings['email'];
@@ -518,7 +518,21 @@ class FronteventsController  extends AppController {
 					$transaction_message = 'Your transaction number: '.$transactionNo.'<br /> Your invoice number: '.$invoice_number;
 					$this->Email->template = 'event_customer';
 					$this->set('mail_body', $mail_body);
-					if ($this->Email->send()){
+					$viewClass = $this->view;
+					if ($this->view != 'View') {
+						list($plugin, $viewClass) = pluginSplit($viewClass);
+						$viewClass = $viewClass . 'View';
+						App::import('View', $this->view);
+					}
+					$View =& new $viewClass($this);				
+					$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+					$message_content = $View->_render($viewFileName, $View->viewVars);		
+					$to_emails = array($email);
+					$from_email = $settings['email'];
+					$from_name = $settings['title'];
+					$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);
+					if($sent){
+					//if ($this->Email->send()){
 		                //echo __('Email has been sent.', true);
 	    	        }
 					$subject = $title.' Checkout';
@@ -552,7 +566,20 @@ class FronteventsController  extends AppController {
 					$this->Email->template = 'event_site_admin';
 					$this->set('mail_body', $mail_body);
 					$emails = explode(',', $settings['payment_email']);
-					if(!empty($emails)){
+					$viewClass = $this->view;
+					if ($this->view != 'View') {
+						list($plugin, $viewClass) = pluginSplit($viewClass);
+						$viewClass = $viewClass . 'View';
+						App::import('View', $this->view);
+					}
+					$View =& new $viewClass($this);				
+					$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+					$message_content = $View->_render($viewFileName, $View->viewVars);		
+					$to_emails = $emails;
+					$from_email = $settings['email'];
+					$from_name = $settings['title'];
+					$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);					
+					/*if(!empty($emails)){
 						foreach ($emails as $key => $email3) {
 							$email3 = trim($email3);
 							$this->Email->to = $email3;
@@ -560,7 +587,7 @@ class FronteventsController  extends AppController {
 			        	    	//$sent = 1;
 			            	}
 						}
-					}	
+					}*/	
 				}
 			}
 		}
@@ -713,7 +740,7 @@ class FronteventsController  extends AppController {
 	    		}          
 				$event = $this->Nevent->read(null, $event_id);
 				$subject = $settings['title'].' - Inquire about event Form';
-				if(SEND_STMP_PORT){
+				/*if(SEND_STMP){
 					$this->Email->smtpOptions = array(
 						'port' => STMP_PORT,
 						'timeout' => STMP_TIMEOUT,
@@ -722,7 +749,7 @@ class FronteventsController  extends AppController {
 						'password' => STMP_PASSWORD,
 					);
 					$this->Email->delivery = 'smtp';
-				}
+				}*/
 	            $this->Email->to = $settings['email'];
 				$this->Email->subject = $subject;           
 				$this->Email->replyTo = $email;
@@ -736,7 +763,21 @@ class FronteventsController  extends AppController {
 				$this->set('mobile_number', $mobile_number);
 				$this->set('message', $message);
 				$this->set('event_title', $event['Nevent']['title']);	
-        	    if ($this->Email->send()){
+				$viewClass = $this->view;
+				if ($this->view != 'View') {
+					list($plugin, $viewClass) = pluginSplit($viewClass);
+					$viewClass = $viewClass . 'View';
+					App::import('View', $this->view);
+				}
+				$View =& new $viewClass($this);				
+				$viewFileName = $View->_getViewFileName('/elements/email/html/'.$this->Email->template);
+				$message_content = $View->_render($viewFileName, $View->viewVars);		
+				$to_emails = array($settings['email']);
+				$from_email = $email;
+				$from_name = $first_name.' '.$last_name;
+				$sent = $this->elsayed_send_custom_mail($to_emails, $subject, $message_content, $from_email, $from_name);
+				if($sent){
+        	    //if ($this->Email->send()){
         	    	$html = 'Email has been sent.';   
 					$error = 0;     	    	
             	}else{
