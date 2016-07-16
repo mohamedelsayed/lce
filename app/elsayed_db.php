@@ -39,8 +39,12 @@ define('DB_USERNAME', $username);
 define('DB_PASSWORD', $password);
 define('BASE_URL', $base_url);
 define('SHOW_PAYMENT_BUTTON', $show_payment_button);
-define('STMP_USERNAME', 'lce@mohamedelsayed.net');
+define('STMP_TIMEOUT', 60);
+/*define('STMP_USERNAME', 'lce@mohamedelsayed.net');
 define('STMP_PASSWORD', 'DDVwD0tMlDEO');
 define('STMP_SERVER', 'mail.mohamedelsayed.net');
-define('STMP_PORT', 26);
-define('STMP_TIMEOUT', 60);
+define('STMP_PORT', 26);*/
+define('STMP_USERNAME', 'lce.mail.site@gmail.com');
+define('STMP_PASSWORD', 'DDVwD0tMlDEO');
+define('STMP_SERVER', 'smtp.gmail.com');
+define('STMP_PORT', 465);
