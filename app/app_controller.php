@@ -328,4 +328,45 @@ class AppController extends Controller {
 		}		
 		return $all_date;
 	}
+	function elsayed_send_custom_mail($to_emails = array(), $subject = '', $message = '', $from_email = '', $from_name = ''){
+		$error = 1;
+		$server_email_info = array(
+	        'Username' => STMP_USERNAME,
+	        'Password' => STMP_PASSWORD,
+	        'Host' => STMP_SERVER,
+	        'Port' => STMP_PORT,
+	    );
+		require_once 'PHPMailer/PHPMailerAutoload.php';                       	
+		if(!empty($to_emails)){
+			foreach ($to_emails as $key => $to_email) {
+				$mail = new PHPMailer();
+			   	$mail->isSMTP();
+			    $mail->CharSet = "utf-8";
+			    $mail->SMTPDebug = 0;
+			    $mail->SMTPSecure = 'tls';
+			    $mail->SMTPAuth = true;
+			    $mail->Host = $server_email_info['Host'];
+			    $mail->Port = $server_email_info['Port'];
+			    $mail->ReturnPath = $server_email_info['Username'];
+			    $mail->isHTML(true);
+			    $mail->Username = $server_email_info['Username'];
+			    $mail->Password = $server_email_info['Password'];	
+			    $mail->setFrom($from_email, $from_name);
+			    $mail->addReplyTo($from_email, $from_name);
+			    $mail->addAddress(trim(strtolower($to_email));
+			    $mail->Subject = $subject;
+			    $mail->Body = $message;
+			    if ($mail->send()) {
+			    	$error = 0;
+		    	} else {
+		    		$error = 1;
+	            }
+	        }
+		}
+		if($error){
+			return FALSE;
+		}else{
+			return TRUE;
+		}
+	}	
 }
