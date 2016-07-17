@@ -343,7 +343,9 @@ class AppController extends Controller {
 			   	$mail->isSMTP();
 			    $mail->CharSet = "utf-8";
 			    $mail->SMTPDebug = 0;
-			    $mail->SMTPSecure = 'tls';
+				if(SMTPSECURE){
+			    	$mail->SMTPSecure = 'tls';
+				}
 			    $mail->SMTPAuth = true;
 			    $mail->Host = $server_email_info['Host'];
 			    $mail->Port = $server_email_info['Port'];
