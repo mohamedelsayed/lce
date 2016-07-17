@@ -40,8 +40,14 @@ define('DB_PASSWORD', $password);
 define('BASE_URL', $base_url);
 define('SHOW_PAYMENT_BUTTON', $show_payment_button);
 define('STMP_TIMEOUT', 30);
-define('STMP_USERNAME', 'lce.mail.site@gmail.com');
+/*define('STMP_USERNAME', 'lce.mail.site@gmail.com');
 define('STMP_PASSWORD', 'DDVwD0tMlDEO');
 define('STMP_SERVER', 'smtp.gmail.com');
 define('STMP_PORT', 587);
+define('SMTPSECURE', TRUE);*/
+define('STMP_USERNAME', 'noreply@lifecoachingegypt.com');
+define('STMP_PASSWORD', 'e9!pf_}i]ex~');
+define('STMP_SERVER', 'mail.lifecoachingegypt.com');
+define('STMP_PORT', 26);
+define('SMTPSECURE', FALSE);
 define('SEND_STMP', FALSE);
