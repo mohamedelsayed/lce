@@ -54,7 +54,9 @@ class FrontcoachesController  extends AppController {
 		$limit = isset($_POST['limit'])? $_POST['limit']:6;
 		$page = isset($_POST['page'])? $_POST['page']:1;	
 		$order_field = isset($_POST['order_field'])? $_POST['order_field']:'created';	
-		$order_direction = isset($_POST['order_direction'])? $_POST['order_direction']:'DESC';	
+		$order_direction = isset($_POST['order_direction'])? $_POST['order_direction']:'DESC';
+		$order_field_in = isset($_POST['order_field_in'])? $_POST['order_field_in']:'name';	
+		$order_direction_in = isset($_POST['order_direction_in'])? $_POST['order_direction_in']:'DESC';	
 		if($type == 1){
 			$page = 1;			
 		}
@@ -101,12 +103,13 @@ class FrontcoachesController  extends AppController {
 			}
 		}
 		$options['conditions'] = $conditions;
-		$options['order'] = array('Coach.'.$order_field => $order_direction, 'Coach.id' => 'DESC');
+		$options['order'] = array('Coach.'.$order_field => $order_direction, 'Coach.'.$order_field_in => $order_direction_in, 'Coach.id' => 'DESC');
 		$options['page'] = $page;
 		$coaches_all = $this->Coach->find('all', $options);
     	$count = count($coaches_all);
 		$page_count = ceil($count / $limit);
 		$coaches = array_slice($coaches_all, $start, $limit);
+		shuffle($coaches);
 		$i = 0;
 		foreach ($coaches as $key => $coach) {
 			$coach_url = BASE_URL.'/coach/'.$coach['Coach']['id'];
