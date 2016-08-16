@@ -64,6 +64,8 @@ function ajax_list_coaches(type){
 	var page = coaches_page;
 	var order_field = jQuery('#list_coaches_loadmore_button').attr('order_field');	
 	var order_direction = jQuery('#list_coaches_loadmore_button').attr('order_direction');
+	var order_field_in = jQuery('#list_coaches_loadmore_button').attr('order_field_in');	
+	var order_direction_in = jQuery('#list_coaches_loadmore_button').attr('order_direction_in');
 	var coach_specialization = jQuery('#coach_specialization').val();
 	var coach_geography = jQuery('#coach_geography').val();
 	var coach_name = jQuery('#coach_name').val();
@@ -76,6 +78,7 @@ function ajax_list_coaches(type){
         data: {
     		page: page, limit: limit, filter: filter, type: type, name: coach_name,
     		order_field: order_field, order_direction: order_direction,
+    		order_field_in: order_field_in, order_direction_in: order_direction_in,
     		coach_specialization: coach_specialization, coach_geography: coach_geography        		
 		},
         beforeSend: function() {
