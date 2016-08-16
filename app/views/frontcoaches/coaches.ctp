@@ -1,6 +1,6 @@
 <?php $tree = array(array('url' => '/all-coaches', 'str' => 'FIND A COACH'));
 echo $this->element('front'.DS.'breadcrumb', array('tree' => $tree));
-$order_fields = array('name', 'gender', 'created');
+$order_fields = array('name', 'statement', 'biography', 'email', 'mobile', 'gender', 'created', 'remote_coaching', 'updated', 'certification');
 $order_directions = array('ASC', 'DESC');
 $order_field = $order_fields[array_rand($order_fields)];
 $order_direction = $order_directions[array_rand($order_directions)];
