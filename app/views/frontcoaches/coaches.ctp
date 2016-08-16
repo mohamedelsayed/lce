@@ -4,6 +4,8 @@ $order_fields = array('name', 'statement', 'biography', 'email', 'mobile', 'gend
 $order_directions = array('ASC', 'DESC');
 $order_field = $order_fields[array_rand($order_fields)];
 $order_direction = $order_directions[array_rand($order_directions)];
+$order_field_in = $order_fields[array_rand($order_fields)];
+$order_direction_in = $order_directions[array_rand($order_directions)];
 global $base_url;?>
 <?php /*<div class="title_coach_page">
 	<p>FIND A COACH</p>
@@ -46,7 +48,7 @@ global $base_url;?>
 	<?php }?>
 </form>
 <div class="coach_posts_group" id="list_coaches"></div>
-<div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>"></div>
+<div id="list_coaches_loadmore_button" class="load-more" order_field="<?php echo $order_field;?>" order_direction="<?php echo $order_direction;?>" order_field_in="<?php echo $order_field_in;?>" order_direction_in="<?php echo $order_direction_in;?>"></div>
 <?php include_once 'facebook_share.php'; ?>
 <script type="text/javascript">
 ajax_list_coaches(0);
