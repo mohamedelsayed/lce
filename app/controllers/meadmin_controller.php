@@ -3,7 +3,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.mohamedelsayed.net/
- * @copyright Copyright (c) 2013 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../auth_controller.php';
 class MeadminController extends AuthController {	
@@ -42,13 +42,10 @@ class MeadminController extends AuthController {
 		$this->set('title_for_layout' , 'Mohamed Elsayed Admin');	
 	}	
 	//logout
-	function logout()
-	{
+	function logout(){
 		//if($this->data['User']['username'] != 'elsayed')	
-		//$this->requestAction('/logs/saveLog/user_name/'.$this->Session->read('userInfo.User.username').'/'.$this->action);	
 		$this->Session->destroy();
 		$this->Session->setFlash(__('Logged out successfuly.', true));
 		$this->redirect(array('controller'=>'me-admin/login'));
 	}
 }
-?>

@@ -2,16 +2,14 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../auth_controller.php';
 class GalsController extends AuthController {
-
 	var $name = 'Gals';
 	var $uses = array('Gal');
 	//use upload component.
 	var $components = array('Upload');
-	
 	function index($id = null, $model = null) {
 		$positionField =  'position';
 		$this->Gal->recursive = 0;

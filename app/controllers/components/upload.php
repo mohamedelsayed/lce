@@ -1,8 +1,6 @@
 <?php
 class UploadComponent extends AppController{
-	
-	var $name = 'Upload';
-	
+	var $name = 'Upload';	
 	public $folder; //upload dir.
 	public $fileName; // save the base name of the file ex: 'image.jpg'.
 	public $types; //string of file types ex "jpeg,gif,png,jpg". 
