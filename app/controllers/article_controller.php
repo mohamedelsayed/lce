@@ -9,7 +9,7 @@ class ArticleController  extends AppController {
 	var $uses = array('Article');
 	
 	function index(){
-		$this->redirect($this->referer($this->Session->read('Setting.url')));			
+		$this->redirect($this->referer(BASE_URL));			
 	}
 	function all($tag = ''){
 		$limit = $this->getPagingLimit();

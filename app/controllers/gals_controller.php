@@ -79,7 +79,7 @@ class GalsController extends AuthController {
 				$this->data['Gal']['image'] = $this->Gal->field('image');			
 			if ($this->Gal->save($this->data)) {
 				$this->Session->setFlash(__('The Image has been saved', true));				
-				$this->redirect($this->Session->read('Setting.url').'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));						
+				$this->redirect(BASE_URL.'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));						
 			} else {
 				$this->Session->setFlash(__('The Image could not be saved. Please, try again.', true));
 			}
@@ -92,14 +92,14 @@ class GalsController extends AuthController {
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Image', true));
-			$this->redirect($this->Session->read('Setting.url').'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
+			$this->redirect(BASE_URL.'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
 		}
 		if ($this->Gal->delete($id)) {
 			$this->Session->setFlash(__('Image deleted', true));
-			$this->redirect($this->Session->read('Setting.url').'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
+			$this->redirect(BASE_URL.'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
 		}
 		$this->Session->setFlash(__('Image was not deleted', true));
-		$this->redirect($this->Session->read('Setting.url').'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
+		$this->redirect(BASE_URL.'/gals/index/'.$this->Session->read('back_id').'/'.$this->Session->read('back_model'));
 	}
 	
 	function deleteImage($id = null) {

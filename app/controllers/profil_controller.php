@@ -12,7 +12,7 @@ class ProfilController  extends AuthController {
 	var $components = array('Email');
 	
 	function index(){
-		$this->redirect($this->Session->read('Setting.url').'/forget-password');
+		$this->redirect(BASE_URL.'/forget-password');
 	}	
 	//forget password.
 	function forgot($memberId=null, $code=null){
@@ -82,14 +82,14 @@ class ProfilController  extends AuthController {
 							array('User.id' => $memberId, 'User.confirm_code' => $code)
 						);
 						$this->Session->setFlash(__('Password changed successfully.', true));				
-						$this->redirect($this->Session->read('Setting.url').'/me-admin');
+						$this->redirect(BASE_URL.'/me-admin');
 					}else 
 						$this->User->validationErrors['password'] = 'Please enter new password.';	
 				} 
 			}
 			else{
 				$this->Session->setFlash(__('Wrong code.', true));
-				$this->redirect($this->Session->read('Setting.url').'/forget-password');
+				$this->redirect(BASE_URL.'/forget-password');
 			}
 			$this->set('title_for_layout', 'Change password');
 			$this->render('change_password');	

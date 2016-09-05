@@ -10,11 +10,11 @@ class TextsController extends AppController {
 	var $components = array('Email');
 	//var $helpers = array('GoogleMapV3'); 	
 	function index(){
-		$this->redirect($this->referer($this->Session->read('Setting.url')));		
+		$this->redirect($this->referer(BASE_URL));		
 	}
 	function display($id = null, $title = null){
 		if(!$id){
-			$this->redirect($this->referer($this->Session->read('Setting.url')));
+			$this->redirect($this->referer(BASE_URL));
 		}
 		$content = $this->Content->read(null, $id);
 		$this->set('title_for_layout', $content['Content']['title']);
@@ -23,7 +23,7 @@ class TextsController extends AppController {
 	}
 	function terms_and_conditions($id = null){
 		if(!$id){
-			$this->redirect($this->referer($this->Session->read('Setting.url')));
+			$this->redirect($this->referer(BASE_URL));
 		}
 		$content = $this->Content->read(null, $id);
 		$this->set('title_for_layout', $content['Content']['title']);
@@ -95,9 +95,9 @@ class TextsController extends AppController {
 		if($type == 'notajax'){
 			//for arabic
 			/*if(isset($this->params['named']['lang'])){
-				$this->redirect($this->Session->read('Setting.url').'/contact-us/index/lang:'.$this->params['named']['lang']);
+				$this->redirect(BASE_URL.'/contact-us/index/lang:'.$this->params['named']['lang']);
 			}else{*/	
-				$this->redirect($this->Session->read('Setting.url').'/contact-us');
+				$this->redirect(BASE_URL.'/contact-us');
 			//}
 		}elseif($type == 'ajax'){
 			$this->autoRender = false;

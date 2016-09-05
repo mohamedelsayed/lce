@@ -200,13 +200,13 @@ class PostsController extends AuthfrontController {
 		$comment_li = '';
 		if(!empty($comment)){
 			$view = new View($this, false);
-			$img_src = $this->Session->read('Setting.url').DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
+			$img_src = BASE_URL.DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
 			$comment_body = preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i", "<div class=\"lcevideo\"><iframe width=\"300\" height=\"250\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe></div>", $comment['ForumComment']['comment']);
 			$comment_body = nl2br($comment_body);
 			$comment_body = str_replace('<br/>', ' <br/> ', $comment_body);
 			$comment_body =  preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $comment_body);
 			if($comment['Member']['image'] != ''){
-				$img_src = $this->Session->read('Setting.url').DS.'img'.DS.'upload'.DS.$comment['Member']['image'];
+				$img_src = BASE_URL.DS.'img'.DS.'upload'.DS.$comment['Member']['image'];
 			}
 			$comment_li .= '<li class="comment">
 							<div class="commentauthor">
@@ -214,7 +214,7 @@ class PostsController extends AuthfrontController {
 									<img src="'.$img_src.'" alt="'.$comment['Member']['fullname'].'"/>
 								</div>
 								<div class="commentauthordata">
-									<div class="commentauthorname"><a href="'.$this->Session->read('Setting.url').'/members/view/'.$comment['Member']['id'].'">'.$comment['Member']['fullname'].'</a></div>
+									<div class="commentauthorname"><a href="'.BASE_URL.'/members/view/'.$comment['Member']['id'].'">'.$comment['Member']['fullname'].'</a></div>
 									<div class="commentauthorblock">'.$view->element('forum/block_member', array('other_member_id' => $comment['Member']['id'], 'other_member_fullname' => $comment['Member']['fullname'])).'</div>
 								</div>
 							</div>';							
@@ -223,7 +223,7 @@ class PostsController extends AuthfrontController {
 			$comment['ForumComment']['image'] = trim($comment['ForumComment']['image']);
 			if($comment['ForumComment']['image'] != ''){
 				$comment_li .= '<div class="comment_image_new">
-						<img src="'.$this->Session->read('Setting.url').'/img/upload/'.$comment['ForumComment']['image'].'" alt=""/>
+						<img src="'.BASE_URL.'/img/upload/'.$comment['ForumComment']['image'].'" alt=""/>
 						</div>';
 			}
 			if($comment['ForumComment']['video'] != ''){
@@ -233,7 +233,7 @@ class PostsController extends AuthfrontController {
 			if($comment['ForumComment']['attachement'] != ''){
 				$file_name_exploded = explode('.', $comment['ForumComment']['attachement']);
 		        $file_ext = $file_name_exploded[count($file_name_exploded) - 1];
-		        $file_link = $this->Session->read('Setting.url').DS.'files'.DS.'upload'.DS.$comment['ForumComment']['attachement'];
+		        $file_link = BASE_URL.DS.'files'.DS.'upload'.DS.$comment['ForumComment']['attachement'];
 		        $comment_li .= '<div class="'.$file_ext . '-file'.'">
 		        		<a target="_blank" href="'.$file_link.'">'.$comment['ForumComment']['attachement'].'</a>
 		        		</div>';
@@ -300,7 +300,7 @@ class PostsController extends AuthfrontController {
 				//$last_comment_date_text = 'Last comment at ';
 				$last_comment_date_text = date('M d, Y, g:i a', strtotime($last_comment_date['ForumComment']['created']));				
 			}
-			$post_link = $this->Session->read('Setting.url').'/posts/view/'.$post_id;
+			$post_link = BASE_URL.'/posts/view/'.$post_id;
 			$post_li .= '<li class="post '.$class.'">';
 			$post_li .= '<div class="post_title"><a href="'.$post_link.'">'.$post['Post']['title'].'</a></div>
 						<div class="post_category">'.$post['Category']['title'].'</div>
