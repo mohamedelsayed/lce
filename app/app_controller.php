@@ -246,7 +246,7 @@ class AppController extends Controller {
 				$settings = $this->Setting->read(null, 1);				
 				$maintenance_mode = $settings['Setting']['maintenance_mode'];
 				if($maintenance_mode == 1 && $this->action != 'maintenancemode'){
-					$this->redirect($this->Session->read('Setting.url').'/maintenance');
+					$this->redirect(BASE_URL.'/maintenance');
 				}		
 			}
 		}
