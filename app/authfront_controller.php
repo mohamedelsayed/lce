@@ -121,7 +121,7 @@ class AuthfrontController extends AppController{
 		$item_member_name = $item_member['Member']['fullname'];
 		if($action_type == 0){
 			//$post = $this->Post->read(null, $item_id);
-			$url = $this->Session->read('Setting.url').'/posts/view/'.$item_id;
+			$url = BASE_URL.'/posts/view/'.$item_id;
 			//$item_title = $post['Post']['title'];
 			$block_notification_flag = 'block_posts_notification';
 			$body = 'Hello {{member_name}},<br/>
@@ -130,7 +130,7 @@ class AuthfrontController extends AppController{
 					LCE Team';
 		}elseif($action_type == 1){
 			//$event = $this->Event->read(null, $item_id);
-			$url = $this->Session->read('Setting.url').'/events/view/'.$item_id;
+			$url = BASE_URL.'/events/view/'.$item_id;
 			//$item_title = $event['Event']['title'];
 			$block_notification_flag = 'block_events_notification';
 			$body = 'Hello {{member_name}},<br/>
@@ -139,7 +139,7 @@ class AuthfrontController extends AppController{
 					LCE Team';
 		}elseif($action_type == 2){
 			$post = $this->Post->read(null, $parent_id);
-			$url = $this->Session->read('Setting.url').'/posts/view/'.$parent_id;
+			$url = BASE_URL.'/posts/view/'.$parent_id;
 			$item_title = $post['Post']['title'];
 			$block_notification_flag = 'block_comments_notification';
 			$body = 'Hello {{member_name}},<br/>
