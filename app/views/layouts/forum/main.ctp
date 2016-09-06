@@ -37,7 +37,7 @@ $base_url = BASE_URL;?>
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
-		echo $this->Html->css(array('old_front//style','old_front//jMenu.jquery','old_front//style_slider','old_front//skin', 'old_front//new_style', 'forum/style'));
+		echo $this->Html->css(array('old_front/style','old_front/jMenu.jquery','old_front/style_slider','old_front/skin', 'old_front/new_style', 'front/new_style','front/styles_1.css', 'front/style', 'forum/style'));
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
@@ -88,11 +88,11 @@ $base_url = BASE_URL;?>
 	<body>
 		<div class="container_big">
 			<?php include_once('header.ctp');?>
-			<div class="flashSession"><?php echo $this->Session->flash();?>	</div>
-			<div class="container">				
-				<?php echo $content_for_layout; ?>
-				<?php include_once('footer.ctp');?>  
+			<div class="container">
+			<div class="flashSession"><?php echo $this->Session->flash();?>	</div>				
+				<?php echo $content_for_layout; ?>				
 			</div>
+			<?php include_once('footer.ctp');?>  
 		</div>
         <?php //echo '<div style="float:left; width:100%;"><div style="margin-left: auto;margin-right: auto;width:945px;">'.$this->element('sql_dump').'</div></div>';?>		
 	</body>
