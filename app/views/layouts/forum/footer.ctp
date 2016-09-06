@@ -158,4 +158,7 @@
 	padding-left: 8%;
     padding-right: 8%;
 }
+.facebook_fotter{
+	width: 18%;
+}
 </style>
