@@ -65,6 +65,7 @@ class AuthfrontController extends AppController{
 		$this->set('isAdmin', $isAdmin);	
 	}
 	function beforeRender(){
+		$this->setParentCat();
 		$this->setHeaderQuotes();
 		if($this->layout != 'ajax'){
 			$this->layout = 'forum/main';
