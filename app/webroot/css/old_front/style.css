@@ -58,11 +58,6 @@ body {
 .header_big{
 	width:100%;
 }
-.logo{
-	float: left;
-	margin-top:15px;
-	margin-bottom: 25px;
-}
 .top_menu{
 	width: 280px;
 	display: none;
