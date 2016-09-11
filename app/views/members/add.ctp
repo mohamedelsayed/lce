@@ -21,6 +21,7 @@
 			echo $this->Form->input('role', array('type' => 'select', 'options' => $roles));
 		}
 		echo $form->input('image', array('type'=>'file'));
+		echo $this->Form->input('group_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

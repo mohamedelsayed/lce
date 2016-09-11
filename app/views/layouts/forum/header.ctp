@@ -19,6 +19,9 @@
 			            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
 		            		<ul>
 		            			<li class="submenu">
+		            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
+				        		</li>
+		            			<li class="submenu">
 		            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
 				        		</li>
 				        		<li class="submenu">

@@ -10,7 +10,7 @@
 		//echo $form->radio('gender',$options,$attributes);
 		echo $this->Form->input('email');		
 		echo $this->Form->input('username');
-		echo $this->Form->input('password');
+		echo $this->Form->input('password', array('autocomplete' => 'off'));
 		echo $this->Form->input('mobile');
 		echo $this->Form->input('job_title');
 		echo $this->Form->input('approved');
@@ -31,7 +31,7 @@
 			<?php echo $this->element('forum/image_view', array('controller'=>'members', 'image'=>array('id'=>$this->data['Member']['id'], 'image'=>$this->data['Member']['image'])));?>
 		</div>
 		<?php echo $this->Form->input('image', array('type'=>'file'));
-	?>
+		echo $this->Form->input('group_id');?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
