@@ -45,7 +45,6 @@ class Cat extends AppModel {
 		),*/
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 	var $belongsTo = array(
 		/*'Artist' => array(
 			'className' => 'Artist',
@@ -62,7 +61,6 @@ class Cat extends AppModel {
 			'order' => ''
 		)
 	);
-
 	var $hasMany = array(
 		'ChildCat' => array(
 			'className' => 'Cat',
@@ -91,6 +89,4 @@ class Cat extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }
-?>

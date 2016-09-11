@@ -2,7 +2,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.mohamedelsayed.net/
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 class Member extends AppModel {
 	var $name = 'Member';
@@ -42,6 +42,15 @@ class Member extends AppModel {
         	'message' => 'Password cannot be left blank'
     	) 	    
 	);	
+	var $belongsTo = array(
+		'Group' => array(
+			'className' => 'Group',
+			'foreignKey' => 'group_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 	var $hasMany = array(
 		'BlockedMembers' => array(
 			'className' => 'BlockedMember',
@@ -56,5 +65,5 @@ class Member extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-	 );
+	);	
 }
