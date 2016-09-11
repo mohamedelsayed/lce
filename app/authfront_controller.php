@@ -46,10 +46,7 @@ class AuthfrontController extends AppController{
 		if(!$this->Session->check('Setting')){
 			$this->setSettings();
 		}
-		if(!$this->isAuthenticFront() && ($this->action != 'login') && ($this->action != 'forget')){
-			$this->Session->setFlash(__('Sorry! Please login first.', true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
-		}
+		$this->check_allowed_controllers_actions();		
 		$this->loadModel('Setting');
 		$settings = $this->Setting->read(null, 1);
 		$this->set("minYearValue",$settings['Setting']['minimum_year']);
@@ -199,5 +196,22 @@ class AuthfrontController extends AppController{
 				}		
 			}
 		}
+	}
+	public function check_allowed_controllers_actions(){
+		$allowed_links = array();		
+		$controller = $this->params['controller'];		
+		$action = $this->params['action'];
+		$allowed_links[] = array('controller' => 'members', 'action' => 'view');
+		$allowed_links[] = array('controller' => 'members', 'action' => 'all');
+		$allowed_link_flag = 0;
+		foreach ($allowed_links as $key => $value) {
+			if($value['controller'] == $controller && $value['action'] == $action){
+				$allowed_link_flag = 1;				
+			}			
+		}
+		if(!$this->isAuthenticFront() && ($this->action != 'login') && ($this->action != 'forget') && !($allowed_link_flag)){
+			$this->Session->setFlash(__('Sorry! Please login first.', true), true);
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
+		}		
 	}
 }
