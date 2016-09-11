@@ -29,7 +29,7 @@
 		}
 		else{
 			$thumbPath = 'backend/thumb_no_image.jpeg';
-			$imagePath = 'backend/no_image.jpeg';
+			$imagePath = $base_url.'/img/backend/no_image.jpeg';
 			$delete = false;
 		}
 		echo $this->Html->link(

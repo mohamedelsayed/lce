@@ -1,7 +1,7 @@
 <div class="members form">
 <?php echo $this->Form->create('Member', array('type'=>'file'));?>
 	<fieldset>
- 		<legend><?php __('Edit Member'); ?></legend>
+ 		<legend><?php __('Edit Contact'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('fullname');

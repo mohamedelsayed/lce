@@ -1,7 +1,7 @@
 <div class="members form">
 <?php echo $this->Form->create('Member', array('type'=>'file'));?>
 	<fieldset>
- 		<legend><?php __('Add Member'); ?></legend>
+ 		<legend><?php __('Add Contact'); ?></legend>
 	<?php
 		echo $this->Form->input('fullname');
 		//$options=array('1'=>'Male','0'=>'Female');

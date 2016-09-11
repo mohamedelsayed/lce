@@ -1,6 +1,6 @@
 <div class="members index">
 	<?php /*<h2><?php __('Members');?></h2>*/?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Member', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Contact', true), array('action' => 'add')); ?></div>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

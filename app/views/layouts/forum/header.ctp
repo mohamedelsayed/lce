@@ -14,46 +14,50 @@
     				</a>
     			</li>
 				<?php if($userInfoFront){?>
-            	<?php if($isAdmin == 1){?>
-            		<li>
-		            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
-	            		<ul>
-	            			<li class="submenu">
-	            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Members</a>
-			        		</li>
-			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
-			        		</li>
-			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
-			        		</li>	
-			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
-			        		</li>	
-			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
-			        		</li>	
-			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
-			        		</li>		        		
-		        		</ul>
-	        		</li> 	            
+	            	<?php if($isAdmin == 1){?>
+	            		<li>
+			            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
+		            		<ul>
+		            			<li class="submenu">
+		            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+				        		</li>
+				        		<li class="submenu">
+		            				<a style="width: 200px;" title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
+				        		</li>
+				        		<li class="submenu">
+		            				<a style="width: 200px;" title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
+				        		</li>	
+				        		<li class="submenu">
+		            				<a style="width: 200px;" title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
+				        		</li>	
+				        		<li class="submenu">
+		            				<a style="width: 200px;" title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
+				        		</li>	
+				        		<li class="submenu">
+		            				<a style="width: 200px;" title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
+				        		</li>		        		
+			        		</ul>
+		        		</li> 	            
+		            <?php }?>
 	            <?php }?>
-	            <li>
-	            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
-	            </li>
-	            <li>
-	            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
-	            </li>
+	            <?php if($userInfoFront){?>
+		            <li>
+		            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
+		            </li>
+		            <li>
+		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
+		            </li>
+	            <?php }?>
 	            <li>
 	            	<a title="Contacts" id="Contacts" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
 	            </li>
-	            <li>
-	            	<a title="Edit Profile" id="editProfile" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
-	            </li>            
-	            <li>
-	            	<a title="Logout" id="logout" href="<?php echo $base_url.'/forum/logout';?>" class="fNiv">Logout</a>           
-	            </li> 
+	            <?php if($userInfoFront){?>
+		            <li>
+		            	<a title="Edit Profile" id="editProfile" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
+		            </li>            
+		            <li>
+		            	<a title="Logout" id="logout" href="<?php echo $base_url.'/forum/logout';?>" class="fNiv">Logout</a>           
+		            </li> 
 	            <?php }?> 
 			</ul>
 		</div>
@@ -96,7 +100,7 @@
 		            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
 	            		<ul>
 	            			<li class="submenu">
-	            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Members</a>
+	            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
 			        		</li>
 			        		<li class="submenu">
 	            				<a style="width: 200px;" title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
