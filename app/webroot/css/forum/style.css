@@ -800,3 +800,11 @@ a.inactiveagreedisagreebutton:hover{
 	padding-left:25px;
 	float:left;
 }
+.required{
+	border: 0 none !important;
+}
+select{
+	float: left;
+    margin-left: 0;
+    width: 100%;
+}
