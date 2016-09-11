@@ -2,16 +2,14 @@
 /**
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
- * @copyright Copyright (c) 2014 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../auth_controller.php';
 class CatsController extends AuthController {
-
 	var $name = 'Cats';
 	var $uses = array('Cat');
 	//use upload component.
 	var $components = array('Upload');
-
 	function index() {
 		$this->Cat->recursive = 0;
 		if(isset($this->data['Cat']['title'])){
@@ -21,7 +19,6 @@ class CatsController extends AuthController {
 		}
 		$this->set('cats', $this->paginate());
 	}
-
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid cat', true));
@@ -29,7 +26,6 @@ class CatsController extends AuthController {
 		}
 		$this->set('cat', $this->Cat->read(null, $id));
 	}
-
 	function add() {
 		if (!empty($this->data)) {
 			//upload image
@@ -46,7 +42,6 @@ class CatsController extends AuthController {
 		$parents = $this->Cat->ParentCat->find('list');
 		$this->set(compact('parents'));
 	}
-
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid cat', true));
@@ -91,17 +86,6 @@ class CatsController extends AuthController {
 		$this->Session->setFlash(__('Cat was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
-	/*function getArtistCats($artistId = 0, $modelName='Cat', $field = null, $empty = ''){
-		$this->layout = 'ajax';
-		$this->Cat->recursive = -1;
-		$cats = $this->Cat->find('list', 
-							  	 array('conditions' => array('artist_id' => $artistId)));
-		$this->set(compact('cats'));
-		//return $cats;
-		$this->set('modelName', $modelName);
-		$this->set('empty', $empty);
-		$this->set('field', $field);
-	}*/
 	function deleteImage ($id){
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Cat', true));
@@ -119,4 +103,3 @@ class CatsController extends AuthController {
 		$this->redirect($this->referer(array('action' => 'index')));	
 	}
 }
-?>

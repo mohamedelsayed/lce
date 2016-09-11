@@ -2,7 +2,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.mohamedelsayed.net/
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../authfront_controller.php';
 class MembersController extends AuthfrontController {
@@ -10,17 +10,17 @@ class MembersController extends AuthfrontController {
 	var $uses = array('Member');
 	var $components = array('Upload');		
 	function index() {
-		$this->Member->recursive = 0;
+		//$this->Member->recursive = 0;
 		if($this->isSuperAdmin()){		
-			$this->paginate = array(
+			$this->paginate['Member'] = array(
 				'conditions' => array('Member.role >' => 0)
 	    	);
-			$this->set('members', $this->paginate());
+			$this->set('members', $this->paginate('Member'));
 		}elseif($this->isAdmin()){
-			$this->paginate = array(
+			$this->paginate['Member'] = array(
 				'conditions' => array('Member.role >' => 1)
 	    	);
-			$this->set('members', $this->paginate());
+			$this->set('members', $this->paginate('Member'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
 			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
@@ -28,7 +28,7 @@ class MembersController extends AuthfrontController {
 		$this->set('roles' , $this->get_roles());
 	}	
 	function view($id = null) {
-		$this->Member->recursive = 0;
+		//$this->Member->recursive = 0;
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Member', true));
 			$this->redirect(array('action' => 'index'));
@@ -59,6 +59,8 @@ class MembersController extends AuthfrontController {
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
 			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
 		}
+		$groups = $this->Member->Group->find('list');
+		$this->set(compact('groups'));
 	}	
 	function edit($id = null){
 		if (!$id && empty($this->data)) {
@@ -107,6 +109,8 @@ class MembersController extends AuthfrontController {
 			}	
 		}
 		$this->set('roles' , $this->get_roles());
+		$groups = $this->Member->Group->find('list');
+		$this->set(compact('groups'));
 	}	
 	function delete($id = null) {
 		if (!$id) {
