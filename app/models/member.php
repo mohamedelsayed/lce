@@ -46,7 +46,7 @@ class Member extends AppModel {
 		'Group' => array(
 			'className' => 'Group',
 			'foreignKey' => 'group_id',
-			'conditions' => '',
+			'conditions' => array('Group.approved' => 1),
 			'fields' => '',
 			'order' => ''
 		)
