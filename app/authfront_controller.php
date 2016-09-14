@@ -72,8 +72,8 @@ class AuthfrontController extends AppController{
 	function isSuperAdmin(){
 		$flag = 0;
 		if($this->Cookie->read('userInfoFront')){
-			$conditions['id'] = $this->Cookie->read('userInfoFront.id');
 			$model = 'Member';
+			$conditions[$model.'.id'] = $this->Cookie->read('userInfoFront.id');			
 			$record = $this->$model->find('first', array('conditions' => $conditions));
 			$role = $record['Member']['role'];
 			if($role == 0){
@@ -85,8 +85,8 @@ class AuthfrontController extends AppController{
 	function isAdmin(){
 		$flag = 0;
 		if($this->Cookie->read('userInfoFront')){
-			$conditions['id'] = $this->Cookie->read('userInfoFront.id');
 			$model = 'Member';
+			$conditions[$model.'.id'] = $this->Cookie->read('userInfoFront.id');			
 			$record = $this->$model->find('first', array('conditions' => $conditions));
 			$role = $record['Member']['role'];
 			if($role == 1){
