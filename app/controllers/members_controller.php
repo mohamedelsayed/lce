@@ -26,15 +26,17 @@ class MembersController extends AuthfrontController {
 			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
 		}			
 		$this->set('roles' , $this->get_roles());
+		$this->set('title_for_layout', 'Contacts');
 	}	
 	function view($id = null) {
 		$this->Member->recursive = 0;
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid Member', true));
+			$this->Session->setFlash(__('Invalid Contact', true));
 			$this->redirect(array('action' => 'index'));
 		}		
 		$this->set('member', $this->Member->read(null, $id));
 		$this->set('roles' , $this->get_roles());
+		$this->set('title_for_layout', 'Contacts');
 	}	
 	function add(){
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -48,10 +50,10 @@ class MembersController extends AuthfrontController {
 				//save data
 				$this->Member->create();
 				if ($this->Member->save($this->data)) {
-					$this->Session->setFlash(__('The Member has been saved', true));
+					$this->Session->setFlash(__('The Contact has been saved', true));
 					$this->redirect(array('action' => 'index'));
 				} else {
-					$this->Session->setFlash(__('The Member could not be saved. Please, try again.', true));
+					$this->Session->setFlash(__('The Contact could not be saved. Please, try again.', true));
 				}
 			}
 			$this->set('roles' , $this->get_roles());
@@ -61,13 +63,14 @@ class MembersController extends AuthfrontController {
 		}
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
+		$this->set('title_for_layout', 'Contacts');
 	}	
 	function edit($id = null){
 		if (!$id && empty($this->data)) {
 			if($this->Cookie->read('userInfoFront')){
 				$id = $this->Cookie->read('userInfoFront.id');
 			}else{
-				$this->Session->setFlash(__('Invalid Member', true));
+				$this->Session->setFlash(__('Invalid Contact', true));
 				$this->redirect(array('action' => 'index'));				
 			}
 		}
@@ -86,10 +89,10 @@ class MembersController extends AuthfrontController {
 			}				
 			if ($this->Member->save($this->data)) {
 				$this->Upload->deleteFile();//to delete old images;
-				$this->Session->setFlash(__('The Member has been saved', true));
+				$this->Session->setFlash(__('The Contact has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Member could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The Contact could not be saved. Please, try again.', true));
 			}
 		}
 		if (empty($this->data)) {
@@ -111,10 +114,11 @@ class MembersController extends AuthfrontController {
 		$this->set('roles' , $this->get_roles());
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
+		$this->set('title_for_layout', 'Contacts');
 	}	
 	function delete($id = null) {
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Member', true));
+			$this->Session->setFlash(__('Invalid id for Contact', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		if($id <= 1){
@@ -139,15 +143,16 @@ class MembersController extends AuthfrontController {
 		$this->Upload->filesToDelete = array($this->Member->field('image'));		
 		if ($this->Member->delete($id)) {
 			$this->Upload->deleteFile(); //to delete old images;
-			$this->Session->setFlash(__('Member deleted ', true));
+			$this->Session->setFlash(__('Contact deleted ', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Member was not deleted', true));
+		$this->Session->setFlash(__('Contact was not deleted', true));
 		$this->redirect(array('action' => 'index'));
+		$this->set('title_for_layout', 'Contacts');
 	}	
 	function deleteImage ($id){
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid Member', true));
+			$this->Session->setFlash(__('Invalid Contact', true));
 			$this->redirect($this->referer(array('action' => 'index')));
 		}
 		//to delete image file
@@ -168,9 +173,9 @@ class MembersController extends AuthfrontController {
 		$this->Upload->filesToDelete = array($this->Member->field('image'));
 		if ($this->Member->saveField('image', '')) {
 			$this->Upload->deleteFile();
-			$this->Session->setFlash(__('The Member image has been deleted', true));
+			$this->Session->setFlash(__('The Contact image has been deleted', true));
 		} else {
-			$this->Session->setFlash(__('The Member image could not be deleted. Please, try again.', true));
+			$this->Session->setFlash(__('The Contact image could not be deleted. Please, try again.', true));
 		}
 		$this->redirect($this->referer(array('action' => 'index')));	
 	}		
@@ -186,9 +191,22 @@ class MembersController extends AuthfrontController {
 		}
 	}
 	function all(){
+		$this->get_members();	
+	}
+	function group($group_id){
+		$this->get_members($group_id);
+		$this->render('all');
+	}
+	public function get_members($group_id = 0){
+		$conditions = array();
+		if($group_id != 0){
+			$this->loadModel('Group');
+			$conditions['Member.group_id'] = $group_id;
+			$this->set('group', $this->Group->read(null, $group_id));
+		}
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
-		$conditions = array('Member.approved' => 1);					
+		$conditions['Member.approved'] = 1;
 		$this->paginate['Member'] = array(
     			//'fields'     => array('Member.id', 'Member.title', 'Member.body'),
     			'conditions' => $conditions,
@@ -197,6 +215,7 @@ class MembersController extends AuthfrontController {
 		    	'page'  	 => $page
 	    	);
 		$this->set('page',$page);
-		$this->set('members', $this->paginate('Member'));		
+		$this->set('members', $this->paginate('Member'));	
+		$this->set('title_for_layout', 'Contacts');		
 	}
 }
