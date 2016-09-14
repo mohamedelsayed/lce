@@ -62,12 +62,13 @@ class AuthfrontController extends AppController{
 		$this->set('isAdmin', $isAdmin);	
 	}
 	function beforeRender(){
-		$this->setParentCat();
-		$this->setHeaderQuotes();
+		//$this->setParentCat();
+		//$this->setHeaderQuotes();
 		if($this->layout != 'ajax'){
 			$this->layout = 'forum/main';
 		}
 		$this->set('base_url', BASE_URL);
+		$this->setHeaderGroups();
 	}
 	function isSuperAdmin(){
 		$flag = 0;
@@ -203,6 +204,7 @@ class AuthfrontController extends AppController{
 		$action = $this->params['action'];
 		$allowed_links[] = array('controller' => 'members', 'action' => 'view');
 		$allowed_links[] = array('controller' => 'members', 'action' => 'all');
+		$allowed_links[] = array('controller' => 'members', 'action' => 'group');
 		$allowed_link_flag = 0;
 		foreach ($allowed_links as $key => $value) {
 			if($value['controller'] == $controller && $value['action'] == $action){
@@ -213,5 +215,15 @@ class AuthfrontController extends AppController{
 			$this->Session->setFlash(__('Sorry! Please login first.', true), true);
 			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
 		}		
+	}
+	public function setHeaderGroups(){
+		$this->loadModel('Group');
+		$header_groups = $this->Group->find(
+			'all', array(
+				'conditions' => array('Group.approved' => 1),
+				'order' => array('Group.weight' => 'ASC','Group.id'=>'DESC')
+			)	  	 	
+		);
+		$this->set('header_groups' , $header_groups);	
 	}
 }
