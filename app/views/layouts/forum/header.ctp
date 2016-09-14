@@ -48,9 +48,9 @@
 		            <?php /*<li>
 		            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
 		            </li>*/?>
-		            <li>
+		            <?php /*<li>
 		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
-		            </li>
+		            </li>*/?>
 	            <?php }?>
 	            <li>
 	            	<a title="Contacts" id="Contacts" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           

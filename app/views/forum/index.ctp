@@ -1,4 +1,4 @@
-<div class="index">	
+<?php /*<div class="index">	
 	<?php if(!empty($announcement)){?>
 		<div class="home_announcements">
 			<h2>Announcement</h2>
@@ -121,4 +121,4 @@ jQuery(document).ready(function(){
 		submitfilterposts();
 	});			
 });
-</script>
+</script>*/?>
