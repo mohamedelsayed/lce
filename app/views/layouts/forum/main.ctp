@@ -37,7 +37,7 @@ $base_url = BASE_URL;?>
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
-		echo $this->Html->css(array('old_front/style','old_front/jMenu.jquery','old_front/style_slider','old_front/skin', 'old_front/new_style', 'front/new_style','front/styles_1.css', 'front/style', 'forum/style'));
+		echo $this->Html->css(array('old_front/style','old_front/style_slider','old_front/skin', 'old_front/new_style', 'front/jMenu.jquery', 'front/new_style','front/styles_1.css', 'front/style', 'forum/style'));
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');

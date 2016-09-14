@@ -38,7 +38,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Group'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-		<?php echo $this->Html->link($member['Group']['title'], array('controller' => 'groups', 'action' => 'view', $member['Group']['id'])); ?>
+		<?php echo $this->Html->link($member['Group']['title'], array('controller' => 'members', 'action' => 'group', $member['Group']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

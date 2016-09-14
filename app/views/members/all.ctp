@@ -1,4 +1,10 @@
 <div class="t_p_con index">
+	<?php if(isset($group)){
+		$group_title = $group['Group']['title'];?>
+		<div class="group_title">
+			<h2><?php echo $group_title;?></h2>
+		</div>				
+	<?php }?>
 	<?php if(!empty($members)){?>
 		<?php foreach ($members as $key => $member) {
 			$member_link = $base_url.'/members/view/'.$member['Member']['id'];
@@ -22,9 +28,9 @@
 			if($member['Member']['job_title'] != ''){
 				$job_title = $member['Member']['job_title'];
 			}
-			$img_src = $base_url.DS.'img'.DS.'forum'.DS.'default_user_thumbnail.png';
+			$img_src = $base_url.'/'.'img'.'/'.'forum'.'/'.'default_user_thumbnail.png';
 			if($member['Member']['image'] != ''){
-				$img_src = $base_url.DS.'img'.DS.'upload'.DS.$member['Member']['image'];
+				$img_src = $base_url.'/'.'img'.'/'.'upload'.'/'.$member['Member']['image'];
 			}?>
 			<div class="userdata">				
 				<div class="contacts_member_image">

@@ -39,7 +39,7 @@
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
-		echo $this->Html->css(array('front/style','front/jMenu.jquery','front/style_slider','front/skin', 'front/new_style','front/styles_1.css'));
+		echo $this->Html->css(array('front/style', 'front/jMenu.jquery', 'front/style_slider','front/skin', 'front/new_style','front/styles_1.css'));
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');

@@ -13,40 +13,41 @@
         				<?php echo $this->Session->read('Setting.home_string');?>
     				</a>
     			</li>
-				<?php if($userInfoFront){?>
+				<?php $style_width = 'style="width: 200px;"';
+				if($userInfoFront){?>
 	            	<?php if($isAdmin == 1){?>
 	            		<li>
 			            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
 		            		<ul>
 		            			<li class="submenu">
-		            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
+		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
 				        		</li>
 		            			<li class="submenu">
-		            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+		            				<a <?php echo $style_width;?> title="Contacts" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+				        		</li>
+				        		<?php /*<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
 				        		</li>
 				        		<li class="submenu">
-		            				<a style="width: 200px;" title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
-				        		</li>
-				        		<li class="submenu">
-		            				<a style="width: 200px;" title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
+		            				<a <?php echo $style_width;?> title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
 				        		</li>	
 				        		<li class="submenu">
-		            				<a style="width: 200px;" title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
+		            				<a <?php echo $style_width;?> title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
 				        		</li>	
 				        		<li class="submenu">
-		            				<a style="width: 200px;" title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
+		            				<a <?php echo $style_width;?> title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
 				        		</li>	
 				        		<li class="submenu">
-		            				<a style="width: 200px;" title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
-				        		</li>		        		
+		            				<a <?php echo $style_width;?> title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
+				        		</li>		        		*/?>
 			        		</ul>
 		        		</li> 	            
 		            <?php }?>
 	            <?php }?>
 	            <?php if($userInfoFront){?>
-		            <li>
+		            <?php /*<li>
 		            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
-		            </li>
+		            </li>*/?>
 		            <li>
 		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
 		            </li>
@@ -54,6 +55,20 @@
 	            <li>
 	            	<a title="Contacts" id="Contacts" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
 	            </li>
+	            <?php if(!empty($header_groups)){?>
+		            <li>
+		            	<a title="Groups" id="Groupslink" class="fNiv">Groups</a> 	            
+	            		<ul>
+	            			<?php foreach ($header_groups as $key => $header_group) {
+	            				$group_title = $header_group['Group']['title'];
+	            				$group_id = $header_group['Group']['id'];?>
+		            			<li class="submenu">
+		            				<a <?php echo $style_width;?> title="<?php echo $group_title;?>" href="<?php echo $base_url.'/members/group/'.$group_id;?>"><?php echo $group_title;?></a>
+				        		</li>
+			        		<?php }?>
+		        		</ul>
+	        		</li>
+        		<?php }?>
 	            <?php if($userInfoFront){?>
 		            <li>
 		            	<a title="Edit Profile" id="editProfile" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
@@ -103,22 +118,22 @@
 		            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
 	            		<ul>
 	            			<li class="submenu">
-	            				<a style="width: 200px;" title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+	            				<a <?php echo $style_width;?> title="Users" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
 			        		</li>
 			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
+	            				<a <?php echo $style_width;?> title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
 			        		</li>
 			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
+	            				<a <?php echo $style_width;?> title="Posts" id="postslink" href="<?php echo $base_url.'/posts';?>">Posts</a>
 			        		</li>	
 			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
+	            				<a <?php echo $style_width;?> title="Comments" id="commentslink" href="<?php echo $base_url.'/forum_comments';?>">Comments</a>
 			        		</li>	
 			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
+	            				<a <?php echo $style_width;?> title="Announcements" id="announcementslink" href="<?php echo $base_url.'/announcements';?>">Announcements</a>
 			        		</li>	
 			        		<li class="submenu">
-	            				<a style="width: 200px;" title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
+	            				<a <?php echo $style_width;?> title="Events" id="eventslink" href="<?php echo $base_url.'/events';?>">Events</a>
 			        		</li>		        		
 		        		</ul>
 	        		</li> 	            
