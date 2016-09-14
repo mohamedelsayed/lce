@@ -808,3 +808,26 @@ select{
     margin-left: 0;
     width: 100%;
 }
+.paging span, .paging span a{
+	display: inline;
+	color: #000000;
+}
+div.paging span.current {
+    color: #c73e14;
+}
+div.paging span.disabled {
+    color: #ddd;
+    display: inline;
+}
+.paging span a:hover{
+	color: #999999;
+}
+.actions a{
+	display: inline;
+}
+.error-message{
+	width: 100%;
+}
+#flashMessage{
+	width: 100%;
+}
