@@ -41,10 +41,10 @@ class ForumController  extends AuthfrontController {
 			$this->redirect(array('controller' => 'forum', 'action' => 'index'),true);
 		}
 		if(!empty($this->data)){
-			$conditions1['password'] = $conditions2['password'] = Security::hash($this->data[$model]['password'], null, true);
-			$conditions1['approved'] = $conditions2['approved'] = 1;
-			$conditions1['username'] = $this->data[$model]['username'];	
-			$conditions2['email'] = $this->data[$model]['username'];
+			$conditions1[$model.'.password'] = $conditions2[$model.'.password'] = Security::hash($this->data[$model]['password'], null, true);
+			$conditions1[$model.'.approved'] = $conditions2[$model.'.approved'] = 1;
+			$conditions1[$model.'.username'] = $this->data[$model]['username'];	
+			$conditions2[$model.'.email'] = $this->data[$model]['username'];
 			$this->loadModel($model);
 			$record1 = $this->$model->find('first', array('conditions' => $conditions1));
 			$record2 = $this->$model->find('first', array('conditions' => $conditions2));
@@ -55,8 +55,9 @@ class ForumController  extends AuthfrontController {
 					$user = $record2;
 				}
 				//$this->Session->setFlash(__('Logged in successfuly.', true));
-				if ($this->data[$model]['remember'])
+				if ($this->data[$model]['remember']){
 		    		$this->Cookie->time = '+10 weeks';
+				}
 				$this->Cookie->write('userInfoFront', $user[$model], true, $this->Cookie->time);	
 		    	$this->redirect(array("controller" => "forum/index"),true);						   	 	   	
 			}else{
