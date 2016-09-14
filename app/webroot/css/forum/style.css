@@ -831,3 +831,6 @@ div.paging span.disabled {
 #flashMessage{
 	width: 100%;
 }
+#jMenu a{
+	cursor: pointer;
+}
