@@ -36,6 +36,11 @@
 			<?php echo $this->element('forum/image_view', array('controller'=>'members', 'image'=>array('id'=>$member['Member']['id'], 'image'=>$member['Member']['image'])));?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Group'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+		<?php echo $this->Html->link($member['Group']['title'], array('controller' => 'groups', 'action' => 'view', $member['Group']['id'])); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <?php /*<div class="actions">
