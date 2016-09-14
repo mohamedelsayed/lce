@@ -3,7 +3,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.lifecoachingegypt.com
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../authfront_controller.php';
 class BlockedMembersController extends AuthfrontController {

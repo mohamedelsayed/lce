@@ -28,11 +28,11 @@ class MembersController extends AuthfrontController {
 		$this->set('roles' , $this->get_roles());
 	}	
 	function view($id = null) {
-		//$this->Member->recursive = 0;
+		$this->Member->recursive = 0;
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Member', true));
 			$this->redirect(array('action' => 'index'));
-		}
+		}		
 		$this->set('member', $this->Member->read(null, $id));
 		$this->set('roles' , $this->get_roles());
 	}	
