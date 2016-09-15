@@ -17,7 +17,7 @@
 				if($userInfoFront){?>
 	            	<?php if($isAdmin == 1){?>
 	            		<li>
-			            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
+			            	<a title="Admin" id="adminpages" class="fNiv">Admin</a> 	            
 		            		<ul>
 		            			<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
@@ -53,11 +53,11 @@
 		            </li>*/?>
 	            <?php }?>
 	            <li>
-	            	<a title="Contacts" id="Contacts" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
+	            	<a title="Contacts" id="contactspages" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
 	            </li>
 	            <?php if(!empty($header_groups)){?>
 		            <li>
-		            	<a title="Groups" id="Groupslink" class="fNiv">Groups</a> 	            
+		            	<a title="Groups" id="grouppages" class="fNiv">Groups</a> 	            
 	            		<ul>
 	            			<?php foreach ($header_groups as $key => $header_group) {
 	            				$group_title = $header_group['Group']['title'];
@@ -71,7 +71,7 @@
         		<?php }?>
 	            <?php if($userInfoFront){?>
 		            <li>
-		            	<a title="Edit Profile" id="editProfile" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
+		            	<a title="Edit Profile" id="editprofilepages" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
 		            </li>            
 		            <li>
 		            	<a title="Logout" id="logout" href="<?php echo $base_url.'/forum/logout';?>" class="fNiv">Logout</a>           
