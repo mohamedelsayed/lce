@@ -18,6 +18,7 @@ class GroupsController extends AuthfrontController {
     		);
 		}
 		$this->set('groups', $this->paginate());
+		$this->set('selected','adminpages');
 	}
 	function view($id = null) {
 		if (!$id) {
@@ -25,6 +26,7 @@ class GroupsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('group', $this->Group->read(null, $id));
+		$this->set('selected','adminpages');
 	}
 	function add() {
 		if (!empty($this->data)) {
@@ -41,6 +43,7 @@ class GroupsController extends AuthfrontController {
 		//$artists = $this->Group->Artist->find('list');
 		//$parents = $this->Group->ParentGroup->find('list');
 		//$this->set(compact('parents'));
+		$this->set('selected','adminpages');
 	}
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
@@ -69,6 +72,7 @@ class GroupsController extends AuthfrontController {
 		//$artists = $this->Group->Artist->find('list');
 		//$parents = $this->Group->ParentGroup->find('list',array('conditions'=>array('ParentGroup.id <>'=>$id)));
 		//$this->set(compact('parents'));
+		$this->set('selected','adminpages');
 	}
 	function delete($id = null) {
 		/*$forbidden_ids = array(1,2,3);

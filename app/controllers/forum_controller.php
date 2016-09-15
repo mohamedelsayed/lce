@@ -32,6 +32,7 @@ class ForumController  extends AuthfrontController {
 		$this->set('posts', $this->paginate('Post'));
 		$categories = $this->Post->Category->find('list');
 		$this->set(compact('categories'));
+		$this->set('selected','home');
 	}
 	function login(){
 		$this->layout = 'login';

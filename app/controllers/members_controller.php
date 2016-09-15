@@ -27,6 +27,7 @@ class MembersController extends AuthfrontController {
 		}			
 		$this->set('roles' , $this->get_roles());
 		$this->set('title_for_layout', 'Contacts');
+		$this->set('selected','adminpages');
 	}	
 	function view($id = null) {
 		$this->Member->recursive = 0;
@@ -37,6 +38,7 @@ class MembersController extends AuthfrontController {
 		$this->set('member', $this->Member->read(null, $id));
 		$this->set('roles' , $this->get_roles());
 		$this->set('title_for_layout', 'Contacts');
+		$this->set('selected','contactspages');
 	}	
 	function add(){
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -64,11 +66,14 @@ class MembersController extends AuthfrontController {
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
 		$this->set('title_for_layout', 'Contacts');
+		$this->set('selected','adminpages');
 	}	
 	function edit($id = null){
+		$this->set('selected','adminpages');
 		if (!$id && empty($this->data)) {
 			if($this->Cookie->read('userInfoFront')){
 				$id = $this->Cookie->read('userInfoFront.id');
+				$this->set('selected','editprofilepages');
 			}else{
 				$this->Session->setFlash(__('Invalid Contact', true));
 				$this->redirect(array('action' => 'index'));				
@@ -114,7 +119,7 @@ class MembersController extends AuthfrontController {
 		$this->set('roles' , $this->get_roles());
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
-		$this->set('title_for_layout', 'Contacts');
+		$this->set('title_for_layout', 'Contacts');		
 	}	
 	function delete($id = null) {
 		if (!$id) {
@@ -192,10 +197,12 @@ class MembersController extends AuthfrontController {
 	}
 	function all(){
 		$this->get_members();	
+		$this->set('selected','contactspages');	
 	}
 	function group($group_id){
 		$this->get_members($group_id);
 		$this->render('all');
+		$this->set('selected','grouppages');	
 	}
 	public function get_members($group_id = 0){
 		$conditions = array();
@@ -216,6 +223,6 @@ class MembersController extends AuthfrontController {
 	    	);
 		$this->set('page',$page);
 		$this->set('members', $this->paginate('Member'));	
-		$this->set('title_for_layout', 'Contacts');		
+		$this->set('title_for_layout', 'Contacts');			
 	}
 }
