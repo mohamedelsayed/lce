@@ -831,8 +831,8 @@ div.paging span.disabled {
 #flashMessage{
 	width: 100%;
 }
-#jMenu a{
-	cursor: pointer;
+#jMenu a.hassubmenu{
+	cursor: s-resize;
 }
 h2 {
     color: #ee4640;
