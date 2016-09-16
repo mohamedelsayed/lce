@@ -17,13 +17,16 @@
 				if($userInfoFront){?>
 	            	<?php if($isAdmin == 1){?>
 	            		<li>
-			            	<a title="Admin" id="adminpages" class="fNiv">Admin</a> 	            
+			            	<a title="Admin" id="adminpages" class="fNiv hassubmenu">Admin</a> 	            
 		            		<ul>
 		            			<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
 				        		</li>
 		            			<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Contacts" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+				        		</li>
+				        		<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Settings" id="" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
 				        		</li>
 				        		<?php /*<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
@@ -57,7 +60,7 @@
 	            </li>
 	            <?php if(!empty($header_groups)){?>
 		            <li>
-		            	<a title="Groups" id="grouppages" class="fNiv">Groups</a> 	            
+		            	<a title="Groups" id="grouppages" class="fNiv hassubmenu">Groups</a> 	            
 	            		<ul>
 	            			<?php foreach ($header_groups as $key => $header_group) {
 	            				$group_title = $header_group['Group']['title'];
