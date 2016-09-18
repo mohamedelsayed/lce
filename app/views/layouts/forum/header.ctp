@@ -55,9 +55,11 @@
 		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
 		            </li>*/?>
 	            <?php }?>
-	            <li>
-	            	<a title="Contacts" id="contactspages" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
-	            </li>
+	            <?php if($userInfoFront){?>
+		            <li>
+		            	<a title="Contacts" id="contactspages" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
+		            </li>
+	            <?php }?>
 	            <?php if(!empty($header_groups)){?>
 		            <li>
 		            	<a title="Groups" id="grouppages" class="fNiv hassubmenu">Groups</a> 	            
