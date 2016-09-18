@@ -31,6 +31,14 @@
 			$img_src = $base_url.'/'.'img'.'/'.'forum'.'/'.'default_user_thumbnail.png';
 			if($member['Member']['image'] != ''){
 				$img_src = $base_url.'/'.'img'.'/'.'upload'.'/'.$member['Member']['image'];
+			}
+			$group_title = '';
+			$group_url = '#';
+			if(isset($member['Group']['title'])){
+				if($member['Group']['title'] != ''){
+					$group_title = $member['Group']['title'];
+					$group_url = $base_url.'/members/group/'.$member['Group']['id'];
+				}
 			}?>
 			<div class="userdata">				
 				<div class="contacts_member_image">
@@ -57,6 +65,11 @@
 					<?php if($job_title != ''){?>			
 						<div class="usermobile">
 							<?php echo 'Job Title: '.$job_title;?>
+						</div>
+					<?php }?>
+					<?php if($group_title != ''){?>			
+						<div class="usermobile user_group_title">
+							<?php echo 'Group: <a href="'.$group_url.'">'.$group_title.'</a>';?>
 						</div>
 					<?php }?>
 				</div>
