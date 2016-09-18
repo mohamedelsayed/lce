@@ -837,3 +837,10 @@ div.paging span.disabled {
 h2 {
     color: #ee4640;
 }
+.user_group_title a{
+	display: inline;
+	color: #000000;	
+}
+.user_group_title a:hover{
+	color: #999999;
+}
