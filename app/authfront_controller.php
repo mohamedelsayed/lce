@@ -202,9 +202,9 @@ class AuthfrontController extends AppController{
 		$allowed_links = array();		
 		$controller = $this->params['controller'];		
 		$action = $this->params['action'];
-		$allowed_links[] = array('controller' => 'members', 'action' => 'view');
-		$allowed_links[] = array('controller' => 'members', 'action' => 'all');
-		$allowed_links[] = array('controller' => 'members', 'action' => 'group');
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'view');
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'all');
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'group');
 		$allowed_link_flag = 0;
 		foreach ($allowed_links as $key => $value) {
 			if($value['controller'] == $controller && $value['action'] == $action){
