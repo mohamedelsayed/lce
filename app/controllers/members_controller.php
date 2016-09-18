@@ -205,6 +205,7 @@ class MembersController extends AuthfrontController {
 		$this->set('selected','grouppages');	
 	}
 	public function get_members($group_id = 0){
+		$this->Member->recursive = 0;
 		$conditions = array();
 		if($group_id != 0){
 			$this->loadModel('Group');
