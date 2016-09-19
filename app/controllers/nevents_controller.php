@@ -22,7 +22,7 @@ class NeventsController extends AuthController {
 		$this->set('nevent', $this->Nevent->read(null, $id));
 		$this->set('title_for_layout' , 'Events');
 		$saved_instructors = $this->get_saved_many_items($id);
-		$instructors = $this->Nevent->Instructor->find('list');
+		$instructors = $this->Nevent->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 0)));
 		$this->set(compact('instructors'));
 		$this->set(compact('saved_instructors'));		
 	}
@@ -40,7 +40,7 @@ class NeventsController extends AuthController {
 				$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
 			}
 		}
-		$instructors = $this->Nevent->Instructor->find('list');
+		$instructors = $this->Nevent->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 0)));
 		$this->set(compact('instructors'));
 		$this->set('title_for_layout' , 'Events');
 		$saved_instructors = array();
@@ -71,7 +71,7 @@ class NeventsController extends AuthController {
 		if (empty($this->data)) {
 			$this->data = $this->Nevent->read(null, $id);
 		}
-		$instructors = $this->Nevent->Instructor->find('list');
+		$instructors = $this->Nevent->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 0)));
 		$this->set(compact('instructors'));
 		$this->set('title_for_layout' , 'Events');
 		$saved_instructors = $this->get_saved_many_items($id);
@@ -83,10 +83,10 @@ class NeventsController extends AuthController {
 			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Nevent->delete($id)) {
-			$this->Session->setFlash(__('Nevent deleted', true));
+			$this->Session->setFlash(__('Event deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Nevent was not deleted', true));
+		$this->Session->setFlash(__('Event was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
 	function save_many_items_ids($event_id = 0, $items_ids, $model = 'NeventInstructor'){
@@ -136,5 +136,21 @@ class NeventsController extends AuthController {
 			}
 		}	
 		return $old_items_array;
+	}
+	function deleteImage ($id){
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Event', true));
+			$this->redirect($this->referer(array('action' => 'index')));
+		}
+		//to delete image file
+		$this->Nevent->id = $id;
+		$this->Upload->filesToDelete = array($this->Nevent->field('image'));
+		if ($this->Nevent->saveField('image', '')) {
+			$this->Upload->deleteFile();
+			$this->Session->setFlash(__('The Event image has been deleted', true));
+		} else {
+			$this->Session->setFlash(__('The Event image could not be deleted. Please, try again.', true));
+		}
+		$this->redirect($this->referer(array('action' => 'index')));	
 	}
 }
