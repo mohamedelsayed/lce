@@ -42,9 +42,12 @@ $base_url = BASE_URL;?>
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
 		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel', 'forum/jqColorPicker.min.js'));		
-		echo $this->Javascript->link('/ckeditor/ckeditor');
-		echo $scripts_for_layout;
-		?>
+		echo $this->Javascript->link('/ckeditor/ckeditor');?>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<?php if($this->params['controller'] != 'images'){?>
+			<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<?php }?>
+		<?php echo $scripts_for_layout;?>
 		<script type="text/javascript">		
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', '<?php echo $this->Session->read('Setting.google_analytics_propertyid');?>']);

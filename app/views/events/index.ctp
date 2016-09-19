@@ -1,15 +1,16 @@
 <div class="events index">
-	<?php /*<h2><?php __('Events');?></h2>*/?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('action' => 'add?type='.$type)); ?></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
+			<?php /*<th><?php echo $this->Paginator->sort('biography');?></th>
+			<th><?php echo $this->Paginator->sort('image');?></th>
+			<th><?php echo $this->Paginator->sort('mail');?></th>
+			<th><?php echo $this->Paginator->sort('linkedin');?></th>*/?>
+			<th><?php echo $this->Paginator->sort('weight');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('updated');?></th>
-			<th><?php echo $this->Paginator->sort('approved');?></th>
-			<?php /*<th><?php echo $this->Paginator->sort('date_from');?></th>
-			<th><?php echo $this->Paginator->sort('date_to');?></th>*/?>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -23,12 +24,13 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $event['Event']['id']; ?>&nbsp;</td>
 		<td><?php echo $event['Event']['title']; ?>&nbsp;</td>
+		<?php /*<td><?php echo $event['Event']['biography']; ?>&nbsp;</td>
+		<td><?php echo $event['Event']['image']; ?>&nbsp;</td>
+		<td><?php echo $event['Event']['mail']; ?>&nbsp;</td>
+		<td><?php echo $event['Event']['linkedin']; ?>&nbsp;</td>*/?>
+		<td><?php echo $event['Event']['weight']; ?>&nbsp;</td>
 		<td><?php echo $event['Event']['created']; ?>&nbsp;</td>
 		<td><?php echo $event['Event']['updated']; ?>&nbsp;</td>
-		<td><?php if($event['Event']['approved'] == 1) echo 'Yes';
-		elseif($event['Event']['approved'] == 0) echo 'No';?>&nbsp;</td>		
-		<?php /*<td><?php echo $event['Event']['date_from']; ?>&nbsp;</td>
-		<td><?php echo $event['Event']['date_to']; ?>&nbsp;</td>*/?>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $event['Event']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $event['Event']['id'])); ?>
@@ -37,7 +39,7 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p class="paginatorcounter">
+	<p>
 	<?php
 	echo $this->Paginator->counter(array(
 	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
@@ -50,4 +52,10 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
+</div>
+<div class="actions">
+	<h3><?php __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('New Event', true), array('action' => 'add')); ?></li>
+	</ul>
 </div>
