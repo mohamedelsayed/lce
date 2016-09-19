@@ -50,15 +50,15 @@ class Instructor extends AppModel {
 		),*/
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
-		/*'Artist' => array(
+	/*var $belongsTo = array(
+		'Artist' => array(
 			'className' => 'Artist',
 			'foreignKey' => 'artist_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		),*/
-	);
+		),
+	);*/
 	/*var $hasMany = array(
 		'Nevent' => array(
 			'className' => 'Nevent',

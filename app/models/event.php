@@ -5,9 +5,21 @@ class Event extends AppModel {
 	//Validation rules
 	var $validate = array(
 	    'title' => array(
-	        'rule' => 'notEmpty',
-	        'message' => 'Title cannot be left blank'
-	    )/*,
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Title cannot be left blank',
+			),
+		),'duration' => array(
+			'numeric' => array(
+				'rule' => 'numeric',
+				'message' => 'Duration must be Number',
+			),
+		),'ticket_price' => array(
+			'numeric' => array(
+				'rule' => 'numeric',
+				'message' => 'Ticket Price must be Number',
+			),
+		)/*,
 	   	'date_from' => array(
 	        'rule' => 'notEmpty',
 	        'message' => 'Date From cannot be left blank'
@@ -46,7 +58,7 @@ class Event extends AppModel {
 			'counterQuery' => ''
 		)
 	);*/
-	var $belongsTo = array(
+	/*var $belongsTo = array(
 		'Member' => array(
 			'className' => 'Member',
 			'foreignKey' => 'member_id',
@@ -54,5 +66,37 @@ class Event extends AppModel {
 			'fields' => '',
 			'order' => ''
 		)
+	);*/
+	var $hasMany = array(
+		'EventInstructor' => array(
+			'className' => 'EventInstructor',
+			'foreignKey' => 'event_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => array(),
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
 	);
+	var $hasAndBelongsToMany = array(
+		'Instructor' => array(
+			'className' => 'Instructor',
+			'joinTable' => 'events_instructors',
+			'foreignKey' => 'event_id',
+			'associationForeignKey' => 'instructor_id',
+			'unique' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		)
+	);	
 }
