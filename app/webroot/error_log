@@ -1,3 +1,0 @@
-[31-May-2016 05:58:39 Africa/Cairo] PHP Fatal error:  Call to undefined method stdClass::send() in /home2/elsayed/lce/app/controllers/frontevents_controller.php on line 362
-[23-Jun-2016 15:09:00 Africa/Cairo] PHP Fatal error:  Call to undefined function slugify() in /home2/elsayed/lce/app/controllers/frontevents_controller.php on line 185
-[23-Jun-2016 15:09:24 Africa/Cairo] PHP Fatal error:  Call to undefined function slugify() in /home2/elsayed/lce/app/controllers/frontevents_controller.php on line 185
