@@ -8,8 +8,64 @@ require_once '../authfront_controller.php';
 class CalendarController extends AuthfrontController {
 	var $name = 'Calendar';
 	var $uses = 'Event';	
-	function index($type=null){
-		//$this->Session->write('secId', 'cal');
+	function index($type = null){
+		$this->set('selected', 'calendar');
+        $year = isset($this->params['named']['year'])?$this->params['named']['year']:date("Y");
+        $month = isset($this->params['named']['month'])?$this->params['named']['month']:date("m");
+        $current_month = $month;
+        $current_year = $year;
+        $condition = '';
+        $events = $this->Event->find('all', array(
+            'conditions' => array(
+                'AND' => array(
+                    'OR' => array(
+                        array('AND' => array(
+                                'YEAR(Event.from_date) = '.$year,
+                                'MONTH(Event.from_date) = '.$month
+                            )
+                        ),     
+                        array('AND' => array(
+                                'YEAR(Event.to_date) = '.$year,
+                                'MONTH(Event.to_date) = '.$month
+                            )
+                        )                        
+                    )
+                ),
+                $condition              
+            ),
+            'order' => array('Event.from_date'=>'ASC','Event.id'=>'DESC'),
+        ));
+        $events_by_days = array();
+        if(!empty($events)){
+            foreach ($events as $key => $event) {
+                $date = $event['Event']['from_date'];
+                $to_date = $event['Event']['to_date'];
+                if(strtotime($to_date) >= strtotime($date)){
+                    $day = date('j', strtotime($date));
+                    $month = date('n', strtotime($date));
+                    $year = date('Y', strtotime($date));
+                    $to_day = date('j', strtotime($to_date));
+                    $to_month = date('n', strtotime($to_date));                    
+                    $to_year = date('Y', strtotime($to_date));     
+                    if($month == $current_month){
+                        if($to_month == $current_month){
+                            for ($i = $day; $i <= $to_day; $i++) {
+                                $events_by_days[$i][] = $event;                       
+                            }                    
+                        }else{
+                            for ($i = $day; $i <= 31; $i++) {                                
+                                $events_by_days[$i][] = $event;                       
+                            } 
+                        }                                                    
+                    }elseif($to_month == $current_month){                        
+                        for ($i = $to_day; $i >= 1; $i--) {
+                            $events_by_days[$i][] = $event;
+                        }                    
+                    }                    
+                }
+            }
+        }
+        $this->set('events_by_days' , $events_by_days);
 	}	
 	/*function events($year=null, $month=null, $day=null){
 		$this->Session->write('secId', 0);

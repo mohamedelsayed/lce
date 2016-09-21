@@ -140,6 +140,7 @@ class EventsController extends AuthfrontController {
 			}
 			if (empty($this->data)) {
 				$this->data = $this->Event->read(null, $id);
+				$this->set('type', $this->data['Event']['type']);
 			}
 			$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1)));
 			$this->set(compact('instructors'));
@@ -157,9 +158,11 @@ class EventsController extends AuthfrontController {
 				$this->Session->setFlash(__('Invalid id for Event', true));
 				$this->redirect(array('action'=>'index'));
 			}
+			$this->data = $this->Event->read(null, $id);
+			$type = $this->data['Event']['type'];
 			if ($this->Event->delete($id)) {
 				$this->Session->setFlash(__('Event deleted', true));
-				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action'=> 'index?type='.$type));
 			}
 			$this->Session->setFlash(__('Event was not deleted', true));
 			$this->redirect(array('action' => 'index'));

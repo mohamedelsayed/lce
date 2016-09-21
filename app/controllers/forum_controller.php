@@ -11,6 +11,7 @@ class ForumController  extends AuthfrontController {
 	var $uses = array('Member');
 	//var $components = array('Email', 'Upload');
 	function index(){
+		$this->redirect(array('controller' => 'calendar', 'action' => 'index'));
 		$limit = $this->pagingLimit;
 		$this->set('limit', $limit);
 		$this->loadModel('Announcement');
