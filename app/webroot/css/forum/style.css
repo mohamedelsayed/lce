@@ -5,7 +5,8 @@ a{
 .flashSession{
 	float: left;
 	width: 100%;
-	background-color: #404041;	
+	background-color: #404041;
+	margin-top: 10px;	
 }
 #flashMessage{
     clear: both;
@@ -36,7 +37,7 @@ a{
 	float: left;
 }
 .text input, .password input, textarea{
-	width:100%;
+	width:99.5%;
 	border: 1px solid #d6d6d6;
     height: 25px;
     float: left;
@@ -135,6 +136,9 @@ th a.asc:after {
 }
 th a.desc:after {
 	content: ' ⇡';
+}
+table.calendar tr td.calendar-day {
+	background: #fff !important;
 }
 table tr td {
 	background: #fff;
@@ -923,3 +927,75 @@ a.lightbox, .delete{
 	width: auto;
 	margin: auto;	
 }
+/*calendar*/
+
+table.calendar      { border-left:2px solid #cfcfcf; }
+tr.calendar-row {  }
+td.calendar-day { min-height:80px; position:relative; } * html div.calendar-day { height:80px; }
+/*td.calendar-day:hover   { background:#eceff5; }*/
+td.calendar-day-np  { background:#eee !important; min-height:80px; } * html div.calendar-day-np { height:80px; }
+td.calendar-day-head { background:#ccc;text-align:center; width:120px; padding:5px;}
+div.day-number      {  padding:5px; color:#585858; font-weight:bold; float:left; margin:-5px -5px 0 0; width:20px; text-align:center; }
+td.calendar-day, td.calendar-day-np { width:100px; padding:5px; border-bottom:2px solid #cfcfcf; border-right:2px solid #cfcfcf; }	
+.months_select{
+	float: left;	
+	width: 16%;
+}
+.years_select{
+	float: left;
+	width: 11%;
+}
+.calendar_div{
+	float: left;
+	width: 100%;
+	margin-bottom: 23px;
+}
+.calendar_select:before{
+	background: rgba(0, 0, 0, 0) url("../../img/front/select_box_4.png") no-repeat scroll right 0;
+    content: "";
+    display: block;
+    height: 38px;
+    pointer-events: none;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    width: 100%;
+    border-radius: 12px;
+}
+.calendar_select select{
+	-moz-appearance: none;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #abadb3;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;
+    margin: 0;
+    outline: medium none;
+    padding: 4px;
+    width: 100%;    
+    border-radius: 12px;
+    font-size: 18px;
+}
+.calendar_select{
+	position: relative;
+	margin-right: 23px;
+}
+.calendar_filter_div{
+	float: left;
+	width: 100%;
+	margin-top:10px;
+	margin-bottom: 32px;
+}
+td.calendar_odd_head{
+	background-color: #f58521;
+}
+td.calendar_even_head{
+	background-color: #eaa05e;
+}
+td.calendar-day{
+	width: 100px;
+	height: 131px;
+	padding: 15px 18px;;
+}
+/*end of calendar*/
