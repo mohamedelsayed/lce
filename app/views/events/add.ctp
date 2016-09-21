@@ -7,13 +7,19 @@
 		echo $this->Form->input('Event.brief', array('class'=>'ckeditor'));
 		echo $form->input('image', array('type'=>'file', 'label'=>'Flyer'));
 		echo $this->Form->input('location');
-		echo $this->Form->input('start_date');
+		echo $this->Form->input('from_date');
+		echo $this->Form->input('to_date');
 		echo $this->Form->input('duration');
 		echo $this->Form->input('time_from');
 		echo $this->Form->input('time_to');
 		echo $this->Form->input('ticket_price');
 		//echo $this->Form->input('number_of_participants');
 		include_once 'instructors.php';
+		if($type == 2){
+			echo $this->Form->input('agenda_word_file', array('type' => 'text'));
+			echo $this->Form->input('minutes_of_meeting_file', array('type' => 'text'));
+			echo $this->Form->input('p_and_l_sheet', array('type' => 'text'));
+		}
 		echo $this->Form->input('approved');
 		echo $this->Form->input('weight', array('value'=> 0));
 		//echo $this->Form->input('fully_booked');

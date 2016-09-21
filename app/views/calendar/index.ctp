@@ -1,263 +1,138 @@
-<?php echo $this->Html->css('calendarnew/calendar');?>
-<?php echo $this->Javascript->link('calendarnew/jquery.mousewheel-3.0.2.pack',false);?>
-<?php echo $this->Javascript->link('calendarnew/jquery.fancybox-1.3.1',false);?>
-<?php 
+<?php $months_options = array();
+for($m = 1;$m <= 12; $m++){
+	$month =  date("F", mktime(0, 0, 0, $m, 1, date('Y')));
+    $months_options[$m] = $month;
+}
+$years_options = array();
+for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
+    $years_options[$i] =$i;
+}
+$categories_options = array();
+$categories_options[0] = 'All';
+if(isset($categories) && !empty($categories)){
+    foreach ($categories as $key => $category) {
+        $categories_options[$category['Category']['id']] = $category['Category']['title'];
+    }
+}
 $year = isset($this->params['named']['year'])?$this->params['named']['year']:date("Y");
 $month = isset($this->params['named']['month'])?$this->params['named']['month']:date("m");
-$month_letter = isset($this->params['named']['month'])?$this->params['named']['month']:date("M");
-$day = isset($this->params['named']['day'])?$this->params['named']['day']:date("d");
-$day_letter = isset($this->params['named']['day'])?$this->params['named']['day']:date("D");
-$first_of_month = mktime(0, 0, 0, $month, 1, $year);
-$num_days = cal_days_in_month(0, $month, $year);
-$first_of_month_number = date('w', $first_of_month);
-$week_days = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat','Sun','Mon','Tue','Wed','Thu','Fri','Sat');
-$today = date("d");
-$todaymonth = date("m");
-$todaymonth_letter = date("M");
-$todayyear = date("Y");
-$today_letter = date("D");	
-//set url 
-$url = $this->params['url']['url'];
-if(isset($this->params['named']['year']))
-	$url = str_replace("/year:".$year, "", $url);
-if(isset($this->params['named']['month']))
-	$url = str_replace("/month:".$month, "", $url);
-if(isset($this->params['named']['day']))
-	$url = str_replace("/day:".$day, "", $url);				
-if($url == $this->params['controller'] || $url == $this->params['controller'].'/')
-	$url = $url.'/index';		
-?>
-<div class="events index">
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('controller' => 'events', 'action' => 'add')); ?></div>
-	<div id="calendar">
-		<div>
-			<table class="calendarnew">
-				<thead>
-					<tr>
-			            <th colspan="2" class="cell-header">
-			                <?php echo $html->link('<<', array('controller' => $url.'/month:'.($month-1).'/year:'.$year) ); ?> 
-			                <div><?php echo date('F', $first_of_month); ?></div> 
-			                <?php echo $html->link('>>', array('controller' => $url.'/month:'.($month+1).'/year:'.$year) ); ?>
-			            </th>
-			            <th colspan="3"><?php echo date('F Y', $first_of_month); ?></th>
-			            <th colspan="2" class="cell-header">
-			                <?php echo $html->link('<<', array('controller' => $url.'/year:'.($year-1).'/month:'.$month) ); ?> 
-			                <div><?php echo date('Y', $first_of_month); ?></div>
-			                <?php echo $html->link('>>', array('controller' => $url.'/year:'.($year+1).'/month:'.$month) ); ?>
-			            </th>
-			        </tr>
-		        </thead>
-	        </table>
-		</div>
-		<div class="event_grey">
-			<div class="event_today">WHAT'S ON TODAY</div>
-			<div class="event_date">
-				<div class="event_date_day"><?php echo $today;?></div>
-				<div class="event_date_month_year"><?php echo $todaymonth_letter;?></div>
-				<div class="event_date_month_year"><?php echo $todayyear;?></div>
-				<div class="event_date_day_small"><?php echo $today_letter;?></div>
-			</div>
-			<?php $events = $this->requestAction('calendar/getEvents/'.$todayyear.'/'.$todaymonth.'/'.$today);?>
-			<?php if(!empty($events)){
-				///$j = 0;?>
-				<?php /*<script type="text/javascript">
-				$(document).ready(function() {	
-					$(".various<?php echo $j;?>").fancybox({
-						'titlePosition'		: 'inside',
-						'transitionIn'		: 'none',
-						'transitionOut'		: 'none'
-					});												
-				});										
-				</script>*/?>	
-				<?php /*if(isset($events[0]['Gal'][0]['image'])) {?>								
-					<div class="event_img">
-						<a class="various<?php echo $j;?>" href="#inline<?php echo $j;?>">
-							<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
-						</a>																
-					</div>
-				<?php }?>
-				<div class="event_title">
-					<a class="various<?php echo $j;?>" href="#inline<?php echo $j;?>"><?php echo $events[0]['Event']['title'];?></a>
-				</div>
-				<div class="event_data">
-					<?php echo $events[0]['Event']['title'];?>
-				</div>
-				<?php /*<div style="display: none;">
-					<div id="inline<?php echo $j++;?>" style="width:500px;height:auto;overflow:auto;">
-						<?php if(isset($events[0]['Gal'][0]['image'])) {?>
-							<div class="fancybox_img">
-								<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
-							</div>
-						<?php }?>
-						<div class="fancybox_title_data">
-							<div class="fancybox_title">
-								<a><?php echo $events[0]['Event']['title'];?></a>
-							</div>
-							<div class="fancybox_data">
-								<?php echo $events[0]['Event']['agenda'];?>
-							</div>
-						</div>
-					</div>
-				</div>*/?>
-				<?php //array_shift($events);
-				if(!empty($events)){?>
-					<div class="other_events">
-						<?php /*<div class="other_events_title">Other Events:</div>*/?>
-						<?php foreach($events as $event){?>
-							<?php /*<script type="text/javascript">
-							$(document).ready(function() {	
-								$(".various<?php echo $j;?>").fancybox({
-									'titlePosition'		: 'inside',
-									'transitionIn'		: 'none',
-									'transitionOut'		: 'none'
-								});												
-							});										
-							</script>*/?>
-							<div class="event_title">
-								<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
-							</div>
-							<?php /*<div style="display: none;">
-								<div id="inline<?php echo $j++;?>" style="width:500px;height:auto;overflow:auto;">
-									<?php if(isset($event['Gal'][0]['image'])) {?>														
-										<div class="fancybox_img">
-											<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
-										</div>
-									<?php }?>
-									<div class="fancybox_title_data">
-										<div class="fancybox_title">
-											<a><?php echo $event['Event']['title'];?></a>
-										</div>
-										<div class="fancybox_data">
-											<?php echo $event['Event']['agenda'];?>
-										</div>
-									</div>
-								</div>
-							</div>*/?>
-						<?php }?>	
-					</div>									
-				<?php }?>									
-			<?php }else{?>
-				<div class="event_data">
-					Today has no Events									
-				</div>
-			<?php }?>
-		</div>
-		<?php for($i=1;$i<=$num_days;$i++){
-			$events = $this->requestAction('calendar/getEvents/'.$year.'/'.$month.'/'.$i);																							
-			if($i==4||$i==8||$i==13||$i==18||$i==23||$i==28){
-				$style = 'border-right-width: 0px;width:150px;';
-			}
-			elseif($i==29||$i==30||$i==31){
-				$style = 'border-bottom-width: 0px;';
-			}
-			else{
-				$style = '';
-			}
-			if($i%7==1){
-				$day_in_calendar = $first_of_month_number;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==2){
-				$day_in_calendar = $first_of_month_number+1;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==3){
-				$day_in_calendar = $first_of_month_number+2;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==4){
-				$day_in_calendar = $first_of_month_number+3;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==5){
-				$day_in_calendar = $first_of_month_number+4;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==6){
-				$day_in_calendar = $first_of_month_number+5;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			elseif($i%7==0){
-				$day_in_calendar = $first_of_month_number+6;
-				$first_of_month_letter = $week_days[$day_in_calendar];
-			}
-			?>
-			<div class="event" style="<?php echo $style;?>">
-				<div class="event_today"><?php echo $i.' '.$first_of_month_letter;?></div>
-				<?php if(!empty($events)){
-					/*$j = 0;?>
-					<script type="text/javascript">
-					$(document).ready(function() {	
-						$(".various<?php echo $i.$j;?>").fancybox({
-							'titlePosition'		: 'inside',
-							'transitionIn'		: 'none',
-							'transitionOut'		: 'none'
-						});												
-					});										
-					</script>
-					<?php if(isset($events[0]['Gal'][0]['image'])) {?>
-						<div class="event_img2">											
-							<a class="various<?php echo $i.$j;?>" href="#inline<?php echo $i.$j;?>">
-								<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
-							</a>																											
-						</div>
-					<?php }?>
-					<div class="event_title">
-						<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $events[0]['Event']['title'];?></a>
-					</div>
-					<div style="display: none;">
-						<div id="inline<?php echo $i.$j++;?>" style="width:500px;height:auto;overflow:auto;">
-							<?php if(isset($events[0]['Gal'][0]['image'])) {?>
-								<div class="fancybox_img">
-									<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$events[0]['Gal'][0]['image']?>" width="117"/>
-								</div>
-							<?php }?>
-							<div class="fancybox_title_data">
-								<div class="fancybox_title">
-									<a><?php echo $events[0]['Event']['title'];?></a>
-								</div>
-								<div class="fancybox_data">
-									<?php echo $events[0]['Event']['agenda'];?>
-								</div>
-							</div>
-						</div>
-					</div>
-					<?php array_shift($events);*/
-					if(!empty($events)){?>
-						<?php  foreach($events as $event){?>
-							<?php /*<script type="text/javascript">
-							$(document).ready(function() {	
-								$(".various<?php echo $i.$j;?>").fancybox({
-									'titlePosition'		: 'inside',
-									'transitionIn'		: 'none',
-									'transitionOut'		: 'none'
-								});												
-							});										
-							</script>*/?>
-							<div class="event_title">
-								<a href="<?php echo $base_url.'/events/view/'.$event['Event']['id'];?>"><?php echo $event['Event']['title'];?></a>
-							</div>
-							<?php /*<div style="display: none;">
-								<div id="inline<?php echo $i.$j++;?>" style="width:500px;height:auto;overflow:auto;">
-									<?php if(isset($event['Gal'][0]['image'])) {?>														
-										<div class="fancybox_img">
-											<img src="<?php echo $base_url.'/app/webroot/img/upload/thumb_'.$event['Gal'][0]['image']?>" width="117"/>
-										</div>
-									<?php }?>
-									<div class="fancybox_title_data">
-										<div class="fancybox_title">
-											<a><?php echo $event['Event']['title'];?></a>
-										</div>
-										<div class="fancybox_data">
-											<?php echo $event['Event']['agenda'];?>
-										</div>
-									</div>
-								</div>
-							</div>*/?>
-						<?php }?>										
-					<?php }?>
-				<?php }?>
-			</div>
-		<?php }?>
-	</div>
+$category = isset($this->params['named']['category'])?$this->params['named']['category']:0;
+$month_letter = date("F", mktime(0, 0, 0, $month));?>
+<div id="tab-2" class="tab-content current" style="width: 100%;">
+    <div class="" style="width: 100%;">
+        <div class="top_con">
+            <div class="top_con_2">Calendar</div>  
+            <div class="calendar_filter_div">
+                <?php echo $this->Form->input('month', array('type' => 'select', 'options' => $months_options, 'div' => array('class' => 'months_select calendar_select'), 'label' => false, 'id' => 'month_select_id', 'default' => $month));
+                echo $this->Form->input('year', array('type' => 'select', 'options' => $years_options, 'div' => array('class' => 'years_select calendar_select'), 'label' => false, 'id' => 'year_select_id', 'default' => $year));
+                //echo $this->Form->input('category', array('type' => 'select', 'options' => $categories_options, 'div' => array('class' => 'categories_select calendar_select'), 'label' => false, 'id' => 'category_select_id', 'default' => $category));?>
+                </div>
+            <?php if(isset($categories) && !empty($categories)){?>                
+                <div class="calendar_list_categories">
+                    <?php foreach ($categories as $key => $category) {?>
+                        <div class="category_div">
+                            <div class="category_color_div" style="background-color: <?php echo $category['Category']['color'];?>;"></div>                            
+                            <div class="category_title_div"><?php echo $category['Category']['title'];?></div>
+                        </div>                        
+                    <?php }?>
+                </div>
+            <?php }?>
+            <div class="calendar_div">
+                <?php echo draw_calendar($month, $year, $events_by_days);?>
+            </div>            
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#month_select_id').on('change', function(){
+        reload_page_with_new_data();      
+    });
+    $('#year_select_id').on('change', function(){
+        reload_page_with_new_data();      
+    });
+    $('#category_select_id').on('change', function(){
+        reload_page_with_new_data();      
+    });
+});    
+function reload_page_with_new_data(){
+    var base_url = '<?php echo $base_url;?>';
+    var month_val = $('#month_select_id').val();      
+    var year_val = $('#year_select_id').val(); 
+    var category_val = $('#category_select_id').val();   
+    var new_url = base_url+'/calendar/index/year:'+year_val+'/month:'+month_val+'/category:'+category_val;
+    window.location.href = new_url;
+}
+</script>
+<?php  /* draws a calendar */
+function draw_calendar($month, $year, $events_by_days){
+    /* draw table */
+    $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
+    /* table headings */
+    $headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+    $calendar.= '<tr class="calendar-row">';
+    //implode('</td><td class="calendar-day-head">',$headings).
+    $i = 1;
+    foreach ($headings as $key => $value) {
+        $class = 'calendar_odd_head';
+        if ($i++ % 2 == 0) {
+            $class = 'calendar_even_head';
+        }
+        $calendar.= '<td class="calendar-day-head '.$class.'">';
+        $calendar.= $value;
+        $calendar.= '</td>';        
+    }
+    $calendar.= '</tr>';
+    /* days and weeks vars now ... */
+    $running_day = date('w',mktime(0,0,0,$month,1,$year));
+    $days_in_month = date('t',mktime(0,0,0,$month,1,$year));
+    $days_in_this_week = 1;
+    $day_counter = 0;
+    $dates_array = array();
+    /* row for week one */
+    $calendar.= '<tr class="calendar-row">';
+    /* print "blank" days until the first of the current week */
+    for($x = 0; $x < $running_day; $x++):
+        $calendar.= '<td class="calendar-day-np"> </td>';
+        $days_in_this_week++;
+    endfor;
+    /* keep going with days.... */
+    for($list_day = 1; $list_day <= $days_in_month; $list_day++):
+        $calendar.= '<td class="calendar-day">';
+        /* add in the day number */
+        $calendar .= '<div class="day-number">'.sprintf("%02d",$list_day).'</div>';          
+        $calendar .= "<div class='event_calendar_wraper_div'>";                        
+        if(isset($events_by_days[$list_day])){
+            foreach ($events_by_days[$list_day] as $key => $event) {                
+                $color = 'color:#000000;';
+                if(isset($event['Category']['color']) && $event['Category']['color'] != ''){
+                    $color = 'color:'.$event['Category']['color'].';';
+                }
+                $calendar .= '<div onclick="open_event('.$event['Event']['id'].');" class="event_calendar_div" style="'.$color.'">'.$event['Event']['title'].'</div>';                    
+            }                
+        }
+        $calendar .= "</div>";
+        $calendar.= '</td>';
+        if($running_day == 6):
+            $calendar.= '</tr>';
+            if(($day_counter+1) != $days_in_month):
+                $calendar.= '<tr class="calendar-row">';
+            endif;
+            $running_day = -1;
+            $days_in_this_week = 0;
+        endif;
+        $days_in_this_week++; $running_day++; $day_counter++;
+    endfor;
+    /* finish the rest of the days in the week */
+    if($days_in_this_week < 8):
+        for($x = 1; $x <= (8 - $days_in_this_week); $x++):
+            $calendar.= '<td class="calendar-day-np"> </td>';
+        endfor;
+    endif;
+    /* final row */
+    $calendar.= '</tr>';
+    /* end the table */
+    $calendar.= '</table>';
+    /* all done, return result */
+    return $calendar;
+}?>
