@@ -19,6 +19,22 @@ class Event extends AppModel {
 				'rule' => 'numeric',
 				'message' => 'Ticket Price must be Number',
 			),
+		),'agenda_word_file' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),'agenda_word_file' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),'minutes_of_meeting_file' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),'p_and_l_sheet' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
 		)/*,
 	   	'date_from' => array(
 	        'rule' => 'notEmpty',
