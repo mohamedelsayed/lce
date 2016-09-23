@@ -53,7 +53,7 @@ class EventsController extends AuthfrontController {
 				);	
 		$this->set('attendEvents', $attendEvents);		
 		if (!$id) {
-			$this->Session->setFlash(__('Invalid event', true));
+			$this->Session->setFlash(__('Invalid Event', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$event = $this->Event->read(null, $id);
@@ -64,7 +64,7 @@ class EventsController extends AuthfrontController {
 		}
 		$this->set('title_for_layout' , $event['Event']['title']);
 		$saved_instructors = $this->get_saved_many_items($id);
-		$instructors = $this->Nevent->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 0)));
+		$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1)));
 		$this->set(compact('instructors'));
 		$this->set(compact('saved_instructors'));	
 	}

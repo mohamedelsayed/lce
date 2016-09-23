@@ -9,6 +9,9 @@ class CalendarController extends AuthfrontController {
 	var $name = 'Calendar';
 	var $uses = 'Event';	
 	function index($type = null){
+		$this->loadModel('Setting');
+		$settings2 = $this->Setting->read(null, 2);		
+		$this->set('settings2', $settings2['Setting']);
 		$this->set('selected', 'calendar');
         $year = isset($this->params['named']['year'])?$this->params['named']['year']:date("Y");
         $month = isset($this->params['named']['month'])?$this->params['named']['month']:date("m");
@@ -88,7 +91,7 @@ class CalendarController extends AuthfrontController {
 		);
 	}*/	
 	//Return Events
-	function getEvents($year=null, $month=null, $day=null) {
+	/*function getEvents($year=null, $month=null, $day=null) {
 		if($year==null || $month==null)
 			return null;
 		$condition = '';
@@ -104,5 +107,5 @@ class CalendarController extends AuthfrontController {
 				$condition
 			)
 		));
-	}
+	}*/
 }
