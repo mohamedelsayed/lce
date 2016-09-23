@@ -7,16 +7,8 @@ $years_options = array();
 for ($i = $minYearValue; $i <= $maxYearValue; $i++) {
     $years_options[$i] =$i;
 }
-$categories_options = array();
-$categories_options[0] = 'All';
-if(isset($categories) && !empty($categories)){
-    foreach ($categories as $key => $category) {
-        $categories_options[$category['Category']['id']] = $category['Category']['title'];
-    }
-}
 $year = isset($this->params['named']['year'])?$this->params['named']['year']:date("Y");
 $month = isset($this->params['named']['month'])?$this->params['named']['month']:date("m");
-$category = isset($this->params['named']['category'])?$this->params['named']['category']:0;
 $month_letter = date("F", mktime(0, 0, 0, $month));?>
 <div id="tab-2" class="tab-content current" style="width: 100%;">
     <div class="" style="width: 100%;">
@@ -24,19 +16,8 @@ $month_letter = date("F", mktime(0, 0, 0, $month));?>
             <div class="top_con_2">Calendar</div>  
             <div class="calendar_filter_div">
                 <?php echo $this->Form->input('month', array('type' => 'select', 'options' => $months_options, 'div' => array('class' => 'months_select calendar_select'), 'label' => false, 'id' => 'month_select_id', 'default' => $month));
-                echo $this->Form->input('year', array('type' => 'select', 'options' => $years_options, 'div' => array('class' => 'years_select calendar_select'), 'label' => false, 'id' => 'year_select_id', 'default' => $year));
-                //echo $this->Form->input('category', array('type' => 'select', 'options' => $categories_options, 'div' => array('class' => 'categories_select calendar_select'), 'label' => false, 'id' => 'category_select_id', 'default' => $category));?>
-                </div>
-            <?php if(isset($categories) && !empty($categories)){?>                
-                <div class="calendar_list_categories">
-                    <?php foreach ($categories as $key => $category) {?>
-                        <div class="category_div">
-                            <div class="category_color_div" style="background-color: <?php echo $category['Category']['color'];?>;"></div>                            
-                            <div class="category_title_div"><?php echo $category['Category']['title'];?></div>
-                        </div>                        
-                    <?php }?>
-                </div>
-            <?php }?>
+                echo $this->Form->input('year', array('type' => 'select', 'options' => $years_options, 'div' => array('class' => 'years_select calendar_select'), 'label' => false, 'id' => 'year_select_id', 'default' => $year));?>
+            </div>  
             <div class="calendar_div">
                 <?php echo draw_calendar($month, $year, $events_by_days);?>
             </div>            
@@ -44,23 +25,19 @@ $month_letter = date("F", mktime(0, 0, 0, $month));?>
     </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('#month_select_id').on('change', function(){
+jQuery(document).ready(function(){
+    jQuery('#month_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
-    $('#year_select_id').on('change', function(){
-        reload_page_with_new_data();      
-    });
-    $('#category_select_id').on('change', function(){
+    jQuery('#year_select_id').on('change', function(){
         reload_page_with_new_data();      
     });
 });    
 function reload_page_with_new_data(){
     var base_url = '<?php echo $base_url;?>';
-    var month_val = $('#month_select_id').val();      
-    var year_val = $('#year_select_id').val(); 
-    var category_val = $('#category_select_id').val();   
-    var new_url = base_url+'/calendar/index/year:'+year_val+'/month:'+month_val+'/category:'+category_val;
+    var month_val = jQuery('#month_select_id').val();      
+    var year_val = jQuery('#year_select_id').val(); 
+    var new_url = base_url+'/calendar/index/year:'+year_val+'/month:'+month_val;
     window.location.href = new_url;
 }
 </script>
