@@ -20,14 +20,18 @@
 			<?php echo $event['Event']['title']; ?>
 			&nbsp;
 		</dd>		
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Date'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brief'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $event['Event']['date']; ?>
+			<?php echo $event['Event']['brief']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Timing'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Image'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $event['Event']['timing']; ?>
+			<?php $image = '';
+			if(isset($event['Event']['image'])){
+				$image = $event['Event']['image'];
+			}
+			echo $this->element('forum/image_view', array('image' => array('id' => $event['Event']['id'], 'image' => $image), 'size' => 'master'));?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Location'); ?></dt>
@@ -35,44 +39,77 @@
 			<?php echo $event['Event']['location']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Agenda'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('From Date'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $event['Event']['agenda']; ?>
+			<?php echo $event['Event']['from_date']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Member'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('To Date'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($event['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $event['Member']['id']));?>
+			<?php echo $event['Event']['to_date']; ?>
 			&nbsp;
 		</dd>
-		<?php /*<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Approved'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('From Time'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php if($event['Event']['approved'] == 1) echo 'Yes';
-			elseif($event['Event']['approved'] == 0) echo 'No';?>
-			&nbsp;
-		</dd>?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $event['Event']['created']; ?>
+			<?php echo $event['Event']['time_from']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Updated'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('To Time'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $event['Event']['updated']; ?>
+			<?php echo $event['Event']['time_to'];?>
 			&nbsp;
-		</dd>*/?>
-		<dt class="willyoucome">
-		Will you come?
-	</dt>
-	<dd>
-		<?php if($attendEventFlag == -1){?>
-			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/1';?>"><?php echo $willyoucome_options[1];?></a> | 
-			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/2';?>"><?php echo $willyoucome_options[2];?></a> | 
-			<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/0';?>"><?php echo $willyoucome_options[0];?></a>	
-		<?php }else{
-			echo $willyoucome_options[$attendEventFlag];			
-		}?>
-	</dd>
+		</dd>
+		<?php if($event['Event']['ticket_price'] > 0){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ticket Price'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $event['Event']['ticket_price']; ?>
+				&nbsp;
+			</dd>
+		<?php }?>
+		<?php if(!empty($saved_instructors)){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Instructors'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<ul class="instructors">
+					<?php foreach ($instructors as $key => $value) {
+						if(in_array($key, $saved_instructors)){?>
+							<li class="">
+								<h5><?php echo $value;?></h5>
+							</li>
+						<?php }?>
+					<?php }?>
+				</ul>
+			</dd>		
+		<?php }?>
+		<?php if($event['Event']['type'] == 2){?>
+			<?php if(trim($event['Event']['agenda_word_file']) != ''){?>
+				<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Agenda Word File'); ?></dt>
+				<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+					<?php echo $this->element('forum/embed_google_file_iframe', array('file' => $event['Event']['agenda_word_file']));?>
+				</dd>
+			<?php }?>
+			<?php if(trim($event['Event']['minutes_of_meeting_file']) != ''){?>
+				<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Minutes Of Meeting File'); ?></dt>
+				<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+					<?php echo $this->element('forum/embed_google_file_iframe', array('file' => $event['Event']['minutes_of_meeting_file']));?>
+				</dd>
+			<?php }?>
+			<?php if(trim($event['Event']['p_and_l_sheet']) != ''){?>
+				<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('P And L Sheet'); ?></dt>
+				<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+					<?php echo $this->element('forum/embed_google_file_iframe', array('file' => $event['Event']['p_and_l_sheet']));?>
+				</dd>
+			<?php }?>
+		<?php }?>
+		<dt class="willyoucome">Will you come?</dt>
+		<dd>
+			<?php if($attendEventFlag == -1){?>
+				<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/1';?>"><?php echo $willyoucome_options[1];?></a> | 
+				<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/2';?>"><?php echo $willyoucome_options[2];?></a> | 
+				<a href="<?php echo $base_url.'/events/willcome/'.$event['Event']['id'].'/0';?>"><?php echo $willyoucome_options[0];?></a>	
+			<?php }else{
+				echo $willyoucome_options[$attendEventFlag];			
+			}?>
+		</dd>
 	</dl>
 	<?php 
 	$attendEvents1 = '';

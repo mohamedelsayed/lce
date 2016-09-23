@@ -19,7 +19,7 @@ $month_letter = date("F", mktime(0, 0, 0, $month));?>
                 echo $this->Form->input('year', array('type' => 'select', 'options' => $years_options, 'div' => array('class' => 'years_select calendar_select'), 'label' => false, 'id' => 'year_select_id', 'default' => $year));?>
             </div>  
             <div class="calendar_div">
-                <?php echo draw_calendar($month, $year, $events_by_days);?>
+                <?php echo draw_calendar($month, $year, $events_by_days, $settings2);?>
             </div>            
         </div>
     </div>
@@ -42,7 +42,7 @@ function reload_page_with_new_data(){
 }
 </script>
 <?php  /* draws a calendar */
-function draw_calendar($month, $year, $events_by_days){
+function draw_calendar($month, $year, $events_by_days, $settings2){
     /* draw table */
     $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
     /* table headings */
@@ -82,9 +82,11 @@ function draw_calendar($month, $year, $events_by_days){
         if(isset($events_by_days[$list_day])){
             foreach ($events_by_days[$list_day] as $key => $event) {                
                 $color = 'color:#000000;';
-                if(isset($event['Category']['color']) && $event['Category']['color'] != ''){
-                    $color = 'color:'.$event['Category']['color'].';';
-                }
+				$index = 'color';
+				$index .= $event['Event']['type']+1;
+				if(isset($settings2[$index])){
+					$color = 'color:'.$settings2[$index].';';
+				}
                 $calendar .= '<div onclick="open_event('.$event['Event']['id'].');" class="event_calendar_div" style="'.$color.'">'.$event['Event']['title'].'</div>';                    
             }                
         }

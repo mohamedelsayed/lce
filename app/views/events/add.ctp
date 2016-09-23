@@ -9,7 +9,7 @@
 		echo $this->Form->input('location');
 		echo $this->Form->input('from_date');
 		echo $this->Form->input('to_date');
-		echo $this->Form->input('duration');
+		//echo $this->Form->input('duration');
 		echo $this->Form->input('time_from');
 		echo $this->Form->input('time_to');
 		echo $this->Form->input('ticket_price');
