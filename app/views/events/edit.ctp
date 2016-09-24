@@ -26,6 +26,7 @@
 			echo $this->Form->input('agenda_word_file', array('type' => 'text'));
 			echo $this->Form->input('minutes_of_meeting_file', array('type' => 'text'));
 			echo $this->Form->input('p_and_l_sheet', array('type' => 'text'));
+			include_once 'images.php';
 		}
 		echo $this->Form->input('approved');
 		echo $this->Form->input('weight');

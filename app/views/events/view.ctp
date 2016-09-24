@@ -226,10 +226,10 @@ jQuery(document).ready(function(){
 });
 function hideamazingsliderdiv () {
     jQuery('a').each(function(){ 
-        var hrefcode = 'http://amazingslider.com';
+    	var hrefcode = 'http://amazingslider.com';
         var hrefdata = this.href;
         if(this.href.indexOf(hrefcode) !== -1){
-            $(this).parent('div').hide();            
+            jQuery(this).parent('div').hide();            
         }
     });
 }
