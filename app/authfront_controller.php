@@ -53,14 +53,20 @@ class AuthfrontController extends AppController{
 		$this->set("minYearValue",$settings['Setting']['minimum_year']);
 		$this->set("maxYearValue",$settings['Setting']['maximum_year']);
 		$this->set('settings', $settings['Setting']);
-		$this->set('userInfoFront', $this->Cookie->read('userInfoFront'));
+		$userInfoFront = $this->Cookie->read('userInfoFront');
+		$this->set('userInfoFront', $userInfoFront);
 		$this->set('agreements_items_types', $this->agreements_items_types);
 		$this->set('inactiveagreedisagreebutton', $this->inactiveagreedisagreebutton);
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$isAdmin = 1;
 		}
-		$this->set('isAdmin', $isAdmin);	
+		$this->set('isAdmin', $isAdmin);			
+		if(!empty($userInfoFront)){
+			$GLOBALS['is_loggin'] = 1;
+		}else{
+			$GLOBALS['is_loggin'] = 0;			
+		}
 	}
 	function beforeRender(){
 		$this->setParentCat();
@@ -70,7 +76,7 @@ class AuthfrontController extends AppController{
 		}
 		$this->set('base_url', BASE_URL);
 		$this->setHeaderGroups();
-		$this->set('forum_events_types',$this->forum_events_types);
+		$this->set('forum_events_types',$this->forum_events_types);		
 	}
 	function isSuperAdmin(){
 		$flag = 0;
@@ -201,12 +207,9 @@ class AuthfrontController extends AppController{
 		}
 	}
 	public function check_allowed_controllers_actions(){
-		$allowed_links = array();		
+		$allowed_links = $this->get_allowed_links();		
 		$controller = $this->params['controller'];		
-		$action = $this->params['action'];
-		//$allowed_links[] = array('controller' => 'members', 'action' => 'view');
-		//$allowed_links[] = array('controller' => 'members', 'action' => 'all');
-		//$allowed_links[] = array('controller' => 'members', 'action' => 'group');
+		$action = $this->params['action'];		
 		$allowed_link_flag = 0;
 		foreach ($allowed_links as $key => $value) {
 			if($value['controller'] == $controller && $value['action'] == $action){
@@ -227,5 +230,16 @@ class AuthfrontController extends AppController{
 			)	  	 	
 		);
 		$this->set('header_groups' , $header_groups);	
+	}
+	public function get_allowed_links(){
+		$allowed_links = array();	
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'view');
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'all');
+		//$allowed_links[] = array('controller' => 'members', 'action' => 'group');
+		$allowed_links[] = array('controller' => 'calendar', 'action' => 'index');
+		$allowed_links[] = array('controller' => 'forum', 'action' => 'index');
+		$allowed_links[] = array('controller' => 'events', 'action' => 'view');
+		$allowed_links[] = array('controller' => 'events', 'action' => 'willcome');		
+		return $allowed_links;
 	}
 }
