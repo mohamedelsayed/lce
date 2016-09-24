@@ -692,5 +692,4 @@ class LangHelper extends FormHelper {
         return $this->output($out);
     }
 
-}
-?> 
+} 
