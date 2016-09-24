@@ -14,12 +14,12 @@ class Event extends AppModel {
 				'rule' => array('notempty'),
 				'message' => 'Title cannot be left blank',
 			),
-		),'duration' => array(
+		)/*,'duration' => array(
 			'numeric' => array(
 				'rule' => 'numeric',
 				'message' => 'Duration must be Number',
 			),
-		),'ticket_price' => array(
+		)*/,'ticket_price' => array(
 			'numeric' => array(
 				'rule' => 'numeric',
 				'message' => 'Ticket Price must be Number',
