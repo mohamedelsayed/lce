@@ -14,7 +14,7 @@
     				</a>
     			</li>
 				<?php $style_width = 'style="width: 200px;"';
-				if($userInfoFront){?>
+				if($GLOBALS['is_loggin']){?>
 	            	<?php if($isAdmin == 1){?>
 	            		<li>
 			            	<a title="Admin" id="adminpages" class="fNiv hassubmenu">Admin</a> 	            
@@ -50,7 +50,7 @@
 		        		</li> 	            
 		            <?php }?>
 	            <?php }?>
-	            <?php if($userInfoFront){?>
+	            <?php if($GLOBALS['is_loggin']){?>
 		            <?php /*<li>
 		            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
 		            </li>*/?>
@@ -58,26 +58,28 @@
 		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
 		            </li>*/?>
 	            <?php }?>
-	            <?php if($userInfoFront){?>
+	            <?php if($GLOBALS['is_loggin']){?>
 		            <li>
 		            	<a title="Contacts" id="contactspages" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
 		            </li>
 	            <?php }?>
-	            <?php if(!empty($header_groups)){?>
-		            <li>
-		            	<a title="Groups" id="grouppages" class="fNiv hassubmenu">Groups</a> 	            
-	            		<ul>
-	            			<?php foreach ($header_groups as $key => $header_group) {
-	            				$group_title = $header_group['Group']['title'];
-	            				$group_id = $header_group['Group']['id'];?>
-		            			<li class="submenu">
-		            				<a <?php echo $style_width;?> title="<?php echo $group_title;?>" href="<?php echo $base_url.'/members/group/'.$group_id;?>"><?php echo $group_title;?></a>
-				        		</li>
-			        		<?php }?>
-		        		</ul>
-	        		</li>
+	            <?php if($GLOBALS['is_loggin']){?>
+		            <?php if(!empty($header_groups)){?>
+			            <li>
+			            	<a title="Groups" id="grouppages" class="fNiv hassubmenu">Groups</a> 	            
+		            		<ul>
+		            			<?php foreach ($header_groups as $key => $header_group) {
+		            				$group_title = $header_group['Group']['title'];
+		            				$group_id = $header_group['Group']['id'];?>
+			            			<li class="submenu">
+			            				<a <?php echo $style_width;?> title="<?php echo $group_title;?>" href="<?php echo $base_url.'/members/group/'.$group_id;?>"><?php echo $group_title;?></a>
+					        		</li>
+				        		<?php }?>
+			        		</ul>
+		        		</li>
+	        		<?php }?>
         		<?php }?>
-	            <?php if($userInfoFront){?>
+	            <?php if($GLOBALS['is_loggin']){?>
 		            <li>
 		            	<a title="Edit Profile" id="editprofilepages" href="<?php echo $base_url.'/members/edit';?>" class="fNiv">Edit Profile</a>           
 		            </li>            
@@ -120,7 +122,7 @@
 			<li>
 				<a href="<?php echo $base_url.'/forum';?>" class="fNiv" id="home" ><?php echo $this->Session->read('Setting.home_string');?></a>           
             </li>
-            <?php if($userInfoFront){?>
+            <?php if($GLOBALS['is_loggin']){?>
             	<?php if($isAdmin == 1){?>
             		<li>
 		            	<a title="Admin" id="adminlink" class="fNiv">Admin</a> 	            
@@ -170,3 +172,4 @@
 		min-width: 310px;		
 	}
 </style>
+<?php include_once 'popup.php'; ?>

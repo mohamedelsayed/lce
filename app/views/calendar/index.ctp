@@ -80,7 +80,11 @@ function draw_calendar($month, $year, $events_by_days, $settings2){
         $calendar .= '<div class="day-number">'.sprintf("%02d",$list_day).'</div>';          
         $calendar .= "<div class='event_calendar_wraper_div'>";                        
         if(isset($events_by_days[$list_day])){
-            foreach ($events_by_days[$list_day] as $key => $event) {                
+            foreach ($events_by_days[$list_day] as $key => $event) {           	
+            	if($event['Event']['type'] == 0 || $GLOBALS['is_loggin']){
+				}else{
+					continue;
+				}
                 $color = 'color:#000000;';
 				$index = 'color';
 				$index .= $event['Event']['type']+1;

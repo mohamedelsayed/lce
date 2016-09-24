@@ -2,7 +2,7 @@
 	<?php $member_id = 0;
 	if(isset($userInfoFront['id'])){
 		$member_id = $userInfoFront['id'];
-	}
+	}	
 	if(($event['Event']['member_id'] == $member_id) || $isAdmin == 1){?>
 		<div class="cancel_button">
 			<?php echo $this->Html->link(__('Cancel Event', true), array('action' => 'delete', $event['Event']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $event['Event']['id'])); ?>
@@ -69,15 +69,26 @@
 		<?php if(!empty($saved_instructors)){?>
 			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Instructors'); ?></dt>
 			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-				<ul class="instructors">
-					<?php foreach ($instructors as $key => $value) {
-						if(in_array($key, $saved_instructors)){?>
-							<li class="">
-								<h5><?php echo $value;?></h5>
-							</li>
-						<?php }?>
-					<?php }?>
-				</ul>
+				<div class="instructors">
+					<?php $instructors_title = '';
+					if(!empty($instructors)){
+						$i = 0;
+						foreach ($instructors as $key => $value) {
+							if(in_array($key, $saved_instructors)){
+								$icon = '';					
+								if($i == 0){
+									$icon = '<i class="icon_name"></i>';
+								}else{
+									$icon = '<i class="icon_name no_icon"></i>';
+								}
+								$i++;
+								$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$value.' <a class="instructor_bio_link" onclick="open_instructor('.$key.');">bio</a></div> ';							
+							}
+						}
+					}
+					$instructors_title = trim(trim($instructors_title), ',');
+					echo $instructors_title;?>				
+				</div>
 			</dd>		
 		<?php }?>
 		<?php if($event['Event']['type'] == 2){?>
@@ -115,16 +126,41 @@
 	$attendEvents1 = '';
 	$attendEvents2 = '';
 	$attendEvents0 = '';
+	$attendEvents1_count = 0;
+	$attendEvents2_count = 0;
+	$attendEvents0_count = 0;
+	$i = 1;
+	$guest = 'Guest';
 	if(!empty($attendEvents)){
-		foreach ($attendEvents as $key => $value) {
+		foreach ($attendEvents as $key => $value) {			
+			$member_id = $value['AttendEvent']['member_id'];
+			$show_name = 0;
+			if($member_id > 0){
+				$show_name = 1;
+			}
 			if($value['AttendEvent']['attend_flag'] == 1){
-				$attendEvents1 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				$attendEvents1_count++;
+				if($show_name == 1){				
+					$attendEvents1 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				}else{
+					$attendEvents1 .= $guest.$i++.', ';					
+				}
 			}
 			if($value['AttendEvent']['attend_flag'] == 2){
-				$attendEvents2 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				$attendEvents2_count++;
+				if($show_name == 1){
+					$attendEvents2 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				}else{
+					$attendEvents2 .= $guest.$i++.', ';					
+				}
 			}
 			if($value['AttendEvent']['attend_flag'] == 0){
-				$attendEvents0 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				$attendEvents0_count++;
+				if($show_name == 1){
+					$attendEvents0 .= $this->Html->link($value['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $value['Member']['id'])).', ';				
+				}else{
+					$attendEvents0 .= $guest.$i++.', ';					
+				}
 			}			
 		}
 	}
@@ -139,9 +175,9 @@
 		<h3>Who is coming:</h3>
 		<table>
 			<tr>
-				<td><?php echo $willyoucome_options[1];?></td>
-				<td><?php echo $willyoucome_options[2];?></td>
-				<td><?php echo $willyoucome_options[0];?></td>
+				<td><?php echo $willyoucome_options[1].' ('.$attendEvents1_count.')';?></td>
+				<td><?php echo $willyoucome_options[2].' ('.$attendEvents2_count.')';?></td>
+				<td><?php echo $willyoucome_options[0].' ('.$attendEvents0_count.')';?></td>
 			</tr>
 			<tr>
 				<td>
