@@ -21,3 +21,5 @@ ADD `p_and_l_sheet` LONGTEXT NULL;
 ALTER TABLE `events` CHANGE `start_date` `from_date` DATE NOT NULL;
 ALTER TABLE `events` ADD `to_date` DATE NOT NULL AFTER `from_date` ;
 
+ALTER TABLE `gals` ADD `url` TEXT NULL ,
+ADD `event_id` INT NOT NULL DEFAULT '0';
