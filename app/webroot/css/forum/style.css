@@ -58,7 +58,7 @@ textarea{
 	width:95%;
 	text-align: right;
 }
-input[type="submit"]{
+input[type="submit"], button{
 	background: linear-gradient(#ee4640, #ee4640) repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #ffffff;
     float: right;
@@ -1009,3 +1009,27 @@ td.calendar-day{
 	border: #666 solid 1px;
 }
 /*end of calendar*/
+.data_gal_url_input_form input{
+	width: 90%;
+}
+.remove_field{
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+.remove_field img, .data_gal_url_image_view img.remove_button_image{
+	width: 32px;
+}
+.data_gal_url_image_view{
+	float: left;
+	display: block;
+	width: 20%;
+}
+.data_gal_url_image_view a{
+	position: absolute;
+}
+.data_gal_url_input_form{
+	float: left;
+    margin-bottom: 10px;
+    width: 100%;
+}
