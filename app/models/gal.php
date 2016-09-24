@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Author "Mohamed Elsayed"  
+ * @author Author Email "me@mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
+ */
 class Gal extends AppModel {
 	var $name = 'Gal';
 	var $displayField = 'caption';
@@ -15,7 +20,6 @@ class Gal extends AppModel {
 		),
 	);*/
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 	var $belongsTo = array(
 		'Node' => array(
 			'className' => 'Node',
@@ -33,4 +37,3 @@ class Gal extends AppModel {
 		)
 	);
 }
-?>

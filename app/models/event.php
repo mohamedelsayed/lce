@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Author "Mohamed Elsayed"  
+ * @author Author Email "me@mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
+ */
 class Event extends AppModel {
 	var $name = 'Event';
 	var $displayField = 'title';
@@ -96,7 +101,20 @@ class Event extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
+		'Gal' => array(
+			'className' => 'Gal',
+			'foreignKey' => 'event_id',
+			'dependent' => true,
+			'conditions' => array('Gal.url <>' => ''),
+			'fields' => '',
+			'order' => array('Gal.position' => 'ASC', 'Gal.id' => 'DESC'),
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 	var $hasAndBelongsToMany = array(
 		'Instructor' => array(
