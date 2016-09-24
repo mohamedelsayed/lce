@@ -17,7 +17,7 @@ class ForumCommentsController extends AuthfrontController{
 			$this->set('comments', $this->paginate());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));			
 		}	
 	}
 	function view($id = null) {
@@ -29,7 +29,7 @@ class ForumCommentsController extends AuthfrontController{
 			$this->set('comment', $this->ForumComment->read(null, $id));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));			
 		}
 	}
 	function delete($id = null) {
@@ -46,7 +46,7 @@ class ForumCommentsController extends AuthfrontController{
 			$this->redirect(array('action' => 'index'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));			
 		}
 	}
 	function approve($id = null, $approved){
@@ -61,7 +61,7 @@ class ForumCommentsController extends AuthfrontController{
 			$this->redirect(array('action' => 'index'));		
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));			
 		}
 	}
 }

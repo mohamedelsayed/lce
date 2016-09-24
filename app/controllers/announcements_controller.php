@@ -20,7 +20,7 @@ class AnnouncementsController extends AuthfrontController {
 			$this->set('announcements', $this->paginate());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function view($id = null) {
@@ -37,7 +37,7 @@ class AnnouncementsController extends AuthfrontController {
 		$this->set('announcement', $announcement);
 		if(!($announcement['Announcement']['approved'] == 1 || $isAdmin == 1)){
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function add() {
@@ -62,7 +62,7 @@ class AnnouncementsController extends AuthfrontController {
 			}
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function edit($id = null) {
@@ -88,7 +88,7 @@ class AnnouncementsController extends AuthfrontController {
 			$this->data = $this->Announcement->read(null, $id);
 			if(!($this->isSuperAdmin() || $this->isAdmin())){
 				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-				$this->redirect(array('controller' => 'forum', 'action' => 'index'));							
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));							
 			}
 		}
 	}
@@ -107,7 +107,7 @@ class AnnouncementsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function all(){

@@ -21,7 +21,7 @@ class CategoriesController extends AuthfrontController {
 			$this->set('categories', $this->paginate());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function view($id = null) {
@@ -33,7 +33,7 @@ class CategoriesController extends AuthfrontController {
 			$this->set('category', $this->Category->read(null, $id));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function add() {
@@ -57,7 +57,7 @@ class CategoriesController extends AuthfrontController {
 			$this->set(compact('parents'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function edit($id = null) {
@@ -89,7 +89,7 @@ class CategoriesController extends AuthfrontController {
 			$this->set(compact('parents'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function delete($id = null) {
@@ -111,7 +111,7 @@ class CategoriesController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	/*function getArtistCategoryegories($artistId = 0, $modelName='Category', $field = null, $empty = ''){

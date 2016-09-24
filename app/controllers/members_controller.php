@@ -23,7 +23,7 @@ class MembersController extends AuthfrontController {
 			$this->set('members', $this->paginate('Member'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));			
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));			
 		}			
 		$this->set('roles' , $this->get_roles());
 		$this->set('title_for_layout', 'Contacts');
@@ -61,7 +61,7 @@ class MembersController extends AuthfrontController {
 			$this->set('roles' , $this->get_roles());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
@@ -107,12 +107,12 @@ class MembersController extends AuthfrontController {
 			}elseif($this->isAdmin()){
 				if($member['Member']['role'] == 1 && $this->Cookie->read('userInfoFront.id') != $id || $member['Member']['role'] == 0){
 					$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-					$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+					$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 				}				
 			}else{
 				if($this->Cookie->read('userInfoFront.id') != $id){
 					$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-					$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+					$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 				}				
 			}	
 		}
@@ -135,12 +135,12 @@ class MembersController extends AuthfrontController {
 		}elseif($this->isAdmin()){
 			if($member['Member']['role'] == 1 && $this->Cookie->read('userInfoFront.id') != $id || $member['Member']['role'] == 0){
 				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-				$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 			}				
 		}else{
 			if($this->Cookie->read('userInfoFront.id') != $id){
 				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-				$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 			}				
 		}	
 		//set the component var filesToDelete with an array of files should be deleted.
@@ -167,12 +167,12 @@ class MembersController extends AuthfrontController {
 		}elseif($this->isAdmin()){
 			if($member['Member']['role'] == 1 && $this->Cookie->read('userInfoFront.id') != $id || $member['Member']['role'] == 0){
 				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-				$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 			}				
 		}else{
 			if($this->Cookie->read('userInfoFront.id') != $id){
 				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-				$this->redirect(array('controller' => 'forum', 'action' => 'index'));						
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));						
 			}				
 		}	
 		$this->Upload->filesToDelete = array($this->Member->field('image'));

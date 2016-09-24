@@ -25,7 +25,7 @@ class EventsController extends AuthfrontController {
 			$this->set('title_for_layout' , 'Events');
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function view($id = null) {
@@ -60,13 +60,18 @@ class EventsController extends AuthfrontController {
 		$this->set('event', $event);
 		if(!($event['Event']['approved'] == 1 || $isAdmin == 1)){
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 		$this->set('title_for_layout' , $event['Event']['title']);
 		$saved_instructors = $this->get_saved_many_items($id);
-		$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1)));
+		$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1, 'Instructor.approved' => 1)));
 		$this->set(compact('instructors'));
 		$this->set(compact('saved_instructors'));	
+		if($event['Event']['type'] == 0 || $GLOBALS['is_loggin']){
+		}else{
+			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
+		}
 	}
 	function add() {
 		$type = 0;
@@ -106,7 +111,7 @@ class EventsController extends AuthfrontController {
 			$this->set(compact('saved_instructors'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}	
 	}
 	function edit($id = null) {
@@ -149,7 +154,7 @@ class EventsController extends AuthfrontController {
 			$this->set(compact('saved_instructors'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}	
 	}
 	function delete($id = null) {
@@ -168,20 +173,23 @@ class EventsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}	
 	function willcome($id, $flag = 0){
 		$member_id = $this->Cookie->read('userInfoFront.id');
+		if(!is_numeric($member_id)){
+			$member_id = 0;
+		}
 		$this->data['AttendEvent']['event_id'] = $id;
 		$this->data['AttendEvent']['member_id'] = $member_id;
 		$this->data['AttendEvent']['attend_flag'] = $flag;
 		$attendEvent = $this->AttendEvent->find(
-					'first', array(
-						'conditions' => array('AttendEvent.event_id' => $id,'AttendEvent.member_id' => $member_id),
-					)	  	 	
-				);	
-		if(empty($attendEvent)){
+			'first', array(
+				'conditions' => array('AttendEvent.event_id' => $id,'AttendEvent.member_id' => $member_id),
+			)	  	 	
+		);	
+		if(empty($attendEvent) || $member_id == 0){
 			$this->AttendEvent->create();
 			if ($this->AttendEvent->save($this->data)) {
 				$this->redirect(array('controller' => 'events', 'action' => 'view', $id));
@@ -272,7 +280,7 @@ class EventsController extends AuthfrontController {
 			$this->redirect($this->referer(array('action' => 'index')));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}		
 	}	
 }

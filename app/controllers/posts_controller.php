@@ -20,7 +20,7 @@ class PostsController extends AuthfrontController {
 			$this->set('posts', $this->paginate());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function view($id = null) {
@@ -38,7 +38,7 @@ class PostsController extends AuthfrontController {
 		$this->set('post', $post);
 		if(!($post['Post']['approved'] == 1 || $isAdmin == 1)){
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 		$this->Post->ForumComment->recursive = -1;		
     	$this->paginate = array(
@@ -109,7 +109,7 @@ class PostsController extends AuthfrontController {
 			if(!($this->isSuperAdmin() || $this->isAdmin())){
 				if($this->data['Post']['member_id'] != $this->Cookie->read('userInfoFront.id')){
 					$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-					$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+					$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 				}					
 			}
 		}
@@ -133,7 +133,7 @@ class PostsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}
 	}
 	function all(){
