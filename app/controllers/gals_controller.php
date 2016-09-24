@@ -123,4 +123,3 @@ class GalsController extends AuthController {
 		$this->redirect($this->referer(array('controller'=>'admin/index')));
 	}
 }
-?>

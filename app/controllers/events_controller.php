@@ -7,7 +7,7 @@
 require_once '../authfront_controller.php';
 class EventsController extends AuthfrontController {
 	var $name = 'Events';
-	var $uses = array('Event', 'AttendEvent');
+	var $uses = array('Event', 'AttendEvent', 'Gal');
 	function index() {
 		$type = 0;
 		if(isset($_GET['type'])){
@@ -88,7 +88,7 @@ class EventsController extends AuthfrontController {
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			if (!empty($this->data)) {
 				//upload image
-				$this->data['Event']['image']=$this->Upload->uploadImage($this->data['Event']['image']);
+				$this->data['Event']['image'] = $this->Upload->uploadImage($this->data['Event']['image']);
 				$this->Event->create();
 				if ($this->Event->saveAll($this->data, array('validate'=>'first'))) {
 					$this->send_email_notification($this->Event->id, 1, $this->data['Event']['title'], 0);
@@ -134,7 +134,7 @@ class EventsController extends AuthfrontController {
 					$this->data['Event']['image']=$this->Upload->uploadImage($this->data['Event']['image']);
 				}else
 					unset($this->data['Event']['image']);
-				if ($this->Event->save($this->data)) {
+				if ($this->Event->saveAll($this->data)) {
 					$event_id = $this->data['Event']['id'];
 					$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
 					$this->Session->setFlash(__('The Event has been saved', true));
@@ -283,4 +283,18 @@ class EventsController extends AuthfrontController {
 			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
 		}		
 	}	
+	function deleteImageGal($id = null) {
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for Image', true));
+			$this->redirect($this->referer(array('controller'=>'forum/index')));
+		}		
+		//set the component var filesToDelete with an array of files should be deleted.
+		$this->Gal->id = $id;
+		if ($this->Gal->delete($id)) {
+			$this->Session->setFlash(__('Image deleted', true));
+			$this->redirect($this->referer(array('controller'=>'forum/index')));
+		}
+		$this->Session->setFlash(__(' Image was not deleted', true));
+		$this->redirect($this->referer(array('controller'=>'forum/index')));
+	}
 }
