@@ -1,3 +1,6 @@
+<script src="<?php echo $base_url;?>/sliderengine/amazingslider.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>/sliderengine/amazingslider-1.css">
+<script src="<?php echo $base_url;?>/sliderengine/initslider-1.js"></script>  
 <div class="events view">
 	<?php $member_id = 0;
 	if(isset($userInfoFront['id'])){
@@ -192,4 +195,42 @@
 			</tr>
 		</table>
 	</div>
+	<?php if(!empty($event['Gal'])){?>
+        <div class="slide_galary">
+            <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:0px auto 150px;">
+                <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+                    <ul class="amazingslider-slides" style="display:none;">
+                        <?php foreach ($event['Gal'] as $key => $value) {
+                            $image = $value['url'];?>
+                            <li>
+                            	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
+                            </li>
+                        <?php }?>
+                    </ul>
+                    <ul class="amazingslider-thumbnails" style="display:none;">
+                        <?php foreach ($event['Gal'] as $key => $value) {
+                            $image = $value['url'];?>
+                            <li>
+                            	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
+                            </li>
+                        <?php }?>
+                    </ul>
+                </div>
+            </div>
+        </div>      
+    <?php }?>      
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    hideamazingsliderdiv();
+});
+function hideamazingsliderdiv () {
+    jQuery('a').each(function(){ 
+        var hrefcode = 'http://amazingslider.com';
+        var hrefdata = this.href;
+        if(this.href.indexOf(hrefcode) !== -1){
+            $(this).parent('div').hide();            
+        }
+    });
+}
+</script>
