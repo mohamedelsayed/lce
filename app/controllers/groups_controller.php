@@ -11,6 +11,7 @@ class GroupsController extends AuthfrontController {
 	//use upload component.
 	var $components = array('Upload');
 	function index() {
+		$this->check_isAdmin_isSuperAdmin();
 		$this->Group->recursive = 0;
 		if(isset($this->data['Group']['title'])){
 			$this->paginate = array(
@@ -18,17 +19,17 @@ class GroupsController extends AuthfrontController {
     		);
 		}
 		$this->set('groups', $this->paginate());
-		$this->set('selected','adminpages');
 	}
 	function view($id = null) {
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Group', true));
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('group', $this->Group->read(null, $id));
-		$this->set('selected','adminpages');
 	}
 	function add() {
+		$this->check_isAdmin_isSuperAdmin();
 		if (!empty($this->data)) {
 			//upload image
 			//$this->data['Group']['image']=$this->Upload->uploadImage($this->data['Group']['image']);
@@ -43,9 +44,9 @@ class GroupsController extends AuthfrontController {
 		//$artists = $this->Group->Artist->find('list');
 		//$parents = $this->Group->ParentGroup->find('list');
 		//$this->set(compact('parents'));
-		$this->set('selected','adminpages');
 	}
 	function edit($id = null) {
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid group', true));
 			$this->redirect(array('action' => 'index'));
@@ -72,9 +73,9 @@ class GroupsController extends AuthfrontController {
 		//$artists = $this->Group->Artist->find('list');
 		//$parents = $this->Group->ParentGroup->find('list',array('conditions'=>array('ParentGroup.id <>'=>$id)));
 		//$this->set(compact('parents'));
-		$this->set('selected','adminpages');
 	}
 	function delete($id = null) {
+		$this->check_isAdmin_isSuperAdmin();
 		/*$forbidden_ids = array(1,2,3);
 		if(in_array($id, $forbidden_ids)){
 			$this->Session->setFlash(__('You cannot delete this Groupegory!', true));

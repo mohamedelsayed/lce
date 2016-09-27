@@ -10,6 +10,7 @@ class MembersController extends AuthfrontController {
 	var $uses = array('Member');
 	var $components = array('Upload');		
 	function index() {
+		$this->check_isAdmin_isSuperAdmin();
 		//$this->Member->recursive = 0;
 		if($this->isSuperAdmin()){		
 			$this->paginate['Member'] = array(
@@ -27,7 +28,6 @@ class MembersController extends AuthfrontController {
 		}			
 		$this->set('roles' , $this->get_roles());
 		$this->set('title_for_layout', 'Contacts');
-		$this->set('selected','adminpages');
 	}	
 	function view($id = null) {
 		$this->Member->recursive = 0;
@@ -41,6 +41,7 @@ class MembersController extends AuthfrontController {
 		$this->set('selected','contactspages');
 	}	
 	function add(){
+		$this->check_isAdmin_isSuperAdmin();
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			if (!empty($this->data)) {
 				//upload image
@@ -66,10 +67,9 @@ class MembersController extends AuthfrontController {
 		$groups = $this->Member->Group->find('list');
 		$this->set(compact('groups'));
 		$this->set('title_for_layout', 'Contacts');
-		$this->set('selected','adminpages');
 	}	
 	function edit($id = null){
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id && empty($this->data)) {
 			if($this->Cookie->read('userInfoFront')){
 				$id = $this->Cookie->read('userInfoFront.id');
@@ -122,6 +122,7 @@ class MembersController extends AuthfrontController {
 		$this->set('title_for_layout', 'Contacts');		
 	}	
 	function delete($id = null) {
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Contact', true));
 			$this->redirect(array('action'=>'index'));
@@ -227,6 +228,6 @@ class MembersController extends AuthfrontController {
 		$this->set('title_for_layout', 'Contacts');			
 	}
 	function admin_all(){
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 	}
 }

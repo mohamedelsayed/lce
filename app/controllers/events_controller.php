@@ -9,12 +9,12 @@ class EventsController extends AuthfrontController {
 	var $name = 'Events';
 	var $uses = array('Event', 'AttendEvent', 'Gal');
 	function index() {
+		$this->check_isAdmin_isSuperAdmin();
 		$type = 0;
 		if(isset($_GET['type'])){
 			$type = $_GET['type'];
 		}
 		$this->set('type', $type);
-		$this->set('selected','adminpages');
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$this->Event->recursive = 0;
 			$this->paginate = array(
@@ -79,7 +79,7 @@ class EventsController extends AuthfrontController {
 			$type = $_GET['type'];
 		}
 		$this->set('type', $type);
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$isAdmin = 1;
@@ -115,7 +115,7 @@ class EventsController extends AuthfrontController {
 		}	
 	}
 	function edit($id = null) {
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$isAdmin = 1;
@@ -211,7 +211,7 @@ class EventsController extends AuthfrontController {
 		$this->set('events', $this->paginate('Event'));		
 	}*/
 	function all(){
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 	}
 	function save_many_items_ids($event_id = 0, $items_ids, $model = 'EventInstructor'){
 		if($model != ''){

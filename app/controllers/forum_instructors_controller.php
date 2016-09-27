@@ -11,7 +11,7 @@ class ForumInstructorsController extends AuthfrontController {
 	var $components = array('Upload');
 	var $uses = array('Instructor');	
 	function index() {
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		$this->Instructor->recursive = 0;
 		$this->paginate = array(
 			'conditions' => array('Instructor.forum_flag' => 1),
@@ -20,7 +20,7 @@ class ForumInstructorsController extends AuthfrontController {
 		$this->set('instructors', $this->paginate());
 	}
 	function view($id = null) {
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Instructor', true));
 			$this->redirect(array('controller' => 'ForumInstructors', 'action' => 'index'));
@@ -28,7 +28,8 @@ class ForumInstructorsController extends AuthfrontController {
 		$this->set('instructor', $this->Instructor->read(null, $id));
 	}
 	function add() {
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
+		
 		if (!empty($this->data)) {
 			//upload image
 			$this->data['Instructor']['image']=$this->Upload->uploadImage($this->data['Instructor']['image']);
@@ -42,7 +43,7 @@ class ForumInstructorsController extends AuthfrontController {
 		}
 	}
 	function edit($id = null) {
-		$this->set('selected','adminpages');
+		$this->check_isAdmin_isSuperAdmin();
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid Instructor', true));
 			$this->redirect(array('controller' => 'ForumInstructors', 'action' => 'index'));
