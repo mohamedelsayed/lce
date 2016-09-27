@@ -53,16 +53,16 @@ class Category extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),*/
-		'ParentCategory' => array(
+		/*'ParentCategory' => array(
 			'className' => 'Category',
 			'foreignKey' => 'parent_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		)*/
 	);
 	var $hasMany = array(
-		'ChildCategory' => array(
+		/*'ChildCategory' => array(
 			'className' => 'Category',
 			'foreignKey' => 'parent_id',
 			'dependent' => false,
@@ -74,19 +74,19 @@ class Category extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)/*,
-		'Node' => array(
-			'className' => 'Node',
-			'foreignKey' => 'cat_id',
+		),*/
+		'Post' => array(
+			'className' => 'Post',
+			'foreignKey' => 'category_id',
 			'dependent' => false,
-			'conditions' => array('Node.approved' => 1),
+			'conditions' => array('Post.approved' => 1),
 			'fields' => '',
-			'order' => array('Node.weight' => 'ASC', 'Node.id' => 'DESC'),
+			'order' => array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC'),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)*/
+		)
 	);
 }

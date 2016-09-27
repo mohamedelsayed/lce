@@ -62,9 +62,9 @@ class Post extends AppModel {
 		'Category' => array(
 			'className' => 'Category',
 			'foreignKey' => 'category_id',
-			'conditions' => '',
+			'conditions' => array('Category.approved' => 1),
 			'fields' => '',
-			'order' => ''
+			'order' => array('Category.weight' => 'ASC', 'Category.id' => 'DESC'),
 		),
 		'Member' => array(
 			'className' => 'Member',
