@@ -781,7 +781,7 @@ a.inactiveagreedisagreebutton:hover{
 	float: left;
 	margin-top: 25px;
 }
-.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a {
+.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a, .jpg-file a, .png-file a, .jpeg-file a, .gif-file a {
 	line-height:20px;
 	float:left;
 	font-size: 12px;
@@ -789,24 +789,28 @@ a.inactiveagreedisagreebutton:hover{
 	margin-bottom: 10px;
 }
 .doc-file, .docx-file {
-	background: url(../../img/forum/file-icon.png) no-repeat center left;
+	background: url(../../img/forum/Microsoft-Office-Word-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
+	background-size:20px;
 }
 .pdf-file {
 	background: url(../../img/forum/pdf-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
+	background-size:20px;
 }
 .xls-file, .xlsx-file {
-	background: url(../../img/forum/excle-icon.png) no-repeat center left;
+	background: url(../../img/forum/Microsoft-Office-Excel-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
+	background-size:20px;
 }
 .ppt-file, .pptx-file {
-	background: url(../../img/forum/powepoint-icon.png) no-repeat center left;
+	background: url(../../img/forum/Microsoft-Office-PowerPoint-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
+	background-size:20px;
 }
 .required{
 	border: 0 none !important;
@@ -1032,4 +1036,38 @@ td.calendar-day{
 	float: left;
     margin-bottom: 10px;
     width: 100%;
+}
+.uploadattachement{
+	width: 300px;
+	float: left;
+}
+.jpg-file, .png-file, .jpeg-file, .gif-file{
+	background: url(../../img/forum/picture_viewer_icon.png) no-repeat center left;
+	background-size:30px;
+	padding-left:35px;
+	float:left;	
+	position: relative;
+}
+.jpg-file a, .png-file a, .jpeg-file a, .gif-file a {
+	margin-top: 10px;
+}
+.removeuploadattachementbtn{
+	right: -25px;
+    top: 0px;
+}
+.attachements_wrapper{
+	float: left;
+	width: 100%;
+	margin-top: 15px;
+}
+.common-file-post{
+	clear: left;
+	position: relative;
+	padding-left:35px;
+	background-size:30px;
+	width: auto;
+}
+.attachementsfilesmessage{
+	clear: left;
+	color: #ff0000;	
 }
