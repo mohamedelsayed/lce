@@ -20,17 +20,20 @@
 			            	<a title="Admin" id="adminpages" class="fNiv hassubmenu">Admin</a> 	            
 		            		<ul>
 		            			<li class="submenu">
-		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
-				        		</li>
-		            			<li class="submenu">
-		            				<a <?php echo $style_width;?> title="Contacts" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
-				        		</li>
+		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/members/admin_all';?>">Contacts</a>
+				        		</li>		            					            			
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Settings" id="" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
 				        		</li>
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Events" id="" href="<?php echo $base_url.'/events/all';?>">Events</a>
-				        		</li>				        		
+				        		</li>	
+				        		<?php /*<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
+				        		</li>
+		            			<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Contacts" id="userslink" href="<?php echo $base_url.'/members';?>">Contacts</a>
+				        		</li>*/?>			        		
 				        		<?php /*<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Categories" id="categorieslink" href="<?php echo $base_url.'/categories';?>">Categories</a>
 				        		</li>
