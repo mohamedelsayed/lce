@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Author "Mohamed Elsayed"  
+ * @author Author Email "me@mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
+ */
 class Post extends AppModel {
 	var $name = 'Post';
 	var $displayField = 'title';
@@ -6,59 +11,17 @@ class Post extends AppModel {
 		'title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Title cannot be left blank',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => 'Title cannot be left blank',			
 			),
 		),
 	    'category_id' => array(
 	        'rule' => array('comparison', '>', 0),
 	        'allowEmpty' => false,
 	        'message' => 'Category cannot be left blank'
-	    ),
-		 /*,
-		'artist_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		)/*,
-		'cat_type' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'parent_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),*/
+	    ),		 
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-	var $belongsTo = array(
-		/*'Artist' => array(
-			'className' => 'Artist',
-			'foreignKey' => 'artist_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),*/
+	var $belongsTo = array(	
 		'Category' => array(
 			'className' => 'Category',
 			'foreignKey' => 'category_id',
@@ -87,19 +50,19 @@ class Post extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)/*,
-		'Node' => array(
-			'className' => 'Node',
-			'foreignKey' => 'cat_id',
+		),
+		'Attachment' => array(
+			'className' => 'Attachment',
+			'foreignKey' => 'post_id',
 			'dependent' => false,
-			'conditions' => array('Node.approved' => 1),
+			'conditions' => array(),
 			'fields' => '',
-			'order' => array('Node.weight' => 'ASC', 'Node.id' => 'DESC'),
+			'order' => array('Attachment.id' => 'DESC'),
 			'limit' => '',
 			'offset' => '',
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)*/
+		)
 	);
 }
