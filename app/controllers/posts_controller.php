@@ -13,6 +13,7 @@ class PostsController extends AuthfrontController {
 		$this->Post->recursive = 0;
 		$order = array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC');
 		if($this->isSuperAdmin() || $this->isAdmin()){
+			$this->set('selected','adminpages');
 			if(isset($this->data['Post']['title'])){
 				$this->paginate = array(
 					'conditions' => array('Post.title LIKE' => "%".$this->data['Post']['title']."%"),
@@ -71,6 +72,7 @@ class PostsController extends AuthfrontController {
 	function add() {
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
+			$this->set('selected','adminpages');
 			$isAdmin = 1;
 		}
 		$this->set('isAdmin', $isAdmin);			
@@ -102,6 +104,7 @@ class PostsController extends AuthfrontController {
 	function edit($id = null) {
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
+			$this->set('selected','adminpages');
 			$isAdmin = 1;
 		}
 		$this->set('isAdmin', $isAdmin);		
@@ -131,7 +134,7 @@ class PostsController extends AuthfrontController {
 			if(!($this->isSuperAdmin() || $this->isAdmin())){
 				if($this->data['Post']['member_id'] != $this->Cookie->read('userInfoFront.id')){
 					$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-					$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
+					$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
 				}					
 			}
 		}
@@ -146,24 +149,36 @@ class PostsController extends AuthfrontController {
         $this->set('attachements_div', $attachements_div);
 	}
 	function delete($id = null) {
+		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
-			if (!$id) {
-				$this->Session->setFlash(__('Invalid id for Post', true));
-				$this->redirect(array('action'=>'index'));
-			}
-			$this->Post->id = $id;
-			//$this->Upload->filesToDelete = array($this->Post->field('image'), $this->Post->field('video'), $this->Post->field('attachement'));		
-			if ($this->Post->delete($id)) {
-				//$this->Upload->deleteFile();
-				$this->Session->setFlash(__('Post deleted', true));
-				$this->redirect(array('action'=>'index'));
-			}
-			$this->Session->setFlash(__('Post was not deleted', true));
-			$this->redirect(array('action' => 'index'));
-		}else{
-			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
+			$this->set('selected','adminpages');
+			$isAdmin = 1;
 		}
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid id for Post', true));
+			$this->redirect(array('action'=>'index'));
+		}
+		$post = $this->Post->read(null, $id);
+		$this->data = $post;
+		if(!($this->isSuperAdmin() || $this->isAdmin())){
+			if($this->data['Post']['member_id'] != $this->Cookie->read('userInfoFront.id')){
+				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
+				$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+			}
+		}
+		$this->Post->id = $id;
+		//$this->Upload->filesToDelete = array($this->Post->field('image'), $this->Post->field('video'), $this->Post->field('attachement'));		
+		if ($this->Post->delete($id)) {
+			//$this->Upload->deleteFile();
+			$this->Session->setFlash(__('Post deleted', true));
+			if($isAdmin == 1){
+				$this->redirect(array('action' => 'index'));
+			}else{
+				$this->redirect(array('action' => 'all'));					
+			}
+		}
+		$this->Session->setFlash(__('Post was not deleted', true));
+		$this->redirect(array('action' => 'index'));		
 	}
 	function all(){
 		$limit = $this->pagingLimit;
@@ -369,33 +384,42 @@ class PostsController extends AuthfrontController {
                     $old_files[] = $attachment['id'];
                 }
             }
-            $new_files = array_keys($data['file_path']);
+			$new_files = array();
+			if(isset($data['file_path'])){
+				if(!empty($data['file_path'])){
+            		$new_files = array_keys($data['file_path']);
+				}
+			}
             $intersect = array_intersect($new_files, $old_files);
             $to_add = array_diff($new_files, $intersect);
             $to_delete = array_diff($old_files, $intersect);
             $i = 0;
-            foreach ($data['file_path'] as $key => $value) {
-                $path = '';             
-                if($value != ''){
-                    $path = str_replace(DS.'files'.DS.'upload', '', $value);              
-                }
-                if(trim($path) != ''){
-                    if(in_array($key, $to_add)){
-                        $sql = "INSERT INTO `attachments` (
-                            `id` ,
-                            `title` ,
-                            `file` ,
-                            `downloads` ,
-                            `node_id` ,
-                            `post_id` 
-                            )
-                            VALUES (
-                            NULL , '', '".$path."', '0', '0','".$id."');";
-                        $temp = $this->Post->query($sql);
-                    }elseif(in_array($key, $intersect)){                        
-                    }                    
-                }                
-            }  
+			if(isset($data['file_path'])){
+				if(!empty($data['file_path'])){
+		            foreach ($data['file_path'] as $key => $value) {
+		                $path = '';             
+		                if($value != ''){
+		                    $path = str_replace(DS.'files'.DS.'upload', '', $value);              
+		                }
+		                if(trim($path) != ''){
+		                    if(in_array($key, $to_add)){
+		                        $sql = "INSERT INTO `attachments` (
+		                            `id` ,
+		                            `title` ,
+		                            `file` ,
+		                            `downloads` ,
+		                            `node_id` ,
+		                            `post_id` 
+		                            )
+		                            VALUES (
+		                            NULL , '', '".$path."', '0', '0','".$id."');";
+		                        $temp = $this->Post->query($sql);
+		                    }elseif(in_array($key, $intersect)){                        
+		                    }                    
+		                }                
+		            }  
+            	}
+            }
             if(!empty($to_delete)){
                 foreach ($to_delete as $key => $value) {
                     $this->Attachment->delete($value);                                        
