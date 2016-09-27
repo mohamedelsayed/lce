@@ -10,9 +10,9 @@ jQuery(document).ready(function(){
 	    form_data.append('file', file_data);
 	    var ext = file_data.name.split('.').pop();
 	    var error = false;
-	     if (! (ext && /^(pdf|doc|docx|xls|xlsx|ppt|pptx)$/.test(ext))){ 
+	     if (! (ext && /^(pdf|doc|docx|xls|xlsx|ppt|pptx|jpg|png|jpeg|gif)$/.test(ext))){ 
             // extension is not allowed 
-			status.text('Only PDF, DOC, DOCX, XLS, XLSX, PPT or PPTX files are allowed');
+			status.text('Only PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, PNG, GIF files are allowed');
 			error = true;
 		}
 	    if(!error){
