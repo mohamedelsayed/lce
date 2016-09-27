@@ -1,4 +1,10 @@
 <div class="t_p_con index">
+	<?php if(isset($category)){
+		$category_title = $category['Category']['title'];?>
+		<div class="category_title">
+			<h2><?php echo $category_title;?></h2>
+		</div>				
+	<?php }?>
 	<div class="add_action_button"><?php echo $this->Html->link(__('Add Post', true), array('action' => 'add')); ?></div>
 	<?php if(!empty($posts)){?>
 		<?php foreach ($posts as $key => $post) {

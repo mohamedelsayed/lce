@@ -12,7 +12,7 @@
 	<h2><?php echo $post['Post']['title'];?></h2>
 	<div class="postCategory">
 		<div class="postcategorytext">Category:</div>
-		<div class="postcategorydata"><?php echo $this->Html->link($post['Category']['title'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id']));?></div>
+		<div class="postcategorydata"><?php echo $this->Html->link($post['Category']['title'], array('controller' => 'posts', 'action' => 'all', $post['Category']['id']));?></div>
 	</div>
 	<div class="postauthor">
 		<?php /*<div class="postauthortext">Author:</div>*/?>
