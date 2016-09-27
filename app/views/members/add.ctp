@@ -13,10 +13,10 @@
 		echo $this->Form->input('mobile');
 		echo $this->Form->input('job_title');
 		echo $this->Form->input('approved');
-		echo $this->Form->input('block_posts_notification');
-		echo $this->Form->input('block_comments_notification');
-		echo $this->Form->input('block_announcements_notification');
-		echo $this->Form->input('block_events_notification');
+		//echo $this->Form->input('block_posts_notification');
+		//echo $this->Form->input('block_comments_notification');
+		//echo $this->Form->input('block_announcements_notification');
+		//echo $this->Form->input('block_events_notification');
 		if(count($roles) > 1){
 			echo $this->Form->input('role', array('type' => 'select', 'options' => $roles));
 		}

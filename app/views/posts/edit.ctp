@@ -9,7 +9,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 		echo $this->Form->input('id');
 		echo $this->Form->input('title', array("label" => 'Title'));
 		echo $this->Form->input('Post.body', array('class'=>'ckeditor'));?>
-		<div class="input file">
+		<?php /*<div class="input file">
 			<input class="hiddeninputbutton" id="uploadimageinput" type="file" name="uploadimageinput" />
 			<input id="uploadimagepath" name="data[Post][image]" value="<?php echo $this->data['Post']['image'];?>" type="hidden" />
 			<div id="uploadimagestatus" class="uploadstatus"></div>
@@ -40,7 +40,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 				});
 				</script>
 			<?php }?>
-		</div>
+		</div>*/?>
 		<div class="input file">
 			<input class="hiddeninputbutton" id="uploadattachementinput" type="file" name="uploadattachementinput" />
 			<input id="uploadattachementpath" name="data[Post][attachement]" value="<?php echo $this->data['Post']['attachement'];?>" type="hidden" />
@@ -57,7 +57,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 				</script>
 			<?php }?>
 		</div>
-		<?php echo $this->Form->input('category_id',array('empty'=>''));
+		<?php echo $this->Form->input('category_id');
 		if($isAdmin == 1){
 			echo $this->Form->input('approved');	
 		}else{

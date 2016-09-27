@@ -4,12 +4,9 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-			<th><?php echo $this->Paginator->sort('position');?></th>
-			<?php /*<th><?php echo $this->Paginator->sort('biography');?></th>
-			<th><?php echo $this->Paginator->sort('image');?></th>
-			<th><?php echo $this->Paginator->sort('mail');?></th>
-			<th><?php echo $this->Paginator->sort('linkedin');?></th>*/?>
+			<th><?php echo $this->Paginator->sort('position');?></th>			
 			<th><?php echo $this->Paginator->sort('weight');?></th>
+			<th><?php echo $this->Paginator->sort('approved');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('updated');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -25,12 +22,12 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $instructor['Instructor']['id']; ?>&nbsp;</td>
 		<td><?php echo $instructor['Instructor']['name']; ?>&nbsp;</td>
-		<td><?php echo $instructor['Instructor']['position']; ?>&nbsp;</td>
-		<?php /*<td><?php echo $instructor['Instructor']['biography']; ?>&nbsp;</td>
-		<td><?php echo $instructor['Instructor']['image']; ?>&nbsp;</td>
-		<td><?php echo $instructor['Instructor']['mail']; ?>&nbsp;</td>
-		<td><?php echo $instructor['Instructor']['linkedin']; ?>&nbsp;</td>*/?>
+		<td><?php echo $instructor['Instructor']['position']; ?>&nbsp;</td>		
 		<td><?php echo $instructor['Instructor']['weight']; ?>&nbsp;</td>
+		<td>
+			<?php if($instructor['Instructor']['approved'] == 1) echo 'Yes';
+			elseif($instructor['Instructor']['approved'] == 0) echo 'No';?>
+		</td>
 		<td><?php echo $instructor['Instructor']['created']; ?>&nbsp;</td>
 		<td><?php echo $instructor['Instructor']['updated']; ?>&nbsp;</td>
 		<td class="actions">

@@ -3,12 +3,9 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
-			<?php /*<th><?php echo $this->Paginator->sort('biography');?></th>
-			<th><?php echo $this->Paginator->sort('image');?></th>
-			<th><?php echo $this->Paginator->sort('mail');?></th>
-			<th><?php echo $this->Paginator->sort('linkedin');?></th>*/?>
+			<th><?php echo $this->Paginator->sort('title');?></th>			
 			<th><?php echo $this->Paginator->sort('weight');?></th>
+			<th><?php echo $this->Paginator->sort('approved');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('updated');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -24,11 +21,11 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $event['Event']['id']; ?>&nbsp;</td>
 		<td><?php echo $event['Event']['title']; ?>&nbsp;</td>
-		<?php /*<td><?php echo $event['Event']['biography']; ?>&nbsp;</td>
-		<td><?php echo $event['Event']['image']; ?>&nbsp;</td>
-		<td><?php echo $event['Event']['mail']; ?>&nbsp;</td>
-		<td><?php echo $event['Event']['linkedin']; ?>&nbsp;</td>*/?>
 		<td><?php echo $event['Event']['weight']; ?>&nbsp;</td>
+		<td>
+			<?php if($event['Event']['approved'] == 1) echo 'Yes';
+			elseif($event['Event']['approved'] == 0) echo 'No';?>
+		</td>
 		<td><?php echo $event['Event']['created']; ?>&nbsp;</td>
 		<td><?php echo $event['Event']['updated']; ?>&nbsp;</td>
 		<td class="actions">

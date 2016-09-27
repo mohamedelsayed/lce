@@ -13,11 +13,15 @@
 		echo $this->Form->input('password', array('autocomplete' => 'off'));
 		echo $this->Form->input('mobile');
 		echo $this->Form->input('job_title');
-		echo $this->Form->input('approved');
-		echo $this->Form->input('block_posts_notification');
-		echo $this->Form->input('block_comments_notification');
-		echo $this->Form->input('block_announcements_notification');
-		echo $this->Form->input('block_events_notification');
+		if($isAdmin == 1){
+			echo $this->Form->input('approved');
+		}else{
+			echo $this->Form->input('approved', array('type' => 'hidden'));	
+		}
+		//echo $this->Form->input('block_posts_notification');
+		//echo $this->Form->input('block_comments_notification');
+		//echo $this->Form->input('block_announcements_notification');
+		//echo $this->Form->input('block_events_notification');
 		if(count($roles) > 1){
 			if($this->data['Member']['id'] == $userInfoFront['id']){
 				echo $this->Form->input('role', array('type' => 'hidden'));		
@@ -31,7 +35,11 @@
 			<?php echo $this->element('forum/image_view', array('controller'=>'members', 'image'=>array('id'=>$this->data['Member']['id'], 'image'=>$this->data['Member']['image'])));?>
 		</div>
 		<?php echo $this->Form->input('image', array('type'=>'file'));
-		echo $this->Form->input('group_id');?>
+		if($isAdmin == 1){
+			echo $this->Form->input('group_id');
+		}else{
+			echo $this->Form->input('group_id', array('type' => 'hidden'));			
+		}?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>

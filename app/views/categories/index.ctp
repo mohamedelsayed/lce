@@ -6,7 +6,7 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('parent_id');?></th>
+			<?php /*<th><?php echo $this->Paginator->sort('parent_id');?></th>*/?>
 			<th><?php echo $this->Paginator->sort('weight');?></th>
 			<th><?php echo $this->Paginator->sort('approved');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
@@ -24,11 +24,14 @@
 	<tr<?php echo $class;?>>
 		<td><?php echo $category['Category']['id']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['title']; ?>&nbsp;</td>
-		<td>
+		<?php /*<td>
 			<?php echo $this->Html->link($category['ParentCategory']['title'], array('controller' => 'categories', 'action' => 'view', $category['ParentCategory']['id'])); ?>
-		</td>
+		</td>*/?>
 		<td><?php echo $category['Category']['weight']; ?>&nbsp;</td>
-		<td><?php echo $category['Category']['approved']; ?>&nbsp;</td>
+		<td>
+			<?php if($category['Category']['approved'] == 1) echo 'Yes';
+			elseif($category['Category']['approved'] == 0) echo 'No';?>
+		</td>
 		<td><?php echo $category['Category']['created']; ?>&nbsp;</td>
 		<td><?php echo $category['Category']['updated']; ?>&nbsp;</td>
 		<td class="actions">
@@ -53,15 +56,3 @@
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
 </div>
-<?php /*<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Category', true), array('action' => 'add')); ?></li>
-		<li><?php //echo $this->Html->link(__('List Artists', true), array('controller' => 'artists', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Artist', true), array('controller' => 'artists', 'action' => 'add')); ?> </li>
-		<li><?php //echo $this->Html->link(__('List Categorys', true), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php //echo $this->Html->link(__('New Parent Category', true), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Nodes', true), array('controller' => 'nodes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Node', true), array('controller' => 'nodes', 'action' => 'add')); ?> </li>
-	</ul>
-</div>*/?>

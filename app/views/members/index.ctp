@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort('username');?></th>
 			<th><?php echo $this->Paginator->sort('email');?></th>
 			<th><?php echo $this->Paginator->sort('role');?></th>
+			<th><?php echo $this->Paginator->sort('approved');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 		</tr>
 		<?php
@@ -24,6 +25,10 @@
 				<td><?php echo $member['Member']['username']; ?>&nbsp;</td>
 				<td><?php echo $member['Member']['email']; ?>&nbsp;</td>
 				<td><?php echo $roles[$member['Member']['role']]; ?>&nbsp;</td>
+				<td>
+					<?php if($member['Member']['approved'] == 1) echo 'Yes';
+					elseif($member['Member']['approved'] == 0) echo 'No';?>
+				</td>
 				<td class="actions">
 					<?php echo $this->Html->link(__('View', true), array('action' => 'view', $member['Member']['id'])); ?>
 					<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $member['Member']['id'])); ?>
@@ -47,9 +52,3 @@
 		<?php echo $this->Paginator->last(__('last', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
 </div>
-<?php /*<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Member', true), array('action' => 'add')); ?></li>
-	</ul>
-</div>*/?>
