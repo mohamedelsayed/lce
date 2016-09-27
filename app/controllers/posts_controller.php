@@ -181,11 +181,17 @@ class PostsController extends AuthfrontController {
 		$this->Session->setFlash(__('Post was not deleted', true));
 		$this->redirect(array('action' => 'index'));		
 	}
-	function all(){
+	function all($category_id = 0){
 		$this->set('selected','market_place_page');	
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
-		$conditions = array('Post.approved' => 1);					
+		$conditions = array();
+		$conditions['Post.approved'] = 1;
+		if($category_id > 0 && is_numeric($category_id)){
+			$conditions['Post.category_id'] = $category_id;	
+			$this->loadModel('Category');	
+			$this->set('category', $this->Category->read(null, $category_id));		
+		}					
 		$this->paginate['Post'] = array(
     			//'fields'     => array('Post.id', 'Post.title', 'Post.body'),
     			'conditions' => $conditions,
