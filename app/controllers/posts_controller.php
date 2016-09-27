@@ -60,6 +60,13 @@ class PostsController extends AuthfrontController {
 				'limit'			   => $limit
 			)
 		);	
+		$attachements_div = '';
+        if(!empty($post['Attachment'])){
+            foreach ($post['Attachment'] as $key => $value) {
+                $attachements_div .= $this->draw_attachement_box($value['id'], DS.'files'.DS.'upload'.DS.$value['file'], 0);
+            }
+        }
+        $this->set('attachements_div', $attachements_div);
 	}
 	function add() {
 		$isAdmin = 0;
@@ -68,11 +75,14 @@ class PostsController extends AuthfrontController {
 		}
 		$this->set('isAdmin', $isAdmin);			
 		if (!empty($this->data)) {
+			$post_data = $_POST;
+		    unset($this->data['attachements']);
 			$this->Post->create();
 			if($this->data['Post']['category_id'] == null){
 				$this->data['Post']['category_id'] = 0;				
 			}
 			if ($this->Post->save($this->data)) {
+				$this->save_attachements($post_data, $this->Post->id);
 				$this->send_email_notification($this->Post->id, 0, $this->data['Post']['title'], 0);
 				$this->Session->setFlash(__('The Post has been saved', true));
 				if($isAdmin == 1){
@@ -86,6 +96,8 @@ class PostsController extends AuthfrontController {
 		}
 		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
 		$this->set(compact('categories'));
+		$attachements_div = '';
+        $this->set('attachements_div', $attachements_div);
 	}
 	function edit($id = null) {
 		$isAdmin = 0;
@@ -98,8 +110,11 @@ class PostsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			$post_data = $_POST;
+		    unset($this->data['attachements']);
 			$this->Post->id = $id;
 			if ($this->Post->save($this->data)) {
+				$this->save_attachements($post_data, $this->data['Post']['id']); 
 				$this->Session->setFlash(__('The Post has been saved', true));
 				if($isAdmin == 1){
 					$this->redirect(array('action' => 'index'));
@@ -110,8 +125,9 @@ class PostsController extends AuthfrontController {
 				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Post->read(null, $id);
+		$post = $this->Post->read(null, $id);
+		if (empty($this->data)) {			
+			$this->data = $post;
 			if(!($this->isSuperAdmin() || $this->isAdmin())){
 				if($this->data['Post']['member_id'] != $this->Cookie->read('userInfoFront.id')){
 					$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
@@ -121,6 +137,13 @@ class PostsController extends AuthfrontController {
 		}
 		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
 		$this->set(compact('categories'));
+		$attachements_div = '';
+        if(!empty($post['Attachment'])){
+            foreach ($post['Attachment'] as $key => $value) {
+                $attachements_div .= $this->draw_attachement_box($value['id'], DS.'files'.DS.'upload'.DS.$value['file'], 1);
+            }
+        }
+        $this->set('attachements_div', $attachements_div);
 	}
 	function delete($id = null) {
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -129,9 +152,9 @@ class PostsController extends AuthfrontController {
 				$this->redirect(array('action'=>'index'));
 			}
 			$this->Post->id = $id;
-			$this->Upload->filesToDelete = array($this->Post->field('image'), $this->Post->field('video'), $this->Post->field('attachement'));		
+			//$this->Upload->filesToDelete = array($this->Post->field('image'), $this->Post->field('video'), $this->Post->field('attachement'));		
 			if ($this->Post->delete($id)) {
-				$this->Upload->deleteFile();
+				//$this->Upload->deleteFile();
 				$this->Session->setFlash(__('Post deleted', true));
 				$this->redirect(array('action'=>'index'));
 			}
@@ -244,7 +267,7 @@ class PostsController extends AuthfrontController {
 		        		<a target="_blank" href="'.$file_link.'">'.$comment['ForumComment']['attachement'].'</a>
 		        		</div>';
 			}
-			$comment_li .= $view->element('forum/agreements', array('item_id' => $comment['ForumComment']['id'], 'item_type' => 1));
+			//$comment_li .= $view->element('forum/agreements', array('item_id' => $comment['ForumComment']['id'], 'item_type' => 1));
 			$comment_li .= '</div></li>';
 		}
 		return $comment_li;
@@ -334,4 +357,50 @@ class PostsController extends AuthfrontController {
 		$this->check_isAdmin_isSuperAdmin();
 		$this->set('title_for_layout', 'MarketPlace');		
 	}
+	function save_attachements($data, $id = 0){
+        if(!empty($data) && $id != 0){           
+            $post = $this->Post->read(null, $id);
+            $attachments = $post['Attachment'];
+            $this->loadModel('Attachment');
+            $old_files = array();
+            $new_files =  array();
+            if(!empty($attachments)){
+                foreach ($attachments as $key => $attachment) {
+                    $old_files[] = $attachment['id'];
+                }
+            }
+            $new_files = array_keys($data['file_path']);
+            $intersect = array_intersect($new_files, $old_files);
+            $to_add = array_diff($new_files, $intersect);
+            $to_delete = array_diff($old_files, $intersect);
+            $i = 0;
+            foreach ($data['file_path'] as $key => $value) {
+                $path = '';             
+                if($value != ''){
+                    $path = str_replace(DS.'files'.DS.'upload', '', $value);              
+                }
+                if(trim($path) != ''){
+                    if(in_array($key, $to_add)){
+                        $sql = "INSERT INTO `attachments` (
+                            `id` ,
+                            `title` ,
+                            `file` ,
+                            `downloads` ,
+                            `node_id` ,
+                            `post_id` 
+                            )
+                            VALUES (
+                            NULL , '', '".$path."', '0', '0','".$id."');";
+                        $temp = $this->Post->query($sql);
+                    }elseif(in_array($key, $intersect)){                        
+                    }                    
+                }                
+            }  
+            if(!empty($to_delete)){
+                foreach ($to_delete as $key => $value) {
+                    $this->Attachment->delete($value);                                        
+                }
+            }          
+        }        
+    }	
 }

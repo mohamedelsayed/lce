@@ -191,4 +191,37 @@ class ForumController  extends AuthfrontController {
 		}
 		$this->autoRender = false;	
 	}
+	function upload_file(){
+        $absolute_webroot = ROOT.DS.APP_DIR.DS.WEBROOT_DIR;        
+        $upload_dir = $absolute_webroot.DS.'files'.DS.'upload';
+        if (!file_exists($upload_dir)) {
+             mkdir($upload_dir, 0777);
+        } 
+        $current_year = date('Y');
+        $current_month = date('m');
+        $dir_name_with_year = $upload_dir.DS.$current_year;
+        if (!file_exists($dir_name_with_year)) {
+            mkdir($dir_name_with_year, 0777);
+        }
+        $dir_name_with_month = $upload_dir.DS.$current_year.DS.$current_month;
+        if (!file_exists($dir_name_with_month)) {
+            mkdir($dir_name_with_month, 0777);
+        }
+        $final_upload_dir = $upload_dir.DS.$current_year.DS.$current_month.DS;
+        $file_name = str_replace("#", "_", basename($_FILES['file']['name']));
+        $file_name = str_replace("?", "_", $file_name);
+        $file_name = str_replace(" ", "_", $file_name);
+        $file = $final_upload_dir.$file_name; 
+        if (file_exists($file)) {
+            $file_name = time().$file_name;
+        }
+        $file = $final_upload_dir.$file_name; 
+        $file_path = '';        
+        if(move_uploaded_file($_FILES['file']['tmp_name'], $file)){
+            $file_path = $file;
+        }   
+        $final_path = str_replace($absolute_webroot, '', $file_path);
+        echo $this->draw_attachement_box(0, $final_path);
+        $this->autoRender = false; 
+    }     
 }
