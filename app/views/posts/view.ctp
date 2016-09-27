@@ -1,4 +1,14 @@
 <div class="posts view">
+	<?php $member_id = 0;
+	if(isset($userInfoFront['id'])){
+		$member_id = $userInfoFront['id'];
+	}	
+	if(($post['Post']['member_id'] == $member_id) || $isAdmin == 1){?>
+		<div class="cancel_button">
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $post['Post']['id'])); ?> | 
+			<?php echo $this->Html->link(__('Cancel Post', true), array('action' => 'delete', $post['Post']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?>
+		</div>	
+	<?php }?>
 	<h2><?php echo $post['Post']['title'];?></h2>
 	<div class="postCategory">
 		<div class="postcategorytext">Category:</div>

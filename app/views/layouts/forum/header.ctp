@@ -21,16 +21,16 @@
 		            		<ul>
 		            			<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Groups" href="<?php echo $base_url.'/members/admin_all';?>">Contacts</a>
-				        		</li>		            					            			
-				        		<li class="submenu">
-		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
-				        		</li>
+				        		</li>		            					            							        		
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Events" href="<?php echo $base_url.'/events/all';?>">Events</a>
 				        		</li>	
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all';?>">MarketPlace</a>
 				        		</li>	
+				        		<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
+				        		</li>
 				        		<?php /*<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Groups" id="userslink" href="<?php echo $base_url.'/groups/';?>">Groups</a>
 				        		</li>
@@ -84,6 +84,11 @@
 			        		</ul>
 		        		</li>
 	        		<?php }?>
+        		<?php }?>
+        		<?php if($GLOBALS['is_loggin']){?>
+	        		<li class="">
+        				<a title="MarketPlace" href="<?php echo $base_url.'/posts/all';?>">MarketPlace</a>
+	        		</li>
         		<?php }?>
 	            <?php if($GLOBALS['is_loggin']){?>
 		            <li>
