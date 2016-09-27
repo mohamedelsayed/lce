@@ -1071,3 +1071,7 @@ td.calendar-day{
 	clear: left;
 	color: #ff0000;	
 }
+.post_count_comments_list{
+	font-size: 14px;
+	color: #000000;
+}
