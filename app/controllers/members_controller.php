@@ -226,4 +226,7 @@ class MembersController extends AuthfrontController {
 		$this->set('members', $this->paginate('Member'));	
 		$this->set('title_for_layout', 'Contacts');			
 	}
+	function admin_all(){
+		$this->set('selected','adminpages');
+	}
 }
