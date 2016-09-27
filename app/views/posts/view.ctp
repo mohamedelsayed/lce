@@ -28,7 +28,7 @@
 				<?php echo $this->Html->link($post['Member']['fullname'], array('controller' => 'members', 'action' => 'view', $post['Member']['id']));?>
 			</div>
 			<div class="postauthorblock">
-				<?php echo $this->element('forum/block_member', array('other_member_id' => $post['Member']['id'], 'other_member_fullname' => $post['Member']['fullname']));?>
+				<?php //echo $this->element('forum/block_member', array('other_member_id' => $post['Member']['id'], 'other_member_fullname' => $post['Member']['fullname']));?>
 			</div>
 		</div>
 	</div>	

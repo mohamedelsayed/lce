@@ -87,7 +87,7 @@
         		<?php }?>
         		<?php if($GLOBALS['is_loggin']){?>
 	        		<li class="">
-        				<a title="MarketPlace" href="<?php echo $base_url.'/posts/all';?>">MarketPlace</a>
+        				<a id="market_place_page" title="MarketPlace" href="<?php echo $base_url.'/posts/all';?>">MarketPlace</a>
 	        		</li>
         		<?php }?>
 	            <?php if($GLOBALS['is_loggin']){?>

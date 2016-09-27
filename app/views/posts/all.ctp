@@ -2,6 +2,7 @@
 	<div class="add_action_button"><?php echo $this->Html->link(__('Add Post', true), array('action' => 'add')); ?></div>
 	<?php if(!empty($posts)){?>
 		<?php foreach ($posts as $key => $post) {
+			$count_comments = count($post['ForumComment']);
 			$post_link = $base_url.'/posts/view/'.$post['Post']['id'];
 			$image = '';
 			if($post['Post']['image'] != ''){
@@ -17,7 +18,10 @@
 			}?>
 			<div class="con_con">
 				<a href="<?php echo $post_link;?>" title="<?php echo $title;?>">
-					<div class="mm_top"><?php echo $title;?></div>
+					<div class="mm_top">
+						<?php echo $title;?>
+						<span class="post_count_comments_list">(<?php echo $count_comments.' Comments';?>)</span>
+					</div>					 
 				</a>
 		    </div>	
 			<div class="con_con post_image_new_div">
