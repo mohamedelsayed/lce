@@ -69,7 +69,8 @@ class MembersController extends AuthfrontController {
 		$this->set('title_for_layout', 'Contacts');
 	}	
 	function edit($id = null){
-		$this->check_isAdmin_isSuperAdmin();
+		$this->set('selected','adminpages');
+		//$this->check_isAdmin_isSuperAdmin();
 		if (!$id && empty($this->data)) {
 			if($this->Cookie->read('userInfoFront')){
 				$id = $this->Cookie->read('userInfoFront.id');

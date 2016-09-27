@@ -6,14 +6,12 @@
  */
 require_once '../auth_controller.php';
 class ArticlesController extends AuthController {
-
 	var $name = 'Articles';
 	var $uses = array('Article');
 	//use upload component
 	var $components = array('Upload');
 	var $tags_label = "Tags <span style='color:red'>Use comma , as a seperator</span>";
 	var $image_label = "Image <span style='color:red'>It must be at least width 618px.</span>";
-
 	function index() {
 		$this->Article->recursive = 0;
 		$this->paginate = array(
@@ -22,7 +20,6 @@ class ArticlesController extends AuthController {
     	);
 		$this->set('articles', $this->paginate());		
 	}
-
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid article', true));
@@ -30,20 +27,16 @@ class ArticlesController extends AuthController {
 		}
 		$this->set('article', $this->Article->read(null, $id));
 	}
-
-	function add() {
-			
+	function add() {		
 		if (!empty($this->data)) {
 			//upload image and then add it to Gal.
 			$this->data['Gal'][0]['image']=$this->Upload->uploadImage($this->data['Gal'][0]['image']);
 			if($this->data['Gal'][0]['image']=='')unset($this->data['Gal']);
-			
 			//upload image and video file then add them to Videos.
 			//$this->data['Video'][0]['image']=$this->Upload->uploadImage($this->data['Video'][0]['image']);
 			//$this->Upload->fileTypes = 'flv';//set file types.
 			//$this->data['Video'][0]['file']=$this->Upload->uploadFile($this->data['Video'][0]['file']);
 			///if($this->data['Video'][0]['file']=='' && $this->data['Video'][0]['url']=='')unset($this->data['Video']);
-			
 			//save data
 			$this->Article->create();
 			if ($this->Article->saveAll($this->data, array('validate'=>'first'))) {
@@ -61,7 +54,6 @@ class ArticlesController extends AuthController {
 		$this->set('tags_label',$this->tags_label);
 		$this->set('image_label',$this->image_label);
 	}
-
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid article', true));
@@ -70,14 +62,12 @@ class ArticlesController extends AuthController {
 		if (!empty($this->data)) {
 			//upload image and then add it to Gal.
 			$this->data['Gal'][0]['image']=$this->Upload->uploadImage($this->data['Gal'][0]['image']);
-			if($this->data['Gal'][0]['image']=='')unset($this->data['Gal']);
-			
+			if($this->data['Gal'][0]['image']=='')unset($this->data['Gal']);			
 			//upload image and video file then add them to Videos.
 			/*$this->data['Video'][0]['image']=$this->Upload->uploadImage($this->data['Video'][0]['image']);
 			$this->Upload->fileTypes = 'flv';//set file types.
 			$this->data['Video'][0]['file']=$this->Upload->uploadFile($this->data['Video'][0]['file']);
 			if($this->data['Video'][0]['file']=='' && $this->data['Video'][0]['url']=='')unset($this->data['Video']);*/
-			
 			//save data
 			if ($this->Article->saveAll($this->data, array('validate' => 'first'))) {
 				//Add routes
@@ -97,21 +87,18 @@ class ArticlesController extends AuthController {
 		$this->set('tags_label',$this->tags_label);
 		$this->set('image_label',$this->image_label);
 	}
-
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for article', true));
 			$this->redirect(array('action'=>'index'));
 		}
 		//set id.
-		$this->Article->id = $id;
-		
+		$this->Article->id = $id;	
 		//set the component var filesToDelete with an array of files should be deleted.
 		$relatedImgs    = $this->Article->Gal->find('list', array('fields'=>'Gal.image' ,'conditions' => array('article_id' => $id)));
 		//$relatedVids    = $this->Article->Video->find('list', array('fields'=>'Video.file' ,'conditions' => array('article_id' => $id)));
 		//$relatedThumb   = $this->Article->Video->find('list', array('fields'=>'Video.image' ,'conditions' => array('article_id' => $id)));					  	 					   
 		$this->Upload->filesToDelete = array_merge($relatedImgs);
-		
 		//delete
 		if ($this->Article->delete($id)) {
 			$this->Upload->deleteFile(); //delete old files.
@@ -157,4 +144,3 @@ class ArticlesController extends AuthController {
 	    $this->layout = 'ajax';
     }
 }
-?>

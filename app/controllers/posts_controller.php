@@ -11,12 +11,18 @@ class PostsController extends AuthfrontController {
 	//var $components = array('Upload');
 	function index() {
 		$this->Post->recursive = 0;
+		$order = array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC');
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			if(isset($this->data['Post']['title'])){
 				$this->paginate = array(
-				'conditions' => array('Post.title LIKE' => "%".$this->data['Post']['title']."%"),
+					'conditions' => array('Post.title LIKE' => "%".$this->data['Post']['title']."%"),
+					'order' => $order,
 	    		);
-			}
+			}else{
+				$this->paginate = array(
+					'order' => $order,
+    			);
+			}			
 			$this->set('posts', $this->paginate());
 		}else{
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
@@ -78,7 +84,7 @@ class PostsController extends AuthfrontController {
 				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
 			}
 		}
-		$categories = $this->Post->Category->find('list');
+		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
 		$this->set(compact('categories'));
 	}
 	function edit($id = null) {
@@ -113,7 +119,7 @@ class PostsController extends AuthfrontController {
 				}					
 			}
 		}
-		$categories = $this->Post->Category->find('list');
+		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
 		$this->set(compact('categories'));
 	}
 	function delete($id = null) {
@@ -323,5 +329,9 @@ class PostsController extends AuthfrontController {
 				);
 		}
 		return $comment;		
+	}
+	function admin_all(){
+		$this->check_isAdmin_isSuperAdmin();
+		$this->set('title_for_layout', 'MarketPlace');		
 	}
 }
