@@ -242,4 +242,12 @@ class AuthfrontController extends AppController{
 		$allowed_links[] = array('controller' => 'events', 'action' => 'willcome');		
 		return $allowed_links;
 	}
+	public function check_isAdmin_isSuperAdmin(){
+		if($this->isSuperAdmin() || $this->isAdmin()){
+			$this->set('selected','adminpages');
+		}else{
+			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
+			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
+		}		
+	}
 }
