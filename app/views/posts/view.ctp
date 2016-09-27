@@ -27,7 +27,11 @@
 		$body = str_replace('</p>', ' </p>', $body);
 		echo preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $body);?>	
 	</div>
-	<?php if($post['Post']['image'] != ''){?>
+	<div class="postAttachments">
+		<div>Attachements:</div>
+		<?php echo $attachements_div;?>
+	</div>
+	<?php /*if($post['Post']['image'] != ''){?>
 		<div class="post_image_new">
 			<img src="<?php echo $base_url.DS.'img'.DS.'upload'.DS.$post['Post']['image'];?>" alt="<?php echo $post['Post']['title'];?>"/>
 		</div>
@@ -46,7 +50,7 @@
 				<a target="_blank" href="<?php echo $file_link;?>"><?php echo $post['Post']['attachement'];?></a>
 			</div>
 		</div>
-	<?php }?>
-	<?php echo $this->element('forum/agreements', array('item_id' => $post['Post']['id'], 'item_type' => 0));?>
+	<?php }*/?>
+	<?php //echo $this->element('forum/agreements', array('item_id' => $post['Post']['id'], 'item_type' => 0));?>
 </div>
 <?php include_once('comments.ctp');?>

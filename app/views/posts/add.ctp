@@ -1,5 +1,5 @@
-<?php echo $this->Javascript->link('forum/ajax/upload_image', false);
-echo $this->Javascript->link('forum/ajax/upload_video', false);
+<?php //echo $this->Javascript->link('forum/ajax/upload_image', false);
+//echo $this->Javascript->link('forum/ajax/upload_video', false);
 echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 <div class="posts form">
 	<?php echo $this->Form->create('Post', array('type'=>'file'));?>
@@ -7,7 +7,8 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
  		<legend><?php __('Add Post'); ?></legend>
 		<?php
 		echo $this->Form->input('title', array("label" => 'Title'));
-		echo $this->Form->input('Post.body', array('class'=>'ckeditor'));?>
+		echo $this->Form->input('Post.body', array('class'=>'ckeditor'));
+		include_once 'attachments.php';?>
 		<?php /*<div class="input file">
 			<input class="hiddeninputbutton" id="uploadimageinput" type="file" name="uploadimageinput" />
 			<input id="uploadimagepath" name="data[Post][image]" value="" type="hidden" />
@@ -19,13 +20,13 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 			<input id="uploadvideopath" name="data[Post][video]" value="" type="hidden" />
 			<div id="uploadvideostatus" class="uploadstatus"></div>
 			<button type="button" id="uploadvideo" class="uploadvideo">Upload Video</button>
-		</div>*/?>
+		</div>*//*?>
 		<div class="input file">
-			<input class="hiddeninputbutton" id="uploadattachementinput" type="file" name="uploadattachementinput" />
+			<input class="hiddeninputbutton" id="uploadattachementinput" type="file" name="uploadattachementinput" multiple="multiple" />
 			<input id="uploadattachementpath" name="data[Post][attachement]" value="" type="hidden" />
 			<div id="uploadattachementstatus" class="uploadstatus"></div>
 			<button type="button" id="uploadattachement" class="uploadattachement">Upload Attachement</button>
-		</div>
+		</div>*/?>
 		<?php echo $this->Form->input('category_id');
 		if($isAdmin == 1){
 			echo $this->Form->input('approved');	
