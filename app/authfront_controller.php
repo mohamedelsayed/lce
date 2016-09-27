@@ -183,7 +183,7 @@ class AuthfrontController extends AppController{
 		}		
 	}
 	function send_email_notification_member($member, $body, $block_notification_flag, $member_id, $settings){
-		if($member['Member'][$block_notification_flag] == 0){
+		/*if($member['Member'][$block_notification_flag] == 0){
 			$blocked_flag = FALSE;
 			if(!empty($member['BlockedMembers'])){
 				foreach ($member['BlockedMembers'] as $key => $blockedMembers) {
@@ -204,7 +204,7 @@ class AuthfrontController extends AppController{
 				if ($this->Email->send()){
 				}		
 			}
-		}
+		}*/
 	}
 	public function check_allowed_controllers_actions(){
 		$allowed_links = $this->get_allowed_links();		
