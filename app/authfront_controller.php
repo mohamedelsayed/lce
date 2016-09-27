@@ -67,6 +67,7 @@ class AuthfrontController extends AppController{
 		}else{
 			$GLOBALS['is_loggin'] = 0;			
 		}
+		$GLOBALS['is_admin'] = $isAdmin;	
 	}
 	function beforeRender(){
 		$this->setParentCat();
@@ -250,4 +251,55 @@ class AuthfrontController extends AppController{
 			$this->redirect(array('controller' => 'forum', 'action' => 'index'));	
 		}		
 	}
+	public function draw_attachement_box($id = 0, $path = '', $delete = 1){
+		$path_exploded = explode('.', $path);
+		$file_ext = end($path_exploded);
+		$path_exploded2 = explode('/', $path);
+		$filename = end($path_exploded2);
+		$removebtn = '<div data-file-id="{{file_id}}"  class="removeuploadattachementbtn last" path="'.$path.'">X</div>';
+		$file_class = $file_ext+'-file';
+		$file_link = BASE_URL.$path;
+		$file_class = $file_ext.'-file';
+		$tpl = '<div class="common-file-post '.$file_class.'" data-file-id="{{file_id}}">
+		<a target="_blank" href="'.$file_link.'" >'.$filename."</a>";
+		if($delete == 1){
+			$tpl .= $removebtn;
+		}
+		$tpl .= '<input type="hidden" name="file_path[{{file_id}}]" value="{{file_path}}" />'.
+		'</div>';
+        /*$tpl = '<div class="attachement_wrap" data-file-id="{{file_id}}">
+            <div class="file_item">
+            <file src="'.BASE_URL.'/{{file_path}}" style="max-width: 250px; max-height: 250px;">
+            </div>
+            <input type="hidden" name="file_path[{{file_id}}]" value="{{file_path}}" />
+            <div class="caption">
+            <label>Caption</label>
+            <input type="text" name="file_caption[{{file_id}}]" value="{{file_caption}}" />
+            </div>
+            <div class="cover">
+            <input type="radio" name="file_cover" value="{{file_id}}" {{file_cover}} />
+            <label>Cover Image</label>
+            </div>
+            <div class="delete" data-file-id="{{file_id}}" >
+                <a>Delete</a>
+            </div>
+        </div>';*/
+        $html = '';        
+        if($path != ''){
+            if($id == 0){
+                $id = $this->generateRandomString();                
+            }
+            $html = str_replace(array('{{file_id}}', '{{file_path}}'), 
+                                array($id, $path), $tpl);
+        }
+        return $html;
+    }
+	public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
 }
