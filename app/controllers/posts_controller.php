@@ -31,6 +31,7 @@ class PostsController extends AuthfrontController {
 		}
 	}
 	function view($id = null) {
+		$this->set('selected','market_place_page');		
 		$limit = $this->pagingLimit;
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -181,6 +182,7 @@ class PostsController extends AuthfrontController {
 		$this->redirect(array('action' => 'index'));		
 	}
 	function all(){
+		$this->set('selected','market_place_page');	
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
 		$conditions = array('Post.approved' => 1);					
