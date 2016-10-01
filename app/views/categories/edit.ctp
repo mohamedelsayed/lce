@@ -1,4 +1,4 @@
-<div class="cats form">
+<div class="categories form">
 <?php echo $this->Form->create('Category', array('type'=>'file'));?>
 	<fieldset>
  		<legend><?php __('Edit Category'); ?></legend>
