@@ -17,6 +17,14 @@ class Library extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),'google_drive_url' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
+		),'youtube_url' => array(
+			'rule' => array('url'),
+			'message' => 'Please supply a valid url.',
+			'allowEmpty' => true,
 		)
 	);
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
