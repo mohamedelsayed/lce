@@ -10,6 +10,7 @@ class PostsController extends AuthfrontController {
 	var $uses = array('Post');
 	//var $components = array('Upload');
 	function index() {
+		$this->check_isAdmin_isSuperAdmin();
 		$this->Post->recursive = 0;
 		$order = array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC');
 		if($this->isSuperAdmin() || $this->isAdmin()){
