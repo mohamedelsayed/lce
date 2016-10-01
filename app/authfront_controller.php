@@ -13,7 +13,9 @@ class AuthfrontController extends AppController{
 	public $replyto = 'noreply@lifecoachingegypt.com';
 	public $inactiveagreedisagreebutton = 'inactiveagreedisagreebutton';
 	public $email_notification_actions = array(0 => 'Add Post', 1 => 'Add Event', 2 => 'Add Comment', 3 => 'Cancel Event', 4 => 'Add Announcement');
-	public $forum_events_types = array(0 => 'Public Events', 1 => 'Community Events', 2 => 'Community Meetings'); 	
+	public $forum_events_types = array(0 => 'Public Events', 1 => 'Community Events', 2 => 'Community Meetings');
+	public $forum_libraries_types = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video'); 	
+	public $forum_modules_types = array(0 => 'Module 1', 1 => 'Module 2', 2 => 'Module 3', 3 => 'Module 4', 4 => 'Module 5'); 	
 	public $pagingLimit = 10;
 	protected function isAuthenticFront(){
 		if($this->Cookie->read('userInfoFront')){
@@ -77,7 +79,9 @@ class AuthfrontController extends AppController{
 		}
 		$this->set('base_url', BASE_URL);
 		$this->setHeaderGroups();
-		$this->set('forum_events_types',$this->forum_events_types);		
+		$this->set('forum_events_types',$this->forum_events_types);
+		$this->set('forum_libraries_types',$this->forum_libraries_types);
+		$this->set('forum_modules_types',$this->forum_modules_types);				
 	}
 	function isSuperAdmin(){
 		$flag = 0;
