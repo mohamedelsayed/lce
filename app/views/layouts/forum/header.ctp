@@ -29,6 +29,9 @@
 		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all';?>">MarketPlace</a>
 				        		</li>	
 				        		<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Library" href="<?php echo $base_url.'/libraries';?>">Library</a>
+				        		</li>	
+				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
 				        		</li>
 				        		<?php /*<li class="submenu">
