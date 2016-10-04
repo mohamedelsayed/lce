@@ -4,14 +4,26 @@
  * @link http://www.lifecoachingegypt.com
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
+jQuery(window).load(function(){
+	jQuery("#LibraryType").change();
+});	
+jQuery(document).ready(function(){
+	jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){
+    	close_instructor_popup();      	
+    });
+    jQuery("body").on("change","#LibraryType", function(){  
+    	var type = jQuery(this).val(); 
+    	var youtube_url = jQuery('#LibraryYoutubeUrl');
+    	if(type == 5){    		
+    		youtube_url.parent().fadeIn(200);
+    	}else{
+    		youtube_url.parent().fadeOut(200);    		
+    	}
+    });
+});
 function open_event(id){
 	window.location.href = base_url+"/events/view/"+id;	    
 }
-jQuery(document).ready(function(){
-	jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){
-    	close_instructor_popup();     	
-    });
-});
 function open_instructor_popup(content){
 	jQuery("#mesagepopboxinstructorpopoup .mesagecontent").html(content);      
     jQuery("#mesagepopboxinstructorpopoup").show();     
