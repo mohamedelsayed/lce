@@ -13,7 +13,7 @@ class AuthfrontController extends AppController{
 	public $replyto = 'noreply@lifecoachingegypt.com';
 	public $inactiveagreedisagreebutton = 'inactiveagreedisagreebutton';
 	public $email_notification_actions = array(0 => 'Add Post', 1 => 'Add Event', 2 => 'Add Comment', 3 => 'Cancel Event', 4 => 'Add Announcement');
-	public $forum_events_types = array(0 => 'Public Events', 1 => 'Community Events', 2 => 'Community Meetings');
+	public $forum_events_types = array(0 => 'Public Events', 1 => 'DCC Events', 2 => 'Community Meetings');
 	public $forum_libraries_types = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video'); 	
 	public $forum_modules_types = array(0 => 'Module 1', 1 => 'Module 2', 2 => 'Module 3', 3 => 'Module 4', 4 => 'Module 5'); 	
 	public $pagingLimit = 10;
