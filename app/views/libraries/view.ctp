@@ -11,16 +11,25 @@
 			<?php echo $library['Library']['title']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Module'); ?></dt>
+		<?php if($type1 == 0){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Module'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $forum_modules_types[$library['Library']['module']]; ?>
+				&nbsp;
+			</dd>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $forum_libraries_types2[$library['Library']['type2']]; ?>
+				&nbsp;
+			</dd>		
+		<?php }?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('File'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $forum_modules_types[$library['Library']['module']]; ?>
-			&nbsp;
+			<div class="input file">
+				<div class="attachements_wrapper uploadstatus"><?php echo $files_div;?></div>
+			</div>
+		&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
-		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $forum_libraries_types2[$library['Library']['type2']]; ?>
-			&nbsp;
-		</dd>		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Weight'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $library['Library']['weight']; ?>

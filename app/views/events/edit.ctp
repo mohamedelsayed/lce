@@ -1,5 +1,5 @@
 <div class="events form events_form">
-<?php echo $this->Form->create('Event', array('type'=>'file'));?>
+<?php echo $this->Form->create('Event', array('type'=>'file', 'url' => $actual_link));?>
 <fieldset>
  		<legend><?php __('Edit Event'); ?></legend>
 	<?php

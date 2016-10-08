@@ -1,5 +1,5 @@
 <div class="libraries form">
-<?php echo $this->Form->create('Library', array('type'=>'file'));?>
+<?php echo $this->Form->create('Library', array('type'=>'file', 'url' => $actual_link));?>
 	<fieldset>
  		<legend><?php __('Add Library'); ?></legend>
 	<?php
@@ -15,6 +15,7 @@
 				echo $this->Form->input('type2', array('value'=> 0, 'type' => 'hidden'));			
 			}
 		}
+		echo $this->Form->input('file', array('type'=>'file'));		
 		echo $this->Form->input('youtube_url', array('type' => 'text'));
 		echo $this->Form->input('google_drive_url', array('type' => 'text'));				
 		echo $this->Form->input('weight', array('default'=>0));
