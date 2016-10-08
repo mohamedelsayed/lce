@@ -1,12 +1,10 @@
 <?php
 require_once '../auth_controller.php';
 class AttachmentsController extends AuthController {
-
 	var $name = 'Attachments';
 	var $uses = array('Attachment');
 	//use upload component.
 	var $components = array('Upload');
-	
 	function deleteAttachment($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Attachment', true));
@@ -35,4 +33,3 @@ class AttachmentsController extends AuthController {
 	}
 
 }
-?>

@@ -1,12 +1,10 @@
 <?php
 require_once '../auth_controller.php';
 class AudiosController extends AuthController {
-
 	var $name = 'Audios';
 	var $uses = array('Audio');
 	//use upload component.
 	var $components = array('Upload');
-
 	function deleteAudio($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for video', true));
@@ -31,4 +29,3 @@ class AudiosController extends AuthController {
 	}
 
 }
-?>
