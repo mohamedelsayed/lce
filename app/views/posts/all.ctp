@@ -5,7 +5,7 @@
 			<h2><?php echo $category_title;?></h2>
 		</div>				
 	<?php }?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Post', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Topic', true), array('action' => 'add')); ?></div>
 	<?php if(!empty($posts)){?>
 		<?php foreach ($posts as $key => $post) {
 			$count_comments = count($post['ForumComment']);

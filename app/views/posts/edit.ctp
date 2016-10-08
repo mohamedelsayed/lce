@@ -4,7 +4,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 <div class="cats form">
 <?php echo $this->Form->create('Post', array('type'=>'file'));?>
 	<fieldset>
- 		<legend><?php __('Edit Post'); ?></legend>
+ 		<legend><?php __('Edit Topic'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('title', array("label" => 'Title'));

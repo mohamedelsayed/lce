@@ -23,13 +23,13 @@
 		            				<a <?php echo $style_width;?> title="Groups" href="<?php echo $base_url.'/members/admin_all';?>">Contacts</a>
 				        		</li>		            					            							        		
 				        		<li class="submenu">
-		            				<a <?php echo $style_width;?> title="Events" href="<?php echo $base_url.'/events/all';?>">Events</a>
+		            				<a <?php echo $style_width;?> title="Events" href="<?php echo $base_url.'/events/admin_all';?>">Events</a>
 				        		</li>	
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all';?>">MarketPlace</a>
 				        		</li>	
 				        		<li class="submenu">
-		            				<a <?php echo $style_width;?> title="Library" href="<?php echo $base_url.'/libraries';?>">Library</a>
+		            				<a <?php echo $style_width;?> title="Library" href="<?php echo $base_url.'/libraries/admin_all';?>">Library</a>
 				        		</li>	
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
@@ -63,15 +63,15 @@
 		            <?php /*<li>
 		            	<a title="Announcements" id="announcementsall" href="<?php echo $base_url.'/announcements/all';?>" class="fNiv">Announcements</a>           
 		            </li>*/?>
-		            <?php /*<li>
-		            	<a title="Calendar" id="Calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
-		            </li>*/?>
+		            <li>
+		            	<a title="Calendar" id="calendar" href="<?php echo $base_url.'/calendar';?>" class="fNiv">Calendar</a>           
+		            </li>
 	            <?php }?>
-	            <?php if($GLOBALS['is_loggin']){?>
+	            <?php /*if($GLOBALS['is_loggin']){?>
 		            <li>
 		            	<a title="Contacts" id="contactspages" href="<?php echo $base_url.'/members/all';?>" class="fNiv">Contacts</a>           
 		            </li>
-	            <?php }?>
+	            <?php }*/?>
 	            <?php if($GLOBALS['is_loggin']){?>
 		            <?php if(!empty($header_groups)){?>
 			            <li>
@@ -84,6 +84,10 @@
 			            				<a <?php echo $style_width;?> title="<?php echo $group_title;?>" href="<?php echo $base_url.'/members/group/'.$group_id;?>"><?php echo $group_title;?></a>
 					        		</li>
 				        		<?php }?>
+				        		<li class="submenu">
+				        			<?php $admin_group_title = 'Admins';?>
+		            				<a <?php echo $style_width;?> title="<?php echo $admin_group_title;?>" href="<?php echo $base_url.'/members/admin/';?>"><?php echo $admin_group_title;?></a>
+				        		</li>
 			        		</ul>
 		        		</li>
 	        		<?php }?>

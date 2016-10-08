@@ -1,5 +1,5 @@
 <div class="events index">
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('action' => 'add?type='.$type)); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Event', true), array('action' => 'add/type:'.$type)); ?></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

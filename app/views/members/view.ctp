@@ -1,11 +1,11 @@
 <div class="members view">
 <h2><?php  __('Contact');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<?PHP /*<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $member['Member']['id']; ?>
 			&nbsp;
-		</dd>
+	</dd>*/?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Full Name'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $member['Member']['fullname']; ?>
@@ -16,11 +16,11 @@
 			<?php echo $member['Member']['email']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Username'); ?></dt>
+		<?php /*<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Username'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $member['Member']['username']; ?>
 			&nbsp;
-		</dd>
+		</dd>*/?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mobile'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $member['Member']['mobile']; ?>

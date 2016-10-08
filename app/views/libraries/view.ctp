@@ -18,7 +18,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $forum_libraries_types[$library['Library']['type']]; ?>
+			<?php echo $forum_libraries_types2[$library['Library']['type2']]; ?>
 			&nbsp;
 		</dd>		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Weight'); ?></dt>

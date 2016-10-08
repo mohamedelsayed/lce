@@ -4,7 +4,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 <div class="posts form">
 	<?php echo $this->Form->create('Post', array('type'=>'file'));?>
 	<fieldset>
- 		<legend><?php __('Add Post'); ?></legend>
+ 		<legend><?php __('Add Topic'); ?></legend>
 		<?php
 		echo $this->Form->input('title', array("label" => 'Title'));
 		echo $this->Form->input('Post.body', array('class'=>'ckeditor'));

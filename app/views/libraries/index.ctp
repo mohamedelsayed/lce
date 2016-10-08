@@ -1,7 +1,7 @@
 <div class="libraries index">
 	<?php //echo $this->element('forum/search_view',array('currentModel' => 'Library', 'currentField' => 'title'));?>
 	<?php /*<h2><?php __('Libraries');?></h2>*/?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Library', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Library', true), array('action' => 'add/type1:'.$type1)); ?></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

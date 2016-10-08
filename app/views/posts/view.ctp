@@ -6,7 +6,7 @@
 	if(($post['Post']['member_id'] == $member_id) || $isAdmin == 1){?>
 		<div class="cancel_button">
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $post['Post']['id'])); ?> | 
-			<?php echo $this->Html->link(__('Cancel Post', true), array('action' => 'delete', $post['Post']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?>
+			<?php echo $this->Html->link(__('Cancel Topic', true), array('action' => 'delete', $post['Post']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?>
 		</div>	
 	<?php }?>
 	<h2><?php echo $post['Post']['title'];?></h2>
