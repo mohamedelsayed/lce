@@ -781,7 +781,7 @@ a.inactiveagreedisagreebutton:hover{
 	float: left;
 	margin-top: 25px;
 }
-.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a, .jpg-file a, .png-file a, .jpeg-file a, .gif-file a {
+.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a, .jpg-file a, .png-file a, .jpeg-file a, .gif-file a, .mp4-file a, .mp3-file a{
 	line-height:20px;
 	float:left;
 	font-size: 12px;
@@ -796,6 +796,18 @@ a.inactiveagreedisagreebutton:hover{
 }
 .pdf-file {
 	background: url(../../img/forum/pdf-icon.png) no-repeat center left;
+	padding-left:25px;
+	float:left;
+	background-size:20px;
+}
+.mp4-file {
+	background: url(../../img/forum/Movies-icon.png) no-repeat center left;
+	padding-left:25px;
+	float:left;
+	background-size:20px;
+}
+.mp3-file{
+	background: url(../../img/forum/mp3-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
 	background-size:20px;
@@ -1055,7 +1067,7 @@ td.calendar-day{
 .jpg-file a, .png-file a, .jpeg-file a, .gif-file a {
 	margin-top: 10px;
 }
-.removeuploadattachementbtn{
+.removeuploadattachementbtn, .removeuploadfilebtn{
 	right: -25px;
     top: 0px;
 }
