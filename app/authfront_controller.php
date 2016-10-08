@@ -14,7 +14,8 @@ class AuthfrontController extends AppController{
 	public $inactiveagreedisagreebutton = 'inactiveagreedisagreebutton';
 	public $email_notification_actions = array(0 => 'Add Post', 1 => 'Add Event', 2 => 'Add Comment', 3 => 'Cancel Event', 4 => 'Add Announcement');
 	public $forum_events_types = array(0 => 'Public Events', 1 => 'DCC Events', 2 => 'Community Meetings');
-	public $forum_libraries_types = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video'); 	
+	public $forum_libraries_types1 = array(0 => 'DCC materials', 1 => 'Coaching tools and Tips', 2 => 'Video Center', 3 => 'Photo Gallery');
+	public $forum_libraries_types2 = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video', 6 => 'mp3'); 	
 	public $forum_modules_types = array(0 => 'Module 1', 1 => 'Module 2', 2 => 'Module 3', 3 => 'Module 4', 4 => 'Module 5'); 	
 	public $pagingLimit = 10;
 	protected function isAuthenticFront(){
@@ -44,12 +45,12 @@ class AuthfrontController extends AppController{
 		}else{
 			return 0;
 		}
-	}			 
+	} 
 	function beforeFilter(){
 		if(!$this->Session->check('Setting')){
 			$this->setSettings();
 		}
-		$this->check_allowed_controllers_actions();		
+		$this->check_allowed_controllers_actions();	
 		$this->loadModel('Setting');
 		$settings = $this->Setting->read(null, 1);
 		$this->set("minYearValue",$settings['Setting']['minimum_year']);
@@ -80,7 +81,8 @@ class AuthfrontController extends AppController{
 		$this->set('base_url', BASE_URL);
 		$this->setHeaderGroups();
 		$this->set('forum_events_types',$this->forum_events_types);
-		$this->set('forum_libraries_types',$this->forum_libraries_types);
+		$this->set('forum_libraries_types1',$this->forum_libraries_types1);
+		$this->set('forum_libraries_types2',$this->forum_libraries_types2);
 		$this->set('forum_modules_types',$this->forum_modules_types);				
 	}
 	function isSuperAdmin(){
