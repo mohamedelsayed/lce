@@ -206,10 +206,18 @@ class MembersController extends AuthfrontController {
 		$this->render('all');
 		$this->set('selected','grouppages');	
 	}
+	function admin(){
+		$this->get_members(-1);
+		$this->render('all');
+		$this->set('selected','grouppages');	
+	}
 	public function get_members($group_id = 0){
 		$this->Member->recursive = 0;
 		$conditions = array();
-		if($group_id != 0){
+		if($group_id == -1){
+			$conditions['Member.role'] = 1;
+		}
+		if($group_id > 0){
 			$this->loadModel('Group');
 			$conditions['Member.group_id'] = $group_id;
 			$this->set('group', $this->Group->read(null, $group_id));

@@ -9,26 +9,19 @@ class EventsController extends AuthfrontController {
 	var $name = 'Events';
 	var $uses = array('Event', 'AttendEvent', 'Gal');
 	function index() {
-		$this->check_isAdmin_isSuperAdmin();
-		$type = 0;
-		if(isset($_GET['type'])){
-			$type = $_GET['type'];
-		}
+		$this->check_isAdmin_isSuperAdmin();		
+		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;
 		$this->set('type', $type);
-		if($this->isSuperAdmin() || $this->isAdmin()){
-			$this->Event->recursive = 0;
-			$this->paginate = array(
-				'conditions' => array('Event.type' => $type),
-				'order' => array('Event.id' => 'DESC'),
-	    	);
-			$this->set('events', $this->paginate());
-			$this->set('title_for_layout' , 'Events');
-		}else{
-			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
-		}
+		$this->Event->recursive = 0;
+		$this->paginate = array(
+			'conditions' => array('Event.type' => $type),
+			'order' => array('Event.id' => 'DESC'),
+    	);
+		$this->set('events', $this->paginate());
+		$this->set('title_for_layout' , 'Events');
 	}
 	function view($id = null) {
+		$this->set('selected', 'calendar');
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$isAdmin = 1;
@@ -73,11 +66,8 @@ class EventsController extends AuthfrontController {
 			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
 		}
 	}
-	function add() {
-		$type = 0;
-		if(isset($_GET['type'])){
-			$type = $_GET['type'];
-		}
+	function add() {		
+		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;
 		$this->set('type', $type);
 		$this->check_isAdmin_isSuperAdmin();
 		$isAdmin = 0;
@@ -85,34 +75,29 @@ class EventsController extends AuthfrontController {
 			$isAdmin = 1;
 		}
 		$this->set('isAdmin', $isAdmin);
-		if($this->isSuperAdmin() || $this->isAdmin()){
-			if (!empty($this->data)) {
-				//upload image
-				$this->data['Event']['image'] = $this->Upload->uploadImage($this->data['Event']['image']);
-				$this->Event->create();
-				if ($this->Event->saveAll($this->data, array('validate'=>'first'))) {
-					$this->send_email_notification($this->Event->id, 1, $this->data['Event']['title'], 0);
-					$event_id = $this->Event->id;
-					$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
-					$this->Session->setFlash(__('The Event has been saved', true));
-					if($isAdmin == 1){
-						$this->redirect(array('action' => 'index?type='.$this->data['Event']['type']));
-					}else{
-						$this->redirect(array('controller' => 'calendar', 'action' => 'index'));					
-					}
-				} else {
-					$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
+		if (!empty($this->data)) {
+			//upload image
+			$this->data['Event']['image'] = $this->Upload->uploadImage($this->data['Event']['image']);
+			$this->Event->create();
+			if ($this->Event->saveAll($this->data, array('validate'=>'first'))) {
+				$this->send_email_notification($this->Event->id, 1, $this->data['Event']['title'], 0);
+				$event_id = $this->Event->id;
+				$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
+				$this->Session->setFlash(__('The Event has been saved', true));
+				if($isAdmin == 1){
+					$this->redirect(array('action' => 'index/type:'.$this->data['Event']['type']));
+				}else{
+					$this->redirect(array('controller' => 'calendar', 'action' => 'index'));					
 				}
+			} else {
+				$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
 			}
-			$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1)));
-			$this->set(compact('instructors'));
-			$this->set('title_for_layout' , 'Events');
-			$saved_instructors = array();
-			$this->set(compact('saved_instructors'));
-		}else{
-			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
-		}	
+		}
+		$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1)));
+		$this->set(compact('instructors'));
+		$this->set('title_for_layout' , 'Events');
+		$saved_instructors = array();
+		$this->set(compact('saved_instructors'));
 	}
 	function edit($id = null) {
 		$this->check_isAdmin_isSuperAdmin();
@@ -138,7 +123,7 @@ class EventsController extends AuthfrontController {
 					$event_id = $this->data['Event']['id'];
 					$this->save_many_items_ids($event_id, $_POST['instructors_ids']);
 					$this->Session->setFlash(__('The Event has been saved', true));
-					$this->redirect(array('action' => 'index?type='.$this->data['Event']['type']));
+					$this->redirect(array('action' => 'index/type:'.$this->data['Event']['type']));
 				} else {
 					$this->Session->setFlash(__('The Event could not be saved. Please, try again.', true));
 				}
@@ -167,7 +152,7 @@ class EventsController extends AuthfrontController {
 			$type = $this->data['Event']['type'];
 			if ($this->Event->delete($id)) {
 				$this->Session->setFlash(__('Event deleted', true));
-				$this->redirect(array('action'=> 'index?type='.$type));
+				$this->redirect(array('action'=> 'index/type:'.$type));
 			}
 			$this->Session->setFlash(__('Event was not deleted', true));
 			$this->redirect(array('action' => 'index'));
@@ -210,7 +195,7 @@ class EventsController extends AuthfrontController {
 		$this->set('page',$page);
 		$this->set('events', $this->paginate('Event'));		
 	}*/
-	function all(){
+	function admin_all(){
 		$this->check_isAdmin_isSuperAdmin();
 	}
 	function save_many_items_ids($event_id = 0, $items_ids, $model = 'EventInstructor'){
