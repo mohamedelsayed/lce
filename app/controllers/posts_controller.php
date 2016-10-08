@@ -10,6 +10,7 @@ class PostsController extends AuthfrontController {
 	var $uses = array('Post');
 	//var $components = array('Upload');
 	function index() {
+		$this->set('title_for_layout', 'Topics');
 		$this->check_isAdmin_isSuperAdmin();
 		$this->Post->recursive = 0;
 		$order = array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC');
@@ -32,6 +33,7 @@ class PostsController extends AuthfrontController {
 		}
 	}
 	function view($id = null) {
+		$this->set('title_for_layout', 'Topics');
 		$this->set('selected','market_place_page');		
 		$limit = $this->pagingLimit;
 		$isAdmin = 0;
@@ -72,6 +74,7 @@ class PostsController extends AuthfrontController {
         $this->set('attachements_div', $attachements_div);
 	}
 	function add() {
+		$this->set('title_for_layout', 'Topics');
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$this->set('selected','adminpages');
@@ -104,6 +107,7 @@ class PostsController extends AuthfrontController {
         $this->set('attachements_div', $attachements_div);
 	}
 	function edit($id = null) {
+		$this->set('title_for_layout', 'Topics');
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
 			$this->set('selected','adminpages');
@@ -183,6 +187,7 @@ class PostsController extends AuthfrontController {
 		$this->redirect(array('action' => 'index'));		
 	}
 	function all($category_id = 0){
+		$this->set('title_for_layout', 'Topics');
 		$this->set('selected','market_place_page');	
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
