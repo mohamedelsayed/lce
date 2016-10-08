@@ -15,7 +15,7 @@ class AuthfrontController extends AppController{
 	public $email_notification_actions = array(0 => 'Add Post', 1 => 'Add Event', 2 => 'Add Comment', 3 => 'Cancel Event', 4 => 'Add Announcement');
 	public $forum_events_types = array(0 => 'Public Events', 1 => 'DCC Events', 2 => 'Community Meetings');
 	public $forum_libraries_types1 = array(0 => 'DCC materials', 1 => 'Coaching tools and Tips', 2 => 'Video Center', 3 => 'Photo Gallery');
-	public $forum_libraries_types2 = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video', 6 => 'mp3'); 	
+	public $forum_libraries_types2 = array(0 => 'Word', 1 => 'PowerPoint', 2 => 'Excel', 3 => 'PDF', 4 => 'Photo', 5 => 'Video', 6 => 'Audio'); 	
 	public $forum_modules_types = array(0 => 'Module 1', 1 => 'Module 2', 2 => 'Module 3', 3 => 'Module 4', 4 => 'Module 5'); 	
 	public $pagingLimit = 10;
 	protected function isAuthenticFront(){
