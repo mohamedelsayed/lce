@@ -274,24 +274,7 @@ class AuthfrontController extends AppController{
 			$tpl .= $removebtn;
 		}
 		$tpl .= '<input type="hidden" name="file_path[{{file_id}}]" value="{{file_path}}" />'.
-		'</div>';
-        /*$tpl = '<div class="attachement_wrap" data-file-id="{{file_id}}">
-            <div class="file_item">
-            <file src="'.BASE_URL.'/{{file_path}}" style="max-width: 250px; max-height: 250px;">
-            </div>
-            <input type="hidden" name="file_path[{{file_id}}]" value="{{file_path}}" />
-            <div class="caption">
-            <label>Caption</label>
-            <input type="text" name="file_caption[{{file_id}}]" value="{{file_caption}}" />
-            </div>
-            <div class="cover">
-            <input type="radio" name="file_cover" value="{{file_id}}" {{file_cover}} />
-            <label>Cover Image</label>
-            </div>
-            <div class="delete" data-file-id="{{file_id}}" >
-                <a>Delete</a>
-            </div>
-        </div>';*/
+		'</div>';     
         $html = '';        
         if($path != ''){
             if($id == 0){
