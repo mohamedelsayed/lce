@@ -80,10 +80,12 @@ class AuthfrontController extends AppController{
 		}
 		$this->set('base_url', BASE_URL);
 		$this->setHeaderGroups();
-		$this->set('forum_events_types',$this->forum_events_types);
-		$this->set('forum_libraries_types1',$this->forum_libraries_types1);
-		$this->set('forum_libraries_types2',$this->forum_libraries_types2);
-		$this->set('forum_modules_types',$this->forum_modules_types);				
+		$this->set('forum_events_types', $this->forum_events_types);
+		$this->set('forum_libraries_types1', $this->forum_libraries_types1);
+		$this->set('forum_libraries_types2', $this->forum_libraries_types2);
+		$this->set('forum_modules_types', $this->forum_modules_types);	
+		$actual_link = $this->get_actual_link();			
+		$this->set('actual_link', $actual_link);	
 	}
 	function isSuperAdmin(){
 		$flag = 0;
@@ -308,4 +310,12 @@ class AuthfrontController extends AppController{
         }
         return $randomString;
     }
+    public function get_actual_link() {
+    	$http_string = "http://";
+	    if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
+	        $http_string = "https://";
+	    }
+	    $actual_link = $http_string . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	    return $actual_link;
+	}
 }
