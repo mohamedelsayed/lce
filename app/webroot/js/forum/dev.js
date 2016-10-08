@@ -5,13 +5,13 @@
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 jQuery(window).load(function(){
-	jQuery("#LibraryType").change();
+	jQuery("#LibraryType2").change();
 });	
 jQuery(document).ready(function(){
 	jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){
     	close_instructor_popup();      	
     });
-    jQuery("body").on("change","#LibraryType", function(){  
+    jQuery("body").on("change","#LibraryType2", function(){  
     	var type = jQuery(this).val(); 
     	var youtube_url = jQuery('#LibraryYoutubeUrl');
     	if(type == 5){    		
