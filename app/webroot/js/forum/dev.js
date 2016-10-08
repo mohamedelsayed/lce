@@ -20,6 +20,14 @@ jQuery(document).ready(function(){
     		youtube_url.parent().fadeOut(200);    		
     	}
     });
+    jQuery("body").on("click", ".removeuploadfilebtn", function () {
+    	var y = confirm('Are you sure you want to delete this file?');
+        if(y){
+        	var id = jQuery(this).attr('data-file-id');
+        	window.location.href = base_url+"/libraries/deleteFile/"+id;        	
+        	//jQuery(this).closest('div.common-file-post').remove();
+        }
+    });
 });
 function open_event(id){
 	window.location.href = base_url+"/events/view/"+id;	    
