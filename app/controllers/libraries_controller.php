@@ -144,7 +144,7 @@ class LibrariesController extends AuthfrontController {
 		$path_exploded2 = explode('/', $path);
 		$filename = end($path_exploded2);
 		$removebtn = '<div data-file-id="{{file_id}}"  class="removeuploadfilebtn last" path="'.$path.'">X</div>';
-		$file_class = $file_ext+'-file';
+		//$file_class = $file_ext+'-file';
 		//$file_link = BASE_URL.$path;
 		$file_class = $file_ext.'-file';
 		$file_link = BASE_URL."/app/webroot/files/upload/".$path;
@@ -179,5 +179,58 @@ class LibrariesController extends AuthfrontController {
 		}
 		$this->Session->setFlash(__('File was not deleted', true));
 		$this->redirect(array('action'=> 'edit/'.$id));			
+	}
+	function all(){
+		$this->set('title_for_layout', 'Library');
+		$this->set('selected', 'library_page');		
+	}
+	function listing(){
+		$forum_libraries_types1 = $this->forum_libraries_types1;
+		$this->set('selected', 'library_page');		
+		$type1 = isset($this->params['named']['type1'])?$this->params['named']['type1']:0;	
+		$this->set('title_for_layout', 'Library');
+		$title = '';
+		if(isset($forum_libraries_types1[$type1])){
+			$title = $forum_libraries_types1[$type1];
+			$this->set('title_for_layout', $title);
+			$this->set('page_title', $title);
+		}
+		if($type1 == 0){
+			$this->render('all_modules');				
+		}else{				
+			$libraries = $this->get_libraries($type1);
+			$this->set('libraries', $libraries);	
+			$this->set('hide_section_title', 1);					
+			if($type1 == 3){
+				$this->set('is_photo_gallery', 1);				
+			}
+			$this->render('items');
+		}
+	}
+	function module(){
+		$forum_modules_types = $this->forum_modules_types;
+		$id = isset($this->params['named']['id'])?$this->params['named']['id']:0;	
+		$this->set('selected', 'library_page');	
+		if(isset($forum_modules_types[$id])){
+			$module_name = $forum_modules_types[$id];
+			$this->set('title_for_layout', $module_name);
+			$this->set('page_title', $module_name);			
+		}		
+		$libraries = $this->get_libraries(0, $id);
+		$this->set('libraries', $libraries);
+		$this->render('items');
+	}
+	function get_libraries($type1 = 0, $module = 0){
+		$conditions = array();
+		$conditions['Library.approved'] = 1;
+		$conditions['Library.module'] = $module;
+		$conditions['Library.type1'] = $type1;
+		$libraries = $this->Library->find(
+			'all', array(
+				'conditions' => $conditions,
+				'order' => array('Library.weight' => 'ASC', 'Library.updated' => 'DESC', 'Library.id'=>'DESC')
+			)	  	 	
+		);
+		return $libraries;		
 	}
 }

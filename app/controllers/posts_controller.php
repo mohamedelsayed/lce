@@ -205,7 +205,7 @@ class PostsController extends AuthfrontController {
 		    	'limit'      => $limit,
 		    	'page'  	 => $page
 	    	);
-		$this->set('page',$page);
+		$this->set('page', $page);
 		$this->set('posts', $this->paginate('Post'));		
 	}
 	function addComment(){
