@@ -781,7 +781,7 @@ a.inactiveagreedisagreebutton:hover{
 	float: left;
 	margin-top: 25px;
 }
-.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a, .jpg-file a, .png-file a, .jpeg-file a, .gif-file a, .mp4-file a, .mp3-file a{
+.pdf-file a, .doc-file a, .docx-file a, .xls-file a, .xlsx-file a, .ppt-file a, .pptx-file a, .jpg-file a, .png-file a, .jpeg-file a, .gif-file a, .mp4-file a, .mp3-file a, .google-drive-file a{
 	line-height:20px;
 	float:left;
 	font-size: 12px;
@@ -820,6 +820,12 @@ a.inactiveagreedisagreebutton:hover{
 }
 .ppt-file, .pptx-file {
 	background: url(../../img/forum/Microsoft-Office-PowerPoint-icon.png) no-repeat center left;
+	padding-left:25px;
+	float:left;
+	background-size:20px;
+}
+.google-drive-file{
+	background: url(../../img/forum/Google-Drive-icon.png) no-repeat center left;
 	padding-left:25px;
 	float:left;
 	background-size:20px;
@@ -1095,4 +1101,33 @@ td.calendar-day{
 	color: #fff;
     display: block;
     text-decoration: none;
+}
+.front_item_boxes_all{
+	margin: 100px auto;
+	text-align: center;	
+}
+.front_item_box{
+	padding: 10px;
+	width: auto;
+	height: 150px;
+	line-height:150px;
+	border: 1px dotted #666;
+	margin: 10px;
+	display: inline-block;
+}
+.front_item_box a{
+	font-size: 22px;
+	font-family: Montserrat;
+	display: inline-block;
+	vertical-align: middle;
+  	line-height: 150px;;     
+}
+.front_item_box:hover{
+	border: 1px solid #c73e14;	
+}	
+.front_item_box a:hover{
+	color: #c73e14;
+}
+.sections_wrapper h6{
+	margin: 3px 0;
 }
