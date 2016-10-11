@@ -11,7 +11,7 @@ class ForumController  extends AuthfrontController {
 	var $uses = array('Member');
 	//var $components = array('Email', 'Upload');
 	function index(){
-		$this->redirect(array('controller' => 'calendar', 'action' => 'index'));
+		/*$this->redirect(array('controller' => 'calendar', 'action' => 'index'));
 		$limit = $this->pagingLimit;
 		$this->set('limit', $limit);
 		$this->loadModel('Announcement');
@@ -32,7 +32,7 @@ class ForumController  extends AuthfrontController {
     	);
 		$this->set('posts', $this->paginate('Post'));
 		$categories = $this->Post->Category->find('list');
-		$this->set(compact('categories'));
+		$this->set(compact('categories'));*/
 		$this->set('selected','home');
 	}
 	function login(){
