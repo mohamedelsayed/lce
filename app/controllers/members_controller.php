@@ -228,7 +228,7 @@ class MembersController extends AuthfrontController {
 		$this->paginate['Member'] = array(
     			//'fields'     => array('Member.id', 'Member.title', 'Member.body'),
     			'conditions' => $conditions,
-				'order'      => array('Member.fullname' => 'ASC','Member.id'=>'DESC'),
+				'order'      => array('TRIM(Member.fullname)' => 'ASC','Member.id'=>'DESC'),
 		    	'limit'      => $limit,
 		    	'page'  	 => $page
 	    	);
