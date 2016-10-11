@@ -5,6 +5,15 @@
 			<h2><?php echo $group_title;?></h2>
 		</div>				
 	<?php }?>
+	<?php $key = '';
+	if(isset($_GET['key'])){
+		$key = $_GET['key'];
+	}?>
+	<div class="filter_form">
+		<?php echo $this->Form->create('Member', array('url' => $actual_link, 'type' => 'get'));
+		echo $this->Form->input('Member'.'.'.'key', array('label' => '', 'value' => $key));
+		echo $this->Form->end(__('Search', true));?>
+	</div>
 	<?php if(!empty($members)){?>
 		<?php foreach ($members as $key => $member) {
 			$member_link = $base_url.'/members/view/'.$member['Member']['id'];
@@ -80,3 +89,12 @@
 	<?php }?>
 	<?php echo $this->element('front/paging_view');?>
 </div>
+<style type="text/css">
+.filter_form .input{
+	width: 30%;
+	margin-left: 0px;
+}
+.filter_form .submit{
+	float: left;
+}
+</style>
