@@ -83,6 +83,10 @@
 		            <li>
 		            	<a title="Logout" id="logout" href="<?php echo $base_url.'/forum/logout';?>" class="fNiv">Logout</a>           
 		            </li> 
+	            <?php }else{?>
+	            	<li>
+		            	<a title="Login" id="login_menu_button" href="<?php echo $base_url.'/forum/login';?>" class="fNiv">Login</a>           
+		            </li>  
 	            <?php }?> 
 			</ul>
 		</div>
