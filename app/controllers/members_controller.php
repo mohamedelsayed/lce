@@ -198,20 +198,32 @@ class MembersController extends AuthfrontController {
 		}
 	}
 	function all(){
-		$this->get_members();	
+		$key = '';
+		if(isset($_GET['key'])){
+			$key = $_GET['key'];
+		}
+		$this->get_members(0, $key);	
 		$this->set('selected','contactspages');	
 	}
 	function group($group_id){
-		$this->get_members($group_id);
+		$key = '';
+		if(isset($_GET['key'])){
+			$key = $_GET['key'];
+		}
+		$this->get_members($group_id, $key);
 		$this->render('all');
 		$this->set('selected','grouppages');	
 	}
 	function admin(){
-		$this->get_members(-1);
+		$key = '';
+		if(isset($_GET['key'])){
+			$key = $_GET['key'];
+		}
+		$this->get_members(-1, $key);
 		$this->render('all');
 		$this->set('selected','grouppages');	
 	}
-	public function get_members($group_id = 0){
+	public function get_members($group_id = 0, $key = ''){
 		$this->Member->recursive = 0;
 		$conditions = array();
 		if($group_id == -1){
@@ -221,6 +233,12 @@ class MembersController extends AuthfrontController {
 			$this->loadModel('Group');
 			$conditions['Member.group_id'] = $group_id;
 			$this->set('group', $this->Group->read(null, $group_id));
+		}
+		$key = trim($key);
+		if($key != ''){			
+			$conditions['AND'] = array('OR' => array(
+													'Member.fullname LIKE "%'.$key.'%"', 
+													'Member.job_title LIKE "%'.$key.'%"'));			
 		}
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
