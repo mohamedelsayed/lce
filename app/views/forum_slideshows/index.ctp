@@ -1,4 +1,6 @@
 <div class="slideshows index">
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Slideshow', true), array('action' => 'add')); ?></div>
+
 	<h2><?php __('Slideshows');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>

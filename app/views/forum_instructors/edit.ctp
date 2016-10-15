@@ -7,7 +7,7 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('position');
 		echo $this->Form->input('Instructor.biography', array('class'=>'ckeditor'));
-		echo $this->element('backend/image_view', array('image'=>array('id'=>$this->data['Instructor']['id'], 'image'=>$this->data['Instructor']['image']), 'size'=>'master'));
+		echo $this->element('forum/image_view', array('image'=>array('id'=>$this->data['Instructor']['id'], 'image'=>$this->data['Instructor']['image']), 'size'=>'master'));
 		echo $form->input('image', array('type'=>'file', 'label'=>'Image'));
 		echo $this->Form->input('mail');
 		echo $this->Form->input('facebook');

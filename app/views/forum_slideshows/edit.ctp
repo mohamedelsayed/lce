@@ -1,13 +1,13 @@
 <div class="slideshows form">
-<?php echo $this->Form->create('Slideshow', array('type'=>'file'));?>
+<?php echo $this->Form->create('Slideshow', array('type'=>'file', 'url' => $base_url.'/forum_slideshows/edit/'.$this->data['Slideshow']['id']));?>
 	<fieldset>
  		<legend><?php __('Edit Slideshow'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		if(isset($this->data['Slideshow']['image'])){
-			echo $this->element('backend/image_view', array('image'=>array('id'=>$this->data['Slideshow']['id'], 'image'=>$this->data['Slideshow']['image']), 'size'=>'master'));
+			echo $this->element('forum/image_view', array('image'=>array('id'=>$this->data['Slideshow']['id'], 'image'=>$this->data['Slideshow']['image']), 'size'=>'master'));
 		}
-		echo $form->input('image', array('type'=>'file', 'label'=>'Image <span style="color: red">(width must be at least 1500px)</span>'));
+		echo $form->input('image', array('type'=>'file', 'label'=>'Image <span style="color: red">(width must be at least 1200px)</span>'));
 		echo $this->Form->input('link');
 		$target_attributes = array('value' => $this->data['Slideshow']['target'], 'legend'=>'Target');
 		echo $form->radio('target',$target_options, $target_attributes);

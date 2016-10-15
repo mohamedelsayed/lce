@@ -38,7 +38,7 @@
 			array('target' => '_blank', 'escape' => false, 'class'=>'lightbox', 'title'=>isset($image['caption'])?$image['caption']:'', 'rel'=>'group1'));
 		if($delete){			
 			echo '<div class = "delete">';
-			$controller = isset($controller)?$controller:strtolower($this->name);
+			$controller = isset($controller)?$controller:$this->name;
 			$fieldName = isset($fieldName)?$fieldName:'';	
 			echo $this->Html->link(__('Delete', true), array('controller' => $controller.'/deleteImage/'.$image['id'].'/'.$fieldName), null, __('Are you sure you want to delete this image?', true));
 			echo '&nbsp;|&nbsp;';

@@ -32,8 +32,12 @@
 		            				<a <?php echo $style_width;?> title="Library" href="<?php echo $base_url.'/libraries/admin_all';?>">Library</a>
 				        		</li>	
 				        		<li class="submenu">
+		            				<a <?php echo $style_width;?> title="Home Items" href="<?php echo $base_url.'/forum/admin_all';?>">Home Items</a>
+				        		</li>	
+				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
 				        		</li>				        		
+				        		
 			        		</ul>
 		        		</li> 	            
 		            <?php }?>
