@@ -4,8 +4,8 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-require_once '../auth_controller.php';
-class ForumGalsController extends AuthController {
+require_once '../authfront_controller.php';
+class ForumGalsController extends AuthfrontController {
 	var $name = 'ForumGals';
 	var $uses = array('Gal');
 	//use upload component.
