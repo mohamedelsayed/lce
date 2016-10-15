@@ -91,7 +91,9 @@ function draw_calendar($month, $year, $events_by_days, $settings2){
 				if(isset($settings2[$index])){
 					$color = 'color:'.$settings2[$index].';';
 				}
-                $calendar .= '<div onclick="open_event('.$event['Event']['id'].');" class="event_calendar_div" style="'.$color.'">'.$event['Event']['title'].'</div>';                    
+				$new_line = '&#013;';
+				$hover_title = $event['Event']['title'].$new_line.strip_tags($event['Event']['brief']);
+                $calendar .= '<div title="'.$hover_title.'" onclick="open_event('.$event['Event']['id'].');" class="event_calendar_div" style="'.$color.'">'.$event['Event']['title'].'</div>';                    
             }                
         }
         $calendar .= "</div>";
