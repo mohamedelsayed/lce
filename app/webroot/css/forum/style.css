@@ -1140,3 +1140,70 @@ td.calendar-day{
   overflow: hidden;
   border:1px solid #ccc;
 }
+.home_bottom_items{
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+}
+.home_bottom_left_top_items, .home_bottom_left_bottom_items, .home_bottom_right_top_items, .home_bottom_right_bottom_items{
+	float: left;
+	width: 100%;
+}
+.home_bottom_left_items{
+	float: left;
+    width: 65%;
+}
+.home_bottom_right_items{
+	float: right;
+    width: 30%;
+}
+.home_bottom_left_top_left_items{
+	float: left;
+	width: 60%;
+}
+.home_bottom_left_top_right_items{
+	float: right;
+	width: 35%;
+}
+.home_bottom_left_top_right_items img{
+	max-width: 100%;
+}
+.home_bottom_left_top_left_items div{
+	text-align: justify;
+}
+.home_bottom_left_top_left_items .head_title{
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.home_bottom_left_top_items, .home_bottom_right_top_items{
+	margin-bottom: 20px;
+}
+.welcome_note_head{
+	width: 92%;
+}
+.happening_now_head{
+	width: 80%;
+}
+.home_bottom_right_top_top_items{
+	float: left;
+	width: 100%;
+	margin-bottom: 10px;
+}
+.home_bottom_right_top_top_items img{
+	max-width: 100%;
+}
+.home_bottom_right_top_bottom_items{
+	text-align: justify;
+}
+.recent_activity{
+	float: left;
+	width: 100%;
+}
+.recent_activity_date{
+	float: left;
+	width: 100%;
+	margin-left: 10px;
+	margin-top: 5px;
+	font-size: 13px;
+}
