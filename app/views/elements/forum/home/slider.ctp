@@ -23,7 +23,7 @@
 		<script type="text/javascript">
 		jQuery('.bxslider').bxSlider({
 			adaptiveHeight: true,
-		  	mode: 'fade',
+		  	mode: 'horizontal',
 		  	auto: true,
 		  	autoControls: true,
 		});
