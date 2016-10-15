@@ -1179,10 +1179,10 @@ td.calendar-day{
 .home_bottom_left_top_items, .home_bottom_right_top_items{
 	margin-bottom: 20px;
 }
-.welcome_note_head{
+.welcome_note_head, .recent_activities_head{
 	width: 92%;
 }
-.happening_now_head{
+.happening_now_head, .calendar_head{
 	width: 80%;
 }
 .home_bottom_right_top_top_items{
