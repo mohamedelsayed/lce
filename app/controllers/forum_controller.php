@@ -55,6 +55,42 @@ class ForumController  extends AuthfrontController {
 			)	  	 	
 		);
 		$this->set('posts' , $items);
+		$model = 'Content';
+		$this->loadModel($model);
+		$welcome_note = $this->Content->read(null, 3);
+		$this->set('welcome_note' , $welcome_note);
+		$happening_now = $this->Content->read(null, 4);		
+		$this->set('happening_now', $happening_now);
+		$recent_activities_limit = 5;
+		$model = 'Library';
+		$this->loadModel($model);
+		$model = 'ForumComment';
+		$this->loadModel($model);		
+		$libraries = array();
+		$comments = array();
+		$sql="(SELECT `id`, `title`, `created`, 'event' AS `type` FROM `events` WHERE `approved` = 1) UNION
+	 		  (SELECT `id`, `title`, `created`, 'library' AS `type` FROM `libraries` WHERE `approved` = 1) UNION
+	 		  (SELECT `id`, `comment`, `created`, 'comment' AS `type` FROM `forum_comments` WHERE `approved` = 1)
+	 		  ORDER BY `created` DESC
+			  LIMIT ".$recent_activities_limit.";";                          
+		$recent_activities = $this->$model->query($sql);
+		if(!empty($recent_activities)){
+			foreach ($recent_activities as $key => $recent_activity) {
+				$type = $recent_activity[0]['type'];
+				$id = $recent_activity[0]['id'];
+				if($type == 'library'){
+					$library = $this->Library->read(null, $id);
+					$libraries[$id] = $library;
+				}elseif($type == 'event'){
+				}elseif($type == 'comment'){
+					$comment = $this->ForumComment->read(null, $id);
+					$comments[$id] = $comment;
+				}
+			}
+		}
+		$this->set('recent_activities', $recent_activities);
+		$this->set('libraries', $libraries);
+		$this->set('comments', $comments);		
 	}
 	function login(){
 		$this->layout = 'login';
