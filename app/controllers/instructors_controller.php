@@ -73,4 +73,21 @@ class InstructorsController extends AuthController {
 		$this->Session->setFlash(__('Instructor was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	function deleteImage ($id){
+		$model = 'Instructor';
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Item', true));
+			$this->redirect($this->referer(array('action' => 'index')));
+		}
+		//to delete image file
+		$this->$model->id = $id;
+		$this->Upload->filesToDelete = array($this->$model->field('image'));
+		if ($this->$model->saveField('image', '')) {
+			$this->Upload->deleteFile();
+			$this->Session->setFlash(__('The Item image has been deleted', true));
+		} else {
+			$this->Session->setFlash(__('The Item image could not be deleted. Please, try again.', true));
+		}
+		$this->redirect($this->referer(array('action' => 'index')));	
+	}
 }

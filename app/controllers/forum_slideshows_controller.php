@@ -4,16 +4,17 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-require_once '../auth_controller.php';
-class SlideshowsController extends AuthController {
-	var $name = 'Slideshows';
+require_once '../authfront_controller.php';
+class ForumSlideshowsController extends AuthfrontController {
+	var $name = 'ForumSlideshows';
 	//use upload component.
 	var $components = array('Upload');
+	var $uses = array('Slideshow');	
 	var $target_options = array('0'=>'Self','1'=>'New');
 	function index() {
 		$this->Slideshow->recursive = 0;
 		$this->paginate = array(
-			'conditions' => array('Slideshow.forum_flag' => 0),
+			'conditions' => array('Slideshow.forum_flag' => 1),
 			'order' => array('Slideshow.id' => 'DESC'),
     	);
 		$this->set('slideshows', $this->paginate());
@@ -28,7 +29,7 @@ class SlideshowsController extends AuthController {
 	function add() {
 		if (!empty($this->data)) {
 			//upload image
-			$this->data['Slideshow']['image']=$this->Upload->uploadImage($this->data['Slideshow']['image']);
+			$this->data['Slideshow']['image'] = $this->Upload->uploadImage($this->data['Slideshow']['image']);
 			$this->Slideshow->create();
 			if ($this->Slideshow->save($this->data)) {
 				$this->Session->setFlash(__('The slideshow has been saved', true));

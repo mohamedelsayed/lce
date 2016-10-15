@@ -28,8 +28,7 @@ class ForumInstructorsController extends AuthfrontController {
 		$this->set('instructor', $this->Instructor->read(null, $id));
 	}
 	function add() {
-		$this->check_isAdmin_isSuperAdmin();
-		
+		$this->check_isAdmin_isSuperAdmin();		
 		if (!empty($this->data)) {
 			//upload image
 			$this->data['Instructor']['image']=$this->Upload->uploadImage($this->data['Instructor']['image']);
@@ -78,5 +77,22 @@ class ForumInstructorsController extends AuthfrontController {
 		}
 		$this->Session->setFlash(__('Instructor was not deleted', true));
 		$this->redirect(array('controller' => 'ForumInstructors', 'action' => 'index'));
+	}
+	function deleteImage ($id){
+		$model = 'Instructor';
+		if (!$id) {
+			$this->Session->setFlash(__('Invalid Item', true));
+			$this->redirect($this->referer(array('action' => 'index')));
+		}
+		//to delete image file
+		$this->$model->id = $id;
+		$this->Upload->filesToDelete = array($this->$model->field('image'));
+		if ($this->$model->saveField('image', '')) {
+			$this->Upload->deleteFile();
+			$this->Session->setFlash(__('The Item image has been deleted', true));
+		} else {
+			$this->Session->setFlash(__('The Item image could not be deleted. Please, try again.', true));
+		}
+		$this->redirect($this->referer(array('action' => 'index')));	
 	}
 }

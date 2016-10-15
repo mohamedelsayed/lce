@@ -3,7 +3,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.lifecoachingegypt.com
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 class MainController  extends AppController {
 	var $name = null;
@@ -14,7 +14,11 @@ class MainController  extends AppController {
 	}
 	function getContents() {
 		$this->loadModel('Content');
-		return $this->Content->find('all', array('order'=>array('id'=>'ASC')));
+		return $this->Content->find('all', array('order'=> array('id'=>'ASC'), 'conditions' => array('Content.forum_flag' => 0)));
+	}
+	function getForumContents() {
+		$this->loadModel('Content');
+		return $this->Content->find('all', array('order'=> array('id'=>'ASC'), 'conditions' => array('Content.forum_flag' => 1)));
 	}	
 	//Update video hits used by ajax
 	function updateVideoHits($videoId=null){

@@ -3,7 +3,7 @@
  * @author Author "Mohamed Elsayed"  
  * @author Author Email "me@mohamedelsayed.net"
  * @link http://www.lifecoachingegypt.com
- * @copyright Copyright (c) 2015 Programming by "mohamedelsayed.net"
+ * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
 require_once '../authfront_controller.php';
 class ForumController  extends AuthfrontController {
@@ -34,6 +34,27 @@ class ForumController  extends AuthfrontController {
 		$categories = $this->Post->Category->find('list');
 		$this->set(compact('categories'));*/
 		$this->set('selected','home');
+		$model = 'Slideshow';
+		$this->loadModel($model);
+		unset($items);
+		$items = $this->$model->find(
+			'all', array(
+				'conditions' => array($model.'.approved' => 1, $model.'.forum_flag' => 1),
+				'order' => array($model.'.weight' => 'ASC', $model.'.id'=>'DESC')
+			)	  	 	
+		);
+		$this->set('slideshows' , $items);
+		$model = 'Post';
+		$this->loadModel($model);
+		unset($items);
+		$items = $this->$model->find(
+			'all', array(
+				'conditions' => array($model.'.approved' => 1),
+				'order' => array($model.'.id'=>'DESC'),
+				'limit' => 6
+			)	  	 	
+		);
+		$this->set('posts' , $items);
 	}
 	function login(){
 		$this->layout = 'login';
@@ -224,4 +245,7 @@ class ForumController  extends AuthfrontController {
         echo $this->draw_attachement_box(0, $final_path);
         $this->autoRender = false; 
     }     
+	function admin_all(){
+		$this->check_isAdmin_isSuperAdmin();
+	}
 }

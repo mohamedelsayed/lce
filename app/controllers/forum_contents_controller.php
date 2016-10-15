@@ -4,15 +4,16 @@
  * @author Author Email "me@mohamedelsayed.net"
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-require_once '../auth_controller.php';
-class ContentsController extends AuthController {
-	var $name = 'Contents';
+require_once '../authfront_controller.php';
+class ForumContentsController extends AuthfrontController {
+	var $name = 'ForumContents';
 	//use upload component
 	var $components = array('Upload');
+	var $uses = array('Content');
 	function index() {
 		$this->Content->recursive = 0;
 		$this->paginate = array(
-			'conditions' => array('Content.forum_flag' => 0),
+			'conditions' => array('Content.forum_flag' => 1),
 			'order' => array('Content.id' => 'DESC'),
     	);
 		$this->set('contents', $this->paginate());
@@ -20,8 +21,8 @@ class ContentsController extends AuthController {
 	function edit($id = null) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid item', true));
-			$this->redirect(array('controller'=>'admin','action' => 'index'));
-		}
+			$this->redirect(array('controller'=>'forum','action' => 'admin_all'));
+		}		
 		if (!empty($this->data)) {
 			$this->data['Gal'][0]['image'] = $this->Upload->uploadImage($this->data['Gal'][0]['image']);
 			if($this->data['Gal'][0]['image'] == '') unset($this->data['Gal']);
@@ -33,8 +34,8 @@ class ContentsController extends AuthController {
 			//if($this->data['Video'][0]['url']=='')unset($this->data['Video']);
 			if ($this->Content->saveAll($this->data)) {
 				$this->Session->setFlash(__('The item has been saved', true));
-				$this->redirect(array('action' => 'edit',$id));
-				//$this->redirect(array('controller'=>'admin','action' => 'index'));
+				$this->redirect(array('controller' => 'forum', 'action' => 'admin_all'));
+				//$this->redirect(array('controller'=>'forum','action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The item could not be saved. Please, try again.', true));
 			}

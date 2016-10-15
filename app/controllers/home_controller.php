@@ -14,7 +14,7 @@ class HomeController  extends AppController {
 		$this->loadModel('Slideshow');
 		$slideshows = $this->Slideshow->find(
 			'all', array(
-				'conditions' => array('Slideshow.approved' => 1),
+				'conditions' => array('Slideshow.approved' => 1, 'Slideshow.forum_flag' => 0),
 				'order' => array('Slideshow.weight' => 'ASC','Slideshow.id'=>'DESC')
 			)	  	 	
 		);
