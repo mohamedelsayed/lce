@@ -6,7 +6,7 @@ class Node extends AppModel {
 		'title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Title cannot be left blank',
+				'message' => 'Title cannot be left blank.',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

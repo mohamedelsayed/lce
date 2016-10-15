@@ -12,7 +12,7 @@ class Event extends AppModel {
 	    'title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Title cannot be left blank',
+				'message' => 'Title cannot be left blank.',
 			),
 		)/*,'duration' => array(
 			'numeric' => array(

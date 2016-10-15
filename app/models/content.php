@@ -2,6 +2,15 @@
 class Content extends AppModel {
 	var $name = 'Content';
 	var $displayField = 'title';
+	//Validation rules
+	var $validate = array(
+	    'title' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Title cannot be left blank.',
+			),
+		)  	    
+	);	
 	var $hasMany = array(
 		'Gal' => array(
 			'className' => 'Gal',

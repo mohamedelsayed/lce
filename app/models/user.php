@@ -35,7 +35,7 @@ class User extends AppModel {
 	        'rule' => array('comparison', '>', 0),
 	        'allowEmpty' => false,
     		'required' => true,
-	        'message' => 'Group cannot be left blank',
+	        'message' => 'Group cannot be left blank.',
 	        'on'=>'create'
 	    )*/	    	    
 	);
