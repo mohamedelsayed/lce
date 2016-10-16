@@ -31,5 +31,18 @@ class Library extends AppModel {
 	var $belongsTo = array(	
 	);
 	var $hasMany = array(
+		'Gal' => array(
+			'className' => 'Gal',
+			'foreignKey' => 'library_id',
+			'dependent' => true,
+			'conditions' => array('Gal.url <>' => ''),
+			'fields' => '',
+			'order' => array('Gal.position' => 'ASC', 'Gal.id' => 'DESC'),
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 }
