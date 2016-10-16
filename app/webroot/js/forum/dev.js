@@ -4,24 +4,9 @@
  * @link http://www.lifecoachingegypt.com
  * @copyright Copyright (c) 2016 Programming by "mohamedelsayed.net"
  */
-jQuery(window).load(function(){
-	jQuery("#LibraryType2").change();
-});	
 jQuery(document).ready(function(){
 	jQuery("body").on("click",".closepopoup, .mesage-pop-bg", function(){
     	close_instructor_popup();      	
-    });
-    jQuery("body").on("change","#LibraryType2", function(){  
-    	var type = jQuery(this).val(); 
-    	var youtube_url = jQuery('#LibraryYoutubeUrl');
-    	var google_drive_url = jQuery('#LibraryGoogleDriveUrl');
-    	if(type == 5){    		
-    		youtube_url.parent().show();
-    		google_drive_url.parent().hide();
-    	}else{
-    		youtube_url.parent().hide();
-    		google_drive_url.parent().show();    		
-    	}
     });
     jQuery("body").on("click", ".removeuploadfilebtn", function () {
     	var y = confirm('Are you sure you want to delete this file?');
