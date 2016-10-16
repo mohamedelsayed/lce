@@ -2,7 +2,7 @@
 	text-align:center;
 	margin:20px 0px;
 	width:100%;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16px;
 	line-height:25px;
 	color:#D67D21;
@@ -185,7 +185,7 @@
 	float: left;
 	text-align: center;
 	width: 100%;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 18px;
 	padding-top: 20px;	
 	padding-bottom: 20px;	
@@ -242,7 +242,7 @@
 }
 /*comments*/
 #comments_div{
-	font-family:  OpenSans-Regular;
+	font-family:  Montserrat;
 	float:left;
 	margin:20px 0px;
 	width: 620px;
@@ -512,7 +512,7 @@ p{
 .nodeitemviewbody{
 	float: left;
 	color: #3A3A3A;
-    font-family: OpenSans-Regular;
+    font-family: Montserrat;
     font-size: 18px;
     text-decoration: none;
     width: 100%;
@@ -532,7 +532,7 @@ p{
 	text-align:center;
 }
 .maintenancetext{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color:#404041;	
@@ -745,7 +745,6 @@ p{
 	width:70px;
 }
 .article_home_image_new img{
-	max-height:45px;
 	float:left;	
 }
 .top{

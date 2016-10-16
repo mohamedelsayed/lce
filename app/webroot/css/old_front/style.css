@@ -260,7 +260,7 @@ body {
 }
 .t_right_2{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color:#404041;
@@ -277,7 +277,7 @@ body {
 }
 .top_wrie_b{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 19.5px;
 	text-decoration:none;
 	padding-left: 10px;
@@ -287,7 +287,7 @@ body {
 }
 .top__b{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 23px;
 	text-decoration:none;
 	padding-left: 10px;
@@ -308,7 +308,7 @@ body {
 .img_top{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 25px;
 	text-decoration:none;
 	color: #484848;
@@ -331,7 +331,7 @@ body {
 	float:left;
 	margin-bottom: 15px;
 	margin-top: 20px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 22px;
 	text-decoration:none;
 	color: #ffffff;
@@ -357,7 +357,7 @@ body {
 .leftmenuchild ul{
 	list-style: none;
 	margin-bottom: 10px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 21px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -369,7 +369,7 @@ body {
 }
 .leftmenuchild ul li {
 	list-style: none;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 17px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -393,7 +393,7 @@ body {
 .ri_3{
 	float:left;
 	margin-bottom: 10px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 13px;
 	text-decoration:none;
 	color: #6a6a6a;
@@ -402,7 +402,7 @@ body {
 .img_top_2{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 25px;
 	text-decoration:none;
 	color: #484848;
@@ -413,7 +413,7 @@ body {
 .left_bot_2{
 	float:left;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 17.65px;
 	text-decoration:none;
 	color: #535353;
@@ -443,7 +443,7 @@ body {
 	float:left;
 	margin-bottom: 10px;
 	padding-bottom: 4px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 23.45px;
 	text-decoration:none;
 	color: #484848;
@@ -454,7 +454,7 @@ body {
 	float:left;
 	margin-bottom: 5px;
 	padding-bottom: 5px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 24px;
 	text-decoration:none;
 	color: #c00003;
@@ -464,7 +464,7 @@ body {
 .mm_tt{
 	float:left;
 	margin-bottom: 5px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #7e7e7e;
@@ -472,7 +472,7 @@ body {
 	padding-left:3px;
 }
 .right_nology:hover{
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 13.13px;
 	text-decoration:none;
 	color: #ee4640;
@@ -480,7 +480,7 @@ body {
 }
 .right_nology{
 	float:left;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 13.13px;
 	text-decoration:none;
 	color: #4e4e4e;
@@ -492,7 +492,7 @@ body {
 }
 .n_right{
 	float:left;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #9e9e9e;
@@ -508,7 +508,7 @@ body {
 }
 .nology{
 	float:left;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 9.38px;
 	text-decoration:none;
 	color: #7e7e7e;
@@ -520,7 +520,7 @@ body {
 }
 .ri_gy{
 	float:left;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 11.26px;
 	text-decoration:none;
 	color: #707070;
@@ -533,7 +533,7 @@ body {
 .no_See{
 	float:left;
 	margin-bottom: 15px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 14.39px;
 	padding: 7px 20px;
 	margin-left: 5px;
@@ -546,7 +546,7 @@ body {
 .no_See_2{
 	float:right;
 	margin-bottom: 30px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-weight:bold;
 	font-size: 18px;
 	padding: 7px 20px;
@@ -561,7 +561,7 @@ body {
 .bot_mm{
 	float:left;
 	margin-bottom: 15px;
-	font-family:OpenSans-Regular;
+	font-family:Montserrat;
 	font-size: 22px;
 	text-decoration:none;
 	color: #ed4640;
@@ -776,7 +776,7 @@ body {
 	text-align:center;
 }
 .menu_grop a{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16.63px;
 	text-decoration:none;
 	line-height: 30px;
@@ -803,7 +803,7 @@ ul.tabs li{
 	cursor: pointer;
 	float:left;
 	font-weight:bold;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 22px;
 	margin-right: 10px;
 }
@@ -812,7 +812,7 @@ ul.tabs li.current{
 	background: #404041;
 	color: #ffffff;
 	font-weight:bold;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 22px;
 	text-decoration:none;
 }
@@ -882,7 +882,7 @@ ul.tabs li.current{
 }
 .top_a_con_3{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16px;
 	text-decoration:none;
 	color: #000000;
@@ -890,7 +890,7 @@ ul.tabs li.current{
 }
 .bot_tom{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16.89px;
 	text-decoration:none;
 	color: #535353;
@@ -899,7 +899,7 @@ ul.tabs li.current{
 }
 .Arab{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 23.63px;
 	text-decoration:none;
 	color: #ee4640;
@@ -909,7 +909,7 @@ ul.tabs li.current{
 }
 .Arab_2{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 23.63px;
 	text-decoration:none;
 	color: 7d7d7d;
@@ -983,7 +983,7 @@ ul.tabs li.current{
 }
 .s_right_2{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -992,7 +992,7 @@ ul.tabs li.current{
 }
 .s_right{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 35px;
 	text-decoration:none;
 	color: #000000;
@@ -1012,7 +1012,7 @@ ul.tabs li.current{
 }
 .top_con_4{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #000000;
@@ -1040,7 +1040,7 @@ ul.tabs li.current{
 }
 .top_con_5{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1055,7 +1055,7 @@ ul.tabs li.current{
 }
 .top_con5{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1065,7 +1065,7 @@ ul.tabs li.current{
 }
 .top_co8{
 	float:left;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16px;
 	text-decoration:none;
 	color: #535353;
@@ -1076,7 +1076,7 @@ ul.tabs li.current{
 .top_con_6{
 	float:left;
 	text-align:justify;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #535353;
@@ -1114,7 +1114,7 @@ ul.tabs li.current{
 	float:left;
 	width:100%;
 	padding-bottom: 25px;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	/*font-size: 23.63px;*/
 	text-decoration:none;
 	color: #4e4e4e;
@@ -1130,7 +1130,7 @@ ul.tabs li.current{
 	background:url(../../img/front/img_f2.jpg) no-repeat scroll left top;
 	padding-left: 30px;
 	padding-bottom: 20px;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	/*font-size: 23.63px;*/
 	text-decoration:none;
 	color: #7d7d7d;
@@ -1141,21 +1141,21 @@ ul.tabs li.current{
 	float: left;		
 }
 .faqquestioncurrent{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f.jpg) no-repeat scroll left top;
 	background-position:0% 2px;
 }
 .faqquestion:hover{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f3.jpg) no-repeat scroll left top;
 	background-position:0% 2px;
 }
 .faqquestioncurrent:hover{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	text-decoration:none;
 	color: #ee4640;
 	background:url(../../img/front/img_f.jpg) no-repeat scroll left top;
@@ -1225,7 +1225,7 @@ ul.tabs li.current{
 	float:left;	
 }
 .left_bot{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 16.63px;
 	text-decoration:none;
 	color: #ffffff;
@@ -1386,7 +1386,7 @@ ul.tabs li.current{
 	width: 100%;
 }
 .w_g_m{
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 	font-size: 18px;
 	text-decoration:none;
 	color: #3a3a3a;
@@ -1486,7 +1486,7 @@ ul.tabs li.current{
 	padding-bottom: 8px;
 	padding-top: 10px;
 	padding-left: 20px;
-	font-family: OpenSans-Regular;
+	font-family: Montserrat;
 }
 .g__sm_22{
 	float: left;
