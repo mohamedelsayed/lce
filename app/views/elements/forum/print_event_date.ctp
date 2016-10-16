@@ -1,7 +1,7 @@
 <?php $all_date = '';
 if(!empty($event)){
 	if(!isset($model)){
-		$model = 'Nevent';
+		$model = 'Event';
 	}
 	//$duration = $event[$model]['duration'];	
 	$from_date = strtotime($event[$model]['from_date']);

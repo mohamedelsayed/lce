@@ -17,6 +17,6 @@ if(isset($posts)){
 		<?php if(isset($happening_now)){
 			echo $this->element('forum'.DS.'home'.DS.'happening_now',array('happening_now'=> $happening_now));
 		}?>
-		<?php echo $this->element('forum'.DS.'home'.DS.'calendar',array());?>
+		<?php echo $this->element('forum'.DS.'home'.DS.'calendar',array('event' => $event));?>
 	</div>
 </div>
