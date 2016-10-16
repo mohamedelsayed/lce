@@ -33,7 +33,7 @@ class CalendarController extends AuthfrontController {
                             )
                         )                        
                     )
-                ),
+                ), 'Event.approved' => 1,
                 $condition              
             ),
             'order' => array('Event.from_date'=>'ASC','Event.id'=>'DESC'),
