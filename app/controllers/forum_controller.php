@@ -11,28 +11,7 @@ class ForumController  extends AuthfrontController {
 	var $uses = array('Member');
 	//var $components = array('Email', 'Upload');
 	function index(){
-		/*$this->redirect(array('controller' => 'calendar', 'action' => 'index'));
-		$limit = $this->pagingLimit;
-		$this->set('limit', $limit);
-		$this->loadModel('Announcement');
-		$announcement = $this->Announcement->find(
-			'first', array(
-				'conditions' => array('Announcement.approved' => 1),
-				'order'      => array('Announcement.weight' => 'ASC','Announcement.updated' => 'DESC','Announcement.id'=>'DESC'),		    	
-			)	  	 	
-		);
-		$this->set('announcement', $announcement);
-		$this->loadModel('Post');
-		$this->paginate = array(
-    		'Post'=>array(
-	    		'conditions' => array('Post.approved' => 1),
-				'order'      => array('Post.created'=>'DESC','Post.id'=>'DESC'),
-		    	'limit'      => $limit
-    		)
-    	);
-		$this->set('posts', $this->paginate('Post'));
-		$categories = $this->Post->Category->find('list');
-		$this->set(compact('categories'));*/
+		//$this->redirect(array('controller' => 'calendar', 'action' => 'index'));
 		$this->set('selected','home');
 		$model = 'Slideshow';
 		$this->loadModel($model);
@@ -90,7 +69,17 @@ class ForumController  extends AuthfrontController {
 		}
 		$this->set('recent_activities', $recent_activities);
 		$this->set('libraries', $libraries);
-		$this->set('comments', $comments);		
+		$this->set('comments', $comments);	
+		$today = date("Y-m-d"); 
+		$this->loadModel('Event');
+		$event = $this->Event->find(
+			'first', array(
+				'conditions' => array('Event.approved' => 1, 'Event.from_date >=' => $today,),
+				'order' => array('Event.from_date' => 'ASC','Event.id'=>'DESC'),
+				'limit' => 1
+			)	  	 	
+		);
+		$this->set('event' , $event);	
 	}
 	function login(){
 		$this->layout = 'login';
