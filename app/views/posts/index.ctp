@@ -1,7 +1,7 @@
 <div class="posts index">
 	<?php //echo $this->element('forum/search_view',array('currentModel' => 'Post', 'currentField' => 'title'));?>
 	<?php /*<h2><?php __('Posts');?></h2>*/?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Topic', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Topic', true), array('action' => 'add/type:'.$type)); ?></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

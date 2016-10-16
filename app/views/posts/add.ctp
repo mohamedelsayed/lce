@@ -2,7 +2,7 @@
 //echo $this->Javascript->link('forum/ajax/upload_video', false);
 echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 <div class="posts form">
-	<?php echo $this->Form->create('Post', array('type'=>'file'));?>
+	<?php echo $this->Form->create('Post', array('type'=>'file', 'url' => $actual_link));?>
 	<fieldset>
  		<legend><?php __('Add Topic'); ?></legend>
 		<?php
@@ -33,6 +33,7 @@ echo $this->Javascript->link('forum/ajax/upload_attachement', false);?>
 		}else{
 			echo $this->Form->input('approved', array('type' => 'hidden', 'value' => 1));			
 		}
+		echo $this->Form->input('type', array('type' => 'hidden', 'value' => $type));	
 		echo $this->Form->input('member_id', array('type' => 'hidden', 'value' => $userInfoFront['id']));?>
 	</fieldset>
 	<?php echo $this->Form->end(__('Submit', true));?>

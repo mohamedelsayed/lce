@@ -47,7 +47,7 @@
 	            </li>
 	            <?php if($GLOBALS['is_loggin']){?>
 	        		<li class="">
-        				<a id="market_place_page" title="DCC MarketPlace" href="<?php echo $base_url.'/posts/all';?>">DCC MarketPlace</a>
+        				<a id="market_place_page" title="DCC MarketPlace" href="<?php echo $base_url.'/posts/marketplace';?>">DCC MarketPlace</a>
 	        		</li>
         		<?php }?>
         		<?php if($GLOBALS['is_loggin']){?>

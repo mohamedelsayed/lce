@@ -3,6 +3,7 @@
 	if(isset($userInfoFront['id'])){
 		$member_id = $userInfoFront['id'];
 	}	
+	$type = $post['Post']['type'];	
 	if(($post['Post']['member_id'] == $member_id) || $isAdmin == 1){?>
 		<div class="cancel_button">
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $post['Post']['id'])); ?> | 
@@ -12,7 +13,9 @@
 	<h2><?php echo $post['Post']['title'];?></h2>
 	<div class="postCategory">
 		<div class="postcategorytext">Category:</div>
-		<div class="postcategorydata"><?php echo $this->Html->link($post['Category']['title'], array('controller' => 'posts', 'action' => 'all', $post['Category']['id']));?></div>
+		<div class="postcategorydata">
+			<?php echo $this->Html->link($post['Category']['title'], array('controller' => 'posts', 'action' => 'all/'.$post['Category']['id'].'/type:'.$type));?>
+		</div>
 	</div>
 	<div class="postauthor">
 		<?php /*<div class="postauthortext">Author:</div>*/?>

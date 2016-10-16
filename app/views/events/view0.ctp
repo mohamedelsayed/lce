@@ -11,8 +11,89 @@
 			<?php echo $this->Html->link(__('Cancel Event', true), array('action' => 'delete', $event['Event']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $event['Event']['id'])); ?>
 		</div>
 	<?php }?>
-	<?php include_once 'event_item.php';?>
+<?php /*<h2><?php  __('Event');?></h2>*/?>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
+		<?php /*<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['id']; ?>
+			&nbsp;
+	</dd>*/?>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Title'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['title']; ?>
+			&nbsp;
+		</dd>		
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brief'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['brief']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Image'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php $image = '';
+			if(isset($event['Event']['image'])){
+				$image = $event['Event']['image'];
+			}
+			echo $this->element('forum/image_view', array('image' => array('id' => $event['Event']['id'], 'image' => $image), 'size' => 'master'));?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Location'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['location']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('From Date'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['from_date']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('To Date'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['to_date']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('From Time'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['time_from']; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('To Time'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $event['Event']['time_to'];?>
+			&nbsp;
+		</dd>
+		<?php if($event['Event']['ticket_price'] > 0){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ticket Price'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<?php echo $event['Event']['ticket_price']; ?>
+				&nbsp;
+			</dd>
+		<?php }?>
+		<?php if(!empty($saved_instructors)){?>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Instructors'); ?></dt>
+			<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+				<div class="instructors">
+					<?php $instructors_title = '';
+					if(!empty($instructors)){
+						$i = 0;
+						foreach ($instructors as $key => $value) {
+							if(in_array($key, $saved_instructors)){
+								$icon = '';					
+								if($i == 0){
+									$icon = '<i class="icon_name"></i>';
+								}else{
+									$icon = '<i class="icon_name no_icon"></i>';
+								}
+								$i++;
+								$instructors_title .= '<div class="instructor_bio_wrap">'.$icon.''.$value.' <a class="instructor_bio_link" onclick="open_instructor('.$key.');">bio</a></div> ';							
+							}
+						}
+					}
+					$instructors_title = trim(trim($instructors_title), ',');
+					echo $instructors_title;?>				
+				</div>
+			</dd>		
+		<?php }?>
 		<?php if($event['Event']['type'] == 2){?>
 			<?php if(trim($event['Event']['agenda_word_file']) != ''){?>
 				<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Agenda Word File'); ?></dt>
@@ -115,38 +196,41 @@
 		</table>
 	</div>
 	<?php if(!empty($event['Gal'])){?>
-		<div class="home_slider_wapper">
-			<ul class="bxslider">
-                <?php foreach ($event['Gal'] as $key => $value) {
-                    $image = $value['url'];?>
-                    <li>
-                    	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
-                    </li>
-                <?php }?>
-            </ul>
-            <div id="bx-pager">
-            	<?php $i = 0;
-            	foreach ($event['Gal'] as $key => $value) {
-                    $image = $value['url'];?>
-                    <a data-slide-index="<?php echo $i++;?>" style="cursor: pointer;">
-                    	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
-                	</a>
-            	<?php }?>
-			</div>
+        <div class="slide_galary">
+            <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1200px;margin:0px auto 150px;">
+                <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+                    <ul class="amazingslider-slides" style="display:none;">
+                        <?php foreach ($event['Gal'] as $key => $value) {
+                            $image = $value['url'];?>
+                            <li>
+                            	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
+                            </li>
+                        <?php }?>
+                    </ul>
+                    <ul class="amazingslider-thumbnails" style="display:none;">
+                        <?php foreach ($event['Gal'] as $key => $value) {
+                            $image = $value['url'];?>
+                            <li>
+                            	<?php echo $this->element('forum/embed_google_image', array('file' => $image));?>
+                            </li>
+                        <?php }?>
+                    </ul>
+                </div>
+            </div>
         </div>      
     <?php }?>      
 </div>
 <script type="text/javascript">
-jQuery('.bxslider').bxSlider({
-	adaptiveHeight: true,
-  	mode: 'horizontal',
-  	auto: true,
-  	autoControls: true,
-  	pagerCustom: '#bx-pager',
+jQuery(document).ready(function(){
+    hideamazingsliderdiv();
 });
+function hideamazingsliderdiv () {
+    jQuery('a').each(function(){ 
+    	var hrefcode = 'http://amazingslider.com';
+        var hrefdata = this.href;
+        if(this.href.indexOf(hrefcode) !== -1){
+            jQuery(this).parent('div').hide();            
+        }
+    });
+}
 </script>
-<style type="text/css">
-	.bx-controls{
-		display: none;
-	}
-</style>
