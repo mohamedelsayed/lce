@@ -53,7 +53,7 @@ class LibrariesController extends AuthfrontController {
 			/*if($this->data['Library']['parent_id'] == null){
 				$this->data['Library']['parent_id'] = 0;				
 			}*/
-			if ($this->Library->save($this->data)) {
+			if ($this->Library->saveAll($this->data)) {
 				$this->Session->setFlash(__('The Library has been saved', true));
 				$this->redirect(array('action' => 'index/type1:'.$this->data['Library']['type1']));
 			} else {
@@ -86,7 +86,7 @@ class LibrariesController extends AuthfrontController {
 				$this->data['Library']['image']=$this->Upload->uploadImage($this->data['Library']['image']);
 			}else
 				unset($this->data['Library']['image']);*/
-			if ($this->Library->save($this->data)) {
+			if ($this->Library->saveAll($this->data)) {
 				$this->Session->setFlash(__('The Library has been saved', true));
 				$this->redirect(array('action' => 'index/type1:'.$this->data['Library']['type1']));
 			} else {
@@ -135,6 +135,8 @@ class LibrariesController extends AuthfrontController {
 			$fileTypes = 'mp4';
 		}elseif($type1 == 3){
 			$fileTypes = 'jpeg,jpg,png';
+		}elseif($type1 == 4){
+			$fileTypes = 'pdf,mp4';
 		}
 		return $fileTypes;		
 	}
@@ -197,6 +199,10 @@ class LibrariesController extends AuthfrontController {
 		}
 		if($type1 == 0){
 			$this->render('all_modules');				
+		}elseif($type1 == 3){
+			$libraries = $this->get_libraries($type1);
+			$this->set('libraries', $libraries);
+			$this->render('all_albums');				
 		}else{				
 			$libraries = $this->get_libraries($type1);
 			$this->set('libraries', $libraries);	
@@ -219,6 +225,15 @@ class LibrariesController extends AuthfrontController {
 		$libraries = $this->get_libraries(0, $id);
 		$this->set('libraries', $libraries);
 		$this->render('items');
+	}
+	function album(){
+		$id = isset($this->params['named']['id'])?$this->params['named']['id']:0;	
+		$this->set('selected', 'library_page');			
+		$library = $this->Library->read(null, $id);
+		$this->set('library', $library);
+		$title = $library['Library']['title'];
+		$this->set('title_for_layout', $title);
+		$this->set('page_title', $title);		
 	}
 	function get_libraries($type1 = 0, $module = 0){
 		$conditions = array();

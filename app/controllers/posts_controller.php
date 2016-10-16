@@ -10,19 +10,25 @@ class PostsController extends AuthfrontController {
 	var $uses = array('Post');
 	//var $components = array('Upload');
 	function index() {
+		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;	
+		$this->set('type', $type);
 		$this->set('title_for_layout', 'Topics');
 		$this->check_isAdmin_isSuperAdmin();
 		$this->Post->recursive = 0;
 		$order = array('Post.updated' => 'DESC', 'Post.created' => 'DESC', 'Post.id' => 'DESC');
+		$conditions = array();
+		$conditions['Post.type'] = $type;
 		if($this->isSuperAdmin() || $this->isAdmin()){
+			$conditions['Post.title LIKE'] = "%".$this->data['Post']['title']."%";
 			$this->set('selected','adminpages');
 			if(isset($this->data['Post']['title'])){
 				$this->paginate = array(
-					'conditions' => array('Post.title LIKE' => "%".$this->data['Post']['title']."%"),
+					'conditions' => $conditions,
 					'order' => $order,
 	    		);
 			}else{
 				$this->paginate = array(
+					'conditions' => $conditions,
 					'order' => $order,
     			);
 			}			
@@ -74,6 +80,8 @@ class PostsController extends AuthfrontController {
         $this->set('attachements_div', $attachements_div);
 	}
 	function add() {
+		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;	
+		$this->set('type', $type);
 		$this->set('title_for_layout', 'Topics');
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -93,9 +101,9 @@ class PostsController extends AuthfrontController {
 				$this->send_email_notification($this->Post->id, 0, $this->data['Post']['title'], 0);
 				$this->Session->setFlash(__('The Post has been saved', true));
 				if($isAdmin == 1){
-					$this->redirect(array('action' => 'index'));
+					$this->redirect(array('action' => 'index/type:'.$type));
 				}else{
-					$this->redirect(array('action' => 'all'));					
+					$this->redirect(array('action' => 'all/type:'.$type));					
 				}
 			} else {
 				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
@@ -118,6 +126,9 @@ class PostsController extends AuthfrontController {
 			$this->Session->setFlash(__('Invalid Post', true));
 			$this->redirect(array('action' => 'index'));
 		}
+		$post = $this->Post->read(null, $id);
+		$type = $post['Post']['type'];	
+		$this->set('type', $type);
 		if (!empty($this->data)) {
 			$post_data = $_POST;
 		    unset($this->data['attachements']);
@@ -126,15 +137,14 @@ class PostsController extends AuthfrontController {
 				$this->save_attachements($post_data, $this->data['Post']['id']); 
 				$this->Session->setFlash(__('The Post has been saved', true));
 				if($isAdmin == 1){
-					$this->redirect(array('action' => 'index'));
+					$this->redirect(array('action' => 'index/type:'.$type));
 				}else{
-					$this->redirect(array('action' => 'all'));					
+					$this->redirect(array('action' => 'all/type:'.$type));					
 				}
 			} else {
 				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
 			}
-		}
-		$post = $this->Post->read(null, $id);
+		}		
 		if (empty($this->data)) {			
 			$this->data = $post;
 			if(!($this->isSuperAdmin() || $this->isAdmin())){
@@ -165,6 +175,8 @@ class PostsController extends AuthfrontController {
 			$this->redirect(array('action'=>'index'));
 		}
 		$post = $this->Post->read(null, $id);
+		$type = $post['Post']['type'];	
+		$this->set('type', $type);
 		$this->data = $post;
 		if(!($this->isSuperAdmin() || $this->isAdmin())){
 			if($this->data['Post']['member_id'] != $this->Cookie->read('userInfoFront.id')){
@@ -178,21 +190,24 @@ class PostsController extends AuthfrontController {
 			//$this->Upload->deleteFile();
 			$this->Session->setFlash(__('Post deleted', true));
 			if($isAdmin == 1){
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index/type:'.$type));
 			}else{
-				$this->redirect(array('action' => 'all'));					
+				$this->redirect(array('action' => 'all/type:'.$type));					
 			}
 		}
 		$this->Session->setFlash(__('Post was not deleted', true));
-		$this->redirect(array('action' => 'index'));		
+		$this->redirect(array('action' => 'index/type:'.$type));		
 	}
 	function all($category_id = 0){
+		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;	
+		$this->set('type', $type);
 		$this->set('title_for_layout', 'Topics');
 		$this->set('selected','market_place_page');	
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
 		$conditions = array();
 		$conditions['Post.approved'] = 1;
+		$conditions['Post.type'] = $type;
 		if($category_id > 0 && is_numeric($category_id)){
 			$conditions['Post.category_id'] = $category_id;	
 			$this->loadModel('Category');	
@@ -207,6 +222,10 @@ class PostsController extends AuthfrontController {
 	    	);
 		$this->set('page', $page);
 		$this->set('posts', $this->paginate('Post'));		
+	}
+	function marketplace(){
+		$this->set('title_for_layout', 'Topics');
+		$this->set('selected','market_place_page');
 	}
 	function addComment(){
 		$this->Post->ForumComment->create();
