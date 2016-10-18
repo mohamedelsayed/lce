@@ -10,16 +10,31 @@ class MembersController extends AuthfrontController {
 	var $uses = array('Member');
 	var $components = array('Upload');		
 	function index() {
+		$key = '';
+		if(isset($_GET['key'])){
+			$key = $_GET['key'];
+		}
 		$this->check_isAdmin_isSuperAdmin();
 		//$this->Member->recursive = 0;
-		if($this->isSuperAdmin()){		
+		$conditions = array();
+		$key = trim($key);
+		if($key != ''){			
+			$conditions['AND'] = array('OR' => array(
+													'Member.fullname LIKE "%'.$key.'%"', 
+													'Member.job_title LIKE "%'.$key.'%"'));			
+		}
+		if($this->isSuperAdmin()){
+			$conditions['Member.role >'] = 0;		
 			$this->paginate['Member'] = array(
-				'conditions' => array('Member.role >' => 0)
+				'conditions' => $conditions,
+				'order'      => array('TRIM(Member.fullname)' => 'ASC','Member.id'=>'DESC'),
 	    	);
 			$this->set('members', $this->paginate('Member'));
 		}elseif($this->isAdmin()){
+			$conditions['Member.role >'] = 1;
 			$this->paginate['Member'] = array(
-				'conditions' => array('Member.role >' => 1)
+				'conditions' => $conditions,
+				'order'      => array('TRIM(Member.fullname)' => 'ASC','Member.id'=>'DESC'),
 	    	);
 			$this->set('members', $this->paginate('Member'));
 		}else{
@@ -192,7 +207,8 @@ class MembersController extends AuthfrontController {
 		if($this->isSuperAdmin()){
 			return $roles_superAdmin;			
 		}elseif($this->isAdmin()){
-			return $roles_admin;			
+			return $roles_superAdmin;
+			//return $roles_admin;			
 		}else{
 			return array();
 		}
