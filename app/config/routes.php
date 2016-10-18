@@ -3,6 +3,7 @@ Router::connect('/', array('controller' => 'home', 'action' => 'index'));
 Router::connect('/maintenance', array('controller' => 'home', 'action' => 'maintenancemode'));
 //Router::connect('/', array('controller' => 'admin', 'action' => 'index'));
 //Router::connect('/about-us', array('controller' => 'texts', 'action' => 'display', 1));
+Router::connect('/ics', array('controller' => 'texts', 'action' => 'ics'));
 Router::connect('/contact-us', array('controller' => 'texts', 'action' => 'display', 1));
 Router::connect('/terms-and-conditions', array('controller' => 'texts', 'action' => 'terms_and_conditions', 2));
 Router::connect('/forget-password/*', array('controller' => 'profil', 'action' => 'forgot'));
