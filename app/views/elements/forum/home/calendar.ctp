@@ -21,7 +21,7 @@
 		            $height = $image_size[1];   
 		            $image_ratio = $width/$height;
 		            if($image_ratio > $div_ratio){                  
-		                $style = $max_height;
+		                //$style = $max_height;
 		            }
 		        }
 			}
