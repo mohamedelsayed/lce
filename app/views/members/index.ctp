@@ -1,6 +1,15 @@
 <div class="members index">
 	<?php /*<h2><?php __('Members');?></h2>*/?>
 	<div class="add_action_button"><?php echo $this->Html->link(__('Add Contact', true), array('action' => 'add')); ?></div>
+	<?php $key = '';
+	if(isset($_GET['key'])){
+		$key = $_GET['key'];
+	}?>
+	<div class="filter_form">
+		<?php echo $this->Form->create('Member', array('url' => $actual_link, 'type' => 'get'));
+		echo $this->Form->input('Member'.'.'.'key', array('label' => '', 'value' => $key));
+		echo $this->Form->end(__('Search', true));?>
+	</div>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

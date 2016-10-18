@@ -29,9 +29,12 @@
 		});
 		</script>
 		<style type="text/css">
-			.bx-controls{
-				display: none;
-			}
+		.bx-controls{
+			display: none;
+		}
+		.container {
+		    margin-top: 75px !important;
+		}
 		</style>
 	<?php }?>
 <?php }?>
