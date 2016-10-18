@@ -6,6 +6,7 @@ $brief = $event[$model]['brief'];
 $brief_for_js = $brief;
 $brief_for_js = preg_replace( "/\r|\n/", "", $brief_for_js );
 $brief_for_js = strip_tags(str_replace('</p>', '\n', $brief_for_js));
+$brief_for_js = custom_clean_string($brief_for_js);
 $location = $event[$model]['location'];
 $time_from = date('G:i:s', strtotime($event[$model]['time_from']));
 $time_to = date('G:i:s', strtotime($event[$model]['time_to']));
@@ -122,3 +123,7 @@ jQuery(".ace_btn").addcalevent({
 	]*/
 });
 </script>
+<?php  function custom_clean_string($string) {
+	$string = str_replace('&quot;', ' ', $string);	
+   	return preg_replace('/&#?[a-z0-9]+;/i', ' ', $string); // Removes special chars.
+}?>
