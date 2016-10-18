@@ -111,7 +111,14 @@ if(trim($event[$model]['image']) != ''){
 </style>
 <script type="text/javascript">
 jQuery(".ace_btn").addcalevent({
-	'data': {"title":"<?php echo $title;?>", "desc":"<?php echo trim($brief_for_js);?>", "location":"<?php echo $location;?>", "url": "<?php echo $event_url;?>", "time":{"start":"<?php echo $start_date;?>", "end":"<?php echo $end_date;?>", "zone":"<?php echo $zone;?>"}},
-	'ics': "<?php echo BASE_URL;?>"
+	'data': {"title":"<?php echo $title;?>", "desc":"<?php echo trim($brief_for_js);?>", "location":"<?php echo $location;?>", "url": "<?php //echo $event_url;?>", "time":{"start":"<?php echo $start_date;?>", "end":"<?php echo $end_date;?>", "zone":"<?php echo $zone;?>"}},
+	'ics': "<?php echo BASE_URL.'/ics';?>",
+	/*linkText: [ // Array containing the applications available to the user.
+	  'Outlook Calendar',
+	  'Google Calendar',
+	  'Yahoo Calendar',
+	  'Hotmail Calendar',
+	  'iCal Calendar'
+	]*/
 });
 </script>
