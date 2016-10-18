@@ -3,7 +3,16 @@ $model = 'Event';
 $model2 = 'Instructor';
 $title = $event[$model]['title'];
 $brief = $event[$model]['brief'];
+$brief_for_js = $brief;
+$brief_for_js = preg_replace( "/\r|\n/", "", $brief_for_js );
+$brief_for_js = strip_tags(str_replace('</p>', '\n', $brief_for_js));
 $location = $event[$model]['location'];
+$time_from = date('G:i:s', strtotime($event[$model]['time_from']));
+$time_to = date('G:i:s', strtotime($event[$model]['time_to']));
+$zone = "+02:00";
+$start_date = date('M d, Y' ,strtotime($event[$model]['from_date'])).' '.$time_from;
+$end_date = date('M d, Y' ,strtotime($event[$model]['to_date'])).' '.$time_to;
+$event_url = $base_url.'/events/view/'.$event[$model]['id'];
 $ticket_price = $event[$model]['ticket_price'];
 $instructors_title = '';
 $instructors = $event['Instructor'];			
@@ -72,6 +81,13 @@ if(trim($event[$model]['image']) != ''){
 				</div>
 				<div class="post_event_price"><i class="icon_price"></i><?php echo $ticket_price.' '.$currency;?></div>
 			</div>			
+			<div class="event_list_register" style="float: left;width: 44%;padding:0 0 0 5%;">				
+				<a class="contact_event">
+					<div class="input_event contact_event" style="width: 100%;margin: 10px 0px;">
+						<a class="ace_btn dis">ADD TO CALENDAR</a>  
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
@@ -88,4 +104,14 @@ if(trim($event[$model]['image']) != ''){
 .post_event_details{
 	line-height: 36px;
 }
+.ace_dd{
+	min-width: 200px !important;
+	width: 200px !important;
+}
 </style>
+<script type="text/javascript">
+jQuery(".ace_btn").addcalevent({
+	'data': {"title":"<?php echo $title;?>", "desc":"<?php echo trim($brief_for_js);?>", "location":"<?php echo $location;?>", "url": "<?php echo $event_url;?>", "time":{"start":"<?php echo $start_date;?>", "end":"<?php echo $end_date;?>", "zone":"<?php echo $zone;?>"}},
+	'ics': "<?php echo BASE_URL;?>"
+});
+</script>

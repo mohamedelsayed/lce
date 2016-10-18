@@ -16,13 +16,13 @@ if(!empty($saved_instructors)){
 	<input type="text" id="instructors_id" name="instructors_id">
 </div>
 <script type="text/javascript">
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	var savailableTags = [
 	<?php foreach ($instructors as $key => $value) {?>
 		{value: "<?php echo $key;?>", label: "<?php echo $value;?>"},
 	<?php }?>
 	];
-    $("#instructors_id").autocomplete({
+    jQuery("#instructors_id").autocomplete({
     	select: function( event, ui ){
 			var oldids = jQuery("#instructors_ids").val();
 			if(oldids){
@@ -40,8 +40,8 @@ $(document).ready(function(){
 		source: savailableTags,
 		minLength: 0
     });
-	$("#instructors_id").focus(function(){
-		//$('#instructors_id').trigger("keyup"); 
+	jQuery("#instructors_id").focus(function(){
+		//jQuery('#instructors_id').trigger("keyup"); 
     });
     jQuery("body").on("click", ".removeusers", function(){
 		var userid = jQuery(this).attr('userid');

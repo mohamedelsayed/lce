@@ -40,11 +40,11 @@ $base_url = BASE_URL;?>
 		echo $this->Html->meta('keywords', isset($metaKeywords)?$metaKeywords:$this->Session->read('Setting.meta_keywords'));
 		echo $this->Html->meta('description', isset($metaDescription)?$metaDescription:$this->Session->read('Setting.meta_description'));	
 		//CSS
-		echo $this->Html->css(array('old_front/style','old_front/style_slider','old_front/skin', 'old_front/new_style', 'front/jMenu.jquery', 'front/style', 'front/new_style','front/styles_1.css', 'forum/jquery.bxslider.css', 'forum/style'));
+		echo $this->Html->css(array('old_front/style','old_front/style_slider','old_front/skin', 'old_front/new_style', 'front/jMenu.jquery', 'front/style', 'front/new_style','front/styles_1.css', 'forum/jquery.bxslider.css', 'forum/AddCalEvent' , 'forum/style'));
 		//SCRIPTS
 		echo $this->Html->scriptBlock("var siteUrl ='".$base_url."';");//Define global var siteUrl
 		//echo $this->Javascript->link('libs/jquery');
-		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel', 'forum/jqColorPicker.min', 'forum/jquery.marquee.min', 'forum/jquery.bxslider.min'));		
+		echo $this->Javascript->link(array('front/jquery', 'front/jMenu.jquery', 'front/jquery.jcarousel', 'forum/jqColorPicker.min', 'forum/jquery.marquee.min', 'forum/jquery.bxslider.min', 'forum/AddCalEventZones', 'forum/AddCalEvent'));		
 		echo $this->Javascript->link('/ckeditor/ckeditor');
 		echo $this->Javascript->link('forum/jquery.simple-color');
 		echo $this->Javascript->link('forum/dev.js');?>
