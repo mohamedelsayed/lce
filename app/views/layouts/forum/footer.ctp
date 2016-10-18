@@ -1,7 +1,7 @@
 <div class="bottom_big" style="float: left;">
 	<div class="bottom_big_container">
 		<div class="footer_main">
-			<div class="logo_footer">
+			<?php /*<div class="logo_footer">
 				<a href="<?php echo $base_url;?>">
 					<img src="<?php echo $base_url.'/img/front/';?>logo_footer.png" />
 				</a>
@@ -32,15 +32,15 @@
 						<?php }?>
 					</div>
 				<?php }?>
-			<?php }?>
+			<?php }*/ /*?>
             <div class="col-md-1 footer-grid">
 				<a href="<?php echo $base_url.'/all-events';?>" class="title">UPCOMING EVENTS</a>
                 <a href="<?php echo $base_url.'/all-coaches';?>" class="footer_grid_title">FIND A COACH</a>
                 <a href="<?php echo $base_url.'/contact-us';?>" class="footer_grid_title">CONTACT US</a>
 			</div>
-            <div class="col-md-12"></div>			
+            <div class="col-md-12"></div>*/?>			
 			<div class="left_bot"><?php echo $this->Session->read('Setting.footer');?></div>
-            <div class="payment">
+            <?php /*<div class="payment">
 	            <a class="payment_logo">
 	            	<img src="<?php echo $base_url.'/img/front/';?>secured.png"/>
 	            </a>
@@ -83,7 +83,7 @@
 						</a>
 					</div>
 				<?php }?>
-			</div>
+			</div>*/?>
 			<div id="Developer">
 				Developed by <a href="http://www.mohamedelsayed.net" target="_blank">Mohamed Elsayed</a>
 			</div>
@@ -160,5 +160,12 @@
 }
 .facebook_fotter{
 	width: 18%;
+}
+.footer_main{
+	width: 100%;
+}
+.left_bot{
+	width: 100%;
+	text-align: center;
 }
 </style>
