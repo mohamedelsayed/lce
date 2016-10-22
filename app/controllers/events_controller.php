@@ -44,26 +44,39 @@ class EventsController extends AuthfrontController {
 						'conditions' => array('AttendEvent.event_id' => $id),
 					)	  	 	
 				);	
-		$this->set('attendEvents', $attendEvents);		
-		if (!$id) {
+		$this->set('attendEvents', $attendEvents);	
+		$nevent_id = isset($this->params['named']['nevent_id'])?$this->params['named']['nevent_id']:0;				
+		if (!$id && !$nevent_id) {
 			$this->Session->setFlash(__('Invalid Event', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$event = $this->Event->read(null, $id);
-		$this->set('event', $event);
-		if(!($event['Event']['approved'] == 1 || $isAdmin == 1)){
-			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
+		if(is_numeric($id) && $id > 0){
+			$event = $this->Event->read(null, $id);
+			$this->set('event', $event);
+			if(!($event['Event']['approved'] == 1 || $isAdmin == 1)){
+				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));	
+			}
+			$this->set('title_for_layout' , $event['Event']['title']);
+			$saved_instructors = $this->get_saved_many_items($id);
+			$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1, 'Instructor.approved' => 1)));
+			$this->set(compact('instructors'));
+			$this->set(compact('saved_instructors'));	
+			if($event['Event']['type'] == 0 || $GLOBALS['is_loggin']){
+			}else{
+				$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
+				$this->redirect(array('controller' => 'forum', 'action' => 'login'));
+			}
 		}
-		$this->set('title_for_layout' , $event['Event']['title']);
-		$saved_instructors = $this->get_saved_many_items($id);
-		$instructors = $this->Event->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 1, 'Instructor.approved' => 1)));
-		$this->set(compact('instructors'));
-		$this->set(compact('saved_instructors'));	
-		if($event['Event']['type'] == 0 || $GLOBALS['is_loggin']){
-		}else{
-			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
-			$this->redirect(array('controller' => 'forum', 'action' => 'login'));
+		if(is_numeric($nevent_id) && $nevent_id > 0){
+			$this->loadModel('Nevent');
+			$event = $this->Nevent->read(null, $nevent_id);
+			$this->set('event', $event);			
+			$this->set('title_for_layout' , $event['Nevent']['title']);
+			$saved_instructors = $this->get_saved_many_items($id);
+			$instructors = $this->Nevent->Instructor->find('list', array('conditions' => array('Instructor.forum_flag' => 0, 'Instructor.approved' => 1)));
+			$this->set(compact('instructors'));
+			$this->set(compact('saved_instructors'));
 		}
 	}
 	function add() {		

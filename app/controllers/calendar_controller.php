@@ -38,11 +38,58 @@ class CalendarController extends AuthfrontController {
             ),
             'order' => array('Event.from_date'=>'ASC','Event.id'=>'DESC'),
         ));
+		$this->loadModel('Nevent');
+		$events2 = $this->Nevent->find('all', array(
+            'conditions' => array(
+                'AND' => array(
+                    'OR' => array(
+                        array('AND' => array(
+                                'YEAR(Nevent.start_date) = '.$year,
+                                'MONTH(Nevent.start_date) = '.$month
+                            )
+                        ),                          
+                    )
+                ),                             
+            ),
+            'order' => array('Nevent.start_date'=>'ASC','Nevent.id'=>'DESC'),
+        ));	
         $events_by_days = array();
         if(!empty($events)){
             foreach ($events as $key => $event) {
                 $date = $event['Event']['from_date'];
                 $to_date = $event['Event']['to_date'];
+                if(strtotime($to_date) >= strtotime($date)){
+                    $day = date('j', strtotime($date));
+                    $month = date('n', strtotime($date));
+                    $year = date('Y', strtotime($date));
+                    $to_day = date('j', strtotime($to_date));
+                    $to_month = date('n', strtotime($to_date));                    
+                    $to_year = date('Y', strtotime($to_date));     
+                    if($month == $current_month){
+                        if($to_month == $current_month){
+                            for ($i = $day; $i <= $to_day; $i++) {
+                                $events_by_days[$i][] = $event;                       
+                            }                    
+                        }else{
+                            for ($i = $day; $i <= 31; $i++) {                                
+                                $events_by_days[$i][] = $event;                       
+                            } 
+                        }                                                    
+                    }elseif($to_month == $current_month){                        
+                        for ($i = $to_day; $i >= 1; $i--) {
+                            $events_by_days[$i][] = $event;
+                        }                    
+                    }                    
+                }
+            }
+        }
+		if(!empty($events2)){
+            foreach ($events2 as $key => $event) {
+            	$model = 'Nevent';
+                $date = $event[$model]['start_date'];
+				$duration = $event[$model]['duration'];
+				$duration = $duration - 1;
+				$to_date = date('Y-m-d', strtotime($date. ' + '.$duration.' days'));
                 if(strtotime($to_date) >= strtotime($date)){
                     $day = date('j', strtotime($date));
                     $month = date('n', strtotime($date));
