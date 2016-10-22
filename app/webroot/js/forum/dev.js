@@ -20,6 +20,9 @@ jQuery(document).ready(function(){
 function open_event(id){
 	window.location.href = base_url+"/events/view/"+id;	    
 }
+function open_event_front(id){
+	window.location.href = base_url+"/events/view/0/nevent_id:"+id;	    
+}
 function open_instructor_popup(content){
 	jQuery("#mesagepopboxinstructorpopoup .mesagecontent").html(content);      
     jQuery("#mesagepopboxinstructorpopoup").show();     
