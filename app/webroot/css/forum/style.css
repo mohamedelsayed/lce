@@ -1230,3 +1230,6 @@ td.calendar-day{
     padding-right: 5px;
     padding-left: 5px;
 }
+.container {
+    min-height: 500px;
+}
