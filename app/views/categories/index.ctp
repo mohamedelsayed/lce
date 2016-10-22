@@ -1,7 +1,7 @@
 <div class="categories index">
 	<?php //echo $this->element('forum/search_view',array('currentModel' => 'Category', 'currentField' => 'title'));?>
 	<?php /*<h2><?php __('Categories');?></h2>*/?>
-	<div class="add_action_button"><?php echo $this->Html->link(__('Add Category', true), array('action' => 'add')); ?></div>
+	<div class="add_action_button"><?php echo $this->Html->link(__('Add Category', true), array('action' => 'add/type:'.$type)); ?></div>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>

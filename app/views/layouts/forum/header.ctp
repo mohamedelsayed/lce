@@ -26,7 +26,7 @@
 		            				<a <?php echo $style_width;?> title="Events" href="<?php echo $base_url.'/events/admin_all';?>">Events</a>
 				        		</li>	
 				        		<li class="submenu">
-		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all';?>">MarketPlace</a>
+		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all?type=0';?>">MarketPlace</a>
 				        		</li>	
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Library" href="<?php echo $base_url.'/libraries/admin_all';?>">Library</a>
@@ -34,6 +34,9 @@
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Home Items" href="<?php echo $base_url.'/forum/admin_all';?>">Home Items</a>
 				        		</li>	
+				        		<li class="submenu">
+		            				<a <?php echo $style_width;?> title="MarketPlace" href="<?php echo $base_url.'/posts/admin_all?type=1';?>">Discussion Board</a>
+				        		</li>
 				        		<li class="submenu">
 		            				<a <?php echo $style_width;?> title="Settings" href="<?php echo $base_url.'/forum_settings';?>">Settings</a>
 				        		</li>				        		
@@ -48,6 +51,11 @@
 	            <?php if($GLOBALS['is_loggin']){?>
 	        		<li class="">
         				<a id="market_place_page" title="DCC MarketPlace" href="<?php echo $base_url.'/posts/marketplace';?>">DCC MarketPlace</a>
+	        		</li>
+        		<?php }?>
+        		<?php if($GLOBALS['is_loggin']){?>
+	        		<li class="">
+        				<a id="discussion_board_page" title="Discussion Board" href="<?php echo $base_url.'/posts/discussion_board';?>">Discussion Board</a>
 	        		</li>
         		<?php }?>
         		<?php if($GLOBALS['is_loggin']){?>
