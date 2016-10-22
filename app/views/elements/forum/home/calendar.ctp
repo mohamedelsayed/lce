@@ -76,7 +76,10 @@
 				</div>
 				<?php /*<div class="article_home_image_creator_date">
 					<?php echo $brief;?>
-				</div>*/?>				
+				</div>*/?>			
+				<a style="float: left;margin-top: 10px;width: 100%;" class="open_event" href="<?php echo $link;?>" >
+					<div class="top_see_now">More Details</div>
+				</a>	
 			</div>			
 		</div>
 	<?php }?>
@@ -100,5 +103,15 @@
 	line-height: 22px;
 	margin-bottom: 0px;
 	font-size: 14px;
+}
+.home_event_img_div{
+	width: 100%;
+	height: 100%;
+}
+.article_home_image_new{
+	height: auto;
+}
+.home_event_img_div img{
+	max-height: 150px;
 }
 </style>
