@@ -52,6 +52,14 @@ class PostsController extends AuthfrontController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$post = $this->Post->read(null, $id);
+		$type = $post['Post']['type'];
+		$category_type = $this->get_category_type($type);	
+		$this->set('title_for_layout', $post['Post']['title']);		
+		if($category_type == 0){
+			$this->set('selected','market_place_page');				
+		}elseif($category_type == 1){
+			$this->set('selected','discussion_board_page');						
+		}
 		$this->set('post', $post);
 		if(!($post['Post']['approved'] == 1 || $isAdmin == 1)){
 			$this->Session->setFlash(__($this->you_are_not_authorized, true), true);
@@ -82,6 +90,7 @@ class PostsController extends AuthfrontController {
 	function add() {
 		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;	
 		$this->set('type', $type);
+		$category_type = $this->get_category_type($type);		
 		$this->set('title_for_layout', 'Topics');
 		$isAdmin = 0;
 		if($this->isSuperAdmin() || $this->isAdmin()){
@@ -109,7 +118,7 @@ class PostsController extends AuthfrontController {
 				$this->Session->setFlash(__('The Post could not be saved. Please, try again.', true));
 			}
 		}
-		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
+		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1, 'Category.type' => $category_type)));
 		$this->set(compact('categories'));
 		$attachements_div = '';
         $this->set('attachements_div', $attachements_div);
@@ -129,6 +138,7 @@ class PostsController extends AuthfrontController {
 		$post = $this->Post->read(null, $id);
 		$type = $post['Post']['type'];	
 		$this->set('type', $type);
+		$category_type = $this->get_category_type($type);
 		if (!empty($this->data)) {
 			$post_data = $_POST;
 		    unset($this->data['attachements']);
@@ -154,7 +164,7 @@ class PostsController extends AuthfrontController {
 				}					
 			}
 		}
-		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1)));
+		$categories = $this->Post->Category->find('list', array('conditions' => array('Category.approved' => 1, 'Category.type' => $category_type)));
 		$this->set(compact('categories'));
 		$attachements_div = '';
         if(!empty($post['Attachment'])){
@@ -201,8 +211,14 @@ class PostsController extends AuthfrontController {
 	function all($category_id = 0){
 		$type = isset($this->params['named']['type'])?$this->params['named']['type']:0;	
 		$this->set('type', $type);
-		$this->set('title_for_layout', 'Topics');
-		$this->set('selected','market_place_page');	
+		$category_type = $this->get_category_type($type);			
+		if($category_type == 0){
+			$this->set('title_for_layout', 'MarketPlace');	
+			$this->set('selected','market_place_page');				
+		}elseif($category_type == 1){
+			$this->set('title_for_layout', 'Discussion Board');	
+			$this->set('selected','discussion_board_page');						
+		}
 		$limit = $this->pagingLimit;
 		$page = isset($this->params['named']['page'])?$this->params['named']['page']:$this->paginate['page'];	
 		$conditions = array();
@@ -226,6 +242,10 @@ class PostsController extends AuthfrontController {
 	function marketplace(){
 		$this->set('title_for_layout', 'Topics');
 		$this->set('selected','market_place_page');
+	}
+	function discussion_board(){
+		$this->set('title_for_layout', 'Topics');
+		$this->set('selected','discussion_board_page');
 	}
 	function addComment(){
 		$this->Post->ForumComment->create();
@@ -402,8 +422,17 @@ class PostsController extends AuthfrontController {
 		return $comment;		
 	}
 	function admin_all(){
-		$this->check_isAdmin_isSuperAdmin();
-		$this->set('title_for_layout', 'MarketPlace');		
+		$this->check_isAdmin_isSuperAdmin();		
+		$type = 0;
+		if(isset($_GET['type'])){
+			$type = $_GET['type'];
+		}	
+		if($type == 0){
+			$this->set('title_for_layout', 'MarketPlace');				
+		}elseif($type == 1){
+			$this->set('title_for_layout', 'Discussion Board');				
+		}
+		$this->set('type', $type);	
 	}
 	function save_attachements($data, $id = 0){
         if(!empty($data) && $id != 0){           
@@ -460,4 +489,13 @@ class PostsController extends AuthfrontController {
             }          
         }        
     }	
+	public function get_category_type($type = 0){
+		$category_type = 0;
+		if($type == 0 || $type == 1){
+			$category_type = 0;			
+		}elseif($type == 2 || $type == 3){
+			$category_type = 1;
+		}		
+		return $category_type;
+	}
 }
