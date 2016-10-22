@@ -80,20 +80,43 @@ function draw_calendar($month, $year, $events_by_days, $settings2){
         $calendar .= '<div class="day-number">'.sprintf("%02d",$list_day).'</div>';          
         $calendar .= "<div class='event_calendar_wraper_div'>";                        
         if(isset($events_by_days[$list_day])){
-            foreach ($events_by_days[$list_day] as $key => $event) {           	
-            	if($event['Event']['type'] == 0 || $GLOBALS['is_loggin']){
+            foreach ($events_by_days[$list_day] as $key => $event) {
+            	$model1 = 'Event';
+				$model2 = 'Nevent';           	
+				if(isset($event[$model1])){
+					$model = $model1;					
+				}elseif(isset($event[$model2])){
+					$model = $model2;					
+				}
+				$type = 0;
+				if(isset($event[$model]['type'])){
+					$type = $event[$model]['type'];
+				}
+            	if($type == 0 || $GLOBALS['is_loggin']){
 				}else{
 					continue;
 				}
                 $color = 'color:#000000;';
 				$index = 'color';
-				$index .= $event['Event']['type']+1;
+				$index .= $type + 1;
 				if(isset($settings2[$index])){
 					$color = 'color:'.$settings2[$index].';';
 				}
 				$new_line = '&#013;';
-				$hover_title = $event['Event']['title'].$new_line.strip_tags($event['Event']['brief']);
-                $calendar .= '<div title="'.$hover_title.'" onclick="open_event('.$event['Event']['id'].');" class="event_calendar_div" style="'.$color.'">'.$event['Event']['title'].'</div>';                    
+				$brief = '';
+				if(isset($event[$model]['brief'])){
+					$brief = $event[$model]['brief'];
+				}elseif(isset($event[$model]['description'])){
+					$brief = $event[$model]['description'];
+				}
+				$hover_title = $event[$model]['title'].$new_line.strip_tags($brief);
+				if($model == $model1){
+					$open_event_js_function = 'open_event';
+				}
+				if($model == $model2){
+					$open_event_js_function = 'open_event_front';
+				}
+                $calendar .= '<div title="'.$hover_title.'" onclick="'.$open_event_js_function.'('.$event[$model]['id'].');" class="event_calendar_div" style="'.$color.'">'.$event[$model]['title'].'</div>';                    
             }                
         }
         $calendar .= "</div>";

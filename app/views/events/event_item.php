@@ -1,8 +1,19 @@
 <?php 
-$model = 'Event';
+$model_1 = 'Event';
+$model_2 = 'Nevent';  
+if(isset($event[$model_1])){
+	$model = $model_1;					
+}elseif(isset($event[$model_2])){
+	$model = $model_2;			
+}
 $model2 = 'Instructor';
 $title = $event[$model]['title'];
-$brief = $event[$model]['brief'];
+$brief = '';
+if(isset($event[$model]['brief'])){
+	$brief = $event[$model]['brief'];
+}elseif(isset($event[$model]['description'])){
+	$brief = $event[$model]['description'];
+}
 $brief_for_js = $brief;
 $brief_for_js = preg_replace( "/\r|\n/", "", $brief_for_js );
 $brief_for_js = strip_tags(str_replace('</p>', '\n', $brief_for_js));
@@ -11,8 +22,19 @@ $location = $event[$model]['location'];
 $time_from = date('G:i:s', strtotime($event[$model]['time_from']));
 $time_to = date('G:i:s', strtotime($event[$model]['time_to']));
 $zone = "+02:00";
-$start_date = date('M d, Y' ,strtotime($event[$model]['from_date'])).' '.$time_from;
-$end_date = date('M d, Y' ,strtotime($event[$model]['to_date'])).' '.$time_to;
+if(isset($event[$model]['from_date'])){
+	$start_date = date('M d, Y' ,strtotime($event[$model]['from_date'])).' '.$time_from;
+}elseif(isset($event[$model]['start_date'])){
+	$start_date = date('M d, Y' ,strtotime($event[$model]['start_date'])).' '.$time_from;
+}
+if(isset($event[$model]['to_date'])){
+	$end_date = date('M d, Y' ,strtotime($event[$model]['to_date'])).' '.$time_to;
+}elseif(isset($event[$model]['duration'])){
+	$duration = $event[$model]['duration'];
+	$duration = $duration - 1;
+	$to_date = date('Y-m-d', strtotime($event[$model]['start_date']. ' + '.$duration.' days'));
+	$end_date = date('M d, Y' ,strtotime($to_date)).' '.$time_to;
+}
 $event_url = $base_url.'/events/view/'.$event[$model]['id'];
 $ticket_price = $event[$model]['ticket_price'];
 $instructors_title = '';
