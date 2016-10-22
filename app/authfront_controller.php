@@ -19,7 +19,8 @@ class AuthfrontController extends AppController{
 	public $forum_libraries_types3 = array(0 => 'Anthropology Material', 1 => 'Coaching Material');	
 	public $forum_modules_types = array(0 => 'Module 1', 1 => 'Module 2', 2 => 'Module 3', 3 => 'Module 4', 4 => 'Module 5'); 	
 	public $pagingLimit = 10;
-	public $forum_posts_types = array(0 => 'Opportunities', 1 => 'Requests');	
+	public $forum_posts_types = array(0 => 'Opportunities', 1 => 'Requests');
+	public $forum_posts_types_discussion_board = array(2 => 'Ahmed Alawar', 3 => 'Coaches');	
 	protected function isAuthenticFront(){
 		if($this->Cookie->read('userInfoFront')){
 			if($this->inDataBaseFront()){
@@ -88,7 +89,8 @@ class AuthfrontController extends AppController{
 		$this->set('forum_libraries_types2', $this->forum_libraries_types2);
 		$this->set('forum_libraries_types3', $this->forum_libraries_types3);		
 		$this->set('forum_modules_types', $this->forum_modules_types);	
-		$this->set('forum_posts_types', $this->forum_posts_types);		
+		$this->set('forum_posts_types', $this->forum_posts_types);	
+		$this->set('forum_posts_types_discussion_board', $this->forum_posts_types_discussion_board);		
 		$actual_link = $this->get_actual_link();			
 		$this->set('actual_link', $actual_link);	
 	}
