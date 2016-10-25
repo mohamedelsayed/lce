@@ -92,7 +92,8 @@ class AuthfrontController extends AppController{
 		$this->set('forum_posts_types', $this->forum_posts_types);	
 		$this->set('forum_posts_types_discussion_board', $this->forum_posts_types_discussion_board);		
 		$actual_link = $this->get_actual_link();			
-		$this->set('actual_link', $actual_link);	
+		$this->set('actual_link', $actual_link);
+		$this->set('currency', $this->currency);	
 	}
 	function isSuperAdmin(){
 		$flag = 0;

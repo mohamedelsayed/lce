@@ -57,6 +57,7 @@ class AppController extends Controller {
 		$this->loadModel('Setting');
         $setting = $this->Setting->read(null, 1);
         $this->set('base_url', BASE_URL);
+		$this->set('currency', $this->currency);
 	}	
 	function afterFilter(){
 		//$this->Session->write('dontPopup', true);
