@@ -5,8 +5,7 @@ if($item['Library']['title'] != ''){
 $file_link = '';
 $file_ext = '';
 if($item['Library']['file'] != ''){
-	//$file_link = BASE_URL."/app/webroot/files/upload/".$item['Library']['file'];
-	$file_link = BASE_URL."/forum/view_downloadable_file/?file_name=".$item['Library']['file'];
+	$file_link = BASE_URL."/app/webroot/files/upload/".$item['Library']['file'];
 	$path_exploded = explode('.', $item['Library']['file']);
 	$file_ext = end($path_exploded);	
 }elseif($item['Library']['google_drive_url'] != ''){
