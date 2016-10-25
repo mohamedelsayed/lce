@@ -31,7 +31,7 @@ class MembersController extends AuthfrontController {
 	    	);
 			$this->set('members', $this->paginate('Member'));
 		}elseif($this->isAdmin()){
-			$conditions['Member.role >'] = 1;
+			$conditions['Member.role >'] = 0;
 			$this->paginate['Member'] = array(
 				'conditions' => $conditions,
 				'order'      => array('TRIM(Member.fullname)' => 'ASC','Member.id'=>'DESC'),
@@ -143,7 +143,7 @@ class MembersController extends AuthfrontController {
 			$this->Session->setFlash(__('Invalid id for Contact', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if($id <= 1){
+		if($id <= 3){
 			$this->Session->setFlash(__('Sorry! Web Master can not be deleted.', true));
 			$this->redirect(array('action'=>'index'));
 		}
