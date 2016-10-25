@@ -7,7 +7,6 @@
 class ArticleController  extends AppController {
 	var $name = 'Article';
 	var $uses = array('Article');
-	
 	function index(){
 		$this->redirect($this->referer(BASE_URL));			
 	}

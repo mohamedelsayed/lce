@@ -273,4 +273,9 @@ class ForumController  extends AuthfrontController {
 	function admin_all(){
 		$this->check_isAdmin_isSuperAdmin();
 	}
+	function view_downloadable_file($file_name = ''){
+		$file = BASE_URL.'/app/webroot/files/upload/'.$file_name;
+		$url = 'http://docs.google.com/viewer?url='.urlencode($file).'&embedded=true';
+		$this->redirect($url);
+	}
 }
