@@ -192,8 +192,12 @@ class FronteventsController  extends AppController {
         $this->autoRender = false;          
     }
 	function vpc_php_serverhost_do(){
-		$settings = $this->settings;
+		include_once('VPCPayment'.DS.'VPCPaymentConnection.php');
+		$conn = new VPCPaymentConnection();		
 		$SECURE_SECRET = $this->payment_hash_secret;
+		$secureSecret = $SECURE_SECRET;
+		$conn->setSecureSecret($secureSecret);
+		$settings = $this->settings;
 		$event_id = 0;
 		if(isset($_POST['event_id'])){
 			$event_id = $_POST['event_id'];			
@@ -241,21 +245,35 @@ class FronteventsController  extends AppController {
 			if($amount > 0 && is_numeric($amount)){
 				unset($_POST['terms_and_conditions']);
 				//$_POST["Title"] = $title;
+				$_POST["Title"] = 'LCE';
 				$_POST["virtualPaymentClientURL"] = 'https://migs.mastercard.com.au/vpcpay';
 				$_POST["vpc_Version"] = '1';
 				$_POST["vpc_Command"] = 'pay';
 				$_POST["vpc_OrderInfo"] = $vpc_OrderInfo;					
 				$vpcURL = $_POST["virtualPaymentClientURL"] . "?";
-				unset($_POST["virtualPaymentClientURL"]); 
+				//unset($_POST["virtualPaymentClientURL"]); 
 				unset($_POST["SubButL"]);
 				$md5HashData = $SECURE_SECRET;
-				$_POST["vpc_Locale"] = 'en';
+				$_POST["vpc_Locale"] = 'en_AU';
+				$_POST['vpc_Currency'] = $this->currency;
 				$_POST["vpc_Merchant"] = $this->payment_merchant_id;
 				$_POST["vpc_AccessCode"] = $this->payment_access_code;
 				$_POST["vpc_MerchTxnRef"] = $event_id.time();
 				$_POST["vpc_Amount"] = $amount * $_POST['tickets_number'] * 100;
 				$_POST["vpc_ReturnURL"] = $vpc_ReturnURL;	 
-				ksort ($_POST);		
+				$_SESSION['payment_email'] = $_POST['email'];
+				unset($_POST['email']);
+				$_SESSION['payment_name'] = $_POST['name'];
+				unset($_POST['name']);
+				$_SESSION['payment_event_id'] = $_POST['event_id'];
+				unset($_POST['event_id']);
+				$_SESSION['payment_installment_flag'] = $_POST['installment_flag'];
+				unset($_POST['installment_flag']);
+				$_SESSION['payment_mobile_number'] = $_POST['mobile_number'];
+				unset($_POST['mobile_number']);	
+				$_SESSION['payment_tickets_number'] = $_POST['tickets_number'];
+				unset($_POST['tickets_number']);	
+				/*ksort ($_POST);		
 				// set a parameter to show the first pair in the URL
 				$appendAmp = 0;		
 				foreach($_POST as $key => $value) {		
@@ -278,7 +296,35 @@ class FronteventsController  extends AppController {
 				}		
 				// FINISH TRANSACTION - Redirect the customers using the Digital Order
 				// ===================================================================
-				header("Location: ".$vpcURL);exit;	
+				header("Location: ".$vpcURL);exit;	*/
+				ksort ($_POST);
+				$vpcURL = $_POST["virtualPaymentClientURL"];
+				// This is the title for display
+				$title  = $_POST["Title"];
+				// Remove the Virtual Payment Client URL from the parameter hash as we 
+				// do not want to send these fields to the Virtual Payment Client.
+				unset($_POST["virtualPaymentClientURL"]); 
+				//unset($_POST["SubButL"]);
+				unset($_POST["Title"]);
+				//pr($_POST);exit;
+				// Add VPC post data to the Digital Order
+				foreach($_POST as $key => $value) {
+					if (strlen($value) > 0) {
+						$conn->addDigitalOrderField($key, $value);
+					}
+				}				
+				// Add original order HTML so that another transaction can be attempted.
+				$againLink = '';
+				//$conn->addDigitalOrderField("email", 'sss');				
+				// Obtain a one-way hash of the Digital Order data and add this to the Digital Order
+				$secureHash = $conn->hashAllFields();
+				$conn->addDigitalOrderField("Title", $title);
+				$conn->addDigitalOrderField("vpc_SecureHash", $secureHash);
+				$conn->addDigitalOrderField("vpc_SecureHashType", "SHA256");	
+				// Obtain the redirection URL and redirect the web browser
+				$vpcURL = $conn->getDigitalOrder($vpcURL);				
+				//pr($vpcURL);exit;
+				header("Location: ".$vpcURL);				
 			}else{
 				$this->layout = 'error';
 				//header("Location: ".BASE_URL);				
@@ -376,7 +422,31 @@ class FronteventsController  extends AppController {
 		// This is the display title for 'Receipt' page 
 		//$title = $_GET["Title"];
 		$event_id = 0;
-		$transaction_message = '';
+		$transaction_message = '';	
+		if(isset($_SESSION['payment_email'])){	
+			$_GET['email'] = $_SESSION['payment_email'];
+			unset($_SESSION['payment_email']);
+		}
+		if(isset($_SESSION['payment_name'])){	
+			$_GET['name'] = $_SESSION['payment_name'];
+			unset($_SESSION['payment_name']);
+		}
+		if(isset($_SESSION['payment_event_id'])){	
+			$_GET['event_id'] = $_SESSION['payment_event_id'];
+			unset($_SESSION['payment_event_id']);
+		}
+		if(isset($_SESSION['payment_installment_flag'])){	
+			$_GET['installment_flag'] = $_SESSION['payment_installment_flag'];
+			unset($_SESSION['payment_installment_flag']);
+		}
+		if(isset($_SESSION['payment_mobile_number'])){	
+			$_GET['mobile_number'] = $_SESSION['payment_mobile_number'];
+			unset($_SESSION['payment_mobile_number']);
+		}
+		if(isset($_SESSION['payment_tickets_number'])){	
+			$_GET['tickets_number'] = $_SESSION['payment_tickets_number'];
+			unset($_SESSION['payment_tickets_number']);
+		}
 		if(isset($_GET['event_id'])){
 			$event_id = $_GET['event_id'];			
 		}	
