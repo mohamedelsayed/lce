@@ -192,7 +192,7 @@ class FronteventsController  extends AppController {
         $this->autoRender = false;          
     }
 	function vpc_php_serverhost_do(){
-		include_once('VPCPayment'.DS.'VPCPaymentConnection.php');
+		require_once('VPCPayment'.DS.'VPCPaymentConnection.php');
 		$conn = new VPCPaymentConnection();		
 		$SECURE_SECRET = $this->payment_hash_secret;
 		$secureSecret = $SECURE_SECRET;

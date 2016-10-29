@@ -1,7 +1,5 @@
 <?php
-
-require('PaymentCodesHelper.php');
-
+require_once('PaymentCodesHelper.php');
 class VPCPaymentConnection {
 	
 	// Define Variables
@@ -220,6 +218,4 @@ class VPCPaymentConnection {
 		} 
 		return "No Value Returned";
 	}
-
-	
 }

@@ -1,5 +1,4 @@
 <?php
-
 //  ----------------------------------------------------------------------------
 
 // This function uses the QSI Response code retrieved from the Digital
@@ -111,5 +110,3 @@ function getCSCResultDescription($cscResultCode) {
     }
     return $result;
 }
-
-//  -----------------------------------------------------------------------------
