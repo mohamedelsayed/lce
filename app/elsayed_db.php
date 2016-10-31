@@ -16,6 +16,11 @@ if (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') {
     $http_string = "https://";
 }
 $base_url = $http_string . $http_host;
+if ($dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '\/')) {
+	$base_path = $dir;
+	$base_url .= $base_path;
+}
+$base_url = str_replace('/app/webroot', '', $base_url);
 $payment_merchant_id = 'Test290510EGP';
 $payment_access_code = 'B972DDBB';
 $payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
@@ -33,7 +38,6 @@ if (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
 	$payment_access_code = '4730221D';
 	$payment_hash_secret = 'FB4DD9A7E8DB59C6C1E9AF929287C591';
 }elseif (strpos($http_host, 'localhost') !== FALSE) {
-	$base_url = $http_string . $http_host . '/myworkspace/lce';
     if (PHP_OS == 'Linux') {
     } else {
         $password = '';
