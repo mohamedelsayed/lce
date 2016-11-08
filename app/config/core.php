@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '1024M'); // or you could use 1G
 /**
  * This is core configuration file.
  *
