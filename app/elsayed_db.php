@@ -60,3 +60,4 @@ define('PAYMENT_MERCHANT_ID', $payment_merchant_id);
 define('PAYMENT_ACCESS_CODE', $payment_access_code);
 define('PAYMENT_HASH_SECRET', $payment_hash_secret);
 ini_set('memory_limit', '1024M'); // or you could use 1G
+require_once 'functions.php';
