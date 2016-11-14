@@ -1233,3 +1233,14 @@ td.calendar-day{
 .container {
     min-height: 500px;
 }
+.load_more_images_div{
+	float: left;
+	width: 100px;
+	margin-top: -60px;
+	margin-left: 1100px;
+	cursor: pointer;
+}
+.load_more_images_div img{
+	width: 100%;
+	cursor: pointer;
+}
