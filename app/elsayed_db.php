@@ -43,6 +43,7 @@ if (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
         $password = '';
     }
 }
+$default_image = $base_url.'/img/forum/default_image.jpg';
 define('DB_HOST', $db_host);
 define('DB_NAME', $database);
 define('DB_USERNAME', $username);
@@ -50,6 +51,7 @@ define('DB_PASSWORD', $password);
 define('BASE_URL', $base_url);
 define('SHOW_PAYMENT_BUTTON', $show_payment_button);
 define('STMP_TIMEOUT', 30);
+define('DEFAULT_IMAGE', $default_image);
 define('STMP_USERNAME', 'noreply@lifecoachingegypt.com');
 define('STMP_PASSWORD', 'e9!pf_}i]ex~');
 define('STMP_SERVER', 'mail.lifecoachingegypt.com');
