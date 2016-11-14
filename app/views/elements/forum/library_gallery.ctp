@@ -67,7 +67,7 @@ var slider = jQuery('.bxslider').bxSlider({
   	auto: true,
   	autoControls: true,
   	pagerCustom: '#bx-pager',
-  	speed: 2000,
+  	speed: 8000,
   	//minSlides: 5,
   	//maxSlides: 5,
   	//slideWidth:100,
