@@ -24,20 +24,7 @@ $base_url = str_replace('/app/webroot', '', $base_url);
 $payment_merchant_id = 'Test290510EGP';
 $payment_access_code = 'B972DDBB';
 $payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
-if (strpos($http_host, '.mohamedelsayed.net') !== FALSE) {
-	$database = 'elsayed_lce';
-	$username = 'elsayed_lce';
-    $password = 'xPBNZvrd8u8z';
-}
-if (strpos($http_host, 'lifecoachingegypt.com') !== FALSE) {
-    $database = 'lifecoj0_lifecoa_chingwebsite';
-	$username = 'lifecoj0_chidbus';
-    $password = 'L0gmeuIn0W3';
-	$show_payment_button = 1;
-	$payment_merchant_id = '529760';
-	$payment_access_code = '4730221D';
-	$payment_hash_secret = 'FB4DD9A7E8DB59C6C1E9AF929287C591';
-}elseif (strpos($http_host, 'localhost') !== FALSE) {
+if (strpos($http_host, 'localhost') !== FALSE) {
     if (PHP_OS == 'Linux') {
     } else {
         $password = '';
