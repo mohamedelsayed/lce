@@ -21,9 +21,6 @@ if ($dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '\/')) {
 	$base_url .= $base_path;
 }
 $base_url = str_replace('/app/webroot', '', $base_url);
-$payment_merchant_id = 'Test290510EGP';
-$payment_access_code = 'B972DDBB';
-$payment_hash_secret = 'C0DF9A7B3819968807A9D4E48D0E65C6';
 if (strpos($http_host, 'localhost') !== FALSE) {
     if (PHP_OS == 'Linux') {
     } else {
